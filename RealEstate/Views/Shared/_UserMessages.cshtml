@@ -1,0 +1,30 @@
+﻿@using RealEstate.Core.Constants
+
+<!--Toastr Notifications-->
+
+@if (ViewData[MessageConstant.ErrorMessage] != null)
+{
+    <script>
+        $(function() {
+            toastr.error('@ViewData[MessageConstant.ErrorMessage]?.ToString()');
+        });
+    </script>
+}
+
+@if (ViewData[MessageConstant.WarningMessage] != null)
+{
+    <script>
+        $(function() {
+            toastr.warning('@ViewData[MessageConstant.WarningMessage]?.ToString()');
+        });
+    </script>
+}
+
+@if (ViewData[MessageConstant.SuccessMessage] != null)
+{
+    <script>
+        $(function() {
+            toastr.success('@ViewData[MessageConstant.SuccessMessage]?.ToString()');
+        });
+    </script>
+}
