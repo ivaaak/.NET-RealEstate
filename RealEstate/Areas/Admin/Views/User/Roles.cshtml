@@ -1,0 +1,34 @@
+﻿@using RealEstate.Core.Models
+@model UserRolesViewModel
+@{
+    ViewData["Title"] = "User Roles";
+    var items = (List<SelectListItem>)ViewBag.RoleItems;
+}
+
+<div class="row">
+    <div class="col-4">
+        <form id="roles" method="post">
+            <input type="hidden" name="UserId" value="@Model.UserId" />
+            <input type="hidden" name="Name" value="@Model.Name" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <h3>User: @Html.DisplayFor(m => m.Name)</h3>
+            </div>
+            <div class="form-floating">
+                <div class="form-group">
+                    <label>User Roles</label>
+                    <select asp-for="RoleNames" asp-items="@items" class="form-control">
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-4">
+                    <button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+    </div>
+</div>
