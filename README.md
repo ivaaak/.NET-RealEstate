@@ -5,21 +5,23 @@ It can be used for listing, browsing and renting/selling properties.
 
 ## Features:
 
-**Guests**
+**Guests:**
 
-**Users**
+**Users:** 
 
-**Agents**
+**Agents:**
 
-**Admin**
+**Admin:**
 
 
 ## Built With:
 - ASP.NET Core 6
+- MediatR / CQRS Pattern
 - Entity Framework Core 6
 - PostgreSQL
 - Redis Caching
 - Docker
+- Fluent Validation
 - ASP.NET Identity System 
 - MVC Areas (Admin / User-Guest)
 - Razor Pages + Partial Views
@@ -28,18 +30,16 @@ It can be used for listing, browsing and renting/selling properties.
 - Bootstrap 5
 
 
-Features I intend to implement:
-- Fluent Validation
-- MediatR / CQRS
-- HangFire
-- Crawler
-- Auth0????
+Features/Things I intend to implement:
+
+- HangFire for scheduling 
+- Auth0 
 - Toastr
 - jQuery
 - Build/Configure a cralwer to copy listings from a real site/dataset
 - SignalR
 - Sendgrid
-- CloudinaryDotNet
+- Cloudinary.Net
 - Polly Persistance/Retries
 
 
@@ -47,5 +47,4 @@ Features I intend to implement:
 - MyTested.AspNetCore.Mvc 
 - Moq (incl inMemory DB)
 - xunit and NUnit
-- coverlet
-- CodeCov
+- coverlet / CodeCov
