@@ -3,6 +3,8 @@ using System.Diagnostics;
 using RealEstate.Core.Constants;
 using RealEstate.Models;
 using Microsoft.Extensions.Caching.Distributed;
+using MediatR;
+using RealEstate.CQRS.Queries;
 
 namespace RealEstate.Controllers
 {
@@ -12,12 +14,16 @@ namespace RealEstate.Controllers
 
         private readonly IDistributedCache cache;
 
+        private readonly IMediator mediator;
+
         public HomeController(
             ILogger<HomeController> _logger,
-            IDistributedCache _cache)
+            IDistributedCache _cache,
+            IMediator _mediator)
         {
             this.logger = _logger;
             this.cache = _cache;
+            this.mediator = _mediator;
         }
 
         public IActionResult Index()
@@ -27,8 +33,10 @@ namespace RealEstate.Controllers
             return View();
         }
 
-        public ActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
+            var peopleList = await mediator.Send(new GetPersonListQuery());
+
             return View();
         }
 
