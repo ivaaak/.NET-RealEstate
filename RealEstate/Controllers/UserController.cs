@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using RealEstate.Core.Contracts;
@@ -32,7 +32,9 @@ namespace RealEstate.Controllers
 
         public IActionResult Index()
         {
-		var propertiesList = await mediator.Send(new GetPropertyListQuery());
+	    var propertiesList = await mediator.Send(new GetPropertyListQuery());
+	    // Example call to MediatR
+	    
             return View();
         }
 
