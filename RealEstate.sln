@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate", "RealEstate\RealEstate.csproj", "{0CFB60C2-B2F7-40F9-A756-F490C8872AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Api", "RealEstate.Api\RealEstate.Api.csproj", "{FCA6C9A6-D953-4470-91F6-1E2301BACFCD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Core", "RealEstate.Core\RealEstate.Core.csproj", "{0F0A8BAF-D0BD-4EE5-A848-A08873A5A72B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Infrastructure", "RealEstate.Infrastructure\RealEstate.Infrastructure.csproj", "{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}"
@@ -28,10 +26,6 @@ Global
 		{0CFB60C2-B2F7-40F9-A756-F490C8872AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CFB60C2-B2F7-40F9-A756-F490C8872AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CFB60C2-B2F7-40F9-A756-F490C8872AEC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCA6C9A6-D953-4470-91F6-1E2301BACFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCA6C9A6-D953-4470-91F6-1E2301BACFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCA6C9A6-D953-4470-91F6-1E2301BACFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCA6C9A6-D953-4470-91F6-1E2301BACFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F0A8BAF-D0BD-4EE5-A848-A08873A5A72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F0A8BAF-D0BD-4EE5-A848-A08873A5A72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F0A8BAF-D0BD-4EE5-A848-A08873A5A72B}.Release|Any CPU.ActiveCfg = Release|Any CPU

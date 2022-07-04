@@ -9,3 +9,5 @@
 /RealEstate.Core/obj
 /RealEstate.Infrastructure/obj
 /RealEstate.Test/obj
+/RealEstate.Api/bin/Debug/net6.0
+/RealEstate.Api/obj
