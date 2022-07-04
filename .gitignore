@@ -4,3 +4,8 @@
 
 /.vs
 /desktop.ini
+/RealEstate/obj
+/RealEstate.Core/obj/Debug/net6.0
+/RealEstate.Core/obj
+/RealEstate.Infrastructure/obj
+/RealEstate.Test/obj
