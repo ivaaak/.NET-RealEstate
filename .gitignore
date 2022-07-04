@@ -5,9 +5,14 @@
 /.vs
 /desktop.ini
 /RealEstate/obj
-/RealEstate.Core/obj/Debug/net6.0
 /RealEstate.Core/obj
 /RealEstate.Infrastructure/obj
+/RealEstate.Infrastructure/bin
 /RealEstate.Test/obj
-/RealEstate.Api/bin/Debug/net6.0
+/RealEstate.Test/bin
+/RealEstate.Api/bin
 /RealEstate.Api/obj
+/RealEstate.Core/bin
+/RealEstate.CQRS/obj
+/RealEstate/bin/Debug/net6.0
+/RealEstate.CQRS/bin/Debug/net6.0

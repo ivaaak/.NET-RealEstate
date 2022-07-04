@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using RealEstate.CQRS.Commands;
-using RealEstate.CQRS.Pipeline;
+using RealEstate.CQRS.Responses;
 using RealEstate.Infrastructure.Data;
 using RealEstate.Infrastructure.Data.Repositories;
 

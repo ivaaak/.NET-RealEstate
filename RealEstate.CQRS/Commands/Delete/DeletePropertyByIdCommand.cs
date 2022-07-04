@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Pipeline;
+using RealEstate.CQRS.Responses;
 
 namespace RealEstate.CQRS.Commands
 {

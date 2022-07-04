@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.6" />
@@ -27,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
+    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
   </ItemGroup>
 
 </Project>

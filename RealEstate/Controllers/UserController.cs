@@ -30,7 +30,7 @@ namespace RealEstate.Controllers
 		this.mediator = _mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
 	    var propertiesList = await mediator.Send(new GetPropertyListQuery());
 	    // Example call to MediatR
