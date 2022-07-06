@@ -10,7 +10,7 @@ namespace RealEstate.Core.Models
 
         public string? Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         public int Year { get; set; }
 
@@ -26,10 +26,10 @@ namespace RealEstate.Core.Models
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; init; }
+        public Category? Category { get; init; }
 
         public int AgentId { get; init; }
 
-        public Agent Agent { get; init; }
+        public Agent? Agent { get; init; }
     }
 }
