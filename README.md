@@ -1,5 +1,5 @@
 # ASP.NET- Real Estate App
-A full stack web project built with ASP.NET, EF Core, JS and Bootstrap. 
+A full stack web project built with ASP.NET, MediatR/CQRS Pattern, EF Core, PostgreSQL, Redis, JS and Bootstrap. 
 It can be used for listing, browsing and renting/selling properties. 
 
 
