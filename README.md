@@ -28,14 +28,14 @@ It can be used for listing, browsing and renting/selling properties.
 - Customized Log in and Register pages (scaffolded)
 - Responsive Design (Custom CSS, Bootstrap and JS animations)
 - Bootstrap 5
+- Toastr
+- jQuery
 
 
 Features/Things I intend to implement:
 
 - HangFire for scheduling 
 - Auth0 
-- Toastr
-- jQuery
 - Build/Configure a cralwer to copy listings from a real site/dataset
 - SignalR
 - Sendgrid
