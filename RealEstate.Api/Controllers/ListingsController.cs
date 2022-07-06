@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate.Core.Contracts;
+using MediatR;
+using RealEstate.CQRS.Queries;
 
 namespace RealEstate.Api.Controllers
 {
@@ -8,18 +10,23 @@ namespace RealEstate.Api.Controllers
     public class ListingsController : ControllerBase
     {
         private readonly IOrderService service;
+        private readonly IMediator mediator;
 
-        public ListingsController(IOrderService _service)
+
+        public ListingsController(
+            IOrderService _service, 
+            IMediator _mediator)
         {
-            service = _service;
+            this.service = _service;
+            this.mediator = _mediator;
         }
 
-        [HttpGet("place")]
-        public IActionResult PlaceOrder(string propertyId)
+        [HttpGet("property")]
+        public async Task<IActionResult> PropertyAsync(int propertyId)
         {
             try
             {
-                //await service.FindPropertyListing(propertyId);
+                await mediator.Send(new GetPropertyByIdQuery(propertyId));
             }
             catch (ArgumentException ae)
             {
