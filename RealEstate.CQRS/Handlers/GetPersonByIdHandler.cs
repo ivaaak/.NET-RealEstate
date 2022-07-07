@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using RealEstate.Core.Models;
 using RealEstate.CQRS.Queries;
+using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
 
 namespace RealEstate.CQRS.Handlers
@@ -13,10 +14,23 @@ namespace RealEstate.CQRS.Handlers
             repo = _repo;
         }
 
-        public Task<UserViewModel> Handle(GetPersonByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserViewModel> Handle(GetPersonByIdQuery request, CancellationToken cancellationToken)
         {
             Guid id = request.Id;
-            return Task.FromResult(repo.GetByIdAsync<UserViewModel>(id).Result); //repo works?
+
+            var foundUser = await repo.GetByIdAsync<ApplicationUser>(id);
+
+            var userViewModel = new UserViewModel
+            {
+                Id = foundUser.Id,
+                FirstName = foundUser.FirstName,
+                LastName = foundUser.LastName,
+                Email = foundUser.Email,
+                NormalizedUserName = foundUser.NormalizedUserName,
+                UserName = foundUser.UserName,
+            };
+
+            return userViewModel;
         }
     }
 }
