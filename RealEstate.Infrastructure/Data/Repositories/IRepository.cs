@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace RealEstate.Infrastructure.Data.Common
+namespace RealEstate.Infrastructure.Repositories
 {
     public interface IRepository : IDisposable
     {

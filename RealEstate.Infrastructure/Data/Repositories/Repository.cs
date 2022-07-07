@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
-namespace RealEstate.Infrastructure.Data.Common
+namespace RealEstate.Infrastructure.Repositories
 {
     public abstract class Repository : IRepository
     {

@@ -1,4 +1,4 @@
-﻿using RealEstate.Infrastructure.Data.Common;
+﻿using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.Infrastructure.Data.Repositories
 {
