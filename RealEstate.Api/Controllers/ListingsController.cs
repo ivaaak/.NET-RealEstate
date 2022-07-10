@@ -21,8 +21,8 @@ namespace RealEstate.Api.Controllers
             this.mediator = _mediator;
         }
 
-        [HttpGet("property")]
-        public async Task<IActionResult> PropertyAsync(int propertyId)
+        [HttpGet("getProperty")]
+        public async Task<IActionResult> GetPropertyAsync(int propertyId)
         {
             try
             {
