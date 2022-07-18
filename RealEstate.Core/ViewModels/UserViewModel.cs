@@ -1,8 +1,8 @@
-﻿namespace RealEstate.Core.Models
+﻿namespace RealEstate.Core.ViewModels
 {
     public class UserViewModel
     {
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         public string? FirstName { get; set; }
 

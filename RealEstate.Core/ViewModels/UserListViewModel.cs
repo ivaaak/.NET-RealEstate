@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Core.Models
+﻿namespace RealEstate.Core.ViewModels
 {
     public class UserListViewModel
     {

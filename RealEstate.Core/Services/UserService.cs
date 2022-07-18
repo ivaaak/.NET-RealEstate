@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Core.Contracts;
-using RealEstate.Core.Models;
+using RealEstate.Core.ViewModels;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
 

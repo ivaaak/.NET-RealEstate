@@ -1,4 +1,4 @@
-﻿using RealEstate.Core.Models;
+﻿using RealEstate.Core.ViewModels;
 
 namespace RealEstate.Core.Contracts
 {

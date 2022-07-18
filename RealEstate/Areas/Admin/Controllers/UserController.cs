@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Core.Constants;
 using RealEstate.Core.Contracts;
-using RealEstate.Core.Models;
+using RealEstate.Core.ViewModels;
 using RealEstate.Infrastructure.Data.Identity;
 
 namespace RealEstate.Areas.Admin.Controllers
