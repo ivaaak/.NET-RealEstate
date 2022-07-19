@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Core.Models;
+using RealEstate.Core.ViewModels;
 
 namespace RealEstate.CQRS.Queries
 {

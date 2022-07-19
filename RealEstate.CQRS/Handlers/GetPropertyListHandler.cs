@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Core.Models;
+using RealEstate.Core.ViewModels;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data;
 using RealEstate.Infrastructure.Data.Repositories;
