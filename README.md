@@ -30,11 +30,11 @@ It can be used for listing, browsing and renting/selling properties.
 - Bootstrap 5
 - Toastr
 - jQuery
+- HangFire for scheduling
 
 
-Features/Things I intend to implement:
+Features I intend to implement:
 
-- HangFire for scheduling 
 - Auth0 
 - Build/Configure a cralwer to copy listings from a real site/dataset
 - SignalR
