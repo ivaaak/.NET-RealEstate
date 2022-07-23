@@ -3,7 +3,7 @@ A full stack web project built with ASP.NET, MediatR/CQRS Pattern, EF Core, Post
 It can be used for listing, browsing and renting/selling properties. 
 
 
-## Features:
+## Roles :
 
 **Guests:**
 
@@ -35,11 +35,11 @@ It can be used for listing, browsing and renting/selling properties.
 
 Features I intend to implement:
 
-- Auth0 
+- Auth0  (Authorization using the standard JWT middleware)
 - Build/Configure a cralwer to copy listings from a real site/dataset
-- SignalR
-- Sendgrid
-- Cloudinary.Net
+- SignalR for on-page notifications/messaging
+- Sendgrid for emails
+- Cloudinary.Net for file upload/storage
 - Polly Persistance/Retries
 
 
