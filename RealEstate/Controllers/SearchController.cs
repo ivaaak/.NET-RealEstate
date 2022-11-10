@@ -5,6 +5,7 @@ namespace RealEstate.Controllers
 {
     public class SearchController : BaseController
     {
+        [HttpGet]
         public async Task<IActionResult> Index([FromQuery] string query)
             => this.View(await this.Mediator.Send(new SearchQuery { Query = query }));
     }
