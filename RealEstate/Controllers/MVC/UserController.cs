@@ -5,7 +5,7 @@ using RealEstate.Core.Contracts;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Controllers
+namespace RealEstate.Controllers.MVC
 {
     public class UserController : BaseController
     {
@@ -13,28 +13,28 @@ namespace RealEstate.Controllers
 
         private readonly UserManager<ApplicationUser> userManager;
 
-        private readonly IUserService service;        
-	  
-	  private readonly IMediator mediator;
+        private readonly IUserService service;
+
+        private readonly IMediator mediator;
 
 
         public UserController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
             IUserService _service,
-		IMediator _mediator)
+        IMediator _mediator)
         {
-            this.roleManager = _roleManager;
-            this.userManager = _userManager;
-            this.service = _service;
-		this.mediator = _mediator;
+            roleManager = _roleManager;
+            userManager = _userManager;
+            service = _service;
+            mediator = _mediator;
         }
 
         public async Task<IActionResult> IndexAsync()
         {
-	    var propertiesList = await mediator.Send(new GetPropertyListQuery());
-	    // Example call to MediatR
-	    
+            var propertiesList = await mediator.Send(new GetPropertyListQuery());
+            // Example call to MediatR
+
             return View();
         }
 
