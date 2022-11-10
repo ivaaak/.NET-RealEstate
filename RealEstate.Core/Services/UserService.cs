@@ -3,6 +3,7 @@ using RealEstate.Core.Contracts;
 using RealEstate.Core.ViewModels;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Models;
 
 namespace RealEstate.Core.Services
 {
