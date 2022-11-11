@@ -5,20 +5,17 @@ namespace RealEstate.Filters
 {
     public class AjaxFilterAttribute : ActionFilterAttribute, IAsyncActionFilter
     {
-        private const string RequestedWithHeader = "X-Requested-With";
         private const string XmlHttpRequest = "XMLHttpRequest";
+        private const string RequestedWithHeader = "X-Requested-With";
 
         public async override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             var request = context.HttpContext.Request;
 
-            if (this.IsAjaxRequest(request))
+            if (this.IsAjaxRequest(request)) 
             {
                 await next();
-            }
-
-            else
-            {
+            } else {
                 context.Result = new ForbidResult();
             }
         }
@@ -26,16 +23,13 @@ namespace RealEstate.Filters
         private bool IsAjaxRequest(HttpRequest request)
         {
             bool isAjaxRequest = false;
+
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
-            }
-
-            if (request.Headers != null)
-            {
+            } else if (request.Headers != null) {
                 isAjaxRequest = request.Headers[RequestedWithHeader] == XmlHttpRequest;
-            }
-
+            }   
             return isAjaxRequest;
         }
     }
