@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Identity.Pages.Account.Manage
+namespace RealEstate.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {

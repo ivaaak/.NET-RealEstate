@@ -1,6 +1,7 @@
 using Hangfire;
 using MediatR;
 using RealEstate.CQRS;
+using RealEstate.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

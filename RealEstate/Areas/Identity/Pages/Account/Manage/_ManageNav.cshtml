@@ -1,4 +1,4 @@
-﻿@using RealEstate.Infrastructure.Data.Identity
+﻿@    using RealEstate.Infrastructure.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

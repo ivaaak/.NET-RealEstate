@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Identity.Pages.Account
+namespace RealEstate.Web.Areas.Identity.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {
@@ -55,7 +55,7 @@ namespace RealEstate.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null || !await _userManager.IsEmailConfirmedAsync(user))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return RedirectToPage("./ForgotPasswordConfirmation");

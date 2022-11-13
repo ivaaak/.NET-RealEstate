@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Identity.Pages.Account
+namespace RealEstate.Web.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
@@ -70,7 +70,7 @@ namespace RealEstate.Areas.Identity.Pages.Account
                 EmailConfirmationUrl = Url.Page(
                     "/Account/ConfirmEmail",
                     pageHandler: null,
-                    values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                    values: new { area = "Identity", userId, code, returnUrl },
                     protocol: Request.Scheme);
             }
 

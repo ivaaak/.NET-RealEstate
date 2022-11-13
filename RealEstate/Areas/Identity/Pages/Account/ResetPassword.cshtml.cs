@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Identity.Pages.Account
+namespace RealEstate.Web.Areas.Identity.Pages.Account
 {
     public class ResetPasswordModel : PageModel
     {

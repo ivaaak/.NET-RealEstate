@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Identity.Pages.Account.Manage
+namespace RealEstate.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {

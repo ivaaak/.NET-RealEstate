@@ -7,7 +7,7 @@ using RealEstate.Core.Contracts;
 using RealEstate.Core.ViewModels;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Areas.Admin.Controllers
+namespace RealEstate.Web.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
@@ -69,7 +69,7 @@ namespace RealEstate.Areas.Admin.Controllers
             var user = await service.GetUserById(model.UserId);
             var userRoles = await userManager.GetRolesAsync(user);
             await userManager.RemoveFromRolesAsync(user, userRoles);
-            
+
             if (model.RoleNames?.Length > 0)
             {
                 await userManager.AddToRolesAsync(user, model.RoleNames);
