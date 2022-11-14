@@ -8,13 +8,13 @@ using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
 using RealEstate.ModelBinders;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace RealEstate.Web.Extensions
 {
     public static class ServiceCollectionExtension
     {
         //PostgreSQL Server connection string
         private static string PostgreSQLConnectionString = @"Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin";
-        
+
         // Microsoft SQL Server connection string (SQL Express Server)
         private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
 

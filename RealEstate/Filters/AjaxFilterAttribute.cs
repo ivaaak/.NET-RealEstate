@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace RealEstate.Filters
+namespace RealEstate.Web.Filters
 {
     public class AjaxFilterAttribute : ActionFilterAttribute, IAsyncActionFilter
     {
@@ -12,10 +12,12 @@ namespace RealEstate.Filters
         {
             var request = context.HttpContext.Request;
 
-            if (this.IsAjaxRequest(request)) 
+            if (IsAjaxRequest(request))
             {
                 await next();
-            } else {
+            }
+            else
+            {
                 context.Result = new ForbidResult();
             }
         }
@@ -27,9 +29,11 @@ namespace RealEstate.Filters
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
-            } else if (request.Headers != null) {
+            }
+            else if (request.Headers != null)
+            {
                 isAjaxRequest = request.Headers[RequestedWithHeader] == XmlHttpRequest;
-            }   
+            }
             return isAjaxRequest;
         }
     }

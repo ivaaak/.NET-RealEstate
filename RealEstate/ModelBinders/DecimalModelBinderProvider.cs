@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace RealEstate.ModelBinders
+namespace RealEstate.Web.ModelBinders
 {
     public class DecimalModelBinderProvider : IModelBinderProvider
     {
@@ -11,7 +11,7 @@ namespace RealEstate.ModelBinders
                 throw new ArgumentNullException(nameof(context));
             }
 
-            if (context.Metadata.ModelType == typeof(Decimal) || context.Metadata.ModelType == typeof(Decimal?))
+            if (context.Metadata.ModelType == typeof(decimal) || context.Metadata.ModelType == typeof(decimal?))
             {
                 return new DecimalModelBinder();
             }

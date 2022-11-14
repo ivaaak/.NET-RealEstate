@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Globalization;
 
-namespace RealEstate.ModelBinders
+namespace RealEstate.Web.ModelBinders
 {
     public class DoubleModelBinder : IModelBinder
     {
@@ -11,7 +11,7 @@ namespace RealEstate.ModelBinders
                 .ValueProvider
                 .GetValue(bindingContext.ModelName);
 
-            if (valueResult != ValueProviderResult.None && !String.IsNullOrEmpty(valueResult.FirstValue))
+            if (valueResult != ValueProviderResult.None && !string.IsNullOrEmpty(valueResult.FirstValue))
             {
                 double actualValue = 0;
                 bool success = false;

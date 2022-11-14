@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Globalization;
 
-namespace RealEstate.ModelBinders
+namespace RealEstate.Web.ModelBinders
 {
     public class DateTimeModelBinder : IModelBinder
     {
@@ -17,7 +17,7 @@ namespace RealEstate.ModelBinders
                 .ValueProvider
                 .GetValue(bindingContext.ModelName);
 
-            if (valueResult != ValueProviderResult.None && !String.IsNullOrEmpty(valueResult.FirstValue))
+            if (valueResult != ValueProviderResult.None && !string.IsNullOrEmpty(valueResult.FirstValue))
             {
                 DateTime actualValue = DateTime.MinValue;
                 bool success = false;
@@ -38,7 +38,7 @@ namespace RealEstate.ModelBinders
                     {
                         bindingContext.ModelState.AddModelError(bindingContext.ModelName, e, bindingContext.ModelMetadata);
                     }
-                    
+
                 }
                 catch (Exception e)
                 {

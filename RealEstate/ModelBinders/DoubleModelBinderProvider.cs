@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace RealEstate.ModelBinders
+namespace RealEstate.Web.ModelBinders
 {
     public class DoubleModelBinderProvider : IModelBinderProvider
     {
@@ -11,7 +11,7 @@ namespace RealEstate.ModelBinders
                 throw new ArgumentNullException(nameof(context));
             }
 
-            if (context.Metadata.ModelType == typeof(Double) || context.Metadata.ModelType == typeof(Double?))
+            if (context.Metadata.ModelType == typeof(double) || context.Metadata.ModelType == typeof(double?))
             {
                 return new DoubleModelBinder();
             }
