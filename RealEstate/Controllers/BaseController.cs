@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstate.Controllers
+namespace RealEstate.Web.Controllers
 {
     [Authorize]
     public class BaseController : Controller

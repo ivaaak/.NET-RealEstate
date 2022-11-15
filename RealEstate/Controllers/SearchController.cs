@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Queries;
 
-namespace RealEstate.Controllers
+namespace RealEstate.Web.Controllers
 {
     public class SearchController : BaseController
     {
         [HttpGet]
         public async Task<IActionResult> Index([FromQuery] string query)
-            => this.View(await this.Mediator.Send(new SearchQuery { Query = query }));
+            => View(await Mediator.Send(new SearchQuery { Query = query }));
     }
 }

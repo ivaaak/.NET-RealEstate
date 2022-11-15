@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Commands;
 using RealEstate.Filters;
 
-namespace RealEstate.Controllers
+namespace RealEstate.Web.Controllers
 {
     [Authorize]
     [AjaxFilter]
@@ -12,8 +12,8 @@ namespace RealEstate.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(DeletePropertyByIdCommand command)
         {
-            await this.Mediator.Send(command);
-            return this.Ok();
+            await Mediator.Send(command);
+            return Ok();
         }
     }
 }

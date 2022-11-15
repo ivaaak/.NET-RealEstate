@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Queries;
 
-namespace RealEstate.Controllers
+namespace RealEstate.Web.Controllers
 {
     [Authorize]
     public class PersonController : BaseController
@@ -10,11 +10,11 @@ namespace RealEstate.Controllers
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Person(Guid id)
-            => this.View(await this.Mediator.Send(new GetPersonByIdQuery(id) { Id = id }));
+            => View(await Mediator.Send(new GetPersonByIdQuery(id) { Id = id }));
 
 
         [HttpGet]
         public async Task<IActionResult> PeopleList()
-            => this.View(await this.Mediator.Send(new GetPersonListQuery()));
+            => View(await Mediator.Send(new GetPersonListQuery()));
     }
 }
