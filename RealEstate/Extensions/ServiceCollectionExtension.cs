@@ -6,7 +6,7 @@ using RealEstate.Core.Services;
 using RealEstate.Infrastructure.Data;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
-using RealEstate.ModelBinders;
+using RealEstate.Web.ModelBinders;
 
 namespace RealEstate.Web.Extensions
 {
