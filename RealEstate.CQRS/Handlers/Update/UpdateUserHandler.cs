@@ -4,7 +4,7 @@ using RealEstate.CQRS.Responses;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Data.Repositories;
 
-namespace RealEstate.CQRS.Handlers
+namespace RealEstate.CQRS.Handlers.Update
 {
     public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, Response>
     {
@@ -23,7 +23,7 @@ namespace RealEstate.CQRS.Handlers
                 Email = request.Email,
             };
 
-            repo.Update<ApplicationUser>(updatedUser);
+            repo.Update(updatedUser);
 
             return (Task<Response>)Task.CompletedTask;
         }
