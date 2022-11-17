@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RealEstate.Infrastructure.Data
+namespace RealEstate.Infrastructure.Data.Entities
 {
     public class Deal
     {

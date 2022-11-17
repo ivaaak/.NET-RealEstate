@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Infrastructure.Data
+namespace RealEstate.Infrastructure.Data.Entities
 {
     public class Category
     {
-
+        [Key]
         public int Id { get; init; }
 
         [Required]

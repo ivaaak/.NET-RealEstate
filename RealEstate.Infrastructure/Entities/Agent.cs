@@ -1,10 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Infrastructure.Data
+namespace RealEstate.Infrastructure.Data.Entities
 {
-    public class Agent 
+    public class Agent : ApplicationUser
     // The agent can list properties for sale.
     {
+        public Agent() : base()
+        {
+            Deals = new IEnumerable<Deal>();
+            
+            Properties = new IEnumerable<Property>();
+        }
+        
+        public IEnumerable<Deal> Deals { get; set; } = new List<Deal>();
+
+        public IEnumerable<Property> Properties { get; init; } = new List<Property>();
+
+        /*
         [Key]
         public int Id { get; init; }
         
@@ -27,10 +40,6 @@ namespace RealEstate.Infrastructure.Data
         [Required]
         [MaxLength(12)]
         public string PhoneNumber { get; set; }
-
-
-        public IEnumerable<Deal> Deals { get; set; } = new List<Deal>();
-
-        public IEnumerable<Property> Properties { get; init; } = new List<Property>();
+        */
     }
 }
