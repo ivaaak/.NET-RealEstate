@@ -1,6 +1,6 @@
-﻿using RealEstate.Infrastructure.Repositories;
+﻿using RealEstate.Infrastructure.Context;
 
-namespace RealEstate.Infrastructure.Data.Repositories
+namespace RealEstate.Infrastructure.Repositories
 {
     public class ApplicationDbRepository : Repository, IApplicationDbRepository
     {

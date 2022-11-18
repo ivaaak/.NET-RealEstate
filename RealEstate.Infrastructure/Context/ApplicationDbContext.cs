@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Infrastructure.Data.Entities
+namespace RealEstate.Infrastructure.Context
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
