@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Core.Contracts;
-using RealEstate.Core.ViewModels;
-using RealEstate.Infrastructure.Data;
-using RealEstate.Infrastructure.Data.Repositories;
+﻿using RealEstate.Core.Contracts;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.Core.Services
 {
@@ -14,6 +11,7 @@ namespace RealEstate.Core.Services
         {
             repo = _repo;
         }
+        
 
     }
 }

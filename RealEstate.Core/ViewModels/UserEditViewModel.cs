@@ -4,7 +4,7 @@ namespace RealEstate.Core.ViewModels
 {
     public class UserEditViewModel
     {
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [Display(Name = "First Name")]

@@ -12,7 +12,7 @@ namespace RealEstate.Core.CustomAttributes
             this.ErrorMessage = errorMessage;
         }
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
         {
             try
             {

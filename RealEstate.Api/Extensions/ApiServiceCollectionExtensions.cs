@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Core.Contracts;
 using RealEstate.Core.Services;
-using RealEstate.Infrastructure.Data;
-using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

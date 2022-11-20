@@ -1,4 +1,5 @@
-﻿using RealEstate.Infrastructure.Data;
+﻿using RealEstate.Infrastructure.Data.Enumerations;
+using RealEstate.Infrastructure.Entities;
 
 namespace RealEstate.Core.ViewModels
 {

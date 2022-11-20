@@ -1,7 +1,7 @@
-using RealEstate.Infrastructure.Data;
-using Property = RealEstate.Infrastructure.Data.Property;
+using RealEstate.Infrastructure.Entities;
+using Property = RealEstate.Infrastructure.Entities.Property;
 
-namespace RealEstate.Infrastructure.Models
+namespace RealEstate.Core.ViewModels
 {
     public class SearchQueryViewModel
     {

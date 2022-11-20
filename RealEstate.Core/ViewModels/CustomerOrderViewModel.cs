@@ -1,4 +1,4 @@
-﻿using RealEstate.Infrastructure.Data;
+﻿using RealEstate.Infrastructure.Entities;
 
 namespace RealEstate.Core.ViewModels
 {
