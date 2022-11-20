@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Infrastructure.Data
+﻿namespace RealEstate.Infrastructure.Data.Enumerations
 {
     public enum PropertyType
     {

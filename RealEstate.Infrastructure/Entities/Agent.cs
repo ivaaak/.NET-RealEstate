@@ -1,16 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-using RealEstate.Infrastructure.Data.Identity;
+﻿using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Infrastructure.Data.Entities
+namespace RealEstate.Infrastructure.Entities
 {
     public class Agent : ApplicationUser
     // The agent can list properties for sale.
     {
         public Agent() : base()
         {
-            Deals = new IEnumerable<Deal>();
+            Deals = new List<Deal>();
             
-            Properties = new IEnumerable<Property>();
+            Properties = new List<Property>();
         }
         
         public IEnumerable<Deal> Deals { get; set; } = new List<Deal>();

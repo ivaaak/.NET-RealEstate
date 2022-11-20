@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.Infrastructure.Entities;
 using RealEstate.Infrastructure.Data.Identity;
 
 namespace RealEstate.Infrastructure.Context
@@ -46,7 +47,7 @@ namespace RealEstate.Infrastructure.Context
                 .Entity<Agent>()
                 .HasOne<ApplicationUser>()
                 .WithOne()
-                .HasForeignKey<Agent>(d => d.UserId)
+                .HasForeignKey<Agent>(d => d.Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);

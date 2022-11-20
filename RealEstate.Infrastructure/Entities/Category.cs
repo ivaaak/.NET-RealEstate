@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Infrastructure.Data.Entities
+namespace RealEstate.Infrastructure.Entities
 {
     public class Category
     {
