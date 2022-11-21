@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Commands;
-using RealEstate.Infrastructure.Data;
+using RealEstate.Infrastructure.Entities;
 
 namespace RealEstate.Web.Controllers
 {

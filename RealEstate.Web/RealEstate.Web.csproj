@@ -34,8 +34,4 @@
     <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-  </ItemGroup>
-
 </Project>

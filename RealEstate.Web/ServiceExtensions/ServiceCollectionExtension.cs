@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using RealEstate.Core.Constants;
 using RealEstate.Core.Contracts;
 using RealEstate.Core.Services;
-using RealEstate.Infrastructure.Data;
+using RealEstate.Infrastructure.Context;
 using RealEstate.Infrastructure.Data.Identity;
-using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Repositories;
 using RealEstate.Web.ModelBinders;
 
 namespace RealEstate.Web.Extensions
