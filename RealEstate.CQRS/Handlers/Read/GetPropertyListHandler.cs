@@ -2,7 +2,8 @@
 using RealEstate.Core.ViewModels;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data;
-using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Get
 {

@@ -2,7 +2,7 @@
 using RealEstate.CQRS.Commands;
 using RealEstate.CQRS.Responses;
 using RealEstate.Infrastructure.Data.Identity;
-using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Update
 {

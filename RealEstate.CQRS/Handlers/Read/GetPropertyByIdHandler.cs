@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using RealEstate.Core.ViewModels;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Data;
-using RealEstate.Infrastructure.Data.Repositories;
+using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Get
 {
@@ -17,7 +17,6 @@ namespace RealEstate.CQRS.Handlers.Get
 
         public async Task<PropertyViewModel> Handle(GetPropertyByIdQuery query, CancellationToken cancellationToken)
         {
-            // how get ID???
             int id = query.Id;
 
             var property = await Task.FromResult(repo.GetByIdAsync<Property>(id).Result);

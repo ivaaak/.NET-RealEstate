@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using RealEstate.CQRS.Responses;
-using RealEstate.Infrastructure.Data;
+using RealEstate.Infrastructure.Entities;
 
 namespace RealEstate.CQRS.Commands
 {
