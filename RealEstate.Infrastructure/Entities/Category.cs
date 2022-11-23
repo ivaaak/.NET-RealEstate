@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RealEstate.Infrastructure.Entities.Estates;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Infrastructure.Entities
 {
@@ -14,6 +15,6 @@ namespace RealEstate.Infrastructure.Entities
         [StringLength(500)]
         public string? Description { get; set; }
 
-        public IEnumerable<Property> Properties { get; init; } = new List<Property>();
+        public IEnumerable<Estate> Properties { get; init; } = new List<Estate>();
     }
 }
