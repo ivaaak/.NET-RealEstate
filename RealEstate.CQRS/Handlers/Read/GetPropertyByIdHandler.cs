@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RealEstate.Core.ViewModels;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Get
@@ -19,24 +19,12 @@ namespace RealEstate.CQRS.Handlers.Get
         {
             int id = query.Id;
 
-            var property = await Task.FromResult(repo.GetByIdAsync<Property>(id).Result);
+            var property = await Task.FromResult(repo.GetByIdAsync<Estate>(id).Result);
 
             var propVM = new PropertyViewModel //add automapper
             {
                 Id = property.Id,
-                Agent = property.Agent,
-                AgentId = property.AgentId,
-                Category = property.Category,
-                CategoryId = property.CategoryId,
-                DateBuilt = property.DateBuilt,
-                DateListed = property.DateListed,
-                Description = property.Description,
-                ImageUrl = property.ImageUrl,
-                IsPublic = property.IsPublic,
-                PropertyType = property.PropertyType,
-                SquareMeters = property.SquareMeters,
-                Title = property.Title,
-                Year = property.Year,
+                //AUTOMAPPER
             };
             return propVM;
         }

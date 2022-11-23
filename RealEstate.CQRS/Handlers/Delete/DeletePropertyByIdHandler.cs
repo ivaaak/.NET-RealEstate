@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RealEstate.CQRS.Commands;
 using RealEstate.CQRS.Responses;
-using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Delete
@@ -18,8 +18,8 @@ namespace RealEstate.CQRS.Handlers.Delete
         public Task<Response> Handle(DeletePropertyByIdCommand request, CancellationToken cancellationToken)
         {
             int id = request.Id;
-            var property = repo.GetByIdAsync<Property>(id);
-            repo.DeleteAsync<Property>(property);
+            var property = repo.GetByIdAsync<Estate>(id);
+            repo.DeleteAsync<Estate>(property);
 
             return (Task<Response>)Task.CompletedTask;
         }

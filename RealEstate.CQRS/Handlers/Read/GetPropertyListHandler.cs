@@ -3,6 +3,7 @@ using RealEstate.Core.ViewModels;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data;
 using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Get
@@ -19,23 +20,11 @@ namespace RealEstate.CQRS.Handlers.Get
         public async Task<List<PropertyViewModel>> Handle(GetPropertyListQuery request, CancellationToken cancellationToken)
         {
             return await Task.FromResult(
-               repo.All<Property>()
+               repo.All<Estate>()
                    .Select(p => new PropertyViewModel
                    {
                        Id = p.Id,
-                       Agent = p.Agent,
-                       AgentId = p.AgentId,
-                       Category = p.Category,
-                       CategoryId = p.CategoryId,
-                       DateBuilt = p.DateBuilt,
-                       DateListed = p.DateListed,
-                       Description = p.Description,
-                       ImageUrl = p.ImageUrl,
-                       IsPublic = p.IsPublic,
-                       PropertyType = p.PropertyType,
-                       SquareMeters = p.SquareMeters,
-                       Title = p.Title,
-                       Year = p.Year
+                       //AUTOMAPPER
                    })
                .ToList());
         }
