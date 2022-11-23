@@ -1,5 +1,6 @@
 ﻿using RealEstate.Infrastructure.Data.Enumerations;
 using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Entities.Listings;
 
 namespace RealEstate.Core.ViewModels
 {
@@ -29,8 +30,8 @@ namespace RealEstate.Core.ViewModels
 
         public Category? Category { get; init; }
 
-        public int AgentId { get; init; }
+        public int EmployeeId { get; init; }
 
-        public Agent? Agent { get; init; }
+        public Employee? Employee { get; init; }
     }
 }

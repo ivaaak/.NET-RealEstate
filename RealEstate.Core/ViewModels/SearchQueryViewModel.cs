@@ -1,5 +1,5 @@
-using RealEstate.Infrastructure.Entities;
-using Property = RealEstate.Infrastructure.Entities.Property;
+using RealEstate.Infrastructure.Entities.Estates;
+using RealEstate.Infrastructure.Entities.Listings;
 
 namespace RealEstate.Core.ViewModels
 {
@@ -7,9 +7,9 @@ namespace RealEstate.Core.ViewModels
     {
         public string? SearchQuery { get; set; }
 
-        public IEnumerable<Agent>? People { get; set; }
+        public IEnumerable<Employee>? People { get; set; }
 
-        public IEnumerable<Property>? Properties { get; set; }
+        public IEnumerable<Estate>? Properties { get; set; }
 
         public IEnumerable<Listing>? Listings { get; set; }
     }

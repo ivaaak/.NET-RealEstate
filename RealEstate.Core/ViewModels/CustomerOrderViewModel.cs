@@ -1,4 +1,4 @@
-﻿using RealEstate.Infrastructure.Entities;
+﻿using RealEstate.Infrastructure.Entities.Estates;
 
 namespace RealEstate.Core.ViewModels
 {
@@ -7,6 +7,6 @@ namespace RealEstate.Core.ViewModels
     {
         public string? CustomerNumber { get; set; }
 
-        public List<Property> Properties { get; set; } = new List<Property>();
+        public List<Estate> Properties { get; set; } = new List<Estate>();
     }
 }
