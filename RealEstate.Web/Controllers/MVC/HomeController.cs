@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Controllers;
 using RealEstate.CQRS.Queries;
 
-namespace RealEstate.Web.Controllers.MVC
+namespace RealEstate.API.Controllers.MVC
 {
     public class HomeController : BaseController
     {

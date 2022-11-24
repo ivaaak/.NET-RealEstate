@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Queries;
 
-namespace RealEstate.Web.Controllers
+namespace RealEstate.API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class SearchController : BaseController
     {
         [HttpGet]

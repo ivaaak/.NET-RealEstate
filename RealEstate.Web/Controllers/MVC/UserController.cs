@@ -5,7 +5,7 @@ using RealEstate.Core.Contracts;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Web.Controllers.MVC
+namespace RealEstate.API.Controllers.MVC
 {
     public class UserController : BaseController
     {

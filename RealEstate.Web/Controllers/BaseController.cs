@@ -2,17 +2,19 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstate.Web.Controllers
+namespace RealEstate.API.Controllers
 {
     [Authorize]
     public class BaseController : Controller
     {
+        //register services?
+
         private IMediator? mediator;
 
         protected IMediator Mediator
             => mediator
             ?? (mediator = HttpContext
-                           .RequestServices
-                           .GetService<IMediator>());
+                            .RequestServices
+                            .GetService<IMediator>());
     }
 }
