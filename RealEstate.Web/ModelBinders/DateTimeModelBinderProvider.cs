@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using RealEstate.API.ModelBinders;
 
-namespace RealEstate.Web.ModelBinders
+namespace RealEstate.API.ModelBinders
 {
     public class DateTimeModelBinderProvider : IModelBinderProvider
     {

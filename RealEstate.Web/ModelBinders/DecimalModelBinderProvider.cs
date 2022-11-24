@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace RealEstate.Web.ModelBinders
+namespace RealEstate.API.ModelBinders
 {
     public class DecimalModelBinderProvider : IModelBinderProvider
     {

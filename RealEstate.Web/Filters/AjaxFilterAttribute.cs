@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace RealEstate.Web.Filters
+namespace RealEstate.API.Filters
 {
     public class AjaxFilterAttribute : ActionFilterAttribute, IAsyncActionFilter
     {

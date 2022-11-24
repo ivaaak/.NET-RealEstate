@@ -6,9 +6,9 @@ using RealEstate.Core.Services;
 using RealEstate.Infrastructure.Context;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Repositories;
-using RealEstate.Web.ModelBinders;
+using RealEstate.API.ModelBinders;
 
-namespace RealEstate.Web.Extensions
+namespace RealEstate.API.ServiceExtensions
 {
     public static class ServiceCollectionExtension
     {
@@ -72,6 +72,15 @@ namespace RealEstate.Web.Extensions
                     options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(FormatingConstant.NormalDateFormat));
                     options.ModelBinderProviders.Insert(2, new DoubleModelBinderProvider());
                 });
+
+            return services;
+        }
+
+        public static IServiceCollection AddSwaggerAPIWithEndpoints(this IServiceCollection services)
+        {
+            services
+                .AddSwaggerGen()
+                .AddEndpointsApiExplorer();
 
             return services;
         }

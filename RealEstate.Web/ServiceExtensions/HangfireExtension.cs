@@ -1,7 +1,7 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
 
-namespace RealEstate.Web.Extensions
+namespace RealEstate.API.ServiceExtensions
 {
     public static class HangfireExtension
     {

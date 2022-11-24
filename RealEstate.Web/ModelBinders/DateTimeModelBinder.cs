@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Globalization;
 
-namespace RealEstate.Web.ModelBinders
+namespace RealEstate.API.ModelBinders
 {
     public class DateTimeModelBinder : IModelBinder
     {

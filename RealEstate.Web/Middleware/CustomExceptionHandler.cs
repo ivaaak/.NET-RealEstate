@@ -1,6 +1,6 @@
 ﻿using RealEstate.Core.Exceptions;
 
-namespace RealEstate.Web.Middleware
+namespace RealEstate.API.Middleware
 {
     public class CustomExceptionHandler
     {

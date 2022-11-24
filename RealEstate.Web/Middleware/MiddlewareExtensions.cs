@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Web.Middleware
+﻿namespace RealEstate.API.Middleware
 {
     public static class MiddlewareExtensions
     {
