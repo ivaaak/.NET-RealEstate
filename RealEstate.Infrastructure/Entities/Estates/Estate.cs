@@ -1,4 +1,5 @@
 ﻿using RealEstate.Infrastructure.Data.Enumerations;
+using RealEstate.Infrastructure.Entities.Listings;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Infrastructure.Entities.Estates
@@ -45,7 +46,7 @@ namespace RealEstate.Infrastructure.Entities.Estates
 
 
 
-
+        public Listing Listing { get; set; }
         public PropertyType PropertyType { get; set; }
     }
 }

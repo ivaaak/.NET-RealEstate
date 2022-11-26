@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Clients
 {
     public class Client : IdentityUser
     {
-        //public override Guid Id { get; init; }
+        [ForeignKey("Client_Id")]
+        public string Client_Id { get; init; }
 
         public string Client_Name { get; init; }
 
@@ -21,5 +23,7 @@ namespace RealEstate.Infrastructure.Entities.Clients
         public string Client_Details { get; init; }
 
         public DateTime Time_Created { get; init; }
+
+        public Contact Contact { get; init; }
     }
 }

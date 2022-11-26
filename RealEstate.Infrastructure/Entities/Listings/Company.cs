@@ -3,23 +3,27 @@ using RealEstate.Infrastructure.Entities.Estates;
 
 namespace RealEstate.Infrastructure.Entities.Listings
 {
-    public class Employee : IdentityUser
+    public class Company : IdentityUser
     {
-        public string First_Name { get; init; }
+        public string Company_Name { get; init; }
 
-        public string Last_Name { get; init; }
+        public string Company_Description { get; init; }
 
-        public Company Company { get; init; }
+        public int Employee_Count { get; init; }
+
+        public IEnumerable<Employee> Employees { get; init; }
 
         public IEnumerable<Listing> Listings { get; set; }
 
         public IEnumerable<Estate> Estates { get; init; }
 
-        public Employee() : base()
+        public Company() : base()
         {
             Listings = new List<Listing>();
 
             Estates = new List<Estate>();
+
+            Employees = new List<Employee>();
         }
     }
 }
