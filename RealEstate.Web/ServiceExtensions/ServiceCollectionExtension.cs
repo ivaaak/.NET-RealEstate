@@ -7,6 +7,7 @@ using RealEstate.Infrastructure.Context;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Repositories;
 using RealEstate.API.ModelBinders;
+using RealEstate.Infrastructure.Entities.Clients;
 
 namespace RealEstate.API.ServiceExtensions
 {
@@ -29,6 +30,10 @@ namespace RealEstate.API.ServiceExtensions
         public static IServiceCollection Use_PostgreSQL_Context(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(PostgreSQLConnectionString));
+            services.AddDbContext<ClientsDBContext>(options => options.UseNpgsql(PostgreSQLConnectionString));
+            services.AddDbContext<ContractsDBContext>(options => options.UseNpgsql(PostgreSQLConnectionString));
+            services.AddDbContext<EstatesDBContext>(options => options.UseNpgsql(PostgreSQLConnectionString));
+            services.AddDbContext<ListingsDBContext>(options => options.UseNpgsql(PostgreSQLConnectionString));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -38,6 +43,10 @@ namespace RealEstate.API.ServiceExtensions
         public static IServiceCollection Use_MicrosoftSQL_Context(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(MySQLConnectionString));
+            services.AddDbContext<ClientsDBContext>(options => options.UseSqlServer(MySQLConnectionString));
+            services.AddDbContext<ContractsDBContext>(options => options.UseSqlServer(MySQLConnectionString));
+            services.AddDbContext<EstatesDBContext>(options => options.UseSqlServer(MySQLConnectionString));
+            services.AddDbContext<ListingsDBContext>(options => options.UseSqlServer(MySQLConnectionString));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -47,7 +56,7 @@ namespace RealEstate.API.ServiceExtensions
 
         public static IServiceCollection AddIdentityContext(this IServiceCollection services)
         {
-            services.AddDefaultIdentity<ApplicationUser>(options =>
+            services.AddDefaultIdentity<Client>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
