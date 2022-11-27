@@ -16,10 +16,8 @@ namespace RealEstate.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Contact>()
-                .HasIndex(c => c.Id)
-                .IsUnique();
+            modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
 
             modelBuilder
                 .Entity<Contact>()
@@ -27,12 +25,6 @@ namespace RealEstate.Infrastructure.Context
                 .WithOne(c => c.Contact)
                 .HasForeignKey<Client>(cl => cl.Client_Id)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
-            modelBuilder
-                .Entity<Client>()
-                .HasIndex(c => c.Id)
-                .IsUnique();
 
             modelBuilder
                .Entity<Client>()

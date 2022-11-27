@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Infrastructure.Data.Identity;
-using RealEstate.Infrastructure.Entities.Clients;
 using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Entities.Listings;
 
@@ -18,10 +17,8 @@ namespace RealEstate.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Employee>()
-                .HasIndex(c => c.Id)
-                .IsUnique();
+            modelBuilder.Entity<Employee>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Listing>().HasIndex(li => li.Id).IsUnique();
 
             modelBuilder
                 .Entity<Employee>()
@@ -29,12 +26,6 @@ namespace RealEstate.Infrastructure.Context
                 .WithMany(cl => cl.Employees)
                 .HasForeignKey(cl => cl.Id)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
-            modelBuilder
-                .Entity<Listing>()
-                .HasIndex(li => li.Id)
-                .IsUnique();
 
             modelBuilder
                .Entity<Listing>()
