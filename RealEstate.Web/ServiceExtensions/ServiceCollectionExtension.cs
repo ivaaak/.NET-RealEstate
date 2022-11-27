@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.API.ModelBinders;
 using RealEstate.Core.Constants;
 using RealEstate.Core.Contracts;
 using RealEstate.Core.Services;
 using RealEstate.Infrastructure.Context;
-using RealEstate.Infrastructure.Data.Identity;
-using RealEstate.Infrastructure.Repositories;
-using RealEstate.API.ModelBinders;
 using RealEstate.Infrastructure.Entities.Clients;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.API.ServiceExtensions
 {
