@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RealEstate.Infrastructure.Entities.Contracts;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Clients
@@ -25,5 +26,7 @@ namespace RealEstate.Infrastructure.Entities.Clients
         public DateTime Time_Created { get; init; }
 
         public Contact Contact { get; init; }
+
+        public IEnumerable<Contract> Contracts { get; init; }
     }
 }

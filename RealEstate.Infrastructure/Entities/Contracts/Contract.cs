@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RealEstate.Infrastructure.Entities.Clients;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Contracts
 {
@@ -7,7 +9,9 @@ namespace RealEstate.Infrastructure.Entities.Contracts
         [Key]
         public int Id { get; set; }
 
+        [ForeignKey("Client_Id")]
         public int Client_Id { get; set; }
+        public Client Client { get; set; }
 
         public int Employee_Id { get; set; }
 

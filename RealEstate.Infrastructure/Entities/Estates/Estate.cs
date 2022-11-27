@@ -1,6 +1,7 @@
 ﻿using RealEstate.Infrastructure.Data.Enumerations;
 using RealEstate.Infrastructure.Entities.Listings;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Estates
 {
@@ -14,7 +15,10 @@ namespace RealEstate.Infrastructure.Entities.Estates
         [StringLength(100)]
         public string? Estate_Name { get; set; }
 
+        [ForeignKey("City_Id")]
         public int City_Id { get; set; }
+
+        public City City { get; set; }
 
         public int Estate_Type_Id { get; set; }
 

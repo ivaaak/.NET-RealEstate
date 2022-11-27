@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Estates
 {
@@ -8,7 +9,10 @@ namespace RealEstate.Infrastructure.Entities.Estates
         public int Id { get; init; }
 
         public string City_Name { get; init; }
-
+        
+        [ForeignKey("Country_Id")]
         public int Country_Id { get; init; }
+
+        public IEnumerable<Estate> Estates { get; init; }
     }
 }
