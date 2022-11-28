@@ -1,15 +1,15 @@
-﻿using RealEstate.Core.ViewModels;
+﻿using RealEstate.Core.ViewModels.Clients;
 using RealEstate.Infrastructure.Data.Identity;
 
 namespace RealEstate.Core.Contracts
 {
     public interface IUserService
     {
-        Task<IEnumerable<UserListViewModel>> GetUsers();
+        Task<IEnumerable<ClientViewModel>> GetUsers();
 
-        Task<UserEditViewModel> GetUserForEdit(string id);
+        Task<ClientEditViewModel> GetUserForEdit(string id);
 
-        Task<bool> UpdateUser(UserEditViewModel model);
+        Task<bool> UpdateUser(ClientEditViewModel model);
 
         Task<ApplicationUser> GetUserById(string id);
     }

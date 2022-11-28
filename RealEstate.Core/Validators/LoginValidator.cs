@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using RealEstate.Core.ViewModels;
+using RealEstate.Core.ViewModels.Login;
 
 namespace RealEstate.Core.Validators
 {
