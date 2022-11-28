@@ -5,20 +5,20 @@ using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Create
 {
-    public class CreatePropertyHandler : IRequestHandler<CreatePropertyCommand, Response>
+    public class CreateEstateHandler : IRequestHandler<CreateEstateCommand, Response>
     {
         private readonly IApplicationDbRepository repo;
 
-        public CreatePropertyHandler(IApplicationDbRepository _repo)
+        public CreateEstateHandler(IApplicationDbRepository _repo)
         {
             repo = _repo;
         }
 
-        public Task<Response> Handle(CreatePropertyCommand request, CancellationToken cancellationToken)
+        public Task<Response> Handle(CreateEstateCommand request, CancellationToken cancellationToken)
         {
-            var property = request.Property;
+            var estate = request.Estate;
 
-            repo.AddAsync(property);
+            repo.AddAsync(estate);
 
             return (Task<Response>)Task.CompletedTask;
         }

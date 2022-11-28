@@ -6,11 +6,11 @@ using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Delete
 {
-    public class DeletePropertyByIdHandler : IRequestHandler<DeletePropertyByIdCommand, Response>
+    public class DeleteEstateByIdHandler : IRequestHandler<DeletePropertyByIdCommand, Response>
     {
         private readonly IApplicationDbRepository repo;
 
-        public DeletePropertyByIdHandler(IApplicationDbRepository _repo)
+        public DeleteEstateByIdHandler(IApplicationDbRepository _repo)
         {
             repo = _repo;
         }
@@ -18,8 +18,8 @@ namespace RealEstate.CQRS.Handlers.Delete
         public Task<Response> Handle(DeletePropertyByIdCommand request, CancellationToken cancellationToken)
         {
             int id = request.Id;
-            var property = repo.GetByIdAsync<Estate>(id);
-            repo.DeleteAsync<Estate>(property);
+            var estate = repo.GetByIdAsync<Estate>(id);
+            repo.DeleteAsync<Estate>(estate);
 
             return (Task<Response>)Task.CompletedTask;
         }
