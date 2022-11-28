@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Core.ViewModels
+﻿namespace RealEstate.Core.ViewModels.Login
 {
     public class LoginViewModel
     {

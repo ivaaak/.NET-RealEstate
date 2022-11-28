@@ -2,9 +2,9 @@
 using RealEstate.Infrastructure.Entities;
 using RealEstate.Infrastructure.Entities.Listings;
 
-namespace RealEstate.Core.ViewModels
+namespace RealEstate.Core.ViewModels.Estates
 {
-    public class PropertyViewModel
+    public class EstateViewModel
     {
         public int Id { get; init; }
 
