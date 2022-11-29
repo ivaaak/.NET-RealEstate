@@ -12,9 +12,9 @@ namespace RealEstate.API.Controllers
     public class NotificationsController : BaseController
     {
         /// <summary>
-        /// Delete property by Id
+        /// Delete estate by Id
         /// </summary>
-        /// <param name="propertyId"></param>
+        /// <param name="estateId"></param>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Delete(DeletePropertyByIdCommand command)

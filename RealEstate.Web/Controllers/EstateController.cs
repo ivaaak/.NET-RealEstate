@@ -13,7 +13,7 @@ namespace RealEstate.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEstate(Estate estate)
         {
-            await Mediator.Send(new CreatePropertyCommand(estate));
+            await Mediator.Send(new CreateEstateCommand(estate));
 
             //redirect to the wanted page
             return RedirectToAction(nameof(Estate));

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.CQRS.Handlers.Read;
 using RealEstate.CQRS.Queries;
 
 namespace RealEstate.API.Controllers
@@ -12,12 +13,12 @@ namespace RealEstate.API.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Person(Guid id)
-            => View(await Mediator.Send(new GetPersonByIdQuery(id) { Id = id }));
-
+        public async Task Person(string id)
+            => await Mediator.Send(new GetClientByIdHandler(id) { Id = id });
+        
 
         [HttpGet]
-        public async Task<IActionResult> PeopleList()
-            => View(await Mediator.Send(new GetPersonListQuery()));
+        public async Task PeopleList()
+            => await Mediator.Send(new GetClientListQuery());
     }
 }

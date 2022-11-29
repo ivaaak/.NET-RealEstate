@@ -26,7 +26,7 @@ namespace RealEstate.Api.Controllers
         {
             try
             {
-                await mediator.Send(new GetPropertyByIdQuery(estateId));
+                await mediator.Send(new GetEstateByIdQuery(estateId));
             }
             catch (ArgumentException ae)
             {
