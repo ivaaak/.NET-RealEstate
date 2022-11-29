@@ -1,6 +1,6 @@
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MediatR;
 using RealEstate.Core.Contracts;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Data.Identity;
@@ -22,7 +22,7 @@ namespace RealEstate.API.Controllers.MVC
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
             IUserService _service,
-        IMediator _mediator)
+            IMediator _mediator)
         {
             roleManager = _roleManager;
             userManager = _userManager;
@@ -32,7 +32,7 @@ namespace RealEstate.API.Controllers.MVC
 
         public async Task<IActionResult> IndexAsync()
         {
-            var propertiesList = await mediator.Send(new GetPropertyListQuery());
+            var propertiesList = await mediator.Send(new GetEstateListQuery());
             // Example call to MediatR
 
             return View();
