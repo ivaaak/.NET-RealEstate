@@ -1,6 +1,6 @@
 ﻿using RealEstate.Core.ViewModels;
 
-namespace RealEstate.Core.Contracts
+namespace RealEstate.Core.ServiceContracts
 {
     public interface IOrderService
     {

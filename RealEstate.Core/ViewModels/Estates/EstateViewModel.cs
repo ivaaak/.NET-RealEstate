@@ -1,5 +1,5 @@
 ﻿using RealEstate.Infrastructure.Data.Enumerations;
-using RealEstate.Infrastructure.Entities;
+using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Entities.Listings;
 
 namespace RealEstate.Core.ViewModels.Estates

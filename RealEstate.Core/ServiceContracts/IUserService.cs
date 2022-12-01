@@ -1,7 +1,7 @@
 ﻿using RealEstate.Core.ViewModels.Clients;
 using RealEstate.Infrastructure.Data.Identity;
 
-namespace RealEstate.Core.Contracts
+namespace RealEstate.Core.ServiceContracts
 {
     public interface IUserService
     {

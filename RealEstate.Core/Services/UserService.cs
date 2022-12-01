@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Core.Contracts;
+using RealEstate.Core.ServiceContracts;
 using RealEstate.Core.ViewModels.Clients;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Entities.Clients;
 using RealEstate.Infrastructure.Repositories;
-using static RealEstate.Infrastructure.Data.Common.DataConstants;
 
 namespace RealEstate.Core.Services
 {
