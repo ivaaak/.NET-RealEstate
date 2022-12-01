@@ -1,7 +1,6 @@
-﻿using RealEstate.Infrastructure.Entities.Estates;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Infrastructure.Entities
+namespace RealEstate.Infrastructure.Entities.Estates
 {
     public class Category
     {
@@ -15,6 +14,6 @@ namespace RealEstate.Infrastructure.Entities
         [StringLength(500)]
         public string? Description { get; set; }
 
-        public IEnumerable<Estate> Properties { get; init; } = new List<Estate>();
+        public IEnumerable<Estate> Estates { get; init; } = new List<Estate>();
     }
 }

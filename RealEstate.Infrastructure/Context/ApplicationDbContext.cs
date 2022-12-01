@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Infrastructure.Entities;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Entities.Contracts;
