@@ -1,13 +1,13 @@
 using NUnit.Framework;
 
-namespace RealEstate.Test
+namespace RealEstate.Test.Services
 {
-    public class Tests
+    public class OrderServiceTest
     {
         [SetUp]
         public void Setup()
         {
-		  //to do add inMemory DB
+            //to do add inMemory DB
         }
 
         [Test]
