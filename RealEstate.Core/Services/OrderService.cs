@@ -1,4 +1,4 @@
-﻿using RealEstate.Core.Contracts;
+﻿using RealEstate.Core.ServiceContracts;
 using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.Core.Services
