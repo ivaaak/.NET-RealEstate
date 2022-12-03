@@ -4,7 +4,7 @@ using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Repositories;
 
-namespace RealEstate.CQRS.Handlers.Read
+namespace RealEstate.CQRS.Handlers.Query
 {
     public class GetEstateByIdHandler : IRequestHandler<GetEstateByIdQuery, EstateViewModel>
     {
