@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-
 using MediatR;
+using RealEstate.Core.Interfaces;
 using RealEstate.Core.ViewModels.Search;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Entities.Clients;
@@ -10,18 +10,17 @@ using RealEstate.Infrastructure.Entities.Listings;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
-    public class SearchHandler : IRequestHandler<SearchQuery, SearchViewModel>
+    public class CombinedSearchHandler : IRequestHandler<CombinedSearchQuery, SearchViewModel>
     {
-        //change to IDeletableEntityRepository;
-        private readonly List<Client> clientsRepository;
-        private readonly List<Estate> estatesRepository;
-        private readonly List<Listing> listingsRepository;
+        private readonly IDeletableEntityRepository<Client> clientsRepository;
+        private readonly IDeletableEntityRepository<Estate> estatesRepository;
+        private readonly IDeletableEntityRepository<Listing> listingsRepository;
         private readonly IMapper mapper;
 
-        public SearchHandler(
-            List<Client> clientsRepository,
-            List<Estate> estatesRepository,
-            List<Listing> listingsRepository,
+        public CombinedSearchHandler(
+            IDeletableEntityRepository<Client> clientsRepository,
+            IDeletableEntityRepository<Estate> estatesRepository,
+            IDeletableEntityRepository<Listing> listingsRepository,
             IMapper mapper)
         {
             this.clientsRepository = clientsRepository;
@@ -30,7 +29,7 @@ namespace RealEstate.CQRS.Handlers.Query
             this.mapper = mapper;
         }
 
-        public async Task<SearchViewModel> Handle(SearchQuery request, CancellationToken cancellationToken)
+        public async Task<SearchViewModel> Handle(CombinedSearchQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -50,7 +49,7 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var estates = await this.estatesRepository
                 .AllAsNoTracking()
-                .Where(p => p.Name.ToLower().Contains(queryNormalized))
+                .Where(p => p.Estate_Name.ToLower().Contains(queryNormalized))
                 .OrderBy(p => p.Name)
                 .ProjectTo<EstateLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
