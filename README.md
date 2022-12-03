@@ -22,14 +22,7 @@ It can be used for listing, browsing and renting/selling properties.
 - Redis Caching
 - Docker
 - Fluent Validation
-- ASP.NET Identity System 
-- MVC Areas (Admin / User-Guest)
-- Razor Pages + Partial Views
-- Customized Log in and Register pages (scaffolded)
-- Responsive Design (Custom CSS, Bootstrap and JS animations)
-- Bootstrap 5
-- Toastr
-- jQuery
+- .NET Identity System 
 - HangFire for scheduling
 
 
