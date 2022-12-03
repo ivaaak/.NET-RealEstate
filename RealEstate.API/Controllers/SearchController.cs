@@ -8,7 +8,19 @@ namespace RealEstate.API.Controllers
     public class SearchController : BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] string query)
-            => View(await Mediator.Send(new SearchQuery { Query = query }));
+        public async Task Search([FromQuery] string query)
+            => await Mediator.Send(new CombinedSearchQuery { Query = query });
+
+        [HttpGet]
+        public async Task ClientSearch([FromQuery] string query)
+            => await Mediator.Send(new ClientsSearchQuery { Query = query });
+
+        [HttpGet]
+        public async Task EstateSearch([FromQuery] string query)
+            => await Mediator.Send(new EstatesSearchQuery { Query = query });
+
+        [HttpGet]
+        public async Task ListingSearch([FromQuery] string query)
+            => await Mediator.Send(new ListingsSearchQuery { Query = query });
     }
 }
