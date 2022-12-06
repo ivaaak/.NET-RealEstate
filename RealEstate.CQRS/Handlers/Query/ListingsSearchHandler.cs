@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using RealEstate.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Core.LookupModels;
 using RealEstate.Core.ViewModels.Search;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Entities.Listings;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Query
 {

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using RealEstate.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using RealEstate.Core.LookupModels;
 using RealEstate.Core.ViewModels.Search;
 using RealEstate.CQRS.Queries;
 using RealEstate.Infrastructure.Entities.Clients;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
@@ -34,7 +36,9 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var clients = await this.clientsRepository
                 .AllAsNoTracking()
-                .Where(p => p.UserName.ToLower().Contains(queryNormalized))
+                .Where(p => p.UserName
+                    .ToLower()
+                    .Contains(queryNormalized))
                 .OrderBy(p => p.UserName)
                 .ProjectTo<ClientLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using RealEstate.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using RealEstate.Core.LookupModels;
 using RealEstate.Core.ViewModels.Search;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities.Clients;
 using RealEstate.Infrastructure.Entities.Estates;
-using RealEstate.Infrastructure.Entities.Listings;
+using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
@@ -36,8 +36,10 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var estates = await this.estatesRepository
                 .AllAsNoTracking()
-                .Where(p => p.Name.ToLower().Contains(queryNormalized))
-                .OrderBy(p => p.Name)
+                .Where(p => p.Estate_Name
+                    .ToLower()
+                    .Contains(queryNormalized))
+                .OrderBy(p => p.Estate_Name)
                 .ProjectTo<EstateLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
