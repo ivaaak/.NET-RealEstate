@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RealEstate.Infrastructure.Entities.BaseEntityModel;
 using RealEstate.Infrastructure.Entities.Contracts;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Clients
 {
-    public class Client : IdentityUser
+    public class Client : IdentityUser, IDeletableEntity
     {
         [ForeignKey("Client_Id")]
         public string Client_Id { get; init; }
@@ -28,5 +29,9 @@ namespace RealEstate.Infrastructure.Entities.Clients
         public Contact Contact { get; set; }
 
         public IEnumerable<Contract> Contracts { get; set; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

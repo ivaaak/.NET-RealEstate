@@ -1,10 +1,11 @@
-﻿using RealEstate.Infrastructure.Entities.Clients;
+﻿using RealEstate.Infrastructure.Entities.BaseEntityModel;
+using RealEstate.Infrastructure.Entities.Clients;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Contracts
 {
-    public class Contract
+    public class Contract : IDeletableEntity
     {
         [Key]
         public int Id { get; set; }
@@ -36,5 +37,9 @@ namespace RealEstate.Infrastructure.Entities.Contracts
         public DateTime End_Date { get; set; }
 
         public int Transaction_Id { get; set; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
