@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RealEstate.Infrastructure.Entities.BaseEntityModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Infrastructure.Entities.Estates
 {
-    public class In_Charge
+    public class In_Charge : IDeletableEntity
     {
         [Key]
         public int Id { get; init; }
@@ -14,5 +15,9 @@ namespace RealEstate.Infrastructure.Entities.Estates
         public DateTime Date_From { get; init; }
 
         public DateTime Date_To { get; init; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

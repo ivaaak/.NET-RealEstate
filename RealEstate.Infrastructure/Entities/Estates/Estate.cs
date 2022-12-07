@@ -1,12 +1,13 @@
 ﻿using RealEstate.Infrastructure.Data.Enumerations;
+using RealEstate.Infrastructure.Entities.BaseEntityModel;
 using RealEstate.Infrastructure.Entities.Listings;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Infrastructure.Entities.Estates
 {
-    public class Estate 
-        //TODO: add properties/attributes
+    public class Estate : IDeletableEntity
+    //TODO: add properties/attributes
     {
         [Key]
         public int Id { get; init; }
@@ -52,5 +53,9 @@ namespace RealEstate.Infrastructure.Entities.Estates
 
         public Listing Listing { get; set; }
         public PropertyType PropertyType { get; set; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
