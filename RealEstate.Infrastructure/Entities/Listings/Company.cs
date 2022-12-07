@@ -1,10 +1,20 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RealEstate.Infrastructure.Entities.BaseEntityModel;
 using RealEstate.Infrastructure.Entities.Estates;
 
 namespace RealEstate.Infrastructure.Entities.Listings
 {
-    public class Company : IdentityUser
+    public class Company : IdentityUser, IDeletableEntity
     {
+        public Company() : base()
+        {
+            Listings = new List<Listing>();
+
+            Estates = new List<Estate>();
+
+            Employees = new List<Employee>();
+        }
+
         public string Company_Name { get; init; }
 
         public string Company_Description { get; init; }
@@ -17,13 +27,8 @@ namespace RealEstate.Infrastructure.Entities.Listings
 
         public IEnumerable<Estate> Estates { get; init; }
 
-        public Company() : base()
-        {
-            Listings = new List<Listing>();
 
-            Estates = new List<Estate>();
-
-            Employees = new List<Employee>();
-        }
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
