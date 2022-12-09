@@ -1,5 +1,5 @@
-# .NET- Real Estate App
-A full stack web project built with ASP.NET, MediatR/CQRS Pattern, EF Core, PostgreSQL, Redis, JS and Bootstrap. 
+# .NET - Real Estate API
+A  Web API built with .NET, the MediatR/CQRS Pattern, EF Core, PostgreSQL, Redis,.
 It can be used for listing, browsing and renting/selling properties. 
 
 
