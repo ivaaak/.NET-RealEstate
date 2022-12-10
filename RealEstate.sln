@@ -9,14 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Test", "RealEstate.Test\RealEstate.Test.csproj", "{6AD2DDA4-3DF8-4201-B36A-6860F93B440D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84DB6DB2-6D57-4C1C-967E-810F3D1CF850}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.CQRS", "RealEstate.CQRS\RealEstate.CQRS.csproj", "{12D64D1B-5D69-405E-90A4-9DF28AB4BAF2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.API", "RealEstate.Api\RealEstate.API.csproj", "{E4162B42-C98F-488E-9A35-1DC6DC3893B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models-Entities", "Models-Entities", "{E2D0FCD8-97D9-4302-B26D-09C97077016C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services-Contracts", "Services-Contracts", "{F15E1D75-C1E0-4EA7-BA52-A99D82DEFEC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F5F37A2E-14F6-4C43-995F-63B1591096E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{170C2CE9-04FA-4D99-9FAD-97EAB9DF2D93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orchestration", "Orchestration", "{64819505-4D97-45B2-8C4D-1595EFC7F9EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

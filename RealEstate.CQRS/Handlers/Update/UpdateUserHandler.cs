@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Commands;
-using RealEstate.CQRS.Responses;
+using RealEstate.CQRS.BehaviorModels.ResponseModels;
+using RealEstate.CQRS.Commands.Update;
 using RealEstate.Infrastructure.Data.Identity;
 using RealEstate.Infrastructure.Repositories;
 

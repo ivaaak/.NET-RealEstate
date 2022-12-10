@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Responses;
+using RealEstate.CQRS.BehaviorModels.ResponseModels;
 
-namespace RealEstate.CQRS.Commands
+namespace RealEstate.CQRS.Commands.Update
 {
     public class UpdateUserCommand : IRequest<Response>
     {

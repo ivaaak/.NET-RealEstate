@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace RealEstate.CQRS.RequestModels
+namespace RealEstate.CQRS.BehaviorModels.RequestModels
 {
     public class Request
     {
         //This is a placeholder and to be redone
         private readonly IList<string> data = new List<string>();
 
-        public IEnumerable<string> Data { get; }    
+        public IEnumerable<string> Data { get; }
     }
 }

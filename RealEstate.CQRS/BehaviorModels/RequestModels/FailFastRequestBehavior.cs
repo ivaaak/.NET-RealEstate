@@ -1,13 +1,14 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
+using RealEstate.CQRS.BehaviorModels.ResponseModels;
 
-namespace RealEstate.CQRS.Responses
+namespace RealEstate.CQRS.BehaviorModels.RequestModels
 {
-    public class FailFastRequestBehavior<TRequest, TResponse> 
-	  : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TResponse> 
-	  where TResponse : Response
+    public class FailFastRequestBehavior<TRequest, TResponse>
+      : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : IRequest<TResponse>
+      where TResponse : Response
     {
         private readonly IEnumerable<IValidator> _validators;
 

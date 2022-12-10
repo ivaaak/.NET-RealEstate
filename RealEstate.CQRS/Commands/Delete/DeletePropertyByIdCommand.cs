@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Responses;
+using RealEstate.CQRS.BehaviorModels.ResponseModels;
 
-namespace RealEstate.CQRS.Commands
+namespace RealEstate.CQRS.Commands.Delete
 {
     public class DeletePropertyByIdCommand : IRequest<Response> //is void
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.CQRS.Commands;
 using RealEstate.API.Filters;
+using RealEstate.CQRS.Commands.Delete;
 
 namespace RealEstate.API.Controllers
 {

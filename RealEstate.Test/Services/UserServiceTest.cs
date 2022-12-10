@@ -7,7 +7,7 @@ using RealEstate.Infrastructure.Repositories;
 using RealEstate.Test.Constants;
 using RealEstate.Test.Data;
 
-namespace MovieManager.Test
+namespace RealEstate.Test.Services
 {
     public class UserServiceTest
     {
@@ -62,7 +62,7 @@ namespace MovieManager.Test
             */
             await dbContext.Clients.AddAsync(client);
 
-            await dbContext.SaveChangesAsync(); 
+            await dbContext.SaveChangesAsync();
             // Inherited from DbContext
         }
     }

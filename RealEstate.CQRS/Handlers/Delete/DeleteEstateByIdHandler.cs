@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Commands;
-using RealEstate.CQRS.Responses;
+using RealEstate.CQRS.BehaviorModels.ResponseModels;
+using RealEstate.CQRS.Commands.Delete;
 using RealEstate.Infrastructure.Entities.Estates;
 using RealEstate.Infrastructure.Repositories;
 
