@@ -1,0 +1,2 @@
+﻿TODO: React or Angular frontend 
+(still undecided, will likely start after most of the backend is done)

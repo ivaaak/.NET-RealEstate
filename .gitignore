@@ -8,8 +8,8 @@
 /RealEstate/obj
 /RealEstate/bin
 
-/RealEstate.Web/obj
-/RealEstate.Web/bin
+/RealEstate.WEB/obj
+/RealEstate.WEB/bin
 
 /RealEstate.Core/obj
 /RealEstate.Core/bin
@@ -25,4 +25,19 @@
 
 /RealEstate.CQRS/obj
 /RealEstate.CQRS/bin
+
+/RealEstate.Data/obj
+/RealEstate.Data/bin
+
+/RealEstate.Models/obj
+/RealEstate.Models/bin
+
+/RealEstate.Orchestration/obj
+/RealEstate.Orchestration/bin
+
+/RealEstate.Persistance/obj
+/RealEstate.Persistance/bin
+
+/RealEstate.Microservices/obj
+/RealEstate.Microservices/bin
 
