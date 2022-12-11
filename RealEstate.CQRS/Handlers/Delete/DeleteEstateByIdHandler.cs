@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using RealEstate.CQRS.BehaviorModels.ResponseModels;
 using RealEstate.CQRS.Commands.Delete;
-using RealEstate.Infrastructure.Entities.Estates;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
+using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.CQRS.Handlers.Delete
 {

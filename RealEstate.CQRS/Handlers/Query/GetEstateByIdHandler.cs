@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using RealEstate.Core.ViewModels.Estates;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities.Estates;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
+using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.ViewModels.Estates;
 
 namespace RealEstate.CQRS.Handlers.Query
 {

@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using RealEstate.Core.ViewModels.Clients;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities.Clients;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
+using RealEstate.Models.Entities.Clients;
+using RealEstate.Models.ViewModels.Clients;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
@@ -16,7 +16,7 @@ namespace RealEstate.CQRS.Handlers.Query
 
         public Task<List<ClientViewModel>> Handle(GetClientListQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(repo.All<Client>()
+            var clients = repo.All<Client>()
                 .Select(u => new ClientViewModel
                 {
                     Client_Id = u.Client_Id,
@@ -24,7 +24,9 @@ namespace RealEstate.CQRS.Handlers.Query
                     Client_Address = u.Client_Address,
                     Client_Name = u.Client_Name,
                 })
-                .ToList());
+                .ToList();
+
+            return Task.FromResult(clients);
         }
     }
 }

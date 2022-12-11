@@ -2,11 +2,11 @@
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Core.LookupModels;
-using RealEstate.Core.ViewModels.Search;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities.Estates;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
+using RealEstate.Infrastructure.LookupModels;
+using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.ViewModels.Search;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
@@ -45,8 +45,8 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var dataModel = new SearchViewModel
             {
-                SearchQuery = request.Query,
-                Estates = estates,
+                SearchQuery = request.Query, 
+                Estates = (IEnumerable<Estate>)estates,
             };
 
             return dataModel;

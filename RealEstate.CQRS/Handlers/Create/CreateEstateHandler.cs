@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RealEstate.CQRS.BehaviorModels.ResponseModels;
 using RealEstate.CQRS.Commands.Create;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
 
 namespace RealEstate.CQRS.Handlers.Create
 {

@@ -1,15 +1,13 @@
 ﻿using MediatR;
-using RealEstate.Core.ViewModels.Clients;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Entities.Clients;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Repository;
+using RealEstate.Models.Entities.Clients;
+using RealEstate.Models.ViewModels.Clients;
 
 namespace RealEstate.CQRS.Handlers.Query
 {
     public class GetClientByIdHandler : IRequestHandler<GetClientByIdQuery, ClientViewModel>
     {
-        public string Id { get; set; }
-
         private readonly IApplicationDbRepository repo;
 
         public GetClientByIdHandler(IApplicationDbRepository _repo)
@@ -17,16 +15,11 @@ namespace RealEstate.CQRS.Handlers.Query
             repo = _repo;
         }
 
-        public GetClientByIdHandler(string id)
-        {
-            Id = id;
-        }
-
-        public async Task<ClientViewModel> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+        public  Task<ClientViewModel> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
         {
             string id = request.Id;
 
-            var foundUser = await repo.GetByIdAsync<Client>(id);
+            var foundUser = repo.GetByIdAsync<Client>(id).Result;
 
             var userViewModel = new ClientViewModel
             {
@@ -38,7 +31,7 @@ namespace RealEstate.CQRS.Handlers.Query
                 Client_Address = foundUser.Client_Address,
             };
 
-            return userViewModel;
+            return Task.FromResult(userViewModel);
         }
     }
 }
