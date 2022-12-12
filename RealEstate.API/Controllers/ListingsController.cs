@@ -1,32 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate.Core.Contracts;
+﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Queries;
+using RealEstate.Data.Identity;
+using RealEstate.Microservices.Contracts;
 
-namespace RealEstate.Api.Controllers
+namespace RealEstate.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ListingsController : ControllerBase
+    public class ListingsController : BaseController
     {
-        private readonly IOrderService service;
-        private readonly IMediator mediator;
-
-
         public ListingsController(
-            IOrderService _service, 
-            IMediator _mediator)
-        {
-            this.service = _service;
-            this.mediator = _mediator;
-        }
+            RoleManager<IdentityRole> _roleManager, 
+            UserManager<ApplicationUser> _userManager, 
+            IUserService _service, 
+            IMediator _mediator, 
+            IMapper _mapper) 
+            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+        {}
 
         [HttpGet("getEstate")]
         public async Task<IActionResult> GetEstateAsync(int estateId)
         {
             try
             {
-                await mediator.Send(new GetEstateByIdQuery(estateId));
+                await Mediator.Send(new GetEstateByIdQuery(estateId));
             }
             catch (ArgumentException ae)
             {

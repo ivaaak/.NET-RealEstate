@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.CQRS.Handlers.Read;
+using RealEstate.CQRS.Handlers.Query;
 using RealEstate.CQRS.Queries;
+using RealEstate.Data.Identity;
+using RealEstate.Microservices.Contracts;
 
 namespace RealEstate.API.Controllers
 {
@@ -10,6 +15,14 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")]
     public class PersonController : BaseController
     {
+        public PersonController(
+            RoleManager<IdentityRole> _roleManager,
+            UserManager<ApplicationUser> _userManager, 
+            IUserService _service, 
+            IMediator _mediator, 
+            IMapper _mapper) 
+            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+        {}
 
         [AllowAnonymous]
         [HttpGet]

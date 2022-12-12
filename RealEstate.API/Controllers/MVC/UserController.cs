@@ -1,9 +1,10 @@
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Core.Contracts;
 using RealEstate.CQRS.Queries;
-using RealEstate.Infrastructure.Data.Identity;
+using RealEstate.Data.Identity;
+using RealEstate.Microservices.Contracts;
 
 namespace RealEstate.API.Controllers.MVC
 {
@@ -17,17 +18,16 @@ namespace RealEstate.API.Controllers.MVC
 
         private readonly IMediator mediator;
 
+        private readonly IMapper mapper;
 
         public UserController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            IUserService _service,
-            IMediator _mediator)
+            RoleManager<IdentityRole> _roleManager, 
+            UserManager<ApplicationUser> _userManager, 
+            IUserService _service, 
+            IMediator _mediator, 
+            IMapper _mapper) 
+            : base(_roleManager, _userManager, _service, _mediator, _mapper)
         {
-            roleManager = _roleManager;
-            userManager = _userManager;
-            service = _service;
-            mediator = _mediator;
         }
 
         public async Task<IActionResult> IndexAsync()

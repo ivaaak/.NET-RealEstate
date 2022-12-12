@@ -1,7 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.CQRS.Commands;
-using RealEstate.Infrastructure.Entities.Estates;
+using RealEstate.CQRS.Commands.Create;
+using RealEstate.CQRS.Commands.Delete;
+using RealEstate.Data.Identity;
+using RealEstate.Microservices.Contracts;
+using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.API.Controllers
 {
@@ -10,6 +16,16 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")]
     public class EstateController : BaseController
     {
+        public EstateController(
+            RoleManager<IdentityRole> _roleManager, 
+            UserManager<ApplicationUser> _userManager, 
+            IUserService _service, 
+            IMediator _mediator, 
+            IMapper _mapper) 
+            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+        {}
+
+
         [HttpPost]
         public async Task<IActionResult> CreateEstate(Estate estate)
         {
@@ -18,7 +34,6 @@ namespace RealEstate.API.Controllers
             //redirect to the wanted page
             return RedirectToAction(nameof(Estate));
         }
-
 
         [HttpPost]
         public async Task<IActionResult> DeleteEstate(int estateId)

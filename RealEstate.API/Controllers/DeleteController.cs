@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.API.Filters;
 using RealEstate.CQRS.Commands.Delete;
+using RealEstate.Data.Identity;
+using RealEstate.Infrastructure.Filters;
+using RealEstate.Microservices.Contracts;
 
 namespace RealEstate.API.Controllers
 {
@@ -11,6 +16,15 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")]
     public class NotificationsController : BaseController
     {
+        public NotificationsController(
+            RoleManager<IdentityRole> _roleManager, 
+            UserManager<ApplicationUser> _userManager, 
+            IUserService _service, 
+            IMediator _mediator, 
+            IMapper _mapper) 
+            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+        {}
+
         /// <summary>
         /// Delete estate by Id
         /// </summary>
