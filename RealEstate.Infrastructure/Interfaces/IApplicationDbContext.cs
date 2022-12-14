@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Infrastructure.Entities.Clients;
-using RealEstate.Infrastructure.Entities.Contracts;
-using RealEstate.Infrastructure.Entities.Estates;
-using RealEstate.Infrastructure.Entities.Listings;
+using RealEstate.Models.Entities.Clients;
+using RealEstate.Models.Entities.Contracts;
+using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Infrastructure.Interfaces
 {
