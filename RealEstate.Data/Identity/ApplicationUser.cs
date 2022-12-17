@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RealEstate.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Data.Identity
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser, IDeletableEntity
     {
         [Required]
         [StringLength(50)]
@@ -12,5 +13,9 @@ namespace RealEstate.Data.Identity
         [Required]
         [StringLength(50)]
         public string? LastName { get; set; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

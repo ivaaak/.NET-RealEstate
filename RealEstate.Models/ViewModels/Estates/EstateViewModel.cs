@@ -1,5 +1,7 @@
 ﻿using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Models.ViewModels.Estates
 {
@@ -7,30 +9,42 @@ namespace RealEstate.Models.ViewModels.Estates
     {
         public int Id { get; init; }
 
-        public string? Title { get; set; }
+        public string? Estate_Name { get; set; }
 
-        public string? Description { get; set; }
+        public int City_Id { get; set; }
 
-        public string? ImageUrl { get; set; }
+        public City City { get; set; }
 
-        public int Year { get; set; }
+        public int Estate_Type_Id { get; set; }
 
-        public bool IsPublic { get; set; }
+        public decimal Floor_Space { get; set; }
 
-        public DateTime DateBuilt { get; set; }
+        public int Number_Of_Balconies { get; set; }
 
-        public DateTime DateListed { get; set; }
+        public decimal Balconies_Space { get; set; }
 
-        public int SquareMeters { get; set; }
+        public int Number_Of_Bedrooms { get; set; }
 
+        public int Number_Of_Bathrooms { get; set; }
+
+        public int Number_Of_Garages { get; set; }
+
+        public int Number_Of_Parking_Spaces { get; set; }
+
+        public bool Pets_Allowed { get; set; }
+
+        public string? Estate_Description { get; set; }
+
+        public string? Estate_Status_Id { get; set; }
+
+        public string Estate_ImageUrl { get; set; }
+
+        public int Estate_Year_Built { get; set; }
+
+        public int Estate_Year_Listed { get; set; }
+
+
+        public Listing Listing { get; set; }
         public Estate_Type Estate_Type { get; set; }
-
-        public int CategoryId { get; set; }
-
-        public Category? Category { get; init; }
-
-        public int EmployeeId { get; init; }
-
-        public Employee? Employee { get; init; }
     }
 }
