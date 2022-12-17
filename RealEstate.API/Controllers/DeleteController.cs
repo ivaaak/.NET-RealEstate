@@ -31,7 +31,7 @@ namespace RealEstate.API.Controllers
         /// <param name="estateId"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Delete(DeletePropertyByIdCommand command)
+        public async Task<IActionResult> Delete(DeleteEstateByIdCommand command)
         {
             var deleteRequest = await Mediator.Send(command);
 

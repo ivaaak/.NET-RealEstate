@@ -3,10 +3,10 @@ using RealEstate.CQRS.BehaviorModels.ResponseModels;
 
 namespace RealEstate.CQRS.Commands.Delete
 {
-    public class DeletePropertyByIdCommand : IRequest<Response> //is void
+    public class DeleteEstateByIdCommand : IRequest<Response> //is void
     {
         public int Id { get; set; }
-        public DeletePropertyByIdCommand(int Id)
+        public DeleteEstateByIdCommand(int Id)
         {
             this.Id = Id;
         }

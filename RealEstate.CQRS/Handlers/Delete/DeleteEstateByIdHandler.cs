@@ -6,7 +6,7 @@ using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.CQRS.Handlers.Delete
 {
-    public class DeleteEstateByIdHandler : IRequestHandler<DeletePropertyByIdCommand, Response>
+    public class DeleteEstateByIdHandler : IRequestHandler<DeleteEstateByIdCommand, Response>
     {
         private readonly IApplicationDbRepository repo;
 
@@ -15,7 +15,7 @@ namespace RealEstate.CQRS.Handlers.Delete
             repo = _repo;
         }
 
-        public Task<Response> Handle(DeletePropertyByIdCommand request, CancellationToken cancellationToken)
+        public Task<Response> Handle(DeleteEstateByIdCommand request, CancellationToken cancellationToken)
         {
             int id = request.Id;
             var estate = repo.GetByIdAsync<Estate>(id);

@@ -38,7 +38,7 @@ namespace RealEstate.API.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteEstate(int estateId)
         {
-            await Mediator.Send(new DeletePropertyByIdCommand(estateId));
+            await Mediator.Send(new DeleteEstateByIdCommand(estateId));
 
             //redirect to the wanted page
             return RedirectToAction(nameof(Estate));
