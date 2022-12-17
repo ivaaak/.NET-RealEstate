@@ -13,17 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.CQRS", "RealEsta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.API", "RealEstate.Api\RealEstate.API.csproj", "{E4162B42-C98F-488E-9A35-1DC6DC3893B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Data", "RealEstate.Data\RealEstate.Data.csproj", "{A9C13D30-7966-4401-9FB9-D199A780DEF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Data", "RealEstate.Data\RealEstate.Data.csproj", "{A9C13D30-7966-4401-9FB9-D199A780DEF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Models", "RealEstate.Models\RealEstate.Models.csproj", "{6AA1DF1A-873E-4C9C-8495-4633D357E4E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Models", "RealEstate.Models\RealEstate.Models.csproj", "{6AA1DF1A-873E-4C9C-8495-4633D357E4E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Orchestration", "RealEstate.Orchestration\RealEstate.Orchestration.csproj", "{4886DE93-45D6-4953-AFEF-4EC8B079863A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Orchestration", "RealEstate.Orchestration\RealEstate.Orchestration.csproj", "{4886DE93-45D6-4953-AFEF-4EC8B079863A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Persistance", "RealEstate.Persistance\RealEstate.Persistance.csproj", "{297B9275-B63B-4124-8E0B-3BC9581B7156}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Persistance", "RealEstate.Persistance\RealEstate.Persistance.csproj", "{297B9275-B63B-4124-8E0B-3BC9581B7156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Microservices", "RealEstate.Microservices\RealEstate.Microservices.csproj", "{DB2C9E43-F4A7-4E1D-815C-1B950CF570E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Microservices", "RealEstate.Microservices\RealEstate.Microservices.csproj", "{DB2C9E43-F4A7-4E1D-815C-1B950CF570E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.WEB", "RealEstate.WEB\RealEstate.WEB.csproj", "{64B56EE7-FD80-4D34-9057-CFB2A418A0E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.WEB", "RealEstate.WEB\RealEstate.WEB.csproj", "{64B56EE7-FD80-4D34-9057-CFB2A418A0E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

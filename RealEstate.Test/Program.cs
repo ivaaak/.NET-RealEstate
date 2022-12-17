@@ -11,7 +11,7 @@ builder.Services.Use_PostgreSQL_Context(builder.Configuration);
 //builder.Services.Add_MicrosoftSQL_Context(builder.Configuration);
 builder.Services.AddIdentityContext();
 builder.Services.AddAuthentication();
-builder.Services.AddHangfireWithSQLServer();
+builder.Services.AddHangfireWithPostgreSQLServer();
 //builder.Services.AddModelBinders();
 builder.Services.AddApplicationServices();
 builder.Services.AddSwaggerAPIWithEndpoints();

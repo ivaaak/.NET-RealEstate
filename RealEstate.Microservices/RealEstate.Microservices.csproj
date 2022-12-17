@@ -11,4 +11,19 @@
     <ProjectReference Include="..\RealEstate.Models\RealEstate.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Filtration\" />
+    <Folder Include="Services\Auth\" />
+    <Folder Include="Services\Accounts\" />
+    <Folder Include="Services\Payment\" />
+    <Folder Include="Services\Contracts\" />
+    <Folder Include="Services\Estates\" />
+    <Folder Include="Services\FileUpload\" />
+    <Folder Include="Services\Messaging\" />
+    <Folder Include="Services\Search\" />
+    <Folder Include="Services\Recommendation\" />
+    <Folder Include="Services\Notification\" />
+    <Folder Include="Services\Sorting\" />
+  </ItemGroup>
+
 </Project>
