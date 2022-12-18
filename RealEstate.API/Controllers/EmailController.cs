@@ -3,10 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.CQRS.Commands.Delete;
 using RealEstate.Data.Identity;
 using RealEstate.Infrastructure.Filters;
 using RealEstate.Microservices.Contracts;
+using RealEstate.Models.Entities.Misc;
 
 namespace RealEstate.API.Controllers
 {
@@ -14,35 +14,27 @@ namespace RealEstate.API.Controllers
     [AjaxFilter]
     [ApiController]
     [Route("api/[controller]")]
-    public class NotificationsController : BaseController
+    public class EmailController : BaseController
     {
-        public NotificationsController(
+        private readonly IEmailService _emailService;
+
+        public EmailController(
             RoleManager<IdentityRole> _roleManager, 
             UserManager<ApplicationUser> _userManager, 
             IUserService _service, 
             IMediator _mediator, 
-            IMapper _mapper) 
+            IMapper _mapper,
+            IEmailService emailService) 
             : base(_roleManager, _userManager, _service, _mediator, _mapper)
-        {}
-
-        /// <summary>
-        /// Delete estate by Id
-        /// </summary>
-        /// <param name="estateId"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> Delete(DeleteEstateByIdCommand command)
         {
-            var deleteRequest = await Mediator.Send(command);
+            _emailService = emailService;
+        }
 
-            if (deleteRequest.Errors is null)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
+        [HttpPost]
+        public async Task<IActionResult> SendEmail(SendEmailRequest request)
+        {
+            await _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
+            return Ok();
         }
     }
 }
