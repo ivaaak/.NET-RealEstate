@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using RealEstate.API.ModelBinders;
-using RealEstate.Core.Constants;
-using RealEstate.Core.Contracts;
-using RealEstate.Core.Services;
-using RealEstate.Infrastructure.Context;
-using RealEstate.Infrastructure.Entities.Clients;
-using RealEstate.Infrastructure.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using RealEstate.Data.Context;
+using RealEstate.Data.Repository;
+using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Services.Email;
+using RealEstate.Microservices.Services.Users;
 
 namespace RealEstate.API.ServiceExtensions
 {
@@ -22,6 +19,8 @@ namespace RealEstate.API.ServiceExtensions
         {
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IEmailService, EmailService>();
+
 
             return services;
         }
@@ -48,47 +47,6 @@ namespace RealEstate.API.ServiceExtensions
             services.AddDbContext<ListingsDBContext>(options => options.UseSqlServer(MySQLConnectionString));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            return services;
-        }
-
-
-        public static IServiceCollection AddIdentityContext(this IServiceCollection services)
-        {
-            services.AddDefaultIdentity<Client>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.SignIn.RequireConfirmedEmail = false;
-                options.SignIn.RequireConfirmedAccount = false;
-            })
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            return services;
-        }
-
-
-        public static IServiceCollection AddModelBinders(this IServiceCollection services)
-        {
-            services.AddControllersWithViews()
-                .AddMvcOptions(options =>
-                {
-                    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-                    options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(FormatingConstant.NormalDateFormat));
-                    options.ModelBinderProviders.Insert(2, new DoubleModelBinderProvider());
-                });
-
-            return services;
-        }
-
-        public static IServiceCollection AddSwaggerAPIWithEndpoints(this IServiceCollection services)
-        {
-            services
-                .AddSwaggerGen()
-                .AddEndpointsApiExplorer();
 
             return services;
         }

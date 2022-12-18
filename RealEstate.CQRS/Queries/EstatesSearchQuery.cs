@@ -5,6 +5,10 @@ namespace RealEstate.CQRS.Queries
 {
     public class EstatesSearchQuery : IRequest<SearchViewModel>
     {
+        public EstatesSearchQuery()
+        {
+        }
+
         public EstatesSearchQuery(string query)
         {
             Query = query;

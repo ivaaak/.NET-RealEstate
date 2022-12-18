@@ -16,7 +16,9 @@ namespace RealEstate.Infrastructure.PipelineBehaviour
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             _logger.LogInformation($"Handling {typeof(TRequest).Name}");
+
             var response = await next();
+
             _logger.LogInformation($"Handled {typeof(TResponse).Name}");
 
             return response;
