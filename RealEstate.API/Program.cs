@@ -7,10 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Use_PostgreSQL_Context(builder.Configuration);
 //builder.Services.Add_MicrosoftSQL_Context(builder.Configuration);
+builder.Services.AddAuth0Authentication(builder.Configuration);
+builder.Services.AddAutoMapper();
 builder.Services.AddIdentityContext();
-builder.Services.AddAuthentication();
-builder.Services.AddHangfireWithSQLServer();
-//builder.Services.AddModelBinders();
+builder.Services.AddJWTAuthentication();
+//builder.Services.AddHangfire();
+builder.Services.AddHangfireWithPostgreSQLServer(builder.Configuration);
+builder.Services.AddModelBinders();
 builder.Services.AddApplicationServices();
 builder.Services.AddSwaggerAPIWithEndpoints();
 builder.Services.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly

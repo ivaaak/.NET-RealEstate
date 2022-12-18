@@ -12,11 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Auth0.AuthenticationApi" Version="7.17.4" />
     <PackageReference Include="Hangfire" Version="1.7.30" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.30" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
@@ -33,6 +35,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
     <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
+    <ProjectReference Include="..\RealEstate.Microservices\RealEstate.Microservices.csproj" />
   </ItemGroup>
 
 </Project>

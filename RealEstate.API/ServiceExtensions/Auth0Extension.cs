@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using System.Configuration;
 using System.Security.Claims;
 
 namespace RealEstate.API.ServiceExtensions
 {
     public static class Auth0Extension
     {
-        public static IServiceCollection AddAuth0Authentication(this IServiceCollection services)
+        public static IServiceCollection AddAuth0Authentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(options =>
             {
@@ -48,8 +49,9 @@ namespace RealEstate.API.ServiceExtensions
                         }
                     }
                 };
-            });
-        return services;
+            })
+            .AddSingleton(configuration);
+            return services;
         }
     }
 }
