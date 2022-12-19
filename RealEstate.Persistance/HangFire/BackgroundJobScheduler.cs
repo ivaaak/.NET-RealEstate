@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RealEstate.Persistance.HangFire
 {
-    public  class BackgroundJobScheduler
+    public class BackgroundJobScheduler
     {
         private readonly IBackgroundJobClient _backgroundJobClient;
 
