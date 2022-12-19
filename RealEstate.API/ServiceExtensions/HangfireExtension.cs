@@ -12,9 +12,25 @@ namespace RealEstate.API.ServiceExtensions
         private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
 
 
-        public static IServiceCollection AddHangfireWithPostgreSQLServer(this IServiceCollection services)
+        public static IServiceCollection AddHangfireWithPostgreSQLServer(
+            this IServiceCollection services, 
+            IConfiguration configuration)
         {
-            services.AddHangfire(x => x.UseSqlServerStorage(PostgreSQLConnectionString));
+            services.AddHangfire(config => config
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseColouredConsoleLogProvider()
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(configuration.GetConnectionString(PostgreSQLConnectionString), new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true
+                }));
+
             services.AddHangfireServer();
 
             return services;
