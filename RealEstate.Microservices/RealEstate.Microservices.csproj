@@ -17,9 +17,11 @@
     <Folder Include="Services\Filtration\" />
     <Folder Include="Services\Auth\" />
     <Folder Include="Services\Accounts\" />
+    <Folder Include="Services\Health\" />
+    <Folder Include="Services\Cache\" />
+    <Folder Include="Services\ExternalRealEstateAPI\" />
     <Folder Include="Services\Payment\" />
     <Folder Include="Services\Messaging\" />
-    <Folder Include="Services\Search\" />
     <Folder Include="Services\Recommendation\" />
     <Folder Include="Services\Sorting\" />
   </ItemGroup>

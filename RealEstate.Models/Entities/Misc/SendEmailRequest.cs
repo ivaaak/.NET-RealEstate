@@ -9,5 +9,11 @@
         public string Subject { get; set; }
 
         public string HtmlContent { get; set; }
+
+        public Stream? FileStream { get; set; }
+
+        public string? FileName { get; set; }
+
+        public Dictionary<string, string>? Header { get; set; }
     }
 }
