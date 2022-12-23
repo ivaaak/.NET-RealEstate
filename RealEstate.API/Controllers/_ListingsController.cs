@@ -9,10 +9,12 @@ using RealEstate.Microservices.Contracts;
 namespace RealEstate.API.Controllers
 {
     [ApiController]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
-    public class ListingsController : BaseController
+    public class _ListingsController : BaseController
     {
-        public ListingsController(
+        public _ListingsController(
             RoleManager<IdentityRole> _roleManager, 
             UserManager<ApplicationUser> _userManager, 
             IUserService _service, 

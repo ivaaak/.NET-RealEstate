@@ -12,10 +12,12 @@ namespace RealEstate.API.Controllers
 {
     [Authorize]
     [ApiController]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
-    public class PersonController : BaseController
+    public class _UserController : BaseController
     {
-        public PersonController(
+        public _UserController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager, 
             IUserService _service, 

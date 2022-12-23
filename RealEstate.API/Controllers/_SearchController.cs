@@ -10,10 +10,12 @@ using RealEstate.Models.Entities.Estates;
 namespace RealEstate.API.Controllers
 {
     [ApiController]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
-    public class SearchController : BaseController
+    public class _SearchController : BaseController
     {
-        public SearchController(
+        public _SearchController(
             RoleManager<IdentityRole> _roleManager, 
             UserManager<ApplicationUser> _userManager, 
             IUserService _service, 
