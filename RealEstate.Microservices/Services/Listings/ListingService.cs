@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Repository;
 using RealEstate.Microservices.Contracts;
+using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 using RealEstate.Models.ViewModels.Listings;
 
@@ -13,6 +14,13 @@ namespace RealEstate.Microservices.Services.Listings
         public ListingService(IApplicationDbRepository _repo)
         {
             repo = _repo;
+        }
+
+
+        // CREATE
+        public async void Create(Listing model)
+        {
+            await repo.AddAsync<Listing>(model);
         }
 
         // GET BY ID
