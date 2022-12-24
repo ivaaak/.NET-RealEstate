@@ -52,7 +52,7 @@ namespace RealEstate.API.Controllers
         ///
         /// </remarks>
         [HttpGet]
-        [Route("GetEstate/{id}")]
+        [Route("getEstate/{id}")]
         [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetEstate(int id)
         {
@@ -77,7 +77,7 @@ namespace RealEstate.API.Controllers
 
 
         [HttpGet]
-        [Route("GetEstates")]
+        [Route("getEstates")]
         [ResponseCache(Duration = 60)]
         public IActionResult GetCachedEstates()
         {

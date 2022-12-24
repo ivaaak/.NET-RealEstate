@@ -235,7 +235,7 @@ namespace RealEstate.API.Controllers
 
 
         [HttpGet]
-        [Route("/ExternalRealestateAPI")]
+        [Route("/ExternalAPI")]
         public async Task<IActionResult> CheckExternalRealEstateAPIHealth(string apiUrl)
         {
             try

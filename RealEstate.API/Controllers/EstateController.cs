@@ -7,7 +7,6 @@ using RealEstate.Data.Identity;
 using RealEstate.Microservices.Contracts;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.ViewModels.Estates;
-using System.Collections.Generic;
 
 namespace RealEstate.API.Controllers
 {
@@ -19,6 +18,7 @@ namespace RealEstate.API.Controllers
     public class EstateController : BaseController
     {
         private readonly IEstateService estateService;
+
         public EstateController(
             RoleManager<IdentityRole> _roleManager, 
             UserManager<ApplicationUser> _userManager, 
