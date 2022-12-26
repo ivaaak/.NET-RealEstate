@@ -41,3 +41,5 @@
 /RealEstate.Microservices/obj
 /RealEstate.Microservices/bin
 
+/RealEstate.Crawler/obj/
+/RealEstate.Crawler/bin/
