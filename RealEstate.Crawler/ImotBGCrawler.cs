@@ -8,8 +8,6 @@ namespace RealEstate.Crawler
     {
         private string html;
 
-        private 
-
         public void RunCrawler()
         {
             this.DownloadWebsiteString();

@@ -1,5 +1,5 @@
-﻿using RealEstate.Infrastructure.Entities.Clients;
-using RealEstate.Infrastructure.Entities.Contracts;
+﻿using RealEstate.Models.Entities.Clients;
+using RealEstate.Models.Entities.Contracts;
 
 namespace RealEstate.Test.Constants
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Infrastructure.Context;
+using RealEstate.Data.Context;
 
 namespace RealEstate.Test.Data
 {
@@ -15,7 +15,7 @@ namespace RealEstate.Test.Data
             connection.Open();
 
             dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlite(connection)
+                .UseSqlServer(connection)
                 .Options;
 
             using var context = new ApplicationDbContext(dbContextOptions);
@@ -31,7 +31,7 @@ namespace RealEstate.Test.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseSqlite(connection);
+                    .UseSqlServer(connection);
             }
         }
 

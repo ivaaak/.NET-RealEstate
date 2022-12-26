@@ -1,9 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using RealEstate.Core.ServiceContracts;
-using RealEstate.Core.Services;
-using RealEstate.Infrastructure.Context;
-using RealEstate.Infrastructure.Repositories;
+using RealEstate.Data.Context;
+using RealEstate.Data.Repository;
+using RealEstate.Microservices.Users;
 using RealEstate.Test.Constants;
 using RealEstate.Test.Data;
 
