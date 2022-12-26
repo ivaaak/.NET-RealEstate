@@ -1,6 +1,5 @@
 using Hangfire;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using RealEstate.API.ServiceExtensions;
 using RealEstate.CQRS;
@@ -39,12 +38,12 @@ if (app.Environment.IsDevelopment())
 
     // Enable middleware to serve Swagger-UI (HTML, JS, CSS, etc.) by specifying the Swagger JSON endpoint(s).
     var descriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    app.UseSwaggerUI(options =>
+    app.UseSwagger(options =>
     {
         // Build a swagger endpoint for each discovered API version
         foreach (var description in descriptionProvider.ApiVersionDescriptions)
         {
-            options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+            //options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
         }
     });
 }

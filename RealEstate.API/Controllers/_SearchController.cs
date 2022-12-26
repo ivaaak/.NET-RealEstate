@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.CQRS.Queries;
 using RealEstate.Data.Identity;
-using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.API.Controllers

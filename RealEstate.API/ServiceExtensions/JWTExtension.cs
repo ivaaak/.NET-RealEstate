@@ -23,6 +23,7 @@ namespace RealEstate.API.ServiceExtensions
 
                 options.Events = new JwtBearerEvents
                 {
+                    /*
                     OnRedirectToIdentityProviderForSignOut = context =>
                     {
                         // Set the appropriate parameters on the context object
@@ -31,6 +32,7 @@ namespace RealEstate.API.ServiceExtensions
 
                         return Task.CompletedTask;
                     }
+                    */
                 };
             });
 

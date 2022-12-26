@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -66,7 +65,8 @@ namespace RealEstate.API.ServiceExtensions
 
             // If we are using FluentValidation, then we can register the following service to add the  fluent validation rules to swagger.
             // Adds FluentValidationRules staff to Swagger. (Minimal configuration)
-            services.AddFluentValidationRulesToSwagger();
+
+            //services.AddFluentValidationRulesToSwagger();s
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Context;
 using RealEstate.Data.Repository;
-using RealEstate.Microservices.Contracts;
-using RealEstate.Microservices.Services.Email;
-using RealEstate.Microservices.Services.Users;
+using RealEstate.Microservices.Email;
+using RealEstate.Microservices.Users;
 
 namespace RealEstate.API.ServiceExtensions
 {

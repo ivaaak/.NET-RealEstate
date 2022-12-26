@@ -30,9 +30,11 @@ namespace RealEstate.API.ServiceExtensions
                 options.Scope.Add("openid");
                 options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
                 options.SaveTokens = true;
+                /*
                 options.Events = new OAuthEvents
                 {
                     // Handle the logout redirect.
+                    /*
                     OnRedirectToIdentityProviderForSignOut = (context) =>
                     {
                         var logoutUri = $"https://{Configuration["Auth0:Domain"]}/v2/logout?client_id={Configuration["Auth0:ClientId"]}";
@@ -47,10 +49,10 @@ namespace RealEstate.API.ServiceExtensions
                                 //postLogoutUri.
                             }
                         }
-                    }
-                };
-            })
-            .AddSingleton(configuration);
+                    }*/
+            });
+            //.AddSingleton(configuration);
+
             return services;
         }
     }

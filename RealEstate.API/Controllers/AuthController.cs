@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Data.Identity;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Auth0;
+using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.AuthUser;
 
 namespace RealEstate.API.Controllers

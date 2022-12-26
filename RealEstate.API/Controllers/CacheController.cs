@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealEstate.Data.Identity;
 using RealEstate.Data.Repository;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Estates;
 using StackExchange.Redis;
 

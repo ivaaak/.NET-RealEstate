@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Data.Identity;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Email;
+using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Misc;
 
 namespace RealEstate.API.Controllers
@@ -18,7 +19,7 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")] // api/auth/
     public class _SortingController : BaseController
     {
-        private readonly IEmailService _emailService;
+        //private readonly IEmailService _emailService;
 
         public _SortingController(
             RoleManager<IdentityRole> _roleManager,
@@ -44,7 +45,7 @@ namespace RealEstate.API.Controllers
         [Route("send")]
         public async Task<IActionResult> SendEmail(SendEmailRequest request)
         {
-            await _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
+            //await _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
             return Ok();
         }
     }

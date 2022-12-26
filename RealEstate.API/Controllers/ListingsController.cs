@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Data.Identity;
-using RealEstate.Microservices.Contracts;
+using RealEstate.Microservices.Listings;
+using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Listings;
 using RealEstate.Models.ViewModels.Listings;
 
