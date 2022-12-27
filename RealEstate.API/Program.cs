@@ -6,8 +6,9 @@ using RealEstate.CQRS;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddServicesFactory();
 builder.Services.Use_PostgreSQL_Context(builder.Configuration);
-//builder.Services.Add_MicrosoftSQL_Context(builder.Configuration);
+//builder.Services.Use_MicrosoftSQL_Context(builder.Configuration);
 builder.Services.AddAuth0Authentication(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddIdentityContext();
@@ -15,9 +16,9 @@ builder.Services.AddJWTAuthentication();
 //builder.Services.AddHangfire();
 builder.Services.AddHangfireWithPostgreSQLServer(builder.Configuration);
 builder.Services.AddModelBinders();
-builder.Services.AddApplicationServices();
 builder.Services.AddApiVersioningConfigured();
 builder.Services.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
+
 
 var app = builder.Build();
 
@@ -51,3 +52,13 @@ if (app.Environment.IsDevelopment())
 //var developmentFlag = app.Environment.IsDevelopment() ? app.UseMigrationsEndPoint() : app.UseExceptionHandler("/Home/Error");
 
 app.Run();
+
+
+
+/*
+TODO: optimise for Autofac DI 
+    builder.Host.UseServiceProviderFactory(new DependencyFactory());
+    // Type Registrations
+    builder.RegisterType<DependencyFactory>().As<IDependencyFactory>().SingleInstance();
+    builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new MyApplicationModule()));
+ */
