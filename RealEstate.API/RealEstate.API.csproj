@@ -12,11 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\.editorconfig" Link="Properties\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Auth0.AuthenticationApi" Version="7.17.4" />
+    <PackageReference Include="Autofac" Version="6.5.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="AWSSDK.S3" Version="3.7.101.42" />
     <PackageReference Include="Hangfire" Version="1.7.30" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.30" />
