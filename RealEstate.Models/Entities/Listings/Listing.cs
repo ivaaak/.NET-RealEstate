@@ -11,28 +11,25 @@ namespace RealEstate.Models.Entities.Listings
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public Estate Estate { get; set; }
 
         public int Price { get; set; }
 
         public double PricePerSquareMeter
         {
+            get { return PricePerSquareMeter; }
             set
             {
-                if (value > 0 && Estate != null)
-                {
-                    //value = Price / Property.SquareMeters;
-                }
+                if (value > 0 && Estate != null) { value = (double)(Price / Estate.Floor_Space_Square_Meters); }
             }
         }
 
-        public string? Title { get; set; }
-
-        public string? Description { get; set; }
+        public bool Is_From_An_Agency { get; set; }
 
         public string? ImageUrl { get; set; }
 
-        public int Year { get; set; }
 
         public bool IsPublic { get; set; }
 
@@ -40,13 +37,17 @@ namespace RealEstate.Models.Entities.Listings
 
         public DateTime DateListed { get; set; }
 
-        public int SquareMeters { get; set; }
+
 
         public Estate_Type Estate_Type { get; set; }
 
         public int CategoryId { get; set; }
 
         public Category? Category { get; init; }
+
+        public Address? Address { get; set; }
+
+        public ListingStats ListingStats { get; set; }
 
         public int EmployeeId { get; init; }
 

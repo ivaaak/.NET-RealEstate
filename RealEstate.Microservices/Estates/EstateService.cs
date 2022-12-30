@@ -49,7 +49,7 @@ namespace RealEstate.Microservices.Estates
                 City_Id = estate.City_Id,
                 City = estate.City,
                 Estate_Type_Id = estate.Estate_Type_Id,
-                Floor_Space = estate.Floor_Space,
+                Floor_Space = estate.Floor_Space_Square_Meters,
                 Number_Of_Balconies = estate.Number_Of_Balconies,
                 Balconies_Space = estate.Balconies_Space,
                 Number_Of_Bedrooms = estate.Number_Of_Bedrooms,
@@ -78,7 +78,7 @@ namespace RealEstate.Microservices.Estates
                 City_Id = e.City_Id,
                 City = e.City,
                 Estate_Type_Id = e.Estate_Type_Id,
-                Floor_Space = e.Floor_Space,
+                Floor_Space = e.Floor_Space_Square_Meters,
                 Number_Of_Balconies = e.Number_Of_Balconies,
                 Balconies_Space = e.Balconies_Space,
                 Number_Of_Bedrooms = e.Number_Of_Bedrooms,
@@ -111,7 +111,7 @@ namespace RealEstate.Microservices.Estates
                 estate.City_Id = model.City_Id;
                 estate.City = model.City;
                 estate.Estate_Type_Id = model.Estate_Type_Id;
-                estate.Floor_Space = model.Floor_Space;
+                estate.Floor_Space_Square_Meters = model.Floor_Space;
                 estate.Number_Of_Balconies = model.Number_Of_Balconies;
                 estate.Balconies_Space = model.Balconies_Space;
                 estate.Number_Of_Bedrooms = model.Number_Of_Bedrooms;
@@ -183,7 +183,7 @@ namespace RealEstate.Microservices.Estates
                 City_Id = e.City_Id,
                 City = e.City,
                 Estate_Type_Id = e.Estate_Type_Id,
-                Floor_Space = e.Floor_Space,
+                Floor_Space = e.Floor_Space_Square_Meters,
                 Number_Of_Balconies = e.Number_Of_Balconies,
                 Balconies_Space = e.Balconies_Space,
                 Number_Of_Bedrooms = e.Number_Of_Bedrooms,

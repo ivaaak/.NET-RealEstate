@@ -36,11 +36,9 @@ namespace RealEstate.Microservices.Listings
             return new ListingViewModel()
             {
                 Id = listing.Id,
-                Title = listing.Title,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
-                SquareMeters = listing.SquareMeters,
                 Description = listing.Description,
             };
         }
@@ -52,11 +50,11 @@ namespace RealEstate.Microservices.Listings
             .Select(listing => new ListingViewModel()
             {
                 Id = listing.Id,
-                Title = listing.Title,
+                Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
-                SquareMeters = listing.SquareMeters,
+                SquareMeters = listing.Estate.Floor_Space_Square_Meters,
                 Description = listing.Description,
             })
             .ToListAsync();
@@ -70,10 +68,10 @@ namespace RealEstate.Microservices.Listings
 
             if (listing != null)
             {
-                listing.Title = model.Title;
+                listing.Name = model.Name;
                 listing.ImageUrl = model.ImageUrl;
                 listing.IsPublic = model.IsPublic;
-                listing.SquareMeters = model.SquareMeters;
+                listing.Estate.Floor_Space_Square_Meters = model.SquareMeters;
                 listing.Description = model.Description;
 
                 await repo.SaveChangesAsync();
@@ -135,11 +133,11 @@ namespace RealEstate.Microservices.Listings
             return await query.Select(listing => new ListingViewModel()
             {
                 Id = listing.Id,
-                Title = listing.Title,
+                Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
-                SquareMeters = listing.SquareMeters,
+                SquareMeters = listing.Estate.Floor_Space_Square_Meters,
                 Description = listing.Description,
             }).ToListAsync();
         }
