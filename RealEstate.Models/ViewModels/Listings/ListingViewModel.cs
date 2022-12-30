@@ -7,7 +7,7 @@ namespace RealEstate.Models.ViewModels.Listings
     {
         public int Id { get; init; }
 
-        public string? Title { get; set; }
+        public string? Name { get; set; }
 
         public string? Description { get; set; }
 
@@ -21,7 +21,7 @@ namespace RealEstate.Models.ViewModels.Listings
 
         public DateTime DateListed { get; set; }
 
-        public int SquareMeters { get; set; }
+        public decimal SquareMeters { get; set; }
 
         public Estate_Type Estate_Type { get; set; }
 
