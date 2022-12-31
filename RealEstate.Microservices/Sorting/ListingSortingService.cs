@@ -3,7 +3,7 @@ using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Microservices.Sorting
 {
-    public class ListingSortingService
+    public class ListingSortingService : ISortingService
     {
         private readonly IApplicationDbRepository repo;
 
@@ -130,15 +130,15 @@ namespace RealEstate.Microservices.Sorting
         public List<Listing> SortBySquareMeters(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderBy(e => e.SquareMeters)
+                .OrderBy(e => e.Estate.Floor_Space_Square_Meters)
                 .ToList();
-
+            
             return sortedListings;
         }
         public List<Listing> SortBySquareMetersDescending(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderByDescending(e => e.SquareMeters)
+                .OrderByDescending(e => e.Estate.Floor_Space_Square_Meters)
                 .ToList();
 
             return sortedListings;
@@ -187,8 +187,8 @@ namespace RealEstate.Microservices.Sorting
         public List<Listing> SortByMultiple(List<Listing> listings)
         {
             var sortedListings = listings.OrderBy(e => e.Name)
-                           .ThenBy(e => e.SquareMeters)
-                           .ThenBy(e => e.Title)
+                           .ThenBy(e => e.Estate.Floor_Space_Square_Meters)
+                           .ThenBy(e => e.Name)
                            .ThenBy(e => e.Category)
                            .ThenBy(e => e.DateBuilt)
                            .ThenBy(e => e.DateListed)
@@ -196,7 +196,7 @@ namespace RealEstate.Microservices.Sorting
                            .ThenBy(e => e.Estate_Type)
                            .ThenBy(e => e.IsPublic)
                            .ThenBy(e => e.Price)
-                           .ThenBy(e => e.Year)
+                           .ThenBy(e => e.Estate.Estate_Year_Built)
                            .ToList();
 
             return sortedListings;

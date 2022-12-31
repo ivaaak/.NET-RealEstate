@@ -1,16 +1,11 @@
-﻿using RealEstate.Data.Repository;
-using RealEstate.Models.Entities.Estates;
+﻿using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.Microservices.Sorting
 {
-    public class EstateSortingService
+    public class EstateSortingService : ISortingService
     {
-        private readonly IApplicationDbRepository repo;
-
-        public EstateSortingService(IApplicationDbRepository _repo)
-        {
-            repo = _repo;
-        }
+        public EstateSortingService()
+        {}
 
 
         public List<Estate> SortById(List<Estate> estates)
@@ -73,7 +68,7 @@ namespace RealEstate.Microservices.Sorting
         public List<Estate> SortByFloorSpace(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Floor_Space)
+                .OrderBy(e => e.Floor_Space_Square_Meters)
                 .ToList();
 
             return sortedEstates;
@@ -81,7 +76,7 @@ namespace RealEstate.Microservices.Sorting
         public List<Estate> SortByFloorSpaceDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Floor_Space)
+                .OrderByDescending(e => e.Floor_Space_Square_Meters)
                 .ToList();
 
             return sortedEstates;
@@ -189,7 +184,7 @@ namespace RealEstate.Microservices.Sorting
             var sortedEstates = estates.OrderBy(e => e.Estate_Name)
                            .ThenBy(e => e.City.City_Name)
                            .ThenBy(e => e.Id)
-                           .ThenBy(e => e.Floor_Space)
+                           .ThenBy(e => e.Floor_Space_Square_Meters)
                            .ThenBy(e => e.Number_Of_Balconies)
                            .ThenBy(e => e.Number_Of_Bedrooms)
                            .ThenBy(e => e.Number_Of_Bathrooms)
