@@ -5,12 +5,8 @@ namespace RealEstate.Microservices.Sorting
 {
     public class ListingSortingService : ISortingService
     {
-        private readonly IApplicationDbRepository repo;
-
-        public ListingSortingService(IApplicationDbRepository _repo)
-        {
-            repo = _repo;
-        }
+        public ListingSortingService()
+        {}
 
 
         public List<Listing> SortById(List<Listing> listings)
