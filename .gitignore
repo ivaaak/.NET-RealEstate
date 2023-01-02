@@ -43,3 +43,8 @@
 
 /RealEstate.Crawler/obj/
 /RealEstate.Crawler/bin/
+
+/Microservices/bin
+/Microservices/obj
+/EstateService
+/ListingsService
