@@ -16,7 +16,10 @@
     <Folder Include="Accounts\" />
     <Folder Include="ContractsService\" />
     <Folder Include="ExternalAPI\" />
-    <Folder Include="Filtration\" />
+    <Folder Include="MortgageCalculator\" />
+    <Folder Include="Comparisons\" />
+    <Folder Include="Geolocation\" />
+    <Folder Include="ValueEstimates\" />
     <Folder Include="Recommendations\" />
     <Folder Include="Payments\" />
   </ItemGroup>
