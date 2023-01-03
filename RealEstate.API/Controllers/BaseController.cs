@@ -21,6 +21,13 @@ namespace RealEstate.API.Controllers
         private readonly IUserService service;
 
         private IMediator mediator;
+        
+        // Getters
+        public RoleManager<IdentityRole> GetRoleManager() => roleManager;
+        public UserManager<ApplicationUser> GetUserManager() => userManager;
+        public IUserService GetUserService() => service;
+        public IMediator GetMediator() => mediator;
+        public IMapper GetMapper() => mapper;
 
 
         public BaseController(
