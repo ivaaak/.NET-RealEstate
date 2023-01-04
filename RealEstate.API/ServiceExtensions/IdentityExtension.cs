@@ -18,7 +18,7 @@ namespace RealEstate.API.ServiceExtensions
                 options.SignIn.RequireConfirmedAccount = false;
             })
             .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<IdentityUsersDBContext>();
 
             return services;
         }

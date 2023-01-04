@@ -8,7 +8,7 @@ namespace RealEstate.Infrastructure.Data.Repository
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
        where TEntity : class, IDeletableEntity
     {
-        public EfDeletableEntityRepository(ApplicationDbContext context)
+        public EfDeletableEntityRepository(_CombinedContext context)
             : base(context)
         {
         }
