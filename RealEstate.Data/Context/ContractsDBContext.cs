@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Identity;
+﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Models.Entities.Contracts;
 
 namespace RealEstate.Data.Context
 {
-    public class ContractsDBContext : IdentityDbContext<ApplicationUser>
+    public class ContractsDBContext : DbContext
     {
         public ContractsDBContext(DbContextOptions<ContractsDBContext> options)
             : base(options) { }

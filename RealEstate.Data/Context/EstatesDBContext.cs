@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Identity;
+﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.Data.Context
 {
-    public class EstatesDBContext : IdentityDbContext<ApplicationUser>
+    public class EstatesDBContext : DbContext
     {
         public EstatesDBContext(DbContextOptions<EstatesDBContext> options)
             : base(options) { }
@@ -21,6 +19,8 @@ namespace RealEstate.Data.Context
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<City> Cities { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

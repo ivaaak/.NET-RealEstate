@@ -1,19 +1,24 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Identity;
+﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Data.Context
 {
-    public class ListingsDBContext : IdentityDbContext<ApplicationUser>
+    public class ListingsDBContext : DbContext
     {
         public ListingsDBContext(DbContextOptions<ListingsDBContext> options)
             : base(options) { }
 
-        public DbSet<Employee> Employees { get; set; }
-
         public DbSet<Listing> Listings { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Agency> Agencies { get; set; }
+        public DbSet<Agent> Agents { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<ListingStats> ListingStats { get; set; }
+        public DbSet<PriceHistory> PriceHistories { get; set; }
+        public DbSet<Review> Review { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
