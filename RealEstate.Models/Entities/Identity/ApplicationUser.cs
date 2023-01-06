@@ -2,7 +2,7 @@
 using RealEstate.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Data.Identity
+namespace RealEstate.Models.Entities.Identity
 {
     public class ApplicationUser : IdentityUser, IDeletableEntity
     {
