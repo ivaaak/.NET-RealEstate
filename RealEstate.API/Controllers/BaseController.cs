@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Data.Identity;
 using RealEstate.Microservices.Users;
+using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.API.Controllers
 {

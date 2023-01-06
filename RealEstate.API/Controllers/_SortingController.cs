@@ -3,10 +3,9 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Data.Identity;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Users;
+using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Misc;
 
 namespace RealEstate.API.Controllers

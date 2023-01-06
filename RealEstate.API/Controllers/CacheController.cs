@@ -3,11 +3,11 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Data.Identity;
 using RealEstate.Data.Repository;
 using RealEstate.Infrastructure.Filters;
 using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.Entities.Identity;
 using StackExchange.Redis;
 
 namespace RealEstate.API.Controllers
