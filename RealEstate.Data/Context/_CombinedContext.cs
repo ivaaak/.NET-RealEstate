@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Identity;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;
 using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Data.Context
 {
-    
+
     public class _CombinedContext : IdentityDbContext<ApplicationUser>
     {
         public _CombinedContext(DbContextOptions<_CombinedContext> options)

@@ -1,4 +1,4 @@
-﻿using RealEstate.Data.Identity;
+﻿using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.ViewModels.Clients;
 
 namespace RealEstate.Microservices.Users

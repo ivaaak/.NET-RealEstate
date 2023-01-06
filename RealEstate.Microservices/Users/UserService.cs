@@ -1,17 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
-using RealEstate.CQRS.Commands.Create;
-using RealEstate.CQRS.Commands.Delete;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.CQRS.Queries;
-using RealEstate.Data.Identity;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Clients;
-using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.ViewModels.Clients;
-using RealEstate.Models.ViewModels.Estates;
 using RealEstate.Models.ViewModels.Search;
-using System.Data.Entity;
 using System.Security.Cryptography;
 using System.Text;
 

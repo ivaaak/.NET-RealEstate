@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Extensions;
-using RealEstate.Data.Identity;
 using RealEstate.Models.Entities.Clients;
+using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.Data.Context
 {
