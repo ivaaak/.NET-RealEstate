@@ -4,7 +4,7 @@ using System.Net;
 
 namespace RealEstate.Crawler
 {
-    public class ImotBGCrawler
+    public class ImotBGScraper
     {
         private string html;
 

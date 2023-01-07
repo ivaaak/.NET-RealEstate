@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using RealEstate.CQRS.BehaviorModels.ResponseModels;
 using RealEstate.CQRS.Commands.Update;
-using RealEstate.Data.Identity;
 using RealEstate.Data.Repository;
+using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.CQRS.Handlers.Update
 {
