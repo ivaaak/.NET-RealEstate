@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity;
 using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;

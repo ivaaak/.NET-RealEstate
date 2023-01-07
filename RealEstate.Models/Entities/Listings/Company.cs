@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using RealEstate.Models.Entities.BaseEntityModel;
+﻿using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Estates;
 
 namespace RealEstate.Models.Entities.Listings
 {
-    public class Company : IdentityUser, IDeletableEntity
+    public class Company : IDeletableEntity
     {
         public Company() : base()
         {

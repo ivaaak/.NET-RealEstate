@@ -1,6 +1,23 @@
-﻿namespace RealEstate.Models.Entities.Listings
+﻿using RealEstate.Models.Entities.BaseEntityModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace RealEstate.Models.Entities.Listings
 {
-    internal class Comment
+    public class Comment : IDeletableEntity
     {
+        [Key]
+        public string Comment_Id { get; init; }
+
+        public string Comment_Title { get; set; }
+
+        public string Comment_Content { get; set; }
+
+        public string Comment_Rating { get; set; }
+
+        public DateTime Date_Posted { get; set; }
+
+
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }
