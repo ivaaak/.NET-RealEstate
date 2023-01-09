@@ -30,7 +30,7 @@ namespace RealEstate.CQRS.Commands
 
         public virtual bool IsValid()
         {
-            var validation = new EstateCommandValidation();
+            var validation = new EstateValidation();
             validation.ValidateID();
             validation.ValidateTitle();
 
