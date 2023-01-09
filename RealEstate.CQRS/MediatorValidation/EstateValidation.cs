@@ -3,7 +3,7 @@ using RealEstate.CQRS.Commands;
 
 namespace RealEstate.Core.Validators
 {
-    public class EstateCommandValidation : AbstractValidator<EstateCommand>
+    public class EstateValidation : AbstractValidator<EstateCommand>
     {
         public void ValidateID()
         {
