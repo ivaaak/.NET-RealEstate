@@ -3,8 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using RealEstate.API.ServiceExtensions;
 using RealEstate.CQRS;
+using RealEstate.Data.Context;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<_CombinedContext>()
+    .AddDbContext<ClientsDBContext>()
+    .AddDbContext<ContractsDBContext>()
+    .AddDbContext<EstatesDBContext>()
+    .AddDbContext<IdentityUsersDBContext>()
+    .AddDbContext<ListingsDBContext>();
 
 builder.Services
     .AddServicesFactory()
