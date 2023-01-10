@@ -1,0 +1,17 @@
+﻿using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore;
+using RealEstate.Data.Context;
+
+namespace RealEstate.API.FactoryPattern
+{
+    public class ListingsDbContextFactory : IDesignTimeDbContextFactory<ListingsDBContext>
+    {
+        public ListingsDBContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ListingsDBContext>();
+            optionsBuilder.UseNpgsql("Data Source=blog.db");
+
+            return new ListingsDBContext(optionsBuilder.Options);
+        }
+    }
+}
