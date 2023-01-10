@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using RealEstate.API.FactoryPattern;
 using RealEstate.Core.Configurations;
 
 namespace RealEstate.API.ServiceExtensions
@@ -16,7 +17,7 @@ namespace RealEstate.API.ServiceExtensions
             Task configureTasks = ConfigureContainerAsync(environment);
 
             // Type Registrations
-            builder.RegisterType<DependencyFactory>()
+            builder.RegisterType<_DependencyFactory>()
                 .As<IDependencyFactory>()
                 .SingleInstance();
 

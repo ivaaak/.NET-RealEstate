@@ -10,13 +10,13 @@ using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
 using RealEstate.Microservices.Users;
 
-namespace RealEstate.API
+namespace RealEstate.API.FactoryPattern
 {
-    internal sealed class DependencyFactory : IDependencyFactory
+    internal sealed class _DependencyFactory : IDependencyFactory
     {
         private Dictionary<Type, object> dependencyMap;
 
-        public DependencyFactory(
+        public _DependencyFactory(
             IAccountClient accountClient,
             IAuth0AuthenticationService auth0AuthenticationService,
             ICacheService cacheService,
