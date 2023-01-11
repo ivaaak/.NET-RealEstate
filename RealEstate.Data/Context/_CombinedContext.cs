@@ -50,7 +50,14 @@ namespace RealEstate.Data.Context
         public DbSet<Review> Review { get; set; }
 
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder
+                    .UseNpgsql("");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,5 +65,4 @@ namespace RealEstate.Data.Context
         }
     }
     // Comment this class out when creating migrations or updating db so nothing is generated twice
-    
 }
