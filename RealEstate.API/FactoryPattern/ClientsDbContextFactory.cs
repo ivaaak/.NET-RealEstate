@@ -9,7 +9,7 @@ namespace RealEstate.API.FactoryPattern
         public ClientsDBContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ClientsDBContext>();
-            optionsBuilder.UseNpgsql("Data Source=blog.db");
+            optionsBuilder.UseNpgsql("");
 
             return new ClientsDBContext(optionsBuilder.Options);
         }
