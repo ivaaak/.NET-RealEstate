@@ -15,6 +15,7 @@ namespace RealEstate.Models.Entities.Listings
         public string Comment_Rating { get; set; }
 
         public DateTime Date_Posted { get; set; }
+        public Listing Listing { get; set; }
 
 
         public bool IsDeleted { get; set; }

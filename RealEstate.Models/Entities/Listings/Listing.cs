@@ -30,7 +30,7 @@ namespace RealEstate.Models.Entities.Listings
 
         public string? ImageUrl { get; set; }
 
-
+        public List<Comment> Comments { get; set; }
         public bool IsPublic { get; set; }
 
         public DateTime DateBuilt { get; set; }
@@ -52,8 +52,16 @@ namespace RealEstate.Models.Entities.Listings
         public int EmployeeId { get; init; }
 
         public Employee? Employee { get; init; }
+        public string AgentId { get; set; }
+        public string ListingId { get; set; }
+        public Agent Agent { get; set; }
+        public PriceHistory PriceHistory { get; set; } 
+        public List<PriceHistory> PriceHistories { get; set; } 
+        public List<Review> Reviews { get; set; } 
+
 
         public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        
     }
 }

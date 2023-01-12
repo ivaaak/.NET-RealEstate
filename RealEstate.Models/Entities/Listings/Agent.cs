@@ -31,6 +31,9 @@ namespace RealEstate.Models.Entities.Listings
 
         public IEnumerable<Contract> Contracts { get; set; }
 
+        public Agency Agency { get; set; }
+        public List<Listing> Listings { get; set; }
+
 
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }

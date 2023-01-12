@@ -19,5 +19,8 @@ namespace RealEstate.Models.Entities.Listings
 
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
+        public string ListingId { get; set; }
+        public string ReviewId { get; set; }
+        public Listing Listing { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 {
     public class PriceHistory
     {
+        public string Id { get; set; }
         // price changes saved as a touple of the date and price
         public Dictionary<DateTime, double> PriceHistoryTouples { get; set; }
 
@@ -16,5 +17,6 @@
         
         // <date - number of times viewed>
         public Dictionary<DateTime, int> ViewsHistoryTouples { get; set; }
+        public Listing Listing { get; set; }
     }
 }
