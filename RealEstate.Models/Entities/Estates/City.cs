@@ -13,6 +13,7 @@ namespace RealEstate.Models.Entities.Estates
 
         [ForeignKey("Country_Id")]
         public int Country_Id { get; init; }
+        public Country Country { get; init; }
 
         public IEnumerable<Estate> Estates { get; init; }
 
