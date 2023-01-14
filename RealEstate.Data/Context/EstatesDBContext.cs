@@ -39,8 +39,49 @@ namespace RealEstate.Data.Context
                 .HasForeignKey(cl => cl.City_Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //TODO add more relations
+            modelBuilder
+                .Entity<City>()
+                .HasOne(c => c.Country)
+                .WithMany(cl => cl.Cities)
+                .HasForeignKey(c => c.Country_Id)
+                .OnDelete(DeleteBehavior.Restrict);
 
+
+            modelBuilder.Entity<Category>()
+                .HasKey(t => new { t.Id });
+            /*
+                        modelBuilder.Entity<Category>()
+                            .HasOne(pt => pt.Estate)
+                            .WithMany(p => p.Categories)
+                            .HasForeignKey(pt => pt.EstateId);
+
+                        modelBuilder.Entity<Category>()
+                            .HasOne(pt => pt.Estate)
+                            .WithMany(t => t.Estates)
+                            .HasForeignKey(pt => pt.CategoryId);
+
+
+                        modelBuilder.Entity<Estate>()
+                            .HasOne(e => e.Address)
+                            .WithMany(i => i.)
+                            .HasForeignKey<In_Charge>(i => i.EstateId);
+
+
+                        modelBuilder
+                            .Entity<Estate>()
+                            .HasOne(e => e.Estate_Type)
+                            .WithMany(cl => cl.Estates)
+                            .HasForeignKey(e => e.EstateTypeId)
+                            .OnDelete(DeleteBehavior.Restrict);
+
+                        modelBuilder
+                            .Entity<Estate>()
+                            .HasOne(e => e.Estate_Status_Id)
+                            .WithMany(cl => cl.Estates)
+                            .HasForeignKey(e => e.EstateStatusId)
+                            .OnDelete(DeleteBehavior.Restrict);
+
+            */
             base.OnModelCreating(modelBuilder);
         }
     }
