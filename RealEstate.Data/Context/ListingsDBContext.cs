@@ -39,6 +39,56 @@ namespace RealEstate.Data.Context
                .HasForeignKey<Estate>(es => es.Listing)
                .OnDelete(DeleteBehavior.Restrict);
 
+            // GPT
+            modelBuilder
+                .Entity<Agent>()
+                .HasOne(a => a.Agency)
+                .WithMany(ag => ag.Agents)
+                .HasForeignKey(a => a.Agency.Name)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<Comment>()
+                .HasOne(c => c.Listing)
+                .WithMany(l => l.Comments)
+                .HasForeignKey(c => c.Comment_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<PriceHistory>()
+                .HasOne(ph => ph.Listing)
+                .WithMany(l => l.PriceHistories)
+                .HasForeignKey(ph => ph.Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Review>()
+                .HasKey(t => new { t.ListingId, t.ReviewId });
+
+            modelBuilder.Entity<Review>()
+                .HasOne(pt => pt.Listing)
+                .WithMany(p => p.Reviews)
+                .HasForeignKey(pt => pt.ListingId);
+
+            modelBuilder.Entity<Review>()
+                .HasOne(pt => pt.Listing)
+                .WithMany(t => t.Reviews)
+                .HasForeignKey(pt => pt.ReviewId);
+
+
+            modelBuilder.Entity<Listing>()
+                .HasKey(t => new { t.AgentId, t.ListingId });
+
+            modelBuilder.Entity<Listing>()
+                .HasOne(pt => pt.Agent)
+                .WithMany(p => p.Listings)
+                .HasForeignKey(pt => pt.AgentId);
+            /*
+            modelBuilder.Entity<Listing>()
+                .HasOne(pt => pt.Estate)
+                .WithMany(t => t.)
+                .HasForeignKey(pt => pt.ListingId);
+            */
+
             base.OnModelCreating(modelBuilder);
         }
     }
