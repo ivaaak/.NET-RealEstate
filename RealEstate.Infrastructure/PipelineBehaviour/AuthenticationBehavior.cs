@@ -30,8 +30,7 @@ namespace RealEstate.Infrastructure.Authentication
 
 
         public async Task<object> Handle(IRequest request,
-        CancellationToken cancellationToken,
-        RequestHandlerDelegate<object> next)
+        RequestHandlerDelegate<object> next, CancellationToken cancellationToken)
         {
             var user = _httpContextAccessor.HttpContext.User;
 
