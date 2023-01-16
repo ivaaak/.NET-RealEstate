@@ -29,14 +29,15 @@ namespace RealEstate.Infrastructure.Authentication
         }
 
 
-        public async Task<object> Handle(IRequest request,
-        RequestHandlerDelegate<object> next, CancellationToken cancellationToken)
+        public async Task<TResponse> Handle(TRequest request, 
+            RequestHandlerDelegate<TResponse> next, 
+            CancellationToken cancellationToken)
         {
             var user = _httpContextAccessor.HttpContext.User;
 
             if (!user.Identity.IsAuthenticated || 
                 !user.IsInRole("admin") || 
-                !IsAuthorized(request))
+                !IsAuthorized((IRequest)request))
             {
                 throw new UnauthorizedAccessException();
             }
