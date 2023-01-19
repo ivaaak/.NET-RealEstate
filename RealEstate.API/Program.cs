@@ -3,16 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using RealEstate.API.ServiceExtensions;
 using RealEstate.CQRS;
-using RealEstate.Data.Context;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddDbContext<_CombinedContext>()
-    .AddDbContext<ClientsDBContext>()
-    .AddDbContext<ContractsDBContext>()
-    .AddDbContext<EstatesDBContext>()
-    .AddDbContext<IdentityUsersDBContext>()
-    .AddDbContext<ListingsDBContext>();
 
 builder.Services
     .AddServicesFactory()
@@ -66,7 +58,7 @@ app.Run();
 
 
 /*
-TODO: optimise for Autofac DI 
+TODO: optimise for Autofac DI ?
     builder.Host.UseServiceProviderFactory(new DependencyFactory());
     // Type Registrations
     builder.RegisterType<DependencyFactory>().As<IDependencyFactory>().SingleInstance();

@@ -5,7 +5,7 @@ namespace RealEstate.API.ServiceExtensions
 {
     public class EnvironmentConfig
     {
-        public const string ENVIRONMENT_VARIABLE_NAME = "MY_APP_ENV";
+        public const string ENVIRONMENT_VARIABLE_NAME = "Development";
 
         // Values defined in the json file for each environment
         public MyEnvironment Environment { get; set; }
