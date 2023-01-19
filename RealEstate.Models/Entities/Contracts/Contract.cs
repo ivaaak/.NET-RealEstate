@@ -8,13 +8,13 @@ namespace RealEstate.Models.Entities.Contracts
     public class Contract : IDeletableEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [ForeignKey("Client_Id")]
-        public int Client_Id { get; set; }
+        public string Client_Id { get; set; }
         public Client Client { get; set; }
 
-        public int Employee_Id { get; set; }
+        public string Employee_Id { get; set; }
 
         public int Contract_Type_Id { get; set; }
 

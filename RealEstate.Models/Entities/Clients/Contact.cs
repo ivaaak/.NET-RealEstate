@@ -1,4 +1,5 @@
 ﻿using RealEstate.Models.Entities.BaseEntityModel;
+using RealEstate.Models.Entities.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,10 +8,10 @@ namespace RealEstate.Models.Entities.Clients
     public class Contact : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; init; }
 
-        [ForeignKey("Client_Id")]
-        public int Client_Id { get; init; }
+        [ForeignKey("ApplicationUserId")]
+        public string ApplicationUserId { get; init; }
 
         public int Employee_Id { get; init; }
 
@@ -21,6 +22,9 @@ namespace RealEstate.Models.Entities.Clients
         public string Contact_Details { get; init; }
 
         public Client Client { get; init; }
+        public string Client_Id { get; init; }
+        public ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUser_Id { get; set; }
 
 
 

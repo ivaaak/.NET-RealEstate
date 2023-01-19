@@ -2,9 +2,9 @@
 {
     public class ListingFilter
     {
-        public int? Id { get; set; }
+        public string? Id { get; set; }
         public string? Name { get; set; }
-        public int? Estate_Id { get; set; }
+        public string? Estate_Id { get; set; }
         public int? Price { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }

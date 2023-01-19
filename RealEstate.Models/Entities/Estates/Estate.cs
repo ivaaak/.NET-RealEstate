@@ -9,7 +9,7 @@ namespace RealEstate.Models.Entities.Estates
     //TODO: add properties/attributes
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; init; }
 
         [Required]
         [StringLength(100)]
@@ -37,6 +37,7 @@ namespace RealEstate.Models.Entities.Estates
         public int? Bulding_Floors { get; set; }
         public Address Address { get; set; }
         public Listing Listing { get; set; }
+        public string Listing_Id { get; set; }
         public Estate_Type Estate_Type { get; set; }
 
         public bool IsDeleted { get; set; }

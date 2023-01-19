@@ -20,6 +20,8 @@ namespace RealEstate.Models.Entities.Estates
 
         public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public object Estate { get; set; }
+        public Estate Estate { get; set; }
+        public int Estate_Id { get; set; }
+
     }
 }

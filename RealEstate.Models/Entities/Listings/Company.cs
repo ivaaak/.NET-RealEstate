@@ -1,5 +1,6 @@
 ﻿using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Estates;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Models.Entities.Listings
 {
@@ -13,6 +14,9 @@ namespace RealEstate.Models.Entities.Listings
 
             Employees = new List<Employee>();
         }
+
+        [Key]
+        public string Company_Id { get; init; }
 
         public string Company_Name { get; init; }
 

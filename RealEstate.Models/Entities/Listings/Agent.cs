@@ -2,13 +2,13 @@
 using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Models.Entities.Listings
 {
     public class Agent : IdentityUser, IDeletableEntity
     {
-        [ForeignKey("Agent_Id")]
+        [Key]
         public string Agent_Id { get; init; }
 
         public string Agent_Name { get; set; }

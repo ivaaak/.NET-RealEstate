@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Estates;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Models.Entities.Listings
 {
@@ -12,6 +13,9 @@ namespace RealEstate.Models.Entities.Listings
 
             Estates = new List<Estate>();
         }
+
+        [Key]
+        public string Employee_Id { get; init; }
 
         public string First_Name { get; init; }
 

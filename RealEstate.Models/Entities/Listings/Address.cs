@@ -1,7 +1,11 @@
-﻿namespace RealEstate.Models.Entities.Listings
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RealEstate.Models.Entities.Listings
 {
     public class Address
     {
+        [Key]
+        public string Address_Id { get; set; }
 
         public string? City { get; set; }
 

@@ -1,7 +1,12 @@
-﻿namespace RealEstate.Models.Entities.Listings
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RealEstate.Models.Entities.Listings
 {
     public class ListingStats
     {
+        [Key]
+        public int ListingStats_Id { get; set; }
+
         public int TimesViewed { get; set; }
 
         public int TimesSaved { get; set; }

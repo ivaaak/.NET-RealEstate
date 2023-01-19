@@ -1,19 +1,22 @@
 ﻿using RealEstate.Models.Entities.BaseEntityModel;
 using RealEstate.Models.Entities.Estates;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Models.Entities.Listings
 {
     public class Listing : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Listing_Id { get; init; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public Estate Estate { get; set; }
+
+        public string Estate_Id { get; set; }
 
         public int Price { get; set; }
 
@@ -52,10 +55,11 @@ namespace RealEstate.Models.Entities.Listings
         public int EmployeeId { get; init; }
 
         public Employee? Employee { get; init; }
-        public string AgentId { get; set; }
-        public string ListingId { get; set; }
+        public string Agent_Id { get; set; }
         public Agent Agent { get; set; }
-        public PriceHistory PriceHistory { get; set; } 
+        public PriceHistory PriceHistory { get; set; }
+
+        [NotMapped]
         public List<PriceHistory> PriceHistories { get; set; } 
         public List<Review> Reviews { get; set; } 
 
