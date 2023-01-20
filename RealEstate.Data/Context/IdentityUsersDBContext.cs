@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Extensions;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Identity;
 
@@ -26,22 +25,22 @@ namespace RealEstate.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // This just needs to be called once on application startup
-            EnvironmentConfigInData.LoadFromEnvironmentVariable();
-
-            // Fetch config from connectionStrings.json
-            var identityPostgreConnectionString = EnvironmentConfigInData.Current.PostgreIdentityConnection;
 
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseNpgsql(identityPostgreConnectionString);
+                    .UseNpgsql("Host=127.0.0.1;Database=IdentityUsers;Username=postgres;Password=admin");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
+            
+            modelBuilder.Entity<Contact>()
+                .HasOne(c => c.Client)
+                .WithOne(cl => cl.Contact)
+                .HasForeignKey<Contact>(c => c.ApplicationUserId);
 
 
             base.OnModelCreating(modelBuilder);
