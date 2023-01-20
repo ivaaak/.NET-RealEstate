@@ -1,0 +1,7 @@
+Add-Migration InitialCreate -Context _CombinedContext -OutputDir Migrations.Combined
+
+Add-Migration InitialCreate -Context ClientsDBContext -OutputDir Migrations/ClientsDB
+Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Migrations/ContractsDB
+Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Migrations/EstatesDB
+Add-Migration InitialCreate -Context IdentityUsersDBContext -OutputDir Migrations/IdentityUsersDB
+Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Migrations/ListingsDB
