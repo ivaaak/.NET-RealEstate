@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Estates;
+using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Data.Context
 {
@@ -25,13 +27,6 @@ namespace RealEstate.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Estate>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Estate_Status>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Estate_Type>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<In_Charge>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Country>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<City>().HasIndex(c => c.Id).IsUnique();
-
             modelBuilder
                 .Entity<Estate>()
                 .HasOne(cl => cl.City)
@@ -46,42 +41,38 @@ namespace RealEstate.Data.Context
                 .HasForeignKey(c => c.Country_Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             modelBuilder.Entity<Category>()
                 .HasKey(t => new { t.Id });
-            /*
-                        modelBuilder.Entity<Category>()
-                            .HasOne(pt => pt.Estate)
-                            .WithMany(p => p.Categories)
-                            .HasForeignKey(pt => pt.EstateId);
 
-                        modelBuilder.Entity<Category>()
-                            .HasOne(pt => pt.Estate)
-                            .WithMany(t => t.Estates)
-                            .HasForeignKey(pt => pt.CategoryId);
+            modelBuilder.Entity<PriceHistory>()
+                .Ignore(ph => ph.OffersHistoryTouples);
 
 
-                        modelBuilder.Entity<Estate>()
-                            .HasOne(e => e.Address)
-                            .WithMany(i => i.)
-                            .HasForeignKey<In_Charge>(i => i.EstateId);
+            modelBuilder
+                .Entity<Contact>()
+                .HasOne(cl => cl.Client)
+                .WithOne(c => c.Contact)
+                .HasForeignKey<Client>(cl => cl.Client_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+               .Entity<Client>()
+               .HasOne(c => c.Contact)
+               .WithOne(cl => cl.Client)
+               .HasForeignKey<Contact>(cl => cl.Contact_Details)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
+
+            modelBuilder
+               .Entity<Listing>()
+               .HasOne(c => c.Estate)
+               .WithOne(cl => cl.Listing)
+               .HasForeignKey<Estate>(cl => cl.Listing_Id)
+               .OnDelete(DeleteBehavior.Restrict);
 
 
-                        modelBuilder
-                            .Entity<Estate>()
-                            .HasOne(e => e.Estate_Type)
-                            .WithMany(cl => cl.Estates)
-                            .HasForeignKey(e => e.EstateTypeId)
-                            .OnDelete(DeleteBehavior.Restrict);
-
-                        modelBuilder
-                            .Entity<Estate>()
-                            .HasOne(e => e.Estate_Status_Id)
-                            .WithMany(cl => cl.Estates)
-                            .HasForeignKey(e => e.EstateStatusId)
-                            .OnDelete(DeleteBehavior.Restrict);
-
-            */
             base.OnModelCreating(modelBuilder);
         }
     }
