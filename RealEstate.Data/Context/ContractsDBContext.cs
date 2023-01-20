@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;
 
 namespace RealEstate.Data.Context
@@ -33,15 +34,10 @@ namespace RealEstate.Data.Context
                 .HasForeignKey(cl => cl.Client_Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //TODO add more relations
-            /*
-            modelBuilder
-               .Entity<Client>()
-               .HasOne(c => c.Contracts)
-               .WithMany(cl => cl.)
-               .HasForeignKey<Contact>(cl => cl.Contact_Details)
-               .OnDelete(DeleteBehavior.Restrict);
-            */
+            modelBuilder.Entity<Client>()
+                .HasOne(cl => cl.Contact)
+                .WithOne(c => c.Client)
+                .HasForeignKey<Contact>(c => c.Client_Id);
 
             base.OnModelCreating(modelBuilder);
         }
