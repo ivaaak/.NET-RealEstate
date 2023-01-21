@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 
@@ -23,7 +24,7 @@ namespace RealEstate.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Listing>().HasIndex(li => li.Id).IsUnique();
+            modelBuilder.Entity<Listing>().HasIndex(li => li.Listing_Id).IsUnique();
 
             modelBuilder
                 .Entity<Employee>()
@@ -36,7 +37,7 @@ namespace RealEstate.Data.Context
                .Entity<Listing>()
                .HasOne(li => li.Estate)
                .WithOne(es => es.Listing)
-               .HasForeignKey<Estate>(es => es.Listing)
+               .HasForeignKey<Estate>(es => es.Listing_Id)
                .OnDelete(DeleteBehavior.Restrict);
 
             // GPT
@@ -44,50 +45,63 @@ namespace RealEstate.Data.Context
                 .Entity<Agent>()
                 .HasOne(a => a.Agency)
                 .WithMany(ag => ag.Agents)
-                .HasForeignKey(a => a.Agency.Name)
+                .HasForeignKey(a => a.Agent_Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder
-                .Entity<Comment>()
-                .HasOne(c => c.Listing)
-                .WithMany(l => l.Comments)
-                .HasForeignKey(c => c.Comment_Id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Entity<PriceHistory>()
-                .HasOne(ph => ph.Listing)
-                .WithMany(l => l.PriceHistories)
-                .HasForeignKey(ph => ph.Id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Review>()
-                .HasKey(t => new { t.ListingId, t.ReviewId });
 
             modelBuilder.Entity<Review>()
                 .HasOne(pt => pt.Listing)
                 .WithMany(p => p.Reviews)
-                .HasForeignKey(pt => pt.ListingId);
+                .HasForeignKey(pt => pt.Listing_Id);
 
             modelBuilder.Entity<Review>()
                 .HasOne(pt => pt.Listing)
                 .WithMany(t => t.Reviews)
-                .HasForeignKey(pt => pt.ReviewId);
+                .HasForeignKey(pt => pt.Review_Id);
 
 
             modelBuilder.Entity<Listing>()
-                .HasKey(t => new { t.AgentId, t.ListingId });
+                .HasKey(t => new { t.Agent_Id, t.Listing_Id });
 
             modelBuilder.Entity<Listing>()
                 .HasOne(pt => pt.Agent)
                 .WithMany(p => p.Listings)
-                .HasForeignKey(pt => pt.AgentId);
-            /*
+                .HasForeignKey(pt => pt.Agent_Id);
+
+            modelBuilder
+                .Entity<Contact>()
+                .HasOne(cl => cl.Client)
+                .WithOne(c => c.Contact)
+                .HasForeignKey<Client>(cl => cl.Client_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+               .Entity<Client>()
+               .HasOne(c => c.Contact)
+               .WithOne(cl => cl.Client)
+               .HasForeignKey<Contact>(cl => cl.Contact_Details)
+               .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Listing>()
-                .HasOne(pt => pt.Estate)
-                .WithMany(t => t.)
-                .HasForeignKey(pt => pt.ListingId);
-            */
+                .HasOne(l => l.PriceHistory)
+                .WithOne(ph => ph.Listing)
+                .HasForeignKey<PriceHistory>(ph => ph.Listing_Id);
+
+            modelBuilder.Entity<Listing>()
+                .HasMany(l => l.Reviews)
+                .WithOne(r => r.Listing)
+                .HasForeignKey(r => new { r.Listing_Id, r.Review_Id });
+
+
+            modelBuilder.Entity<Listing>()
+                .HasOne(l => l.Estate)
+                .WithOne(e => e.Listing)
+                .HasForeignKey<Estate>(e => e.Estate_Status_Id);
+
+            modelBuilder.Entity<Estate>()
+                .HasOne(l => l.Listing)
+                .WithOne(e => e.Estate)
+                .HasForeignKey<Estate>(e => e.Listing_Id);
 
             base.OnModelCreating(modelBuilder);
         }
