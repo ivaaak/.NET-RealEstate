@@ -12,7 +12,7 @@ namespace RealEstate.Microservices.Sorting
         public List<Listing> SortById(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderBy(e => e.Id)
+                .OrderBy(e => e.Listing_Id)
                 .ToList();
 
             return sortedListings;
@@ -20,7 +20,7 @@ namespace RealEstate.Microservices.Sorting
         public List<Listing> SortByIdDescending(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderByDescending(e => e.Id)
+                .OrderByDescending(e => e.Listing_Id)
                 .ToList();
 
             return sortedListings;

@@ -35,7 +35,7 @@ namespace RealEstate.Microservices.Listings
 
             return new ListingViewModel()
             {
-                Id = listing.Id,
+                Id = listing.Listing_Id,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
@@ -49,7 +49,7 @@ namespace RealEstate.Microservices.Listings
             return await repo.All<Listing>()
             .Select(listing => new ListingViewModel()
             {
-                Id = listing.Id,
+                Id = listing.Listing_Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
@@ -132,7 +132,7 @@ namespace RealEstate.Microservices.Listings
             // Execute the query and return the matching listings as a list of ListingViewModel objects
             return await query.Select(listing => new ListingViewModel()
             {
-                Id = listing.Id,
+                Id = listing.Listing_Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,

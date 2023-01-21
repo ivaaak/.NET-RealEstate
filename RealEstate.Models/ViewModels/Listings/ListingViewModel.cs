@@ -5,7 +5,7 @@ namespace RealEstate.Models.ViewModels.Listings
 {
     public class ListingViewModel
     {
-        public int Id { get; init; }
+        public string Id { get; init; }
 
         public string? Name { get; set; }
 

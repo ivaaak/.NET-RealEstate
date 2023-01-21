@@ -10,9 +10,9 @@ namespace RealEstate.Microservices.Filtration
         {
             var query = listings;
 
-            if (filter.Estate_Id.HasValue)
+            if (filter.Estate_Id.Any())
             {
-                query = query.Where(x => x.Estate.Id == filter.Estate_Id.Value);
+                query = query.Where(x => x.Estate.Id == filter.Estate_Id);
             }
 
             if (filter.CategoryId.HasValue)

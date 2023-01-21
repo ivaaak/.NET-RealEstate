@@ -1,13 +1,11 @@
 ﻿using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Models.ViewModels.Estates
 {
     public class EstateViewModel
     {
-        public int Id { get; init; }
+        public string Id { get; init; }
 
         public string? Estate_Name { get; set; }
 
