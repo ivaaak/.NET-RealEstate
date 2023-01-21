@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "RealEstate.Data": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "env": "Development",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
