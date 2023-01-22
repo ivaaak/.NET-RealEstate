@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.WEB", "RealEstat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Scraper", "RealEstate.Crawler\RealEstate.Scraper.csproj", "{559ABD58-72A1-4736-B5D2-A3FB04B41FB3}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{362781B5-4C34-45B9-93E2-57F4C55BD4F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{559ABD58-72A1-4736-B5D2-A3FB04B41FB3}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{559ABD58-72A1-4736-B5D2-A3FB04B41FB3}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{559ABD58-72A1-4736-B5D2-A3FB04B41FB3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
