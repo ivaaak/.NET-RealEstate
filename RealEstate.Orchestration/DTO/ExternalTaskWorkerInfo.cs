@@ -7,6 +7,6 @@
         public Type Type { get; set; }
         public string TopicName { get; set; }
         public List<string> VariablesToFetch { get; set; }
-        public IExternalTaskAdapter TaskAdapter { get; set; }
+        //public IExternalTaskAdapter TaskAdapter { get; set; }
     }
 }

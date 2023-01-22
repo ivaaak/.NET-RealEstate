@@ -15,3 +15,4 @@
 
         public override string ToString() => $"ExternalTask [Id={Id}, ActivityId={ActivityId}]";
     }
+}

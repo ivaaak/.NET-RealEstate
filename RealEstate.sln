@@ -12,6 +12,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.CQRS", "RealEstate.CQRS\RealEstate.CQRS.csproj", "{12D64D1B-5D69-405E-90A4-9DF28AB4BAF2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.API", "RealEstate.Api\RealEstate.API.csproj", "{E4162B42-C98F-488E-9A35-1DC6DC3893B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A9C13D30-7966-4401-9FB9-D199A780DEF0} = {A9C13D30-7966-4401-9FB9-D199A780DEF0}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Data", "RealEstate.Data\RealEstate.Data.csproj", "{A9C13D30-7966-4401-9FB9-D199A780DEF0}"
 EndProject
