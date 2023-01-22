@@ -1,27 +1,31 @@
 using Hangfire;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 using RealEstate.API.ServiceExtensions;
-using RealEstate.CQRS;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 builder.Services
-    .AddServicesFactory()
-    .Use_PostgreSQL_Context(builder.Configuration)
-    .AddAuth0Authentication(builder.Configuration)
-    .AddAutoMapper()
     .AddIdentityContext()
     .AddJWTAuthentication()
-    .AddHangfireWithPostgreSQLServer(builder.Configuration)
-    .AddModelBinders()
+    .AddAuth0Authentication(builder.Configuration)
     .AddApiVersioningConfigured()
-    .AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
+    .AddOcelot(builder.Configuration);
+    //.AddServicesFactory()
+    //.Use_PostgreSQL_Context(builder.Configuration)
+    //.AddAutoMapper()
+    //.AddHangfireWithPostgreSQLServer(builder.Configuration)
+    //.AddModelBinders()
+    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
     //.Use_MicrosoftSQL_Context(builder.Configuration);
     //.AddHangfire();
 
 var app = builder.Build();
 
+await app.UseOcelot();
 // App routing
 app.UseHttpsRedirection()
     .UseStaticFiles()
@@ -29,17 +33,15 @@ app.UseHttpsRedirection()
     .UseAuthentication()
     .UseAuthorization()
     .UseHangfireDashboard();
-
+/*
 app.MapControllers();
 app.MapControllerRoute(name: "Area", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(name: "default",pattern: "{controller=Home}/{action=Index}/{id?}");
-
+*/
+/*
 if (app.Environment.IsDevelopment())
 {
-    // Enable middleware to serve the generated OpenAPI definition as JSON files.
     app.UseSwagger();
-
-    // Enable middleware to serve Swagger-UI (HTML, JS, CSS, etc.) by specifying the Swagger JSON endpoint(s).
     var descriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
     app.UseSwagger(options =>
     {
@@ -50,11 +52,8 @@ if (app.Environment.IsDevelopment())
         }
     });
 }
-
-//var developmentFlag = app.Environment.IsDevelopment() ? app.UseMigrationsEndPoint() : app.UseExceptionHandler("/Home/Error");
-
+*/
 app.Run();
-
 
 
 /*
