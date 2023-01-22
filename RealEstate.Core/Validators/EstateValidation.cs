@@ -8,7 +8,7 @@ namespace RealEstate.Core.Validators
         public void ValidateID()
         {
             RuleFor(p => p.Id)
-                .GreaterThan(0).WithMessage("The ID must be greater than zero");
+                .NotEmpty().WithMessage("The ID must be greater than zero");
         }
 
         public void ValidateTitle()
