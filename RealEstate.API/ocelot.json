@@ -1,0 +1,36 @@
+﻿{
+  "Routes": [
+    // Estate Web API
+    {
+      "UpstreamPathTemplate": "/api/estate/create",
+      "UpstreamHttpMethod": [ "Post" ],
+
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi", //add this to dockerfile and dockercompose
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/estate/create"
+    },
+    {
+      "UpstreamPathTemplate": "/api/estate/getall",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/estate/getall"
+    },
+    // Listings Web API
+    {
+
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:800"
+  }
+}
