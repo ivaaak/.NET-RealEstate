@@ -1,5 +1,13 @@
 version: '3.4'
 
+
+networks:
+  backend:
+    driver: bridge
+  frontend: 
+    driver: bridge
+
+
 services:
   realestate.api:
     container_name: api-gateway
@@ -13,8 +21,8 @@ services:
       - backend, frontend 
 
 # ESTATE MICROSERVICE
-  estateWebAPI:
-    container_name: estate-api
+  estate-webapi:
+    container_name: estate-webapi
     image: ${DOCKER_REGISTRY-}estateWebAPI
     build:
       context: .
@@ -26,7 +34,7 @@ services:
       - DB_NAME=estates
       - DB_ROOT_PASSWORD=admin
   
-  estateDB:
+  estate-db:
     container_name: estate-db
     image: postgres:14.1-alpine
     restart: always
@@ -37,12 +45,12 @@ services:
       - '5432:5432'
 
 # LISTING MICROSERVICE
-  listingWebAPI:
-    container_name: listing-api
+  listing-webapi:
+    container_name: listing-webapi
     image: ${DOCKER_REGISTRY-}listingWebAPI
     build:
       context: .
-      dockerfile: RealEstate.Api/Dockerfile #fix dir
+      dockerfile: RealEstate.API/Dockerfile #fix dir
     networks: 
       - backend 
     environment: 
@@ -50,8 +58,8 @@ services:
       - DB_NAME=listings
       - DB_ROOT_PASSWORD=admin
   
-  listingsDB:
-    container_name: listings-db
+  listing-db:
+    container_name: listing-db
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -59,3 +67,6 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - '5432:5432'
+
+
+
