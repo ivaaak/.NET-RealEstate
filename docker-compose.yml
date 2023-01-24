@@ -23,7 +23,7 @@ services:
 # ESTATE MICROSERVICE
   estates-webapi:
     container_name: estates-webapi
-    image: ${DOCKER_REGISTRY-}estateWebAPI
+    image: ${DOCKER_REGISTRY-}estateswebapi
     build:
       context: .
       dockerfile: RealEstate.Api/Dockerfile #fix dir
@@ -47,7 +47,7 @@ services:
 # LISTING MICROSERVICE
   listings-webapi:
     container_name: listings-webapi
-    image: ${DOCKER_REGISTRY-}listingWebAPI
+    image: ${DOCKER_REGISTRY-}listingswebapi
     build:
       context: .
       dockerfile: RealEstate.API/Dockerfile #fix dir
@@ -71,7 +71,7 @@ services:
 # CLIENTS MICROSERVICE
   clients-webapi:
     container_name: clients-webapi
-    image: ${DOCKER_REGISTRY-}clientsWebAPI
+    image: ${DOCKER_REGISTRY-}clientswebapi
     build:
       context: .
       dockerfile: RealEstate.API/Dockerfile #fix dir
@@ -92,3 +92,26 @@ services:
     ports:
       - '5432:5432'
 
+# CONTRACTS MICROSERVICE
+  contracts-webapi:
+    container_name: contracts-webapi
+    image: ${DOCKER_REGISTRY-}contractswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    environment: 
+      - DB_HOST=contractsdb
+      - DB_NAME=contracts
+      - DB_ROOT_PASSWORD=admin
+  
+  contracts-db:
+    container_name: contracts-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
