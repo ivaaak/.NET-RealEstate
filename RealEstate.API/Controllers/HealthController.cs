@@ -53,7 +53,7 @@ namespace RealEstate.API.Controllers
         {
             try
             {
-                using (var dbConnection = new MySqlConnection(PostgreSQLConnectionString))
+                using (var dbConnection = new NpgsqlConnection(PostgreSQLConnectionString))
                 {
                     dbConnection.Open();
                     dbConnection.Close();
