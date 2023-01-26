@@ -3,10 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Authentication;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Auth0;
-using RealEstate.Microservices.Users;
-using RealEstate.Models.Entities.AuthUser;
 using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.API.Controllers
@@ -39,7 +37,7 @@ namespace RealEstate.API.Controllers
         /// Gets information about the authenticated user.
         /// </summary>
         /// <param name="accessToken">The access token obtained during the authentication process.</param>
-        /// <returns>An <see cref="Auth0User"/> object containing information about the authenticated user.</returns> 
+        /// <returns>An <see cref="ApplicationUser"/> object containing information about the authenticated user.</returns> 
         [HttpGet]
         [Route("getuser")]
         public async Task<IActionResult> GetUserInfo(string accessToken)

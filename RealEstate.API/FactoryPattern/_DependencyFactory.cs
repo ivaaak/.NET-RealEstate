@@ -1,6 +1,6 @@
 ﻿using Algolia.Search.Clients;
+using RealEstate.API.Authentication;
 using RealEstate.Core.Guards;
-using RealEstate.Microservices.Auth0;
 using RealEstate.Microservices.Cache;
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
@@ -8,7 +8,6 @@ using RealEstate.Microservices.FileUpload;
 using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
-using RealEstate.Microservices.Users;
 
 namespace RealEstate.API.FactoryPattern
 {
