@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using RealEstate.API.Authentication;
 using RealEstate.API.Controllers;
-using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.Test.Controllers
