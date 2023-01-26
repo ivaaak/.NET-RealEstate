@@ -1,5 +1,5 @@
-﻿using RealEstate.Data.Repository;
-using RealEstate.Microservices.Auth0;
+﻿using RealEstate.API.Authentication;
+using RealEstate.Data.Repository;
 using RealEstate.Microservices.Cache;
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
@@ -8,7 +8,6 @@ using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Notification;
 using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
-using RealEstate.Microservices.Users;
 
 namespace RealEstate.API.ServiceExtensions
 {

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using RealEstate.API.Authentication;
+using System.Text;
 
 namespace RealEstate.API.ServiceExtensions
 {
@@ -16,14 +18,18 @@ namespace RealEstate.API.ServiceExtensions
             {
                 options.Authority = "https://localhost:5001";
                 options.Audience = "https://localhost:5001/resources";
+                options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateAudience = false
+                    ValidateAudience = false,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = false,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JWTAuthService.JWT_SECURITY_KEY))
                 };
-
+                /*
                 options.Events = new JwtBearerEvents
                 {
-                    /*
+                    
                     OnRedirectToIdentityProviderForSignOut = context =>
                     {
                         // Set the appropriate parameters on the context object
@@ -32,8 +38,8 @@ namespace RealEstate.API.ServiceExtensions
 
                         return Task.CompletedTask;
                     }
-                    */
-                };
+                    
+                };*/
             });
 
             return services;
