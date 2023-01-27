@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
 using System.Text;
 
 namespace RealEstate.API.ServiceExtensions
@@ -27,6 +28,19 @@ namespace RealEstate.API.ServiceExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JWTAuthService.JWT_SECURITY_KEY))
                 };
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddJWTAuthService(this IServiceCollection services)
+        {
+            services.AddSingleton<IJWTAuthService, JWTAuthService>();
+
+            return services;
+        }
+        public static IServiceCollection AddUserService(this IServiceCollection services)
+        {
+            services.AddSingleton<IUserService, UserService>();
 
             return services;
         }

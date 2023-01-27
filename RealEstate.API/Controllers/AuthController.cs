@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Infrastructure.Filters;
 using RealEstate.Models.Entities.Identity;
 
@@ -17,7 +17,7 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")] // api/auth/
     public class AuthController : BaseController
     {
-        private readonly IAuth0AuthenticationService authService;
+        private readonly IAuth0Service authService;
 
         public AuthController(
             RoleManager<IdentityRole> _roleManager,
@@ -25,7 +25,7 @@ namespace RealEstate.API.Controllers
             IUserService _service,
             IMediator _mediator,
             IMapper _mapper,
-            IAuth0AuthenticationService _authService)
+            IAuth0Service _authService)
             : base(_roleManager, _userManager, _service, _mediator, _mapper)
         {
             authService = _authService;
