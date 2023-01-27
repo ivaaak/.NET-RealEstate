@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.CQRS.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Clients;

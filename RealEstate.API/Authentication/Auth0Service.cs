@@ -1,16 +1,17 @@
-﻿using RealEstate.Microservices.Serializer;
+﻿using RealEstate.API.Authentication.Contracts;
+using RealEstate.Microservices.Serializer;
 using RealEstate.Models.Entities.Identity;
 using System.Net.Http.Headers;
 
 namespace RealEstate.API.Authentication
 {
-    public class Auth0AuthenticationService : IAuth0AuthenticationService
+    public class Auth0Service : IAuth0Service
     {
         private readonly IHttpClientFactory clientFactory;
         private readonly IConfiguration configuration;
         private readonly IJsonSerializer jsonSerializer;
 
-        public Auth0AuthenticationService(
+        public Auth0Service(
             IHttpClientFactory clientFactory,
             IConfiguration configuration,
             IJsonSerializer jsonSerializer)

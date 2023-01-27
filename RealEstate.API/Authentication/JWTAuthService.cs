@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Models.Entities.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace RealEstate.API.Authentication
 {
-    public class JWTAuthService
+    public class JWTAuthService : IJWTAuthService
     {
         public const string JWT_SECURITY_KEY = "yPkCqn4kSWLtaJwXvN2jGzpQRyTZ3gdXkt7FeBJP";
         
