@@ -1,34 +1,160 @@
 ﻿{
   "Routes": [
-    // Estate Web API
+// Estate Web API
     {
+      // Create
       "UpstreamPathTemplate": "/api/estate/create",
       "UpstreamHttpMethod": [ "Post" ],
 
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": { "Role": [ "Administrator", "Agent" ] },
+
+      "DownstreamPathTemplate": "/api/estate/create",
       "DownstreamHostAndPorts": [
         {
           "Host": "estateswebapi", //add this to dockerfile and dockercompose
           "Port": 80
         }
-      ],
-      "DownstreamPathTemplate": "/api/estate/create"
+      ]
     },
+    // Get all
     {
       "UpstreamPathTemplate": "/api/estate/getall",
       "UpstreamHttpMethod": [ "Get" ],
 
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+
+      "DownstreamPathTemplate": "/api/estate/getall",
       "DownstreamHostAndPorts": [
         {
           "Host": "estateswebapi",
           "Port": 80
         }
-      ],
-      "DownstreamPathTemplate": "/api/estate/getall"
+      ]
     },
-    // Listings Web API
+    // Get by ID
     {
+      "UpstreamPathTemplate": "/api/estate/getbyid/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
 
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+
+      "DownstreamPathTemplate": "/api/estate/getbyid/{id}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
+    },
+    // Update
+    {
+      "UpstreamPathTemplate": "/api/estate/update/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": { "Role": [ "Administrator", "Agent" ] },
+
+      "DownstreamPathTemplate": "/api/estate/update/{id}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
+    },
+    // Delete
+    {
+      "UpstreamPathTemplate": "/api/estate/delete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": { "Role": [ "Administrator", "Agent" ] },
+
+      "DownstreamPathTemplate": "/api/estate/delete/{id}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
+    },
+    // Hard Delete
+    {
+      "UpstreamPathTemplate": "/api/estate/harddelete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": { "Role": "Administrator" },
+
+      "DownstreamPathTemplate": "/api/estate/harddelete/{id}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
+    },
+    // Exists
+    {
+      "UpstreamPathTemplate": "api/estate/exists/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+
+      "DownstreamPathTemplate": "api/estate/exists/{id}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
+    },
+    // Search
+    {
+      "UpstreamPathTemplate": "/api/estate/search/{searchTerm}",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+
+      "DownstreamPathTemplate": "/api/estate/search/{searchTerm}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "estateswebapi",
+          "Port": 80
+        }
+      ]
     }
+// Listings Web API
+// Contracts Web API
+// Clients Web API
+// Messaging Web API
+// External API
+// Utilities Web API
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:800"
