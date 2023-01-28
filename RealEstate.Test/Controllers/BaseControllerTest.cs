@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
-using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
 using RealEstate.Models.Entities.Identity;
 using Xunit;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
 using RealEstate.Models.Entities.Identity;
 

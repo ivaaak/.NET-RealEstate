@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
 using RealEstate.Models.Entities.Identity;
 using Xunit;
@@ -10,13 +10,13 @@ namespace RealEstate.Test.Controllers
 {
     public class AuthControllerTests
     {
-        private Mock<IAuth0AuthenticationService> mockAuthService;
+        private Mock<IAuth0Service> mockAuthService;
         private AuthController controller;
 
         public AuthControllerTests()
         {
             // Set up mock dependencies
-            mockAuthService = new Mock<IAuth0AuthenticationService>();
+            mockAuthService = new Mock<IAuth0Service>();
 
             // Set up the controller
             controller = new AuthController(
