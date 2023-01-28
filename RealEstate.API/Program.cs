@@ -1,4 +1,3 @@
-using Hangfire;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using RealEstate.API.ServiceExtensions;
@@ -10,6 +9,8 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 
 builder.Services
     .AddIdentityContext()
+    .AddUserService()
+    .AddJWTAuthService()
     .AddJWTAuthentication()
     .AddAuth0Authentication(builder.Configuration)
     .AddApiVersioningConfigured()
@@ -31,8 +32,28 @@ app.UseHttpsRedirection()
     .UseStaticFiles()
     .UseRouting()
     .UseAuthentication()
-    .UseAuthorization()
-    .UseHangfireDashboard();
+    .UseAuthorization();
+    //.UseHangfireDashboard();
+
+app.Run();
+
+
+
+
+
+
+
+
+
+
+/*
+TODO: optimise for Autofac DI ?
+    builder.Host.UseServiceProviderFactory(new DependencyFactory());
+    // Type Registrations
+    builder.RegisterType<DependencyFactory>().As<IDependencyFactory>().SingleInstance();
+    builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new MyApplicationModule()));
+ */
+
 /*
 app.MapControllers();
 app.MapControllerRoute(name: "Area", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
@@ -53,13 +74,3 @@ if (app.Environment.IsDevelopment())
     });
 }
 */
-app.Run();
-
-
-/*
-TODO: optimise for Autofac DI ?
-    builder.Host.UseServiceProviderFactory(new DependencyFactory());
-    // Type Registrations
-    builder.RegisterType<DependencyFactory>().As<IDependencyFactory>().SingleInstance();
-    builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new MyApplicationModule()));
- */
