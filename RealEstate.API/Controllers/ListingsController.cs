@@ -137,7 +137,7 @@ namespace RealEstate.API.Controllers
         }
 
 
-        // HARD DELETE: api/listing/darddelete/5
+        // HARD DELETE: api/listing/harddelete/5
         /// <summary>
         /// Deletes an listing.
         /// </summary>
