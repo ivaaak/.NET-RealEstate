@@ -3,10 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Infrastructure.Filters;
-using RealEstate.Microservices.Auth0;
-using RealEstate.Microservices.Users;
-using RealEstate.Models.Entities.AuthUser;
 using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.API.Controllers
@@ -19,7 +17,7 @@ namespace RealEstate.API.Controllers
     [Route("api/[controller]")] // api/auth/
     public class AuthController : BaseController
     {
-        private readonly IAuth0AuthenticationService authService;
+        private readonly IAuth0Service authService;
 
         public AuthController(
             RoleManager<IdentityRole> _roleManager,
@@ -27,7 +25,7 @@ namespace RealEstate.API.Controllers
             IUserService _service,
             IMediator _mediator,
             IMapper _mapper,
-            IAuth0AuthenticationService _authService)
+            IAuth0Service _authService)
             : base(_roleManager, _userManager, _service, _mediator, _mapper)
         {
             authService = _authService;
@@ -39,7 +37,7 @@ namespace RealEstate.API.Controllers
         /// Gets information about the authenticated user.
         /// </summary>
         /// <param name="accessToken">The access token obtained during the authentication process.</param>
-        /// <returns>An <see cref="Auth0User"/> object containing information about the authenticated user.</returns> 
+        /// <returns>An <see cref="ApplicationUser"/> object containing information about the authenticated user.</returns> 
         [HttpGet]
         [Route("getuser")]
         public async Task<IActionResult> GetUserInfo(string accessToken)

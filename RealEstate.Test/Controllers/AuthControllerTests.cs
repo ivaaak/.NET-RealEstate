@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
-using RealEstate.Microservices.Auth0;
-using RealEstate.Models.Entities.AuthUser;
+using RealEstate.Models.Entities.Identity;
 using Xunit;
 
 namespace RealEstate.Test.Controllers
 {
     public class AuthControllerTests
     {
-        private Mock<IAuth0AuthenticationService> mockAuthService;
+        private Mock<IAuth0Service> mockAuthService;
         private AuthController controller;
 
         public AuthControllerTests()
         {
             // Set up mock dependencies
-            mockAuthService = new Mock<IAuth0AuthenticationService>();
+            mockAuthService = new Mock<IAuth0Service>();
 
             // Set up the controller
             controller = new AuthController(
@@ -34,14 +34,14 @@ namespace RealEstate.Test.Controllers
             // Set up the mock service
             mockAuthService
                 .Setup(x => x.GetUserInfo(It.IsAny<string>()))
-                .ReturnsAsync(new Auth0User());
+                .ReturnsAsync(new ApplicationUser());
 
             // Call the action method
             var result = await controller.GetUserInfo("access_token");
 
             // Verify the result
             Assert.IsAssignableFrom(typeof(OkObjectResult), result);
-            Assert.IsAssignableFrom(typeof(Auth0User), ((OkObjectResult)result).Value);
+            Assert.IsAssignableFrom(typeof(ApplicationUser), ((OkObjectResult)result).Value);
         }
 
         [Fact]

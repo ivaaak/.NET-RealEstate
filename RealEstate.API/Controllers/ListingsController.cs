@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Microservices.Listings;
-using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Listings;
 using RealEstate.Models.ViewModels.Listings;
@@ -137,7 +137,7 @@ namespace RealEstate.API.Controllers
         }
 
 
-        // HARD DELETE: api/listing/darddelete/5
+        // HARD DELETE: api/listing/harddelete/5
         /// <summary>
         /// Deletes an listing.
         /// </summary>

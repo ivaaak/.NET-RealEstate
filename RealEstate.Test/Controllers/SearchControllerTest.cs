@@ -184,6 +184,6 @@ namespace RealEstate.Test.Controllers
             // Assert
             Assert.AreEqual(expectedName, ((IEnumerable<Estate>)result.Value).First().Estate_Name);
         }
-
+// ADD CORS
     }
 }

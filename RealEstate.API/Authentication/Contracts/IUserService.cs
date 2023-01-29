@@ -1,12 +1,15 @@
 ﻿using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.ViewModels.Clients;
 
-namespace RealEstate.Microservices.Users
+namespace RealEstate.API.Authentication.Contracts
 {
     public interface IUserService
     {
         // GET BY ID
         Task<ApplicationUser> GetUserById(string id);
+
+        // GET BY NAME AND PASSWORD
+        Task<ApplicationUser> GetUserByUsernameAndPassword(string username, string password);
 
         // GET ALL
         Task<IEnumerable<ClientViewModel>> GetUsers();

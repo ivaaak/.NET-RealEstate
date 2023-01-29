@@ -1,18 +1,18 @@
-﻿using RealEstate.Models.Entities.AuthUser;
+﻿using RealEstate.Models.Entities.Identity;
 
-namespace RealEstate.Microservices.Auth0
+namespace RealEstate.API.Authentication.Contracts
 {
     /// <summary>
     /// Provides methods for authenticating users with Auth0.
     /// </summary>
-    public interface IAuth0AuthenticationService
+    public interface IAuth0Service
     {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
         /// <param name="accessToken">The access token obtained during the authentication process.</param>
-        /// <returns>An <see cref="Auth0User"/> object containing information about the authenticated user.</returns>
-        Task<Auth0User> GetUserInfo(string accessToken);
+        /// <returns>An <see cref="ApplicationUser"/> object containing information about the authenticated user.</returns>
+        Task<ApplicationUser> GetUserInfo(string accessToken);
 
         /// <summary>
         /// Gets an access token using an authorization code.

@@ -1,0 +1,136 @@
+version: '3.4'
+
+
+networks:
+  backend:
+    driver: bridge
+  frontend: 
+    driver: bridge
+
+
+services:
+  realestate.api:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}realestateapi
+    build:
+      context: .
+      dockerfile: RealEstate.Api/Dockerfile
+    ports:
+      - 8001:80
+    networks: 
+      - backend, frontend 
+
+# ESTATE MICROSERVICE
+  estates-webapi:
+    container_name: estates-webapi
+    image: ${DOCKER_REGISTRY-}estateswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.Api/Dockerfile #fix dir
+    networks: 
+      - backend 
+    environment: 
+      - DB_HOST=estatedb
+      - DB_NAME=estates
+      - DB_ROOT_PASSWORD=admin
+  
+  estates-db:
+    container_name: estates-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+# LISTING MICROSERVICE
+  listings-webapi:
+    container_name: listings-webapi
+    image: ${DOCKER_REGISTRY-}listingswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    environment: 
+      - DB_HOST=listingdb
+      - DB_NAME=listings
+      - DB_ROOT_PASSWORD=admin
+  
+  listings-db:
+    container_name: listings-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+# CLIENTS MICROSERVICE
+  clients-webapi:
+    container_name: clients-webapi
+    image: ${DOCKER_REGISTRY-}clientswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    environment: 
+      - DB_HOST=clientsdb
+      - DB_NAME=clients
+      - DB_ROOT_PASSWORD=admin
+  
+  clients-db:
+    container_name: clients-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+# CONTRACTS MICROSERVICE
+  contracts-webapi:
+    container_name: contracts-webapi
+    image: ${DOCKER_REGISTRY-}contractswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    environment: 
+      - DB_HOST=contractsdb
+      - DB_NAME=contracts
+      - DB_ROOT_PASSWORD=admin
+  
+  contracts-db:
+    container_name: contracts-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+# IDENTITY DB
+  identity-db:
+    container_name: identity-db
+    image: postgres:14.1-alpine
+    restart: always
+    networks:
+      - backend
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+
+# SEARCH/FILTER MICROSERVICE
+# EMAIL/NOTIFICATION MICROSERVICE
+# PAYMENTS MICROSERVICE
+# USERS/IDENTITY MS

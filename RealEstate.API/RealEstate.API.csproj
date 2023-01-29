@@ -12,6 +12,7 @@
 	<PlatformTarget>AnyCPU</PlatformTarget>
 	<BaseOutputPath>D:\PROJECTS\.NET-RealEstate\RealEstate.Api\obj\</BaseOutputPath>
 	<BaseIntermediateOutputPath>D:\PROJECTS\.NET-RealEstate\RealEstate.Api\obj\</BaseIntermediateOutputPath>
+	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
@@ -53,6 +54,7 @@
     <PackageReference Include="MySql.Data" Version="8.0.31" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="Ocelot" Version="18.0.0" />
     <PackageReference Include="Stripe.net" Version="41.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />

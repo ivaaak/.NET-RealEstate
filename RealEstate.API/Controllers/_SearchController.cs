@@ -2,8 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.CQRS.Queries;
-using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Identity;
 

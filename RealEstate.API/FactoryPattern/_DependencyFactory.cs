@@ -1,6 +1,6 @@
 ﻿using Algolia.Search.Clients;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Core.Guards;
-using RealEstate.Microservices.Auth0;
 using RealEstate.Microservices.Cache;
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
@@ -8,7 +8,6 @@ using RealEstate.Microservices.FileUpload;
 using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
-using RealEstate.Microservices.Users;
 
 namespace RealEstate.API.FactoryPattern
 {
@@ -18,7 +17,7 @@ namespace RealEstate.API.FactoryPattern
 
         public _DependencyFactory(
             IAccountClient accountClient,
-            IAuth0AuthenticationService auth0AuthenticationService,
+            IAuth0Service auth0AuthenticationService,
             ICacheService cacheService,
             IEmailService emailService,
             IEstateService estateService,
@@ -42,7 +41,7 @@ namespace RealEstate.API.FactoryPattern
             dependencyMap = new Dictionary<Type, object>();
 
             dependencyMap[typeof(IAccountClient)] = accountClient;
-            dependencyMap[typeof(IAuth0AuthenticationService)] = auth0AuthenticationService;
+            dependencyMap[typeof(IAuth0Service)] = auth0AuthenticationService;
             dependencyMap[typeof(ICacheService)] = cacheService;
             dependencyMap[typeof(IEmailService)] = emailService;
             dependencyMap[typeof(IEstateService)] = estateService;

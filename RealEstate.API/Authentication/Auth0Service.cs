@@ -1,17 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using RealEstate.API.Authentication.Contracts;
 using RealEstate.Microservices.Serializer;
-using RealEstate.Models.Entities.AuthUser;
+using RealEstate.Models.Entities.Identity;
 using System.Net.Http.Headers;
 
-namespace RealEstate.Microservices.Auth0
+namespace RealEstate.API.Authentication
 {
-    public class Auth0AuthenticationService : IAuth0AuthenticationService
+    public class Auth0Service : IAuth0Service
     {
         private readonly IHttpClientFactory clientFactory;
         private readonly IConfiguration configuration;
         private readonly IJsonSerializer jsonSerializer;
 
-        public Auth0AuthenticationService(
+        public Auth0Service(
             IHttpClientFactory clientFactory,
             IConfiguration configuration,
             IJsonSerializer jsonSerializer)
@@ -23,7 +23,7 @@ namespace RealEstate.Microservices.Auth0
 
 
         // GET USER INFO
-        public async Task<Auth0User> GetUserInfo(string accessToken)
+        public async Task<ApplicationUser> GetUserInfo(string accessToken)
         {
             var client = clientFactory.CreateClient();
             var domain = configuration["Auth0:Domain"];
@@ -39,9 +39,9 @@ namespace RealEstate.Microservices.Auth0
                 throw new Exception("Failed to retrieve user info");
             }
 
-            // Deserialize the response into an Auth0User object
+            // Deserialize the response into an ApplicationUser object
             var responseContent = await response.Content.ReadAsStringAsync();
-            var user = jsonSerializer.Deserialize<Auth0User>(responseContent);
+            var user = jsonSerializer.Deserialize<ApplicationUser>(responseContent);
             return user;
         }
 

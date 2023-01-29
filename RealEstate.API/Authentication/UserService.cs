@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.CQRS.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Clients;
@@ -9,7 +10,7 @@ using RealEstate.Models.ViewModels.Search;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RealEstate.Microservices.Users
+namespace RealEstate.API.Authentication
 {
     public class UserService : IUserService
     {
@@ -29,6 +30,15 @@ namespace RealEstate.Microservices.Users
         public async Task<ApplicationUser> GetUserById(string id)
         {
             return await repo.GetByIdAsync<ApplicationUser>(id);
+        }
+
+        // GET BY USERNAME AND PASSWORD
+        public async Task<ApplicationUser> GetUserByUsernameAndPassword(string username, string password)
+        {
+            return await repo
+                .All<ApplicationUser>()
+                .Where(x => x.UserName == username && x.PasswordHash == password)
+                .FirstOrDefaultAsync();
         }
 
         // GET FOR EDIT

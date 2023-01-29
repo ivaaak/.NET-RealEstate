@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Microservices.Estates;
-using RealEstate.Microservices.Users;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.ViewModels.Estates;
@@ -171,7 +171,7 @@ namespace RealEstate.API.Controllers
         ///
         /// </remarks>
         /// <returns> exists - boolean </returns>
-        [HttpDelete("{id}")]
+        [HttpGet("{id}")]
         [Route("exists/{id}")]
         public bool RealEstateExists(int id)
         {
@@ -189,12 +189,12 @@ namespace RealEstate.API.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     Put /api/estate/exists/5
+        ///     Put /api/estate/search/{searchTerm}
         ///
         /// </remarks>
         /// <returns> collection of estate objects </returns>
-        [HttpDelete("{id}")]
-        [Route("search/{id}")]
+        [HttpGet("{searchTerm}")]
+        [Route("search/{searchTerm}")]
         public IEnumerable<EstateViewModel> Search(string searchTerm)
         {
             var result = estateService.SearchEstates(searchTerm).Result;

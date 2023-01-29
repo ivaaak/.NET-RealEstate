@@ -1,5 +1,6 @@
-﻿using RealEstate.Data.Repository;
-using RealEstate.Microservices.Auth0;
+﻿using RealEstate.API.Authentication;
+using RealEstate.API.Authentication.Contracts;
+using RealEstate.Data.Repository;
 using RealEstate.Microservices.Cache;
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
@@ -8,7 +9,6 @@ using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Notification;
 using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
-using RealEstate.Microservices.Users;
 
 namespace RealEstate.API.ServiceExtensions
 {
@@ -19,7 +19,7 @@ namespace RealEstate.API.ServiceExtensions
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IAuth0AuthenticationService, Auth0AuthenticationService>();
+            services.AddTransient<IAuth0Service, Auth0Service>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<IEstateService, EstateService>();
             services.AddTransient<IFileUploadService, FileUploadService>();

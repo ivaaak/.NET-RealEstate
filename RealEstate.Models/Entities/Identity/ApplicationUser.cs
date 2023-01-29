@@ -14,6 +14,7 @@ namespace RealEstate.Models.Entities.Identity
         [StringLength(50)]
         public string? LastName { get; set; }
 
+        public string? Role { get; set;  }
 
         public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

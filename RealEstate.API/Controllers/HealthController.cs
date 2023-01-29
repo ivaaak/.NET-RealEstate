@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
-using RealEstate.Microservices.Users;
+using RealEstate.API.Authentication.Contracts;
 using RealEstate.Models.Entities.Identity;
 using StackExchange.Redis;
 using System.Net;
