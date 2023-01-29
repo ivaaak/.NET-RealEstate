@@ -147,7 +147,14 @@
           "Host": "estates-webapi",
           "Port": 80
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "60s",
+        "PeriodTimespan": 60,
+        "Limit": 100
+      }
     },
 
 
@@ -298,7 +305,14 @@
           "Host": "listings-webapi",
           "Port": 80
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "60s",
+        "PeriodTimespan": 60,
+        "Limit": 100
+      }
     }
     // Contracts Web API
     // Clients Web API
