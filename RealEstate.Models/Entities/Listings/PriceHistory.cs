@@ -25,8 +25,9 @@ namespace RealEstate.Models.Entities.Listings
         [NotMapped]
         public Dictionary<DateTime, int> ViewsHistoryTouples { get; set; }
 
+        [ForeignKey(nameof(Listing_Id))]
         public Listing Listing { get; set; }
-        public int Listing_Id { get; set; }
+        public string Listing_Id { get; set; }
 
     }
 }
