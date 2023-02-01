@@ -72,6 +72,13 @@ namespace RealEstate.Data.Context
                .HasForeignKey<Estate>(cl => cl.Listing_Id)
                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder
+               .Entity<Listing>()
+               .HasOne(c => c.PriceHistory)
+               .WithOne(cl => cl.Listing)
+               .HasForeignKey<PriceHistory>(cl => cl.Listing_Id)
+               .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(modelBuilder);
         }
