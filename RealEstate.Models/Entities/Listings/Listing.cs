@@ -53,8 +53,8 @@ namespace RealEstate.Models.Entities.Listings
         public ListingStats ListingStats { get; set; }
 
         public int EmployeeId { get; init; }
-
         public Employee? Employee { get; init; }
+
         public string Agent_Id { get; set; }
         public Agent Agent { get; set; }
         public PriceHistory PriceHistory { get; set; }
@@ -64,8 +64,7 @@ namespace RealEstate.Models.Entities.Listings
         public List<Review> Reviews { get; set; } 
 
 
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }
