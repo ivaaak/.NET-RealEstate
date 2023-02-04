@@ -1,12 +1,12 @@
 ﻿using MediatR;
-using RealEstate.CQRS.Queries;
 using RealEstate.Data.Repository;
+using RealEstate.MediatR.Queries;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.ViewModels.Estates;
 
-namespace RealEstate.CQRS.Handlers.Query
+namespace RealEstate.MediatR.Handlers.Query
 {
-    public class GetEstateListHandler : IRequestHandler<GetEstateListQuery, List<EstateViewModel>>
+    public class GetEstateListHandler : IRequestHandler<GetEstateListQuery, List<EstateDTO>>
     {
         private readonly IApplicationDbRepository repo;
 
@@ -15,11 +15,11 @@ namespace RealEstate.CQRS.Handlers.Query
             repo = _repo;
         }
 
-        public async Task<List<EstateViewModel>> Handle(GetEstateListQuery request, CancellationToken cancellationToken)
+        public async Task<List<EstateDTO>> Handle(GetEstateListQuery request, CancellationToken cancellationToken)
         {
             return await Task.FromResult(
                repo.All<Estate>()
-                   .Select(p => new EstateViewModel
+                   .Select(p => new EstateDTO
                    {
                        Id = p.Id,
                        //AUTOMAPPER

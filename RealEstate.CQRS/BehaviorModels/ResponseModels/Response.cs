@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace RealEstate.CQRS.BehaviorModels.ResponseModels
+namespace RealEstate.MediatR.BehaviorModels.ResponseModels
 {
     public class Response
     {

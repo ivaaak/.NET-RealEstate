@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace RealEstate.CQRS.BehaviorModels.RequestModels
+﻿namespace RealEstate.MediatR.BehaviorModels.RequestModels
 {
     public class Request
     {

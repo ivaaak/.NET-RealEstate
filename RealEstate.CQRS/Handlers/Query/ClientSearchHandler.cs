@@ -2,15 +2,15 @@
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.CQRS.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Infrastructure.LookupModels;
+using RealEstate.MediatR.Queries;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.ViewModels.Search;
 
-namespace RealEstate.CQRS.Handlers.Query
+namespace RealEstate.MediatR.Handlers.Query
 {
-    public class ClientSearchHandler : IRequestHandler<CombinedSearchQuery, SearchViewModel>
+    public class ClientSearchHandler : IRequestHandler<CombinedSearchQuery, SearchDTO>
     {
         private readonly IDeletableEntityRepository<Client> clientsRepository;
         private readonly IMapper mapper;
@@ -23,7 +23,7 @@ namespace RealEstate.CQRS.Handlers.Query
             this.mapper = mapper;
         }
 
-        public async Task<SearchViewModel> Handle(CombinedSearchQuery request, CancellationToken cancellationToken)
+        public async Task<SearchDTO> Handle(CombinedSearchQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -34,17 +34,17 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var queryNormalized = request.Query.ToLower();
 
-            var clients = await this.clientsRepository
+            var clients = await clientsRepository
                 .AllAsNoTracking()
                 .Where(p => p.UserName
                     .ToLower()
                     .Contains(queryNormalized))
                 .OrderBy(p => p.UserName)
-                .ProjectTo<ClientLookupModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<ClientLookupModel>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
 
-            var dataModel = new SearchViewModel
+            var dataModel = new SearchDTO
             {
                 SearchQuery = request.Query,
                 Clients = (IEnumerable<Client>)clients,

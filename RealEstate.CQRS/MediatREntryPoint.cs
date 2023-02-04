@@ -1,4 +1,4 @@
-﻿namespace RealEstate.CQRS
+﻿namespace RealEstate.MediatR
 {
     public class MediatREntryPoint
     {

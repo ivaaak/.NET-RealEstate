@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using RealEstate.Models.ViewModels.Search;
 
-namespace RealEstate.CQRS.Queries
+namespace RealEstate.MediatR.Queries
 {
-    public class ClientsSearchQuery : IRequest<SearchViewModel>
+    public class ClientsSearchQuery : IRequest<SearchDTO>
     {
         public ClientsSearchQuery(string query)
         {

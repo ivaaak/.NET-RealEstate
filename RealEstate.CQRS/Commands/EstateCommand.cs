@@ -1,9 +1,10 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 using RealEstate.Core.Validators;
 using System.Windows.Input;
 
-namespace RealEstate.CQRS.Commands
+namespace RealEstate.MediatR.Commands
 {
     public abstract class EstateCommand : IRequest<Result>, ICommand
     {
@@ -34,8 +35,9 @@ namespace RealEstate.CQRS.Commands
             validation.ValidateID();
             validation.ValidateTitle();
 
-            ValidationResult = validation.Validate(this);
-            return ValidationResult.IsValid;
+            //ValidationResult = validation.Validate(this);
+            //return ValidationResult.IsValid;
+            return true;
         }
     }
 }

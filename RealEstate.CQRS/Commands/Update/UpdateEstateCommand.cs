@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.Models.Entities.Estates;
 
-namespace RealEstate.CQRS.Commands.Update
+namespace RealEstate.MediatR.Commands.Update
 {
     public class UpdateEstateCommand : IRequest<Response>
     {

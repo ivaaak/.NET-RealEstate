@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using RealEstate.CQRS.Commands;
+using RealEstate.MediatR.Commands;
 
-namespace RealEstate.CQRS.MediatorValidation
+namespace RealEstate.MediatR.MediatorValidation
 {
     public class DeleteEstateValidator : AbstractValidator<EstateCommand>
     {

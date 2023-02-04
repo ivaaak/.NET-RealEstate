@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
-using RealEstate.CQRS.Commands.Create;
 using RealEstate.Data.Repository;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
+using RealEstate.MediatR.Commands.Create;
 
-namespace RealEstate.CQRS.Handlers.Create
+namespace RealEstate.MediatR.Handlers.Create
 {
     public class CreateEstateHandler : IRequestHandler<CreateEstateCommand, Response>
     {

@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
-using RealEstate.CQRS.Commands.Delete;
 using RealEstate.Data.Repository;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
+using RealEstate.MediatR.Commands.Delete;
 using RealEstate.Models.Entities.Estates;
 
-namespace RealEstate.CQRS.Handlers.Delete
+namespace RealEstate.MediatR.Handlers.Delete
 {
     public class DeleteEstateByIdHandler : IRequestHandler<DeleteEstateByIdCommand, Response>
     {

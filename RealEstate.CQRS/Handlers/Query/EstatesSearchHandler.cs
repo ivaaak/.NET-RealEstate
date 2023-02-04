@@ -2,15 +2,15 @@
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.CQRS.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Infrastructure.LookupModels;
+using RealEstate.MediatR.Queries;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.ViewModels.Search;
 
-namespace RealEstate.CQRS.Handlers.Query
+namespace RealEstate.MediatR.Handlers.Query
 {
-    public class EstatesSearchHandler : IRequestHandler<CombinedSearchQuery, SearchViewModel>
+    public class EstatesSearchHandler : IRequestHandler<CombinedSearchQuery, SearchDTO>
     {
         private readonly IDeletableEntityRepository<Estate> estatesRepository;
         private readonly IMapper mapper;
@@ -23,7 +23,7 @@ namespace RealEstate.CQRS.Handlers.Query
             this.mapper = mapper;
         }
 
-        public async Task<SearchViewModel> Handle(CombinedSearchQuery request, CancellationToken cancellationToken)
+        public async Task<SearchDTO> Handle(CombinedSearchQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -34,18 +34,18 @@ namespace RealEstate.CQRS.Handlers.Query
 
             var queryNormalized = request.Query.ToLower();
 
-            var estates = await this.estatesRepository
+            var estates = await estatesRepository
                 .AllAsNoTracking()
                 .Where(p => p.Estate_Name
                     .ToLower()
                     .Contains(queryNormalized))
                 .OrderBy(p => p.Estate_Name)
-                .ProjectTo<EstateLookupModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<EstateLookupModel>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            var dataModel = new SearchViewModel
+            var dataModel = new SearchDTO
             {
-                SearchQuery = request.Query, 
+                SearchQuery = request.Query,
                 Estates = (IEnumerable<Estate>)estates,
             };
 

@@ -1,4 +1,4 @@
-﻿namespace RealEstate.CQRS.Commands
+﻿namespace RealEstate.MediatR.Commands
 {
     public class Result
     {

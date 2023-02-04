@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using RealEstate.Models.ViewModels.Clients;
 
-namespace RealEstate.CQRS.Queries
+namespace RealEstate.MediatR.Queries
 {
-    public class GetClientByIdQuery : IRequest<ClientViewModel>
+    public class GetClientByIdQuery : IRequest<ClientDTO>
     //returns ClientViewModel
     {
         public string Id { get; set; }

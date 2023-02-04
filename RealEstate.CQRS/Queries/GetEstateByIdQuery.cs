@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using RealEstate.Models.ViewModels.Estates;
 
-namespace RealEstate.CQRS.Queries
+namespace RealEstate.MediatR.Queries
 {
-    public class GetEstateByIdQuery : IRequest<EstateViewModel>
+    public class GetEstateByIdQuery : IRequest<EstateDTO>
     {
         public int Id { get; set; }
 

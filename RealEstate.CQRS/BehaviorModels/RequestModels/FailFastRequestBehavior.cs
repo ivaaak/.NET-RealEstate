@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
 
-namespace RealEstate.CQRS.BehaviorModels.RequestModels
+namespace RealEstate.MediatR.BehaviorModels.RequestModels
 {
     public class FailFastRequestBehavior<TRequest, TResponse>
       : IPipelineBehavior<TRequest, TResponse>
