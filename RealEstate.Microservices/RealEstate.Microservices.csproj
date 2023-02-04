@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
+    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.MediatR.csproj" />
     <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
     <ProjectReference Include="..\RealEstate.Models\RealEstate.Models.csproj" />
   </ItemGroup>

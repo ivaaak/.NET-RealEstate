@@ -13,13 +13,13 @@ namespace RealEstate.Microservices.Estates
         Task<Estate> GetEstateById(int id);
 
         // GET FOR EDIT
-        Task<EstateViewModel> GetEstateForEdit(int id);
+        Task<EstateDTO> GetEstateForEdit(int id);
 
         // GET ALL
-        Task<IEnumerable<EstateViewModel>> GetEstates();
+        Task<IEnumerable<EstateDTO>> GetEstates();
 
         // UPDATE
-        Task<bool> UpdateEstate(int id, EstateViewModel model);
+        Task<bool> UpdateEstate(int id, EstateDTO model);
 
         // HARD DELETE
         Task<bool> HardDeleteEstate(int id);
@@ -28,6 +28,6 @@ namespace RealEstate.Microservices.Estates
         Task<bool> SoftDeleteEstate(int id);
 
         // SEARCH
-        Task<IEnumerable<EstateViewModel>> SearchEstates(string searchTerm);
+        Task<IEnumerable<EstateDTO>> SearchEstates(string searchTerm);
     }
 }

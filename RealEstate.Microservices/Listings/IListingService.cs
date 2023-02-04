@@ -12,13 +12,13 @@ namespace RealEstate.Microservices.Listings
         Task<Listing> GetListingById(int id);
 
         // GET FOR EDIT
-        Task<ListingViewModel> GetListingForEdit(int id);
+        Task<ListingDTO> GetListingForEdit(int id);
 
         // GET LISTINGS
-        Task<IEnumerable<ListingViewModel>> GetListings();
+        Task<IEnumerable<ListingDTO>> GetListings();
 
         // UPDATE
-        Task<bool> UpdateListing(ListingViewModel model);
+        Task<bool> UpdateListing(ListingDTO model);
 
         // SOFT DELETE
         Task<bool> SoftDeleteListing(int id);
@@ -27,6 +27,6 @@ namespace RealEstate.Microservices.Listings
         Task<bool> DeleteListing(int id);
 
         // SEARCH
-        Task<IEnumerable<ListingViewModel>> SearchListings(string searchTerm);
+        Task<IEnumerable<ListingDTO>> SearchListings(string searchTerm);
     }
 }

@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.CQRS.BehaviorModels.ResponseModels;
-using RealEstate.CQRS.Commands.Create;
-using RealEstate.CQRS.Commands.Delete;
-using RealEstate.CQRS.Queries;
+using RealEstate.MediatR.Commands.Create;
+using RealEstate.MediatR.Commands.Delete;
+using RealEstate.MediatR.Queries;
 using RealEstate.Data.Repository;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.ViewModels.Estates;
 using RealEstate.Models.ViewModels.Search;
@@ -38,11 +38,11 @@ namespace RealEstate.Microservices.Estates
         }
 
         // GET FOR EDIT
-        public async Task<EstateViewModel> GetEstateForEdit(int id)
+        public async Task<EstateDTO> GetEstateForEdit(int id)
         {
             var estate = await repo.GetByIdAsync<Estate>(id);
 
-            return new EstateViewModel()
+            return new EstateDTO()
             {
                 Id = estate.Id,
                 Estate_Name = estate.Estate_Name,
@@ -68,10 +68,10 @@ namespace RealEstate.Microservices.Estates
         }
 
         // GET ALL
-        public async Task<IEnumerable<EstateViewModel>> GetEstates()
+        public async Task<IEnumerable<EstateDTO>> GetEstates()
         {
             return await repo.All<Estate>()
-            .Select(e => new EstateViewModel()
+            .Select(e => new EstateDTO()
             {
                 Id = e.Id,
                 Estate_Name = e.Estate_Name,
@@ -98,7 +98,7 @@ namespace RealEstate.Microservices.Estates
         }
 
         // UPDATE
-        public async Task<bool> UpdateEstate(int id, EstateViewModel model)
+        public async Task<bool> UpdateEstate(int id, EstateDTO model)
         {
             bool result = false;
             // Search for the model using the id
@@ -168,7 +168,7 @@ namespace RealEstate.Microservices.Estates
         }
 
         // SEARCH
-        public async Task<IEnumerable<EstateViewModel>> SearchEstates(string searchTerm)
+        public async Task<IEnumerable<EstateDTO>> SearchEstates(string searchTerm)
         {
             return await repo.All<Estate>()
             .Where(e =>
@@ -176,7 +176,7 @@ namespace RealEstate.Microservices.Estates
                 e.Estate_Description.Contains(searchTerm) ||
                 e.Estate_Type.Type_Name.Contains(searchTerm) ||
                 e.Listing.Name.Contains(searchTerm))
-            .Select(e => new EstateViewModel()
+            .Select(e => new EstateDTO()
             {
                 Id = e.Id,
                 Estate_Name = e.Estate_Name,
@@ -211,13 +211,13 @@ namespace RealEstate.Microservices.Estates
         }
 
         // MEDIATOR GET BY ID
-        public async Task<EstateViewModel> MediatorGetEstateById(int id)
+        public async Task<EstateDTO> MediatorGetEstateById(int id)
         {
             return await mediator.Send(new GetEstateByIdQuery(id));
         }
 
         // MEDIATOR GET ALL
-        public async Task<List<EstateViewModel>> MediatorGetEstates()
+        public async Task<List<EstateDTO>> MediatorGetEstates()
         {
             return await mediator.Send(new GetEstateListQuery());
         }
@@ -229,7 +229,7 @@ namespace RealEstate.Microservices.Estates
         }
 
         // MEDIATOR SEARCH
-        public async Task<SearchViewModel> MediatorSearchEstate(string query)
+        public async Task<SearchDTO> MediatorSearchEstate(string query)
         {
             return await mediator.Send(new EstatesSearchQuery(query));
         }

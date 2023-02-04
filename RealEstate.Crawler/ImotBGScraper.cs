@@ -2,7 +2,7 @@
 using Npgsql;
 using System.Net;
 
-namespace RealEstate.Crawler
+namespace RealEstate.Scraper
 {
     public class ImotBGScraper
     {

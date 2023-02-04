@@ -62,7 +62,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
-    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
+    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.MediatR.csproj" />
     <ProjectReference Include="..\RealEstate.Microservices\RealEstate.Microservices.csproj" />
   </ItemGroup>
 

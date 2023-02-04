@@ -29,11 +29,11 @@ namespace RealEstate.Microservices.Listings
         }
 
         // GET FOR EDIT
-        public async Task<ListingViewModel> GetListingForEdit(int id)
+        public async Task<ListingDTO> GetListingForEdit(int id)
         {
             var listing = await repo.GetByIdAsync<Listing>(id);
 
-            return new ListingViewModel()
+            return new ListingDTO()
             {
                 Id = listing.Listing_Id,
                 ImageUrl = listing.ImageUrl,
@@ -44,10 +44,10 @@ namespace RealEstate.Microservices.Listings
         }
 
         // GET ALL
-        public async Task<IEnumerable<ListingViewModel>> GetListings()
+        public async Task<IEnumerable<ListingDTO>> GetListings()
         {
             return await repo.All<Listing>()
-            .Select(listing => new ListingViewModel()
+            .Select(listing => new ListingDTO()
             {
                 Id = listing.Listing_Id,
                 Name = listing.Name,
@@ -61,7 +61,7 @@ namespace RealEstate.Microservices.Listings
         }
 
         // UPDATE
-        public async Task<bool> UpdateListing(ListingViewModel model)
+        public async Task<bool> UpdateListing(ListingDTO model)
         {
             bool result = false;
             var listing = await repo.GetByIdAsync<Listing>(model.Id);
@@ -116,7 +116,7 @@ namespace RealEstate.Microservices.Listings
 
 
         // SEARCH 
-        public async Task<IEnumerable<ListingViewModel>> SearchListings(string searchTerm)
+        public async Task<IEnumerable<ListingDTO>> SearchListings(string searchTerm)
         {
             // Build a LINQ query to search the repository for listings that match the search term
             var query = from listing in repo.All<Listing>()
@@ -130,7 +130,7 @@ namespace RealEstate.Microservices.Listings
                         select listing;
 
             // Execute the query and return the matching listings as a list of ListingViewModel objects
-            return await query.Select(listing => new ListingViewModel()
+            return await query.Select(listing => new ListingDTO()
             {
                 Id = listing.Listing_Id,
                 Name = listing.Name,

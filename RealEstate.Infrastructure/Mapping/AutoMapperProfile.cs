@@ -12,11 +12,11 @@ namespace RealEstate.Infrastructure.Mapping
     {
         public AutoMapperProfile()
         {
-            CreateMap<Client, ClientViewModel>();
-            CreateMap<Estate, EstateViewModel>();
-            CreateMap<Listing, ListingViewModel>();
-            CreateMap<Estate, EstateViewModel>();
-            CreateMap<Estate, EstateViewModel>();
+            CreateMap<Client, ClientDTO>();
+            CreateMap<Estate, EstateDTO>();
+            CreateMap<Listing, ListingDTO>();
+            CreateMap<Estate, EstateDTO>();
+            CreateMap<Estate, EstateDTO>();
             //CreateMap<SearchQuery, SearchViewModel>();
         }
     }
