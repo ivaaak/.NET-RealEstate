@@ -1,6 +1,6 @@
 ﻿namespace RealEstate.Models.ViewModels.Login
 {
-    public class LoginViewModel
+    public class LoginDTO
     {
         public string? Name { get; set; }
 

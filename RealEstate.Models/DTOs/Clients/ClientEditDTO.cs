@@ -3,8 +3,9 @@ using RealEstate.Models.Entities.Contracts;
 
 namespace RealEstate.Models.ViewModels.Clients
 {
-    public class ClientViewModel
+    public class ClientEditDTO
     {
+        //TODO add validations/annotations
         public string Client_Id { get; init; }
 
         public string Client_Name { get; init; }

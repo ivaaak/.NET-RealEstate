@@ -1,8 +1,8 @@
 ﻿namespace RealEstate.Models.ViewModels.Roles
 {
-    public class EmployeeRolesViewModel
+    public class ClientRolesDTO
     {
-        public string? Employee_Id { get; set; }
+        public string? Client_Id { get; set; }
 
         public string? Name { get; set; }
 

@@ -49,3 +49,7 @@
 /EstateService
 /ListingsService
 /obj/Docker
+/Microservices/ClientsMicroservice/obj
+/Microservices/ContractsMicroservice/obj
+/Microservices/EstatesMicroservice/obj
+/Microservices/ListingsMicroservice/obj

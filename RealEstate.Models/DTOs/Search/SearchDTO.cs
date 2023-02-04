@@ -4,7 +4,7 @@ using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Models.ViewModels.Search
 {
-    public class SearchViewModel
+    public class SearchDTO
     {
         public string? SearchQuery { get; set; }
 

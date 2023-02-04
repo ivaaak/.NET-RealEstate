@@ -3,7 +3,7 @@ using RealEstate.Models.Entities.Listings;
 
 namespace RealEstate.Models.ViewModels.Estates
 {
-    public class EstateViewModel
+    public class EstateDTO
     {
         public string Id { get; init; }
 

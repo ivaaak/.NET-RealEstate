@@ -1,6 +1,6 @@
 namespace RealEstate.Models.ViewModels.Errors
 {
-    public class ErrorViewModel
+    public class ErrorDTO
     {
         public string? RequestId { get; set; }
 
