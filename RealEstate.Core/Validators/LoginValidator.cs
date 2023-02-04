@@ -4,7 +4,7 @@ using RealEstate.Models.ViewModels.Login;
 namespace RealEstate.Core.Validators
 {
 
-    public class LoginValidator : AbstractValidator<LoginViewModel>
+    public class LoginValidator : AbstractValidator<LoginDTO>
     {
         public LoginValidator()
         {

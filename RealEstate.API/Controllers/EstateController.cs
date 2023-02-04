@@ -67,7 +67,7 @@ namespace RealEstate.API.Controllers
         /// <returns> Ok </returns>
         [HttpGet]
         [Route("getall")]
-        public async Task<IEnumerable<EstateViewModel>> GetAll()
+        public async Task<IEnumerable<EstateDTO>> GetAll()
         {
             return await estateService.GetEstates();
         }
@@ -108,7 +108,7 @@ namespace RealEstate.API.Controllers
         /// <returns> Ok </returns>
         [HttpPut("{id}")]
         [Route("update/{id}")]
-        public async Task<IActionResult> Update(int id, EstateViewModel estateObject)
+        public async Task<IActionResult> Update(int id, EstateDTO estateObject)
         {
             var result = await estateService.UpdateEstate(id, estateObject);
 
@@ -195,7 +195,7 @@ namespace RealEstate.API.Controllers
         /// <returns> collection of estate objects </returns>
         [HttpGet("{searchTerm}")]
         [Route("search/{searchTerm}")]
-        public IEnumerable<EstateViewModel> Search(string searchTerm)
+        public IEnumerable<EstateDTO> Search(string searchTerm)
         {
             var result = estateService.SearchEstates(searchTerm).Result;
 

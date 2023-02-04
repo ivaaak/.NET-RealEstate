@@ -12,13 +12,13 @@ namespace RealEstate.API.Authentication.Contracts
         Task<ApplicationUser> GetUserByUsernameAndPassword(string username, string password);
 
         // GET ALL
-        Task<IEnumerable<ClientViewModel>> GetUsers();
+        Task<IEnumerable<ClientDTO>> GetUsers();
 
         // GET FOR EDIT
-        Task<ClientEditViewModel> GetUserForEdit(string id);
+        Task<ClientEditDTO> GetUserForEdit(string id);
 
         // UPDATE
-        Task<bool> UpdateUser(ClientEditViewModel model);
+        Task<bool> UpdateUser(ClientEditDTO model);
 
         // HARD DELETE
         Task<bool> HardDeleteUser(string id);
@@ -30,7 +30,7 @@ namespace RealEstate.API.Authentication.Contracts
         Task<bool> ChangePassword(string id, string newPassword);
 
         // SEARCH USERS
-        Task<IEnumerable<ClientViewModel>> SearchUsers(string searchTerm);
+        Task<IEnumerable<ClientDTO>> SearchUsers(string searchTerm);
 
         // GET USER ROLES
         Task<string> GetUserRole(string id);

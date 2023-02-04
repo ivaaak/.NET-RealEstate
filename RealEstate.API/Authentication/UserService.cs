@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.CQRS.Queries;
+using RealEstate.MediatR.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Identity;
@@ -42,11 +42,11 @@ namespace RealEstate.API.Authentication
         }
 
         // GET FOR EDIT
-        public async Task<ClientEditViewModel> GetUserForEdit(string id)
+        public async Task<ClientEditDTO> GetUserForEdit(string id)
         {
             var user = await repo.GetByIdAsync<Client>(id);
 
-            return new ClientEditViewModel()
+            return new ClientEditDTO()
             {
                 Client_Id = user.Client_Id,
                 Client_Name = user.Client_Name,
@@ -62,10 +62,10 @@ namespace RealEstate.API.Authentication
         }
 
         // GET ALL
-        public async Task<IEnumerable<ClientViewModel>> GetUsers()
+        public async Task<IEnumerable<ClientDTO>> GetUsers()
         {
             return await repo.All<Client>()
-            .Select(u => new ClientViewModel()
+            .Select(u => new ClientDTO()
             {
                 Client_Id = u.Client_Id,
                 Client_Name = u.Client_Name,
@@ -82,7 +82,7 @@ namespace RealEstate.API.Authentication
         }
 
         // UPDATE
-        public async Task<bool> UpdateUser(ClientEditViewModel model)
+        public async Task<bool> UpdateUser(ClientEditDTO model)
         {
             bool result = false;
             var user = await repo.GetByIdAsync<Client>(model.Client_Id);
@@ -199,7 +199,7 @@ namespace RealEstate.API.Authentication
         }
 
         // SEARCH USERS
-        public async Task<IEnumerable<ClientViewModel>> SearchUsers(string searchTerm)
+        public async Task<IEnumerable<ClientDTO>> SearchUsers(string searchTerm)
         {
             // Build a LINQ query to search the repository for users that match the search term
             var query = from u in repo.All<Client>()
@@ -214,7 +214,7 @@ namespace RealEstate.API.Authentication
                         select u;
 
             // Execute the query and return the matching users as a list of ClientViewModel objects
-            return await query.Select(u => new ClientViewModel()
+            return await query.Select(u => new ClientDTO()
             {
                 Client_Id = u.Client_Id,
                 Client_Name = u.Client_Name,
@@ -270,13 +270,13 @@ namespace RealEstate.API.Authentication
         }
 
         // MEDIATOR GET BY ID
-        public async Task<ClientViewModel> MediatorGetClientById(string clientId)
+        public async Task<ClientDTO> MediatorGetClientById(string clientId)
         {
             return await mediator.Send(new GetClientByIdQuery(clientId));
         }
 
         // MEDIATOR GET ALL
-        public async Task<List<ClientViewModel>> MediatorGetClients()
+        public async Task<List<ClientDTO>> MediatorGetClients()
         {
             return await mediator.Send(new GetClientListQuery());
         }
@@ -289,7 +289,7 @@ namespace RealEstate.API.Authentication
         }
 
         // MEDIATOR SEARCH
-        public async Task<SearchViewModel> MediatorSearchClient(string query)
+        public async Task<SearchDTO> MediatorSearchClient(string query)
         {
             return await mediator.Send(new ClientsSearchQuery(query));
         }

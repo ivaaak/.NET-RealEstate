@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.CQRS.Handlers.Query;
-using RealEstate.CQRS.Queries;
+using RealEstate.MediatR.Handlers.Query;
+using RealEstate.MediatR.Queries;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.ViewModels.Clients;
 
@@ -50,10 +50,10 @@ namespace RealEstate.API.Controllers
         /// <summary>
         /// Gets a list of all users.
         /// </summary>
-        /// <returns>A list of <see cref="ClientViewModel"/> objects containing information about the users.</returns>
+        /// <returns>A list of <see cref="ClientDTO"/> objects containing information about the users.</returns>
         [HttpGet]
         [Route("/getusers")]
-        public async Task<IEnumerable<ClientViewModel>> GetUsers()
+        public async Task<IEnumerable<ClientDTO>> GetUsers()
         {
             var result = await userService.GetUsers();
 
@@ -65,10 +65,10 @@ namespace RealEstate.API.Controllers
         /// Gets a user for edit by their ID.
         /// </summary>
         /// <param name="id">The ID of the user to retrieve.</param>
-        /// <returns>A <see cref="ClientEditViewModel"/> object containing information about the user.</returns>
+        /// <returns>A <see cref="ClientEditDTO"/> object containing information about the user.</returns>
         [HttpGet]
         [Route("/edit/{id}")]
-        public async Task<ClientEditViewModel> GetUserForEdit(string id)
+        public async Task<ClientEditDTO> GetUserForEdit(string id)
         {
             var result = await userService.GetUserForEdit(id);
 
@@ -79,11 +79,11 @@ namespace RealEstate.API.Controllers
         /// <summary>
         /// Updates a user's information.
         /// </summary>
-        /// <param name="model">A <see cref="ClientEditViewModel"/> object containing the updated user information.</param>
+        /// <param name="model">A <see cref="ClientEditDTO"/> object containing the updated user information.</param>
         /// <returns>A boolean indicating whether the update was successful.</returns>
         [HttpPut]
         [Route("update")]
-        public async Task<bool> UpdateUser(ClientEditViewModel model)
+        public async Task<bool> UpdateUser(ClientEditDTO model)
         {
             var result = await userService.UpdateUser(model);
 
@@ -141,9 +141,9 @@ namespace RealEstate.API.Controllers
         /// Searches for users matching a given search term.
         /// </summary>
         /// <param name="searchTerm">The search term to use for the search.</param>
-        /// <returns>An enumerable list of <see cref="ClientViewModel"/> objects containing information about the matching users.</returns>
+        /// <returns>An enumerable list of <see cref="ClientDTO"/> objects containing information about the matching users.</returns>
         [HttpGet("search")]
-        public async Task<IEnumerable<ClientViewModel>> SearchUsers(string searchTerm)
+        public async Task<IEnumerable<ClientDTO>> SearchUsers(string searchTerm)
         {
             var result = await userService.SearchUsers(searchTerm);
 
