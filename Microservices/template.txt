@@ -1,0 +1,13 @@
+﻿ ├── Estate Microservice :
+ │   ├── Properties
+ │   │   ├── appsettings.json
+ │   │   ├── Dockerfile
+ │   │   ├── launchSettings.json
+ │   ├── Services
+ │   │   ├── EstateService.cs
+ │   │   ├── EstateContract.cs
+ │   ├── Controllers
+ │   │   ├── EstateController.cs
+ │   ├── Context
+ │   │   ├── EstateContext.cs
+ │   ├── Program.cs 

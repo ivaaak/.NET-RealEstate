@@ -3,6 +3,7 @@ using Ocelot.Middleware;
 using RealEstate.API.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
+// Configure API Gateway
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
@@ -36,12 +37,6 @@ app.UseHttpsRedirection()
     //.UseHangfireDashboard();
 
 app.Run();
-
-
-
-
-
-
 
 
 

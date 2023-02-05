@@ -40,10 +40,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientsMicroservice", "Microservices\ClientsMicroservice\ClientsMicroservice.csproj", "{3E7C0354-D161-4211-9076-764DB1D7E992}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstatesMicroservice", "Microservices\EstatesMicroservice\EstatesMicroservice.csproj", "{D2CC3615-8027-495D-BBB4-FAFDE495E573}"
+	ProjectSection(ProjectDependencies) = postProject
+		{12D64D1B-5D69-405E-90A4-9DF28AB4BAF2} = {12D64D1B-5D69-405E-90A4-9DF28AB4BAF2}
+		{6AA1DF1A-873E-4C9C-8495-4633D357E4E7} = {6AA1DF1A-873E-4C9C-8495-4633D357E4E7}
+		{E4162B42-C98F-488E-9A35-1DC6DC3893B4} = {E4162B42-C98F-488E-9A35-1DC6DC3893B4}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListingsMicroservice", "Microservices\ListingsMicroservice\ListingsMicroservice.csproj", "{6A213456-9A77-455B-9BF0-DF9B56901EA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListingsMicroservice", "Microservices\ListingsMicroservice\ListingsMicroservice.csproj", "{6A213456-9A77-455B-9BF0-DF9B56901EA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractsMicroservice", "Microservices\ContractsMicroservice\ContractsMicroservice.csproj", "{244289A4-A2C7-4519-BE87-CA190EDF4D7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsMicroservice", "Microservices\ContractsMicroservice\ContractsMicroservice.csproj", "{244289A4-A2C7-4519-BE87-CA190EDF4D7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
