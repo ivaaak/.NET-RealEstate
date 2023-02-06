@@ -56,3 +56,9 @@
 /Microservices/ClientsMicroservice/bin/Debug/net7.0
 /Microservices/ContractsMicroservice/bin/Debug/net7.0
 /Microservices/ListingsMicroservice/bin/Debug/net7.0
+/Microservices/EstatesMicroservice/bin/Debug/net7.0
+/RealEstate.MediatR/bin/Debug/net7.0
+/RealEstate.MediatR/obj/Debug/net7.0
+/RealEstate.MediatR/obj
+/RealEstate.Scraper/bin/Release/net7.0
+/RealEstate.Scraper/obj
