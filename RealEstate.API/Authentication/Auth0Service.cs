@@ -1,5 +1,5 @@
 ﻿using RealEstate.API.Authentication.Contracts;
-using RealEstate.Microservices.Serializer;
+using RealEstate.Microservices.Utils.Serializer;
 using RealEstate.Models.Entities.Identity;
 using System.Net.Http.Headers;
 

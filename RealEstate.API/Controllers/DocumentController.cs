@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.Microservices.DocumentManagement;
+using RealEstate.Microservices.Utils.DocumentManagement;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Misc;
 

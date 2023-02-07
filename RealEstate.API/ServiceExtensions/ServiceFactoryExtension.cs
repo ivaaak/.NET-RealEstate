@@ -1,14 +1,14 @@
 ﻿using RealEstate.API.Authentication;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.Data.Repository;
-using RealEstate.Microservices.Cache;
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
-using RealEstate.Microservices.FileUpload;
 using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Notification;
-using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
+using RealEstate.Microservices.Utils.Cache;
+using RealEstate.Microservices.Utils.FileUpload;
+using RealEstate.Microservices.Utils.Serializer;
 
 namespace RealEstate.API.ServiceExtensions
 {
