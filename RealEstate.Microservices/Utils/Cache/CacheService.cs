@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using IDatabase = StackExchange.Redis.IDatabase;
 
-namespace RealEstate.Microservices.Cache
+namespace RealEstate.Microservices.Utils.Cache
 {
     public class CacheService : ICacheService
     {

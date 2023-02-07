@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Microservices.Serializer
+﻿namespace RealEstate.Microservices.Utils.Serializer
 {
     public interface IJsonSerializer
     {

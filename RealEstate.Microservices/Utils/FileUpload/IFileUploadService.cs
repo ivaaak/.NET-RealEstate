@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace RealEstate.Microservices.FileUpload
+namespace RealEstate.Microservices.Utils.FileUpload
 {
     public interface IFileUploadService
     {

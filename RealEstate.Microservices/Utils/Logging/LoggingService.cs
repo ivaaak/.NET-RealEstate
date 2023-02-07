@@ -1,7 +1,7 @@
 ﻿using Nest;
 using System.Reflection.Metadata;
 
-namespace RealEstate.Microservices.Logging
+namespace RealEstate.Microservices.Utils.Logging
 {
     public class LoggingService
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using RealEstate.Models.Entities.Misc;
 
-namespace RealEstate.Microservices.DocumentManagement
+namespace RealEstate.Microservices.Utils.DocumentManagement
 {
     /// <summary>
     /// Represents a service for managing documents.

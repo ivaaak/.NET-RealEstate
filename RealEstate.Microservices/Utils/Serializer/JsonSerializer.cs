@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RealEstate.Microservices.Serializer
+namespace RealEstate.Microservices.Utils.Serializer
 {
     public class JsonSerializer : IJsonSerializer
     {

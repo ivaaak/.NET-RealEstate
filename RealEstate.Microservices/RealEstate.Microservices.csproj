@@ -7,19 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.MediatR.csproj" />
     <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
+    <ProjectReference Include="..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
     <ProjectReference Include="..\RealEstate.Models\RealEstate.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Accounts\" />
-    <Folder Include="ContractsService\" />
     <Folder Include="ExternalAPI\" />
     <Folder Include="MortgageCalculator\" />
     <Folder Include="Comparisons\" />
-    <Folder Include="Geolocation\" />
-    <Folder Include="ValueEstimates\" />
+    <Folder Include="Utils\Geolocation\" />
     <Folder Include="Recommendations\" />
     <Folder Include="Payments\" />
   </ItemGroup>

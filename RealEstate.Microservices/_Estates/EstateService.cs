@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.Data.Repository;
+using RealEstate.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.MediatR.Commands.Create;
 using RealEstate.MediatR.Commands.Delete;
 using RealEstate.MediatR.Queries;
-using RealEstate.Data.Repository;
-using RealEstate.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.ViewModels.Estates;
 using RealEstate.Models.ViewModels.Search;

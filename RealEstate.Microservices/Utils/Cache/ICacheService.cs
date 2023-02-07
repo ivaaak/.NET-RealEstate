@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace RealEstate.Microservices.Cache
+namespace RealEstate.Microservices.Utils.Cache
 {
     public interface ICacheService
     {
