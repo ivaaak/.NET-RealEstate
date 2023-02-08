@@ -14,8 +14,4 @@
     <PackageReference Include="TaskScheduler" Version="2.10.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
-  </ItemGroup>
-
 </Project>

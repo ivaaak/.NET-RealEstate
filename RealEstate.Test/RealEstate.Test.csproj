@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RealEstate.Api\RealEstate.API.csproj" />
+    <ProjectReference Include="..\Microservices\ListingsMicroservice\ListingsMicroservice.csproj" />
+    <ProjectReference Include="..\RealEstate.API\RealEstate.API.csproj" />
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
     <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
   </ItemGroup>

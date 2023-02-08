@@ -15,7 +15,7 @@ services:
     image: ${DOCKER_REGISTRY-}realestateapi
     build:
       context: .
-      dockerfile: RealEstate.Api/Dockerfile
+      dockerfile: RealEstate.API/Dockerfile
     ports:
       - 8000:80
     networks: 
@@ -29,7 +29,7 @@ services:
     image: ${DOCKER_REGISTRY-}estateswebapi
     build:
       context: .
-      dockerfile: RealEstate.Api/Dockerfile #fix dir
+      dockerfile: RealEstate.API/Dockerfile #fix dir
     networks: 
       - backend 
     ports:

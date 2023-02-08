@@ -62,3 +62,9 @@
 /RealEstate.MediatR/obj
 /RealEstate.Scraper/bin/Release/net7.0
 /RealEstate.Scraper/obj
+/Microservices/ExternalAPIsMicroservice/obj
+/Microservices/MessagingMicroservice/obj
+/Microservices/ExternalAPIsMicroservice/bin/Debug/net7.0
+/Microservices/MessagingMicroservice/bin/Debug/net7.0
+/Microservices/UtilitiesMicroservice/bin/Debug/net7.0
+/Microservices/UtilitiesMicroservice/obj
