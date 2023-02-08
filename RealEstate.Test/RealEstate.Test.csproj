@@ -25,14 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Api\RealEstate.API.csproj" />
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
-<<<<<<< Updated upstream
-    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
-=======
-<<<<<<< Updated upstream
-=======
+
     <ProjectReference Include="..\RealEstate.CQRS\RealEstate.MediatR.csproj" />
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
     <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
   </ItemGroup>
 

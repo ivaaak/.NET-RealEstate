@@ -73,3 +73,5 @@
 /Microservices/ListingsMicroservice/obj
 /Microservices/MessagingMicroservice/obj
 /Microservices/UtilitiesMicroservice/obj
+/RealEstate.MediatR/obj/Release/net7.0
+/RealEstate.MediatR/obj

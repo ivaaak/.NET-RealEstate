@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ListingsMicroservice": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50558;http://localhost:50559"
+    }
+  }
+}
