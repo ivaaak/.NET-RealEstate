@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace RealEstate.Infrastructure.Authentication
+namespace RealEstate.Infrastructure.PipelineBehaviour
 {
-    public class AuthenticationBehavior<TRequest, TResponse> 
-        : IPipelineBehavior<TRequest, TResponse> 
+    public class AuthenticationBehavior<TRequest, TResponse>
+        : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -29,14 +29,14 @@ namespace RealEstate.Infrastructure.Authentication
         }
 
 
-        public async Task<TResponse> Handle(TRequest request, 
-            RequestHandlerDelegate<TResponse> next, 
+        public async Task<TResponse> Handle(TRequest request,
+            RequestHandlerDelegate<TResponse> next,
             CancellationToken cancellationToken)
         {
             var user = _httpContextAccessor.HttpContext.User;
 
-            if (!user.Identity.IsAuthenticated || 
-                !user.IsInRole("admin") || 
+            if (!user.Identity.IsAuthenticated ||
+                !user.IsInRole("admin") ||
                 !IsAuthorized((IRequest)request))
             {
                 throw new UnauthorizedAccessException();
@@ -51,7 +51,7 @@ namespace RealEstate.Infrastructure.Authentication
 
             var user = context.User;
 
-            if(!user.Identity.IsAuthenticated || !user.IsInRole("admin"))
+            if (!user.Identity.IsAuthenticated || !user.IsInRole("admin"))
             {
                 return false;
             }

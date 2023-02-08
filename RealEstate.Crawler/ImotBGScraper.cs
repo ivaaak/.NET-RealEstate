@@ -2,16 +2,24 @@
 using Npgsql;
 using System.Net;
 
+<<<<<<< Updated upstream:RealEstate.Crawler/ImotBGScraper.cs
 namespace RealEstate.Crawler
+=======
+<<<<<<< Updated upstream:RealEstate.Scraper/ImotBGScraper.cs
+namespace RealEstate.Scraper
+=======
+namespace ExternalAPIsMicroservice.Services
+>>>>>>> Stashed changes:Microservices/ExternalAPIsMicroservice/Services/ScraperService.cs
+>>>>>>> Stashed changes:RealEstate.Scraper/ImotBGScraper.cs
 {
-    public class ImotBGScraper
+    public class ScraperService
     {
         private string html;
 
         public void RunCrawler()
         {
-            this.DownloadWebsiteString();
-            this.ExtractWebsiteData();
+            DownloadWebsiteString();
+            ExtractWebsiteData();
         }
 
 
@@ -85,6 +93,7 @@ namespace RealEstate.Crawler
             }
 
             using (var conn = new NpgsqlConnection("Host=localhost;Username=user;Password=password;Database=database"))
+            //TODO FIX CONNECTION STRING
             {
                 conn.Open();
 

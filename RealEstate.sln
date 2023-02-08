@@ -32,6 +32,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Scraper", "RealE
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{362781B5-4C34-45B9-93E2-57F4C55BD4F9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListingsMicroservice", "Microservices\ListingsMicroservice\ListingsMicroservice.csproj", "{6A213456-9A77-455B-9BF0-DF9B56901EA7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63596B71-288E-49DB-AB51-B6850DD1EF51} = {63596B71-288E-49DB-AB51-B6850DD1EF51}
+		{E4162B42-C98F-488E-9A35-1DC6DC3893B4} = {E4162B42-C98F-488E-9A35-1DC6DC3893B4}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsMicroservice", "Microservices\ContractsMicroservice\ContractsMicroservice.csproj", "{244289A4-A2C7-4519-BE87-CA190EDF4D7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.MediatR", "RealEstate.MediatR\RealEstate.MediatR.csproj", "{63596B71-288E-49DB-AB51-B6850DD1EF51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalAPIsMicroservice", "Microservices\ExternalAPIsMicroservice\ExternalAPIsMicroservice.csproj", "{5E60D210-9D53-4CBA-B39F-6ED091059DA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +96,10 @@ Global
 		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{362781B5-4C34-45B9-93E2-57F4C55BD4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E60D210-9D53-4CBA-B39F-6ED091059DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E60D210-9D53-4CBA-B39F-6ED091059DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E60D210-9D53-4CBA-B39F-6ED091059DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E60D210-9D53-4CBA-B39F-6ED091059DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

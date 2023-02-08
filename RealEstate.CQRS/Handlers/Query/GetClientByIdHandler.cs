@@ -22,7 +22,15 @@ namespace RealEstate.CQRS.Handlers.Query
             Id = id;
         }
 
+<<<<<<< Updated upstream:RealEstate.CQRS/Handlers/Query/GetClientByIdHandler.cs
         public  Task<ClientViewModel> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+=======
+<<<<<<< Updated upstream:RealEstate.MediatR/Handlers/Query/GetClientByIdHandler.cs
+        public Task<ClientDTO> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+=======
+        public Task<ClientViewModel> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+>>>>>>> Stashed changes:RealEstate.CQRS/Handlers/Query/GetClientByIdHandler.cs
+>>>>>>> Stashed changes:RealEstate.MediatR/Handlers/Query/GetClientByIdHandler.cs
         {
             string id = request.Id;
 
