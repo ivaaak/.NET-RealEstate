@@ -1,5 +1,18 @@
+<<<<<<< Updated upstream
 ﻿using RealEstate.API.Authentication.Contracts;
+<<<<<<< Updated upstream
 using RealEstate.Microservices.Serializer;
+=======
+<<<<<<< Updated upstream
+using RealEstate.Microservices.Utils.Serializer;
+=======
+using RealEstate.Microservices.Serializer;
+=======
+﻿using Newtonsoft.Json;
+using RealEstate.API.Authentication.Contracts;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 using RealEstate.Models.Entities.Identity;
 using System.Net.Http.Headers;
 
@@ -9,16 +22,16 @@ namespace RealEstate.API.Authentication
     {
         private readonly IHttpClientFactory clientFactory;
         private readonly IConfiguration configuration;
-        private readonly IJsonSerializer jsonSerializer;
+        //private readonly IJsonSerializer jsonSerializer;
 
         public Auth0Service(
             IHttpClientFactory clientFactory,
-            IConfiguration configuration,
-            IJsonSerializer jsonSerializer)
+            IConfiguration configuration)
+            //IJsonSerializer jsonSerializer)
         {
             this.clientFactory = clientFactory;
             this.configuration = configuration;
-            this.jsonSerializer = jsonSerializer;
+            //this.jsonSerializer = jsonSerializer;
         }
 
 
@@ -41,7 +54,7 @@ namespace RealEstate.API.Authentication
 
             // Deserialize the response into an ApplicationUser object
             var responseContent = await response.Content.ReadAsStringAsync();
-            var user = jsonSerializer.Deserialize<ApplicationUser>(responseContent);
+            var user = JsonConvert.DeserializeObject<ApplicationUser>(responseContent);
             return user;
         }
 
@@ -80,7 +93,7 @@ namespace RealEstate.API.Authentication
 
             // Deserialize the response into a dictionary
             var responseContent = await response.Content.ReadAsStringAsync();
-            var responseDictionary = jsonSerializer.Deserialize<Dictionary<string, string>>(responseContent);
+            var responseDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseContent);
 
             // Return the access token
             return responseDictionary["access_token"];
@@ -174,7 +187,7 @@ namespace RealEstate.API.Authentication
 
             // Deserialize the response into a dictionary
             var responseContent = await response.Content.ReadAsStringAsync();
-            var responseDictionary = jsonSerializer.Deserialize<Dictionary<string, string>>(responseContent);
+            var responseDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseContent);
 
             // Return the access token
             return responseDictionary["access_token"];

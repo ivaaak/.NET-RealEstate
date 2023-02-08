@@ -62,8 +62,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
+<<<<<<< Updated upstream
     <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
     <ProjectReference Include="..\RealEstate.Microservices\RealEstate.Microservices.csproj" />
+=======
+<<<<<<< Updated upstream
+    <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
+    <ProjectReference Include="..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
+=======
+    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.MediatR.csproj" />
+    <ProjectReference Include="..\RealEstate.Microservices\RealEstate.Microservices.csproj" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   </ItemGroup>
 
 </Project>

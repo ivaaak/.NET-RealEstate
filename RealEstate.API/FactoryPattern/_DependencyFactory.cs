@@ -1,13 +1,31 @@
-﻿using Algolia.Search.Clients;
-using RealEstate.API.Authentication.Contracts;
+﻿using RealEstate.API.Authentication.Contracts;
 using RealEstate.Core.Guards;
+<<<<<<< Updated upstream
 using RealEstate.Microservices.Cache;
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+using RealEstate.Microservices.Cache;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 using RealEstate.Microservices.Email;
 using RealEstate.Microservices.Estates;
 using RealEstate.Microservices.FileUpload;
 using RealEstate.Microservices.Listings;
 using RealEstate.Microservices.Serializer;
 using RealEstate.Microservices.Sorting;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+using RealEstate.Microservices.Utils.Cache;
+using RealEstate.Microservices.Utils.FileUpload;
+using RealEstate.Microservices.Utils.Serializer;
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 namespace RealEstate.API.FactoryPattern
 {
@@ -16,39 +34,39 @@ namespace RealEstate.API.FactoryPattern
         private Dictionary<Type, object> dependencyMap;
 
         public _DependencyFactory(
-            IAccountClient accountClient,
+            //IAccountClient accountClient,
             IAuth0Service auth0AuthenticationService,
-            ICacheService cacheService,
-            IEmailService emailService,
-            IEstateService estateService,
-            IFileUploadService fileUploadService,
-            IListingService listingService,
-            IJsonSerializer jsonSerializer,
-            ISortingService sortingService,
+            //ICacheService cacheService,
+            //IEmailService emailService,
+            //IEstateService estateService,
+            //IFileUploadService fileUploadService,
+            //IListingService listingService,
+            //IJsonSerializer jsonSerializer,
+            //ISortingService sortingService,
             IUserService userService)
         {
-            Validate.NotNull(accountClient, nameof(accountClient));
+            //Validate.NotNull(accountClient, nameof(accountClient));
             Validate.NotNull(auth0AuthenticationService, nameof(auth0AuthenticationService));
-            Validate.NotNull(cacheService, nameof(cacheService));
-            Validate.NotNull(emailService, nameof(emailService));
-            Validate.NotNull(estateService, nameof(estateService));
-            Validate.NotNull(fileUploadService, nameof(fileUploadService));
-            Validate.NotNull(listingService, nameof(listingService));
-            Validate.NotNull(jsonSerializer, nameof(jsonSerializer));
-            Validate.NotNull(sortingService, nameof(sortingService));
+            //Validate.NotNull(cacheService, nameof(cacheService));
+            //Validate.NotNull(emailService, nameof(emailService));
+            //Validate.NotNull(estateService, nameof(estateService));
+            //Validate.NotNull(fileUploadService, nameof(fileUploadService));
+            //Validate.NotNull(listingService, nameof(listingService));
+            //Validate.NotNull(jsonSerializer, nameof(jsonSerializer));
+            //Validate.NotNull(sortingService, nameof(sortingService));
             Validate.NotNull(userService, nameof(userService));
 
             dependencyMap = new Dictionary<Type, object>();
 
-            dependencyMap[typeof(IAccountClient)] = accountClient;
+            //dependencyMap[typeof(IAccountClient)] = accountClient;
             dependencyMap[typeof(IAuth0Service)] = auth0AuthenticationService;
-            dependencyMap[typeof(ICacheService)] = cacheService;
-            dependencyMap[typeof(IEmailService)] = emailService;
-            dependencyMap[typeof(IEstateService)] = estateService;
-            dependencyMap[typeof(IFileUploadService)] = fileUploadService;
-            dependencyMap[typeof(IListingService)] = listingService;
-            dependencyMap[typeof(IJsonSerializer)] = jsonSerializer;
-            dependencyMap[typeof(ISortingService)] = sortingService;
+            //dependencyMap[typeof(ICacheService)] = cacheService;
+            //dependencyMap[typeof(IEmailService)] = emailService;
+            //dependencyMap[typeof(IEstateService)] = estateService;
+            //dependencyMap[typeof(IFileUploadService)] = fileUploadService;
+            //dependencyMap[typeof(IListingService)] = listingService;
+            //dependencyMap[typeof(IJsonSerializer)] = jsonSerializer;
+            //dependencyMap[typeof(ISortingService)] = sortingService;
             dependencyMap[typeof(IUserService)] = userService;
         }
 
