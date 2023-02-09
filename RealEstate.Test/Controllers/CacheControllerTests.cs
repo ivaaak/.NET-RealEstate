@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using RealEstate.API.Controllers;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Estates;
 using StackExchange.Redis;
+using UtilitiesMicroservice.Controllers;
 using Xunit;
 
 namespace RealEstate.Test.Controllers

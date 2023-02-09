@@ -1,7 +1,7 @@
-﻿using MediatR;
+﻿using ListingsMicroservice.Controllers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using RealEstate.API.Controllers;
 using RealEstate.Models.Entities.Estates;
 using Xunit;
 
