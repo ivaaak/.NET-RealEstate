@@ -68,3 +68,5 @@
 /Microservices/MessagingMicroservice/bin/Debug/net7.0
 /Microservices/UtilitiesMicroservice/bin/Debug/net7.0
 /Microservices/UtilitiesMicroservice/obj
+/Microservices/ListingsMicroservice/.vs/ListingsMicroservice
+/RealEstate.MediatR/bin/Release/net7.0
