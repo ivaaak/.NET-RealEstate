@@ -1,33 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>82509c49-13f6-4d4b-a2c9-acfe1676dcb1</UserSecretsId>
+    <UserSecretsId>812204ab-3db1-4c37-8f1f-cdeebbe84c98</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
-    <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="Npgsql" Version="7.0.1" />
+    <PackageReference Include="Stripe.net" Version="41.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Data\RealEstate.Data.csproj" />
-    <ProjectReference Include="..\..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
     <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
-    <ProjectReference Include="..\EstatesMicroservice\EstatesMicroservice.csproj" />
-
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Search\" />
   </ItemGroup>
 
 </Project>

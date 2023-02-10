@@ -4,16 +4,20 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>82509c49-13f6-4d4b-a2c9-acfe1676dcb1</UserSecretsId>
+    <UserSecretsId>c33be85c-81cd-405f-95d2-6a9a15c83f5d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.32" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.90" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -21,13 +25,6 @@
     <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
     <ProjectReference Include="..\..\RealEstate.Data\RealEstate.Data.csproj" />
     <ProjectReference Include="..\..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
-    <ProjectReference Include="..\EstatesMicroservice\EstatesMicroservice.csproj" />
-
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Search\" />
   </ItemGroup>
 
 </Project>

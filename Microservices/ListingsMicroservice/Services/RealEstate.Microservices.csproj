@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.CQRS\RealEstate.CQRS.csproj" />
+    <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
+    <ProjectReference Include="..\RealEstate.Models\RealEstate.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Accounts\" />
+    <Folder Include="ContractsService\" />
+    <Folder Include="ExternalAPI\" />
+    <Folder Include="MortgageCalculator\" />
+    <Folder Include="Comparisons\" />
+    <Folder Include="Geolocation\" />
+    <Folder Include="ValueEstimates\" />
+    <Folder Include="Recommendations\" />
+    <Folder Include="Payments\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Algolia.Search" Version="6.14.0" />
+	<PackageReference Include="Elasticsearch.NET" Version="7.17.5" />
+	<PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.90" />
+  </ItemGroup>
+
+</Project>
