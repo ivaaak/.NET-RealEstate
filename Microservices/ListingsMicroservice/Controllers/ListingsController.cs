@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
-using RealEstate.Microservices.Listings;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Listings;
 using RealEstate.Models.ViewModels.Listings;
@@ -20,12 +19,13 @@ namespace ListingsMicroservice.Controllers
     [Route("api/[controller]")]  // /api/listing
     public class ListingController : BaseController
     {
-        private readonly Services.IListingService listingService;
+        private readonly IListingService listingService;
+
         public ListingController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
             IUserService _service,
-            Services.IListingService _listingService,
+            IListingService _listingService,
             IMediator _mediator,
             IMapper _mapper)
             : base(_roleManager, _userManager, _service, _mediator, _mapper)

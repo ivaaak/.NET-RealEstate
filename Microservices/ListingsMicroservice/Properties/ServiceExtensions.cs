@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using ListingsMicroservice.Services;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.API.Authentication;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.ServiceExtensions;
 using RealEstate.Data.Context;
 using RealEstate.Data.Repository;
-using RealEstate.Microservices.Listings;
 
 namespace ListingsMicroservice.Properties
 {
@@ -12,7 +12,6 @@ namespace ListingsMicroservice.Properties
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IUserService, UserService>();
             services.AddTransient<IListingService, ListingService>();
