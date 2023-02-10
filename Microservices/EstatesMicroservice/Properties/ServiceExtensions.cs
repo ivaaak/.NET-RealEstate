@@ -12,10 +12,10 @@ namespace EstatesMicroservice.Properties
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-            services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddTransient<IEstateService, EstateService>();
+            services.AddScoped(typeof(IRepository), typeof(Repository));
+            services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
+            services.AddTransient(typeof(IEstateService), typeof(EstateService));
 
             return services;
         }

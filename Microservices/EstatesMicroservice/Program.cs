@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services
-    .AddSwaggerGen()
+    //.AddSwaggerGen()
     .AddServices()
     .Use_PostgreSQL_Estates_Context(builder.Configuration)
     .AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
@@ -16,12 +16,12 @@ builder.Services
 
 
 var app = builder.Build();
-
+/*
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger().UseSwaggerUI();
 }
-
+*/
 app.UseHttpsRedirection().UseAuthorization().UseAuthentication();
 
 app.MapControllers();
