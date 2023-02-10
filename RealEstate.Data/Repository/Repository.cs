@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace RealEstate.Data.Repository
 {
-    public abstract class Repository : IRepository
+    public class Repository : IRepository
     {
         protected DbContext? Context { get; set; }
 
