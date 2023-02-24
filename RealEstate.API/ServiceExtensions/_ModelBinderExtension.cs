@@ -3,7 +3,7 @@ using RealEstate.Infrastructure.ModelBinders;
 
 namespace RealEstate.API.ServiceExtensions
 {
-    public static class ModelBinderExtension
+    public static class _ModelBinderExtension
     {
         public static IServiceCollection AddModelBinders(this IServiceCollection services)
         {

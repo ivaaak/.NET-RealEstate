@@ -4,7 +4,7 @@ using RealEstate.Core.Configurations;
 
 namespace RealEstate.API.ServiceExtensions
 {
-    public class AutofacExtension
+    public class _AutofacExtension
     {
         public void ConfigureContainer(ContainerBuilder builder)
         {
