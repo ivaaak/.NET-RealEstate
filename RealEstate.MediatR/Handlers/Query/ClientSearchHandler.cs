@@ -3,10 +3,10 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Repository;
-using RealEstate.Infrastructure.LookupModels;
 using RealEstate.MediatR.Queries;
+using RealEstate.Models.DTOs.Clients;
+using RealEstate.Models.DTOs.Search;
 using RealEstate.Models.Entities.Clients;
-using RealEstate.Models.ViewModels.Search;
 
 namespace RealEstate.MediatR.Handlers.Query
 {
@@ -40,7 +40,7 @@ namespace RealEstate.MediatR.Handlers.Query
                     .ToLower()
                     .Contains(queryNormalized))
                 .OrderBy(p => p.UserName)
-                .ProjectTo<ClientLookupModel>(mapper.ConfigurationProvider)
+                .ProjectTo<ClientDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
 

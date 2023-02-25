@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Models.ViewModels.Search;
+using RealEstate.Models.DTOs.Search;
 
 namespace RealEstate.MediatR.Queries
 {

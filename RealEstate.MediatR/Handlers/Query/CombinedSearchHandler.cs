@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Repository;
 using RealEstate.Infrastructure.LookupModels;
 using RealEstate.MediatR.Queries;
+using RealEstate.Models.DTOs.Search;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
-using RealEstate.Models.ViewModels.Search;
 
 namespace RealEstate.MediatR.Handlers.Query
 {

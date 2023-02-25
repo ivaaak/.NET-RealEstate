@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using RealEstate.Data.Repository;
 using RealEstate.MediatR.Queries;
+using RealEstate.Models.DTOs.Clients;
 using RealEstate.Models.Entities.Clients;
-using RealEstate.Models.ViewModels.Clients;
 
 namespace RealEstate.MediatR.Handlers.Query
 {
