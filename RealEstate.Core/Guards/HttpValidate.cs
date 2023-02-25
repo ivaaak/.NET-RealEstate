@@ -1,4 +1,5 @@
 ﻿using RealEstate.Core.Exceptions;
+using RealEstate.Core.Types;
 using System.Collections;
 using System.Net;
 

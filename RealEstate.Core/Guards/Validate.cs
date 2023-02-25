@@ -1,4 +1,5 @@
 ﻿using RealEstate.Core.Constants;
+using RealEstate.Core.Types;
 using System.Collections;
 using System.Globalization;
 
