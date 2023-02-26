@@ -1,7 +1,7 @@
 ﻿using RealEstate.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Models.Entities.Files
+namespace RealEstate.Models.Entities.Misc
 {
     public class FileEntity : IDeletableEntity
     {
