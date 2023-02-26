@@ -1,7 +1,7 @@
 ﻿using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;
 
-namespace RealEstate.Models.ViewModels.Clients
+namespace RealEstate.Models.DTOs.Clients
 {
     public class ClientEditDTO
     {

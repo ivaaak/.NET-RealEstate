@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Models.ViewModels.Roles
+﻿namespace RealEstate.Models.DTOs.Roles
 {
     public class EmployeeDTO
     {

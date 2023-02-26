@@ -2,7 +2,7 @@ using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 
-namespace RealEstate.Models.ViewModels.Search
+namespace RealEstate.Models.DTOs.Search
 {
     public class SearchDTO
     {

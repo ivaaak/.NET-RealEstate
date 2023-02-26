@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Models.ViewModels.Clients
+﻿namespace RealEstate.Models.DTOs.Clients
 {
     public class ClientListDTO
     {

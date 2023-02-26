@@ -1,4 +1,4 @@
-namespace RealEstate.Models.ViewModels.Errors
+namespace RealEstate.Models.DTOs.Errors
 {
     public class ErrorDTO
     {

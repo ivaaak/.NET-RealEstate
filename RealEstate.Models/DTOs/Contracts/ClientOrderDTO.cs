@@ -1,6 +1,6 @@
 ﻿using RealEstate.Models.Entities.Estates;
 
-namespace RealEstate.Models.ViewModels.Contracts
+namespace RealEstate.Models.DTOs.Contracts
 {
 
     public class CustomerOrderViewModel

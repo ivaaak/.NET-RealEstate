@@ -1,9 +1,11 @@
 ﻿using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Contracts;
+using AutoMapper;
+using RealEstate.Models.Mapping;
 
-namespace RealEstate.Models.ViewModels.Clients
+namespace RealEstate.Models.DTOs.Clients
 {
-    public class ClientDTO
+    public class ClientDTO : IMapFrom<Client>, IHasCustomMapping
     {
         public string Client_Id { get; init; }
 
@@ -26,5 +28,10 @@ namespace RealEstate.Models.ViewModels.Clients
         public Contact Contact { get; init; }
 
         public IEnumerable<Contract> Contracts { get; init; }
+
+        public void CreateMappings(Profile configuration)
+        {
+            configuration.CreateMap<Client, ClientDTO>();
+        }
     }
 }

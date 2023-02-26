@@ -1,7 +1,7 @@
 ﻿using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 
-namespace RealEstate.Models.ViewModels.Listings
+namespace RealEstate.Models.DTOs.Listings
 {
     public class ListingDTO
     {

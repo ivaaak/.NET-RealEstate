@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Models.ViewModels.Login
+﻿namespace RealEstate.Models.DTOs.Login
 {
     public class LoginDTO
     {
