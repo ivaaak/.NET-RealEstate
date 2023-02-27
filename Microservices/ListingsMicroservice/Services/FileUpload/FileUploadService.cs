@@ -1,5 +1,5 @@
 ﻿using RealEstate.Data.Repository;
-using RealEstate.Models.Entities.Files;
+using RealEstate.Models.Entities.Misc;
 
 namespace UtilitiesMicroservice.Services.FileUpload
 {

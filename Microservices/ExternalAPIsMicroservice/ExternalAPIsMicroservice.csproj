@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
     <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
   </ItemGroup>
 

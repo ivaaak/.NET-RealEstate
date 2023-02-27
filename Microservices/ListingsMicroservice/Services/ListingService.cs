@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Repository;
+using RealEstate.Models.DTOs.Listings;
 using RealEstate.Models.Entities.Listings;
-using RealEstate.Models.ViewModels.Listings;
 
 namespace ListingsMicroservice.Services
 {

@@ -5,9 +5,9 @@ using RealEstate.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.MediatR.Commands.Create;
 using RealEstate.MediatR.Commands.Delete;
 using RealEstate.MediatR.Queries;
+using RealEstate.Models.DTOs.Estates;
+using RealEstate.Models.DTOs.Search;
 using RealEstate.Models.Entities.Estates;
-using RealEstate.Models.ViewModels.Estates;
-using RealEstate.Models.ViewModels.Search;
 
 namespace EstatesMicroservice.Services
 {

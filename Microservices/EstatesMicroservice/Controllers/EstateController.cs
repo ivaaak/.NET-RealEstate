@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
+using RealEstate.Models.DTOs.Estates;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.ViewModels.Estates;
 
 namespace EstatesMicroservice.Controllers
 {

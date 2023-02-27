@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "RealEstate.Orchestration": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50154;http://localhost:50155"
+    }
+  }
+}
