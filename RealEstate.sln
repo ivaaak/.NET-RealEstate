@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Core", "RealEsta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Data", "RealEstate.Data\RealEstate.Data.csproj", "{A9C13D30-7966-4401-9FB9-D199A780DEF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Infrastructure", "RealEstate.Infrastructure\RealEstate.Infrastructure.csproj", "{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.MediatR", "RealEstate.MediatR\RealEstate.MediatR.csproj", "{6AD2DDA4-3DF8-4201-B36A-6860F93B440D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Models", "RealEstate.Models\RealEstate.Models.csproj", "{6AA1DF1A-873E-4C9C-8495-4633D357E4E7}"
@@ -73,10 +71,6 @@ Global
 		{A9C13D30-7966-4401-9FB9-D199A780DEF0}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{A9C13D30-7966-4401-9FB9-D199A780DEF0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9C13D30-7966-4401-9FB9-D199A780DEF0}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1D12EC0-4550-469D-8FA9-EDFDD74A6E6A}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{6AD2DDA4-3DF8-4201-B36A-6860F93B440D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{6AD2DDA4-3DF8-4201-B36A-6860F93B440D}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{6AD2DDA4-3DF8-4201-B36A-6860F93B440D}.Release|Any CPU.ActiveCfg = Debug|Any CPU

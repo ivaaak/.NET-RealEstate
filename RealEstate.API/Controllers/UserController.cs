@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.MediatR.Handlers.Query;
 using RealEstate.MediatR.Queries;
+using RealEstate.Models.DTOs.Clients;
 using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.ViewModels.Clients;
 
 namespace RealEstate.API.Controllers
 {

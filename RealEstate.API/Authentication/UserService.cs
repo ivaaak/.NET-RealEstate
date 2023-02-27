@@ -5,10 +5,10 @@ using RealEstate.MediatR.Queries;
 using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Clients;
 using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.ViewModels.Clients;
-using RealEstate.Models.ViewModels.Search;
 using System.Security.Cryptography;
 using System.Text;
+using RealEstate.Models.DTOs.Clients;
+using RealEstate.Models.DTOs.Search;
 
 namespace RealEstate.API.Authentication
 {

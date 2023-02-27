@@ -1,5 +1,5 @@
-﻿using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.ViewModels.Clients;
+﻿using RealEstate.Models.DTOs.Clients;
+using RealEstate.Models.Entities.Identity;
 
 namespace RealEstate.API.Authentication.Contracts
 {

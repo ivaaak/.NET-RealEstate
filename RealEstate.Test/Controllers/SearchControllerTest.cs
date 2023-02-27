@@ -10,7 +10,7 @@ namespace RealEstate.Test.Controllers
     public class SearchControllerTest
     {
         private IMediator _mediator;
-        private _SearchController controller;
+        private SearchController controller;
 
         public SearchControllerTest()
         {
@@ -18,7 +18,7 @@ namespace RealEstate.Test.Controllers
             //_mediator = new Mock<IMediator>();
 
             // Set up the controller
-            controller = new _SearchController(
+            controller = new SearchController(
                 _roleManager: null,
                 _userManager: null,
                 _service: null,

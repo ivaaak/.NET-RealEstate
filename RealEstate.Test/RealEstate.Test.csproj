@@ -27,7 +27,6 @@
     <ProjectReference Include="..\Microservices\UtilitiesMicroservice\UtilitiesMicroservice.csproj" />
     <ProjectReference Include="..\RealEstate.API\RealEstate.API.csproj" />
     <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
-    <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
