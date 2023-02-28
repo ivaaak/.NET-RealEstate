@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Infrastructure.Interfaces
+﻿namespace RealEstate.Data.Interfaces
 {
     public abstract class IDatabaseSeeder
     {

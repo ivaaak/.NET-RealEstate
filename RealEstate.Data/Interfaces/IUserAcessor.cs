@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace RealEstate.Infrastructure.Interfaces
+namespace RealEstate.Data.Interfaces
 {
     public interface IUserAccessor
     {

@@ -4,7 +4,7 @@ using RealEstate.Models.Entities.Contracts;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Listings;
 
-namespace RealEstate.Infrastructure.Interfaces
+namespace RealEstate.Data.Interfaces
 {
     public interface IApplicationDbContext
     {

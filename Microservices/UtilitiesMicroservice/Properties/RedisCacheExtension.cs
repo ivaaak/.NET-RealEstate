@@ -1,4 +1,6 @@
-﻿namespace RealEstate.API.ServiceExtensions
+﻿using RealEstate.API.ServiceExtensions;
+
+namespace UtilitiesMicroservice.Properties
 {
     public static class RedisCacheExtension
     {
