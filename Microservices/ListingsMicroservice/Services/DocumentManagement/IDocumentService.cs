@@ -1,6 +1,6 @@
 ﻿using RealEstate.Models.Entities.Misc;
 
-namespace UtilitiesMicroservice.Services.DocumentManagement
+namespace ListingsMicroservice.Services.DocumentManagement
 {
     /// <summary>
     /// Represents a service for managing documents.

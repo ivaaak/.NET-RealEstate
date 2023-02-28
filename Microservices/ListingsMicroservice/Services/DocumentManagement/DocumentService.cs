@@ -1,7 +1,7 @@
 ﻿using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Misc;
 
-namespace UtilitiesMicroservice.Services.DocumentManagement
+namespace ListingsMicroservice.Services.DocumentManagement
 {
     public class DocumentService : IDocumentService
     {

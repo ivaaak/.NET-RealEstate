@@ -1,4 +1,4 @@
-namespace UtilitiesMicroservice.Services.Serializer
+namespace ListingsMicroservice.Services.Serializer
 {
     public interface IJsonSerializer
     {

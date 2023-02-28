@@ -1,7 +1,7 @@
 ﻿using RealEstate.Data.Repository;
 using RealEstate.Models.Entities.Misc;
 
-namespace UtilitiesMicroservice.Services.FileUpload
+namespace ListingsMicroservice.Services.FileUpload
 {
     public class FileUploadService : IFileUploadService
     {

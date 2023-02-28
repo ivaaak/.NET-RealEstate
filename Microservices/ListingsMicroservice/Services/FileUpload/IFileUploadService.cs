@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace UtilitiesMicroservice.Services.FileUpload
+namespace ListingsMicroservice.Services.FileUpload
 {
     public interface IFileUploadService
     {

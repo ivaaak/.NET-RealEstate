@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using IDatabase = StackExchange.Redis.IDatabase;
 
-namespace UtilitiesMicroservice.Services.Cache
+namespace ListingsMicroservice.Services.Cache
 {
     public class CacheService : ICacheService
     {

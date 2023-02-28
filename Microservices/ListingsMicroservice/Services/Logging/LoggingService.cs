@@ -2,7 +2,7 @@
 using System.Reflection.Metadata;
 
 
-namespace UtilitiesMicroservice.Services.Logging
+namespace ListingsMicroservice.Services.Logging
 {
     public class LoggingService
     {
