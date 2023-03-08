@@ -1,11 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Run on port 9007
+builder.WebHost.UseUrls("http://*:9007");
 
+// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer().AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -13,14 +13,10 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwagger().UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
+app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
 
 app.Run();

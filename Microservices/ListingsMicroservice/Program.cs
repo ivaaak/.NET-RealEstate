@@ -4,15 +4,14 @@ using RealEstate.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Run on port 9005
+builder.WebHost.UseUrls("http://*:9005");
 
 builder.Services
     .AddSwaggerGen()
     .AddServices()
     .Use_PostgreSQL_Listings_Context(builder.Configuration)
     .AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
-
-//add services
-//.AddEndpointsApiExplorer().AddControllers();
 
 var app = builder.Build();
 
