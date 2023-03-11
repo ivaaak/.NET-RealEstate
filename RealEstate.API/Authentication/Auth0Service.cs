@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Identity;
 using System.Net.Http.Headers;
 
 namespace RealEstate.API.Authentication

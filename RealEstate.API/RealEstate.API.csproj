@@ -17,20 +17,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Properties\launchSettings.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Properties\launchSettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link="Properties\.editorconfig" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Auth0.AuthenticationApi" Version="7.17.4" />
@@ -70,9 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
-    <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
-    <ProjectReference Include="..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
+    <ProjectReference Include="..\RealEstate.Shared\RealEstate.Shared.csproj" />
   </ItemGroup>
 
 </Project>

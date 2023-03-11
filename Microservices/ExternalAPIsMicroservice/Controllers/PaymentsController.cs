@@ -5,15 +5,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.Controllers;
 using RealEstate.Infrastructure.Filters;
 using RealEstate.Models.Entities.Identity;
 using RealEstate.Models.Entities.Misc;
+using RealEstate.Shared.Models.Entities.Identity;
 using Stripe;
 
 namespace ExternalAPIsMicroservice.Controllers
 {
     [Authorize]
-    [AjaxFilter]
+    //[AjaxFilter]
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]

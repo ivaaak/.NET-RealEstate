@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
+    <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Shared\RealEstate.Shared.csproj" />
   </ItemGroup>
 
 </Project>

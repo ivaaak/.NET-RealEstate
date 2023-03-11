@@ -1,6 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

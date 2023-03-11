@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.API.Controllers;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.Controllers;
 using RealEstate.Models.DTOs.Estates;
 using RealEstate.Models.Entities.Estates;
 using RealEstate.Models.Entities.Identity;
+using RealEstate.Shared.Models.DTOs.Estates;
+using RealEstate.Shared.Models.Entities.Estates;
+using RealEstate.Shared.Models.Entities.Identity;
 
 namespace EstatesMicroservice.Controllers
 {
@@ -200,7 +205,7 @@ namespace EstatesMicroservice.Controllers
         {
             var result = estateService.SearchEstates(searchTerm).Result;
 
-            return result;
+            return (IEnumerable<EstateDTO>)result;
         }
     }
 }

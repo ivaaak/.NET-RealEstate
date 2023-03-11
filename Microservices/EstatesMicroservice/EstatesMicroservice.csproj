@@ -9,16 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Data\RealEstate.Data.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
-	<ProjectReference Include="..\..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
+    <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Shared\RealEstate.Shared.csproj" />
   </ItemGroup>
 
 </Project>

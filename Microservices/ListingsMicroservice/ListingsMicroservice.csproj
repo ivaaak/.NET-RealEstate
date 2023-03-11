@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Data\RealEstate.Data.csproj" />
-    <ProjectReference Include="..\..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Models\RealEstate.Models.csproj" />
     <ProjectReference Include="..\EstatesMicroservice\EstatesMicroservice.csproj" />
 
   </ItemGroup>

@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using Npgsql;
 using RealEstate.API.Authentication.Contracts;
 using RealEstate.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Identity;
 using StackExchange.Redis;
 using System.Net;
 using System.Net.NetworkInformation;

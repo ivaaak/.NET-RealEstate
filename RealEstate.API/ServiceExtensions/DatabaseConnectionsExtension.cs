@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Context;
+using RealEstate.Shared.Data.Context;
 
 namespace RealEstate.API.ServiceExtensions
 {

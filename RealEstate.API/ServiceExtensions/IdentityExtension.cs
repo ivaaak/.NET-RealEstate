@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RealEstate.Data.Context;
-using RealEstate.Models.Entities.Clients;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Models.Entities.Clients;
 
 namespace RealEstate.API.ServiceExtensions
 {

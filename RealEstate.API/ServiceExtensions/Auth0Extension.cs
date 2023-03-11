@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 using System.Configuration;
 using System.Security.Claims;
 
-namespace RealEstate.API.ServiceExtensions
+namespace 
+    
+    .ServiceExtensions
 {
     public static class Auth0Extension
     {

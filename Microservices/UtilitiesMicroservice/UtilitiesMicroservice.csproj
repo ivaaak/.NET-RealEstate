@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Hangfire.Core" Version="1.7.32" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
@@ -22,9 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RealEstate.API\RealEstate.API.csproj" />
-    <ProjectReference Include="..\..\RealEstate.Data\RealEstate.Data.csproj" />
-    <ProjectReference Include="..\..\RealEstate.MediatR\RealEstate.MediatR.csproj" />
+    <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Shared\RealEstate.Shared.csproj" />
   </ItemGroup>
 
 </Project>

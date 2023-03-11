@@ -9,6 +9,10 @@ using System.Security.Cryptography;
 using System.Text;
 using RealEstate.Models.DTOs.Clients;
 using RealEstate.Models.DTOs.Search;
+using RealEstate.Shared.Models.Entities.Identity;
+using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.Models.DTOs.Clients;
+using RealEstate.Shared.Models.Entities.Clients;
 
 namespace RealEstate.API.Authentication
 {

@@ -1,4 +1,4 @@
-﻿using RealEstate.Models.Entities.Identity;
+﻿using RealEstate.Shared.Models.Entities.Identity;
 
 namespace RealEstate.API.Authentication.Contracts
 {

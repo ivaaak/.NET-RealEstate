@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.Authentication.Contracts;
-using RealEstate.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Identity;
 
 namespace RealEstate.API.Controllers
 {
