@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using RealEstate.Data.Context;
-using RealEstate.Models.Entities.Estates;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Models.Entities.Estates;
 
 namespace ListingsMicroservice.Services.Sorting
 {

@@ -1,5 +1,5 @@
-﻿using RealEstate.Data.Repository;
-using RealEstate.Models.Entities.Misc;
+﻿using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ListingsMicroservice.Services.DocumentManagement
 {

@@ -3,16 +3,15 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.API.Authentication.Contracts;
-using RealEstate.API.Controllers;
-using RealEstate.Infrastructure.Filters;
-using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.Entities.Misc;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.Controllers;
+using RealEstate.Shared.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ListingsMicroservice.Controllers
 {
     [Authorize]
-    [AjaxFilter]
+    //[AjaxFilter]
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]

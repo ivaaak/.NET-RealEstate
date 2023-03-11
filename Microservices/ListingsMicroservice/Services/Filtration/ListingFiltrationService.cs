@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Models.Entities.Listings;
-using RealEstate.Models.Entities.Misc;
+using RealEstate.Shared.Models.Entities.Listings;
+using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ListingsMicroservice.Services.Filtration
 {

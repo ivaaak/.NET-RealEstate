@@ -16,6 +16,7 @@ namespace UtilitiesMicroservice.Properties
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            /*
             services.AddHangfire(config => config
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseColouredConsoleLogProvider()
@@ -30,9 +31,9 @@ namespace UtilitiesMicroservice.Properties
                     UsePageLocksOnDequeue = true,
                     DisableGlobalLocks = true
                 }));
-
+           
             services.AddHangfireServer();
-
+            */
             return services;
         }
 

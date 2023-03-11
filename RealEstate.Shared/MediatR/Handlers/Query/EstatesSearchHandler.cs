@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.Queries;
+using RealEstate.Shared.Models.DTOs.Estates;
 using RealEstate.Shared.Models.DTOs.Search;
 using RealEstate.Shared.Models.Entities.Estates;
 
@@ -39,7 +40,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
                     .ToLower()
                     .Contains(queryNormalized))
                 .OrderBy(p => p.Estate_Name)
-                .ProjectTo<EstateLookupModel>(mapper.ConfigurationProvider)
+                .ProjectTo<EstateDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
             var dataModel = new SearchDTO

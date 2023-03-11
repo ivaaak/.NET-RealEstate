@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.Queries;
+using RealEstate.Shared.Models.DTOs.Clients;
 using RealEstate.Shared.Models.DTOs.Search;
 using RealEstate.Shared.Models.Entities.Clients;
 

@@ -1,4 +1,4 @@
-﻿using RealEstate.Models.Entities.Misc;
+﻿using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ListingsMicroservice.Services.DocumentManagement
 {

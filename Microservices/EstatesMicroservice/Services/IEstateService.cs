@@ -1,5 +1,5 @@
-﻿using RealEstate.Models.DTOs.Estates;
-using RealEstate.Models.Entities.Estates;
+﻿using RealEstate.Shared.Models.DTOs.Estates;
+using RealEstate.Shared.Models.Entities.Estates;
 
 namespace EstatesMicroservice.Services
 {

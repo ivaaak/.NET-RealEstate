@@ -4,11 +4,11 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.API.Authentication.Contracts;
-using RealEstate.API.Controllers;
-using RealEstate.Models.DTOs.Listings;
-using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.Entities.Listings;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.Controllers;
+using RealEstate.Shared.Models.DTOs.Listings;
+using RealEstate.Shared.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Listings;
 
 namespace ListingsMicroservice.Controllers
 {

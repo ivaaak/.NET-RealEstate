@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using RealEstate.Models.Entities.Estates;
+using RealEstate.Shared.Models.Entities.Estates;
 using Xunit;
 
 namespace RealEstate.Test.Controllers

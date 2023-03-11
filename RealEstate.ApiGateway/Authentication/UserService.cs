@@ -1,18 +1,14 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.MediatR.Queries;
-using RealEstate.Data.Repository;
-using RealEstate.Models.Entities.Clients;
-using RealEstate.Models.Entities.Identity;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.MediatR.Queries;
+using RealEstate.Shared.Models.DTOs.Clients;
+using RealEstate.Shared.Models.DTOs.Search;
+using RealEstate.Shared.Models.Entities.Clients;
+using RealEstate.Shared.Models.Entities.Identity;
 using System.Security.Cryptography;
 using System.Text;
-using RealEstate.Models.DTOs.Clients;
-using RealEstate.Models.DTOs.Search;
-using RealEstate.Shared.Models.Entities.Identity;
-using RealEstate.Shared.Data.Repository;
-using RealEstate.Shared.Models.DTOs.Clients;
-using RealEstate.Shared.Models.Entities.Clients;
-using RealEstate.ApiGateway.Authentication.Contracts;
 
 namespace RealEstate.ApiGateway.Authentication
 {

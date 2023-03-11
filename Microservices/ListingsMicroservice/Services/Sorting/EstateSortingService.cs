@@ -1,4 +1,4 @@
-﻿using RealEstate.Models.Entities.Estates;
+﻿using RealEstate.Shared.Models.Entities.Estates;
 
 namespace ListingsMicroservice.Services.Sorting
 {

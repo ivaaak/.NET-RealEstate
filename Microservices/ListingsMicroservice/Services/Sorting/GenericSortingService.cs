@@ -1,5 +1,4 @@
-﻿using RealEstate.Models.Entities.Estates;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace ListingsMicroservice.Services.Sorting
 {

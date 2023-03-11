@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Context;
+using RealEstate.Shared.Data.Context;
 
 namespace RealEstate.Test.Data
 {

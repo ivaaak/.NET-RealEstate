@@ -6,6 +6,7 @@ using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.DTOs.Clients;
 using RealEstate.Shared.Models.DTOs.Estates;
+using RealEstate.Shared.Models.DTOs.Listings;
 using RealEstate.Shared.Models.DTOs.Search;
 using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -67,7 +68,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
                     .ToLower()
                     .Contains(queryNormalized))
               .OrderBy(p => p.Name)
-              .ProjectTo<ListingsLookupModel>(mapper.ConfigurationProvider)
+              .ProjectTo<ListingDTO>(mapper.ConfigurationProvider)
               .ToListAsync(cancellationToken);
 
             var dataModel = new SearchDTO

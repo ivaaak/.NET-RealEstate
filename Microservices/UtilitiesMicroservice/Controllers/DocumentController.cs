@@ -3,10 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.API.Authentication.Contracts;
-using RealEstate.API.Controllers;
-using RealEstate.Models.Entities.Identity;
-using RealEstate.Models.Entities.Misc;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.Controllers;
+using RealEstate.Shared.Models.Entities.Identity;
+using RealEstate.Shared.Models.Entities.Misc;
 using UtilitiesMicroservice.Services.DocumentManagement;
 
 namespace UtilitiesMicroservice.Controllers

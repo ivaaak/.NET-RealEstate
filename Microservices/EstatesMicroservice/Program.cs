@@ -1,6 +1,6 @@
 using EstatesMicroservice.Properties;
-using MediatR;
-using RealEstate.MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +10,8 @@ builder.WebHost.UseUrls("http://*:9003");
 builder.Services
     //.AddSwaggerGen()
     .AddServices()
-    .Use_PostgreSQL_Estates_Context(builder.Configuration)
-    .AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
+    .Use_PostgreSQL_Estates_Context(builder.Configuration);
+    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
 
 var app = builder.Build();
 

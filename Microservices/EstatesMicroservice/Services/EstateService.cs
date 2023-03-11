@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Repository;
-using RealEstate.MediatR.BehaviorModels.ResponseModels;
-using RealEstate.MediatR.Commands.Create;
-using RealEstate.MediatR.Commands.Delete;
-using RealEstate.MediatR.Queries;
-using RealEstate.Models.DTOs.Estates;
-using RealEstate.Models.DTOs.Search;
-using RealEstate.Models.Entities.Estates;
+using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.MediatR.BehaviorModels.ResponseModels;
+using RealEstate.Shared.MediatR.Commands.Create;
+using RealEstate.Shared.MediatR.Commands.Delete;
+using RealEstate.Shared.MediatR.Queries;
+using RealEstate.Shared.Models.DTOs.Estates;
+using RealEstate.Shared.Models.DTOs.Search;
+using RealEstate.Shared.Models.Entities.Estates;
 
 namespace EstatesMicroservice.Services
 {

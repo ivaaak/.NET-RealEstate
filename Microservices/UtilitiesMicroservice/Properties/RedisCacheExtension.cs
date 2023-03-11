@@ -1,4 +1,4 @@
-﻿using RealEstate.API.ServiceExtensions;
+﻿using RealEstate.ApiGateway.ServiceExtensions;
 
 namespace UtilitiesMicroservice.Properties
 {
@@ -14,14 +14,14 @@ namespace UtilitiesMicroservice.Properties
             // Fetch config from connectionStrings.json
             var redisConnectionString = EnvironmentConfig.Current.RedisConnectionString;
 
-
+            /*
             services.AddStackExchangeRedisCache(redisOptions =>
             {
                 string connection = redisConnectionString;
 
                 redisOptions.Configuration = connection;
             });
-
+            */
             services.AddMemoryCache();
 
             return services;

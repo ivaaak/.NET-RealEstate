@@ -1,6 +1,6 @@
 ﻿using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Authentication.Contracts;
-using RealEstate.Data.Repository;
+using RealEstate.Shared.Data.Repository;
 
 namespace RealEstate.ApiGateway.ServiceExtensions
 {

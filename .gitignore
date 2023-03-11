@@ -87,3 +87,6 @@
 
 /RealEstate.Shared/obj
 /RealEstate.ApiGateway/obj
+/RealEstate.Tests/obj
+/RealEstate.Shared/bin/Debug/net7.0
+/RealEstate.ApiGateway/bin/Debug/net7.0

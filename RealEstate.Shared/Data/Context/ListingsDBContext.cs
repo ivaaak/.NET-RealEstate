@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Clients;
+using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.Entities.Listings;
 
 namespace RealEstate.Shared.Data.Context

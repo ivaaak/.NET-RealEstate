@@ -1,5 +1,5 @@
-﻿using RealEstate.Core.Constants;
-using RealEstate.Infrastructure.ModelBinders;
+﻿using RealEstate.Shared.Core.Constants;
+using RealEstate.Shared.Models.ModelBinders;
 
 namespace RealEstate.ApiGateway.ServiceExtensions
 {

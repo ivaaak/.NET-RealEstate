@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using RealEstate.API.Authentication;
-using RealEstate.API.Authentication.Contracts;
-using RealEstate.Data.Context;
-using RealEstate.Data.Repository;
+using RealEstate.ApiGateway.Authentication;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Test.Constants;
 using RealEstate.Test.Data;
 

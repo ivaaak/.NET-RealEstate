@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Data.Context;
 using RealEstate.Shared.Data.Context;
 
 namespace RealEstate.ApiGateway.ServiceExtensions
@@ -29,7 +28,7 @@ namespace RealEstate.ApiGateway.ServiceExtensions
             services.AddDbContext<EstatesDBContext>(options => options.UseNpgsql(estatesConnectionString));
             services.AddDbContext<ListingsDBContext>(options => options.UseNpgsql(listingsConnectionString));
 
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             return services;
         }
@@ -48,7 +47,7 @@ namespace RealEstate.ApiGateway.ServiceExtensions
             services.AddDbContext<EstatesDBContext>(options => options.UseSqlServer(mySQLConnectionString));
             services.AddDbContext<ListingsDBContext>(options => options.UseSqlServer(mySQLConnectionString));
 
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             return services;
         }

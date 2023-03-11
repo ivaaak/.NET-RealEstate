@@ -1,10 +1,10 @@
 using ListingsMicroservice.Services;
 using Microsoft.EntityFrameworkCore;
-using RealEstate.API.Authentication;
-using RealEstate.API.Authentication.Contracts;
-using RealEstate.API.ServiceExtensions;
-using RealEstate.Data.Context;
-using RealEstate.Data.Repository;
+using RealEstate.ApiGateway.Authentication;
+using RealEstate.ApiGateway.Authentication.Contracts;
+using RealEstate.ApiGateway.ServiceExtensions;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Data.Repository;
 
 namespace ListingsMicroservice.Properties
 {
@@ -30,7 +30,7 @@ namespace ListingsMicroservice.Properties
             // Microdatabases
             services.AddDbContext<ListingsDBContext>(options => options.UseNpgsql(listingsConnectionString));
 
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             return services;
         }

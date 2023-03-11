@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using RealEstate.Data.Repository;
-using RealEstate.Models.Entities.Estates;
+using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.Models.Entities.Estates;
 using StackExchange.Redis;
 using UtilitiesMicroservice.Controllers;
 using Xunit;

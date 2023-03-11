@@ -1,4 +1,4 @@
-﻿using RealEstate.Core.Exceptions;
+﻿using RealEstate.Shared.Core.Exceptions;
 
 namespace RealEstate.ApiGateway.Middleware
 {
