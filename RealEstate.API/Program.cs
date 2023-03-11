@@ -5,7 +5,12 @@ using RealEstate.API.ServiceExtensions;
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
-    .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotClientsConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotContractsConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotEstatesConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotExternalConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotListingsConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotMessagingConfig.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 
 // Run the Gateway on port 9000

@@ -1,0 +1,14 @@
+﻿{
+  // Contracts Web API
+  "Routes": [
+    {
+    }
+    // Clients Web API
+    // Messaging Web API
+    // External API
+    // Utilities Web API
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:9000"
+  }
+}

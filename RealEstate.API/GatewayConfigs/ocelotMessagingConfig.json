@@ -1,0 +1,10 @@
+﻿{
+// Messaging Web API
+  "Routes": [
+    {
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:9000"
+  }
+}
