@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Data.Context;
 
-namespace RealEstate.API.FactoryPattern
+namespace RealEstate.Data.FactoryPattern
 {
     public class ListingsDbContextFactory : IDesignTimeDbContextFactory<ListingsDBContext>
     {

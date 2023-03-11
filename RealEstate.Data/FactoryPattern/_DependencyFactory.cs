@@ -1,7 +1,7 @@
 ﻿using RealEstate.API.Authentication.Contracts;
 using RealEstate.Core.Guards;
 
-namespace RealEstate.API.FactoryPattern
+namespace RealEstate.Data.FactoryPattern
 {
     internal sealed class _DependencyFactory : IDependencyFactory
     {
@@ -10,14 +10,14 @@ namespace RealEstate.API.FactoryPattern
         public _DependencyFactory(
              IUserService userService,
             IAuth0Service auth0AuthenticationService)
-            //IAccountClient accountClient,
-            //ICacheService cacheService,
-            //IEmailService emailService,
-            //IEstateService estateService,
-            //IFileUploadService fileUploadService,
-            //IListingService listingService,
-            //IJsonSerializer jsonSerializer,
-            //ISortingService sortingService)
+        //IAccountClient accountClient,
+        //ICacheService cacheService,
+        //IEmailService emailService,
+        //IEstateService estateService,
+        //IFileUploadService fileUploadService,
+        //IListingService listingService,
+        //IJsonSerializer jsonSerializer,
+        //ISortingService sortingService)
         {
             Validate.NotNull(auth0AuthenticationService, nameof(auth0AuthenticationService));
             Validate.NotNull(userService, nameof(userService));
