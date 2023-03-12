@@ -1,6 +1,4 @@
 using EstatesMicroservice.Properties;
-using Microsoft.Extensions.DependencyInjection;
-using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9003");
 
 builder.Services
-    //.AddSwaggerGen()
-    .AddServices()
-    .Use_PostgreSQL_Estates_Context(builder.Configuration);
-    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
+    .AddSwaggerWithConfig();
+    //.AddServices()
+    //.Use_PostgreSQL_Estates_Context(builder.Configuration);
+//.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
+
+// inability to resolve the dependency for _CombinedContext
+
+builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
 var app = builder.Build();
 

@@ -1,5 +1,6 @@
 ﻿using EstatesMicroservice.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.ServiceExtensions;
@@ -32,6 +33,21 @@ namespace EstatesMicroservice.Properties
             services.AddDbContext<EstatesDBContext>(options => options.UseNpgsql(estatesConnectionString));
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
+
+            return services;
+        }
+
+        public static IServiceCollection AddSwaggerWithConfig(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Estates Microservice",
+                    Version = "v1",
+                    Description = "A simple example ASP.NET Core Web API"
+                });
+            });
 
             return services;
         }
