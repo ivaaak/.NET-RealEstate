@@ -13,4 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Shared\RealEstate.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

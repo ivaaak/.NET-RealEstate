@@ -1,5 +1,6 @@
 using EstatesMicroservice.Properties;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Run on port 9003
@@ -9,9 +10,11 @@ builder.Services
     .AddSwaggerWithConfig();
     //.AddServices()
     //.Use_PostgreSQL_Estates_Context(builder.Configuration);
-//.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
+    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
 
 // inability to resolve the dependency for _CombinedContext
+
+builder.Services.AddControllers();
 
 builder.Configuration.AddJsonFile("Properties/appsettings.json");
 

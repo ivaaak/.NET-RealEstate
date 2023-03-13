@@ -1,6 +1,4 @@
 using ListingsMicroservice.Properties;
-using Microsoft.Extensions.DependencyInjection;
-using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9005");
 
 builder.Services
-    .AddSwaggerGen()
-    .AddServices()
-    .Use_PostgreSQL_Listings_Context(builder.Configuration);
+    .AddSwaggerWithConfig()
+    .AddServices();
+    //.Use_PostgreSQL_Listings_Context(builder.Configuration);
     //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

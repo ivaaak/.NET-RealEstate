@@ -1,5 +1,4 @@
-using ListingsMicroservice.Services;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Authentication.Contracts;
@@ -7,30 +6,29 @@ using RealEstate.ApiGateway.ServiceExtensions;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
 
-namespace ListingsMicroservice.Properties
+namespace ClientsMicroservice.Properties
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddSharedServices(this IServiceCollection services)
         {
-            //services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-            services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddTransient<IListingService, ListingService>();
+            services.AddScoped(typeof(IRepository), typeof(Repository));
+            services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
 
             return services;
         }
 
-        public static IServiceCollection Use_PostgreSQL_Listings_Context(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection Use_PostgreSQL_Clients_Context(this IServiceCollection services, IConfiguration config)
         {
             // This just needs to be called once on application startup
             EnvironmentConfig.LoadFromEnvironmentVariable();
 
             // Fetch config from connectionStrings.json
-            var listingsConnectionString = EnvironmentConfig.Current.PostgreListingsConnection;
+            var estatesConnectionString = EnvironmentConfig.Current.PostgreEstatesConnection;
 
             // Microdatabases
-            services.AddDbContext<ListingsDBContext>(options => options.UseNpgsql(listingsConnectionString));
+            services.AddDbContext<ClientsDBContext>(options => options.UseNpgsql(estatesConnectionString));
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -43,7 +41,7 @@ namespace ListingsMicroservice.Properties
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Listings APIs Microservice",
+                    Title = "Clients Microservice",
                     Version = "v1",
                     Description = "A simple example ASP.NET Core Web API"
                 });
