@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using RealEstate.Shared.Models.Entities.Clients;
 
 namespace RealEstate.Shared.Data.Context
@@ -7,6 +8,21 @@ namespace RealEstate.Shared.Data.Context
     {
         public ClientsDBContext(DbContextOptions<ClientsDBContext> options)
             : base(options) { }
+
+
+        public ClientsDBContext(string connectionString) : base(GetOptions(connectionString))
+        {
+        }
+
+        private static DbContextOptions GetOptions(string connectionString)
+        {
+            var builder = new NpgsqlConnectionStringBuilder(connectionString);
+            var optionsBuilder = new DbContextOptionsBuilder<ClientsDBContext>()
+                .UseNpgsql(builder.ConnectionString);
+
+            return optionsBuilder.Options;
+        }
+
 
         public DbSet<Client> Clients { get; set; }
 
@@ -33,5 +49,15 @@ namespace RealEstate.Shared.Data.Context
 
             base.OnModelCreating(modelBuilder);
         }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql("\"Host=127.0.0.1;Port=32769;Database=Clients;Username=postgres;Password=postgrespw;");
+            }
+        }
+        
     }
 }

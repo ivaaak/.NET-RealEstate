@@ -30,13 +30,14 @@ namespace RealEstate.ApiGateway.ServiceExtensions
         public static void LoadFromEnvironmentVariable()
         {
             var environment = System.Environment.GetEnvironmentVariable(ENVIRONMENT_VARIABLE_NAME);
-            Enum.TryParse(typeof(MyEnvironment), environment, out var env);
+            Enum.TryParse(typeof(MyEnvironment), environment, true, out var env);
             if (string.IsNullOrEmpty(environment) || env == null)
             {
                 throw new Exception($"Hey, you need to set the App Environment Variable!");
             }
 
             Load((MyEnvironment)env);
+            // LoadFromEnvironmentVariable(MyEnvironment.Dev, assemblyFilePath);
         }
 
         public static void Load(MyEnvironment env)
@@ -47,6 +48,24 @@ namespace RealEstate.ApiGateway.ServiceExtensions
             var config = JsonSerializer.Deserialize<Dictionary<string, EnvironmentConfig>>(json);
             Current = config[env.ToString()];
         }
+
+        public static void LoadFromDifferentAssembly(MyEnvironment env, string assemblyFilePath)
+        {
+            var assembly = Assembly.LoadFrom(assemblyFilePath);
+            var resourceName = "MyAssemblyName.connectionStrings.json";
+            using var stream = assembly.GetManifestResourceStream(resourceName);
+            if (stream == null)
+            {
+                throw new FileNotFoundException($"Resource '{resourceName}' not found in assembly '{assembly.FullName}'.");
+            }
+            using var reader = new StreamReader(stream);
+            var json = reader.ReadToEnd();
+            var config = JsonSerializer.Deserialize<Dictionary<string, EnvironmentConfig>>(json);
+            Current = config[env.ToString()];
+        }
+        // usage:
+        //var assemblyFilePath = @"C:\Path\To\MyAssembly.dll";
+        //EnvironmentConfig.Load(MyEnvironment.Dev, assemblyFilePath);
     }
 
 

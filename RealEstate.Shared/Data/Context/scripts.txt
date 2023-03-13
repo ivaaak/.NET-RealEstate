@@ -5,3 +5,8 @@ Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Migrations/Co
 Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Migrations/EstatesDB
 Add-Migration InitialCreate -Context IdentityUsersDBContext -OutputDir Migrations/IdentityUsersDB
 Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Migrations/ListingsDB
+
+
+Update-Database -Context ClientsDBContext
+
+
