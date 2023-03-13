@@ -33,14 +33,13 @@ namespace RealEstate.ApiGateway.ServiceExtensions
             Enum.TryParse(typeof(MyEnvironment), environment, true, out var env);
             if (string.IsNullOrEmpty(environment) || env == null)
             {
-                throw new Exception($"Hey, you need to set the App Environment Variable!");
+                //throw new Exception($"Hey, you need to set the App Environment Variable!");
             }
 
             Load((MyEnvironment)env);
-            // LoadFromEnvironmentVariable(MyEnvironment.Dev, assemblyFilePath);
         }
 
-        public static void Load(MyEnvironment env)
+        public static void Load(object? env)
         {
             var path = Assembly.GetExecutingAssembly().Location;
             var dir = Path.GetDirectoryName(path);
