@@ -6,8 +6,8 @@ It can be used for listing, browsing and renting/selling properties.
 ### Architecture (planned):
 
 
-		     ┌────────────────────────────────────┐
-		     │             API Gateway:           │
+		      ┌────────────────────────────────────┐
+		      │             API Gateway:           │
           ┌───────│  Identity, Auth0/JWT, Rate Limit   │───────┐   
           │       └────┬────────────┬────────────┬─────┘       │
 	      │            │            │            │             │   
