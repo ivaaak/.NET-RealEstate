@@ -3,11 +3,11 @@ A Web API built with .NET 7, Microservices, MediatR/CQRS Pattern, EF Core, and u
 It can be used for listing, browsing and renting/selling properties. 
 
 
-Architecture (planned):
+### Architecture (planned):
 
 
-			      ┌────────────────────────────────────┐
-				  │             API Gateway:           │
+		┌────────────────────────────────────┐
+		│             API Gateway:           │
           ┌───────│  Identity, Auth0/JWT, Rate Limit   │───────┐   
           │       └────┬────────────┬────────────┬─────┘       │
 	      │            │            │            │             │   
