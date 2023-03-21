@@ -4,11 +4,11 @@ using System.Net;
 
 namespace ExternalAPIsMicroservice.Services
 {
-    public class ScraperService
+    public class ScraperService : IScraperService
     {
         private string html;
 
-        public void RunCrawler()
+        public void RunScraper()
         {
             DownloadWebsiteString();
             ExtractWebsiteData();
