@@ -8,7 +8,7 @@ It can be used for listing, browsing and renting/selling properties.
 
                   ┌────────────────────────────────────────────────────┐
                   │     API Gateway - Auth, RateLimit, LoadBalance     │        ┌──────────────┐
-	    		  │             Cross-Cutting Concerns:                │        │External APIs:│  
+                  │             Cross-Cutting Concerns:                │        │External APIs:│  
           ┌───────│       Logging - ELK, Resilience, Dashboard         │──┐─────│Zillow, Stripe│
           │       └───┬───────────┬────────────┬────────────┬──────────┘  │     └──────────────┘
       ┌───┴───┐       │           │            │            │             │        
