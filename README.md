@@ -6,22 +6,23 @@ It can be used for listing, browsing and renting/selling properties.
 ### Architecture (planned):
 
 
-		      ┌────────────────────────────────────┐
-		      │             API Gateway:           │
-          ┌───────│  Identity, Auth0/JWT, Rate Limit   │───────┐   
-          │       └────┬────────────┬────────────┬─────┘       │
-	      │            │            │            │             │   
-      ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌────┴────┐  
-      │Estates│    │Listing│    │ Client│    │ Utils │    │ Payments│    Microservices     
-      └───┬───┘    └───┬───┘    └───┬───┘    └───┬───┘    └────┬────┘
-      ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌────┴────┐  
-      │Postgre│    │Postgre│    │ Mongo │    │ Redis │    │ Ext API │  Data - Database / External API
-      └───┬───┘    └───┬───┘    └───┬───┘    └───┬───┘    └────┬────┘
-          │            │            │            │             │
-	      │       ┌────┴────────────┴────────────┴────┐        │
-	      └───────│       RabbitMQ  / MassTransit     │────────┘  
-	              │     Event Bus / Transport Layer   │  Producer / Consumer
-	              └─────────────────┬─────────────────┘
+                  ┌────────────────────────────────────────────────────┐
+                  │     API Gateway - Auth, RateLimit, LoadBalance     │        ┌──────────────┐
+	    		  │             Cross-Cutting Concerns:                │        │External APIs:│  
+          ┌───────│       Logging - ELK, Resilience, Dashboard         │──┐─────│Zillow, Stripe│
+          │       └───┬───────────┬────────────┬────────────┬──────────┘  │     └──────────────┘
+      ┌───┴───┐       │           │            │            │             │        
+      │Clients│   ┌───┴───┐   ┌───┴───┐   ┌────┴────┐   ┌───┴─────┐   ┌───┴─────┐ 
+      │ +Auth │   │Listing│   │Estates│   │Contracts│   │Utilities│   │Messaging│   ===>  Microservices
+      └───┬───┘   └───┬───┘   └───┬───┘   └────┬────┘   └────┬────┘   └────┬────┘
+      ┌───┴───┐   ┌───┴───┐   ┌───┴───┐    ┌───┴───┐    ┌────┴────┐   ┌────┴────┐  
+      │Postgre│   │Postgre│   │Postgre│    │Postgre│    │  Mongo  │   │  Redis  │   ===>  Databases
+      └───┬───┘   └───┬───┘   └───┬───┘    └───┬───┘    └────┬────┘   └────┬────┘
+          │           │           │            │             │             │          
+          │       ┌───┴───────────┴────────────┴─────────────┴──────┐      │
+          └───────│            RabbitMQ  / MassTransit              │──────┘  
+                  │          Event Bus / Transport Layer            │  Producer / Consumer
+                  └─────────────────────────────────────────────────┘
 
 
 ## Built With:
