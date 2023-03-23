@@ -90,3 +90,4 @@
 /RealEstate.Tests/obj
 /RealEstate.Shared/bin/Debug/net7.0
 /RealEstate.ApiGateway/bin/Debug/net7.0
+/RealEstate.WEB/node_modules
