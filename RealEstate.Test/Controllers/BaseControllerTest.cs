@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 using Xunit;
@@ -17,16 +16,16 @@ namespace RealEstate.Test.Controllers
         public BaseControllerTest(
             RoleManager<IdentityRole> roleManager,
             UserManager<ApplicationUser> userManager,
-            IUserService service,
+            //IUserService service,
             IMediator mediator,
             IMapper mapper)
-            : base(roleManager, userManager, service, mediator, mapper)
+            : base(roleManager, userManager, mediator, mapper)
         {
         }
 
         public RoleManager<IdentityRole> RoleManager => RoleManager;
         public UserManager<ApplicationUser> UserManager => UserManager;
-        public IUserService Service => Service;
+        //public IUserService Service => Service;
         public new IMediator? Mediator => Mediator;
         public IMapper Mapper => Mapper;
 
@@ -36,16 +35,16 @@ namespace RealEstate.Test.Controllers
             // Arrange
             var roleManager = Mock.Of<RoleManager<IdentityRole>>();
             var userManager = Mock.Of<UserManager<ApplicationUser>>();
-            var service = Mock.Of<IUserService>();
+            //var service = Mock.Of<IUserService>();
             var mediator = Mock.Of<IMediator>();
             var mapper = Mock.Of<IMapper>();
 
-            var controller = new BaseController(roleManager, userManager, service, mediator, mapper);
+            var controller = new BaseController(roleManager, userManager, mediator, mapper);
 
             // Assert
             Assert.AreEqual(roleManager, controller.GetMediator());
             Assert.AreEqual(userManager, controller.GetUserManager());
-            Assert.AreEqual(service, controller.GetUserService());
+            //Assert.AreEqual(service, controller.GetUserService());
             Assert.AreEqual(mediator, controller.GetMediator());
             Assert.AreEqual(mapper, controller.GetMapper());
         }
@@ -55,7 +54,7 @@ namespace RealEstate.Test.Controllers
         public void Constructor_SetsRoleManager()
         {
             // Act
-            var controller = new BaseController(RoleManager, null, null, null, null);
+            var controller = new BaseController(RoleManager, null, null, null);
  
             // Assert
             Assert.AreEqual(RoleManager, controller.GetRoleManager());
@@ -68,7 +67,7 @@ namespace RealEstate.Test.Controllers
             var userManager = new Mock<UserManager<ApplicationUser>>().Object;
 
             // Act
-            var controller = new BaseController(null, userManager, null, null, null);
+            var controller = new BaseController(null, userManager, null, null);
 
             // Assert
             Assert.AreEqual(userManager, controller.GetUserManager());
@@ -78,13 +77,13 @@ namespace RealEstate.Test.Controllers
         public void Constructor_SetsService()
         {
             // Arrange
-            var service = new Mock<IUserService>().Object;
+            //var service = new Mock<IUserService>().Object;
 
             // Act
-            var controller = new BaseController(null, null, service, null, null);
+            var controller = new BaseController(null, null, null, null);
 
             // Assert
-            Assert.AreEqual(service, controller.GetUserService());
+            //Assert.AreEqual(service, controller.GetUserService());
         }
 
         [Fact]
@@ -94,7 +93,7 @@ namespace RealEstate.Test.Controllers
             var mediator = new Mock<IMediator>().Object;
 
             // Act
-            var controller = new BaseController(null, null, null, mediator, null);
+            var controller = new BaseController(null, null, mediator, null);
 
             // Assert
             Assert.AreEqual(mediator, controller.GetMediator());
@@ -107,7 +106,7 @@ namespace RealEstate.Test.Controllers
             var mapper = new Mock<IMapper>().Object;
 
             // Act
-            var controller = new BaseController(null, null, null, null, mapper);
+            var controller = new BaseController(null, null, null, mapper);
 
             // Assert
             Assert.AreEqual(mapper, controller.GetMapper());
@@ -122,7 +121,7 @@ namespace RealEstate.Test.Controllers
             httpContextMock
                 .SetupGet(h => h.RequestServices)
                 .Returns(new ServiceCollection().AddSingleton(mediatorMock.Object).BuildServiceProvider());
-            var controller = new BaseController(null, null, null, null, null);
+            var controller = new BaseController(null, null, null, null);
             controller.ControllerContext.HttpContext = httpContextMock.Object;
 
             // Act

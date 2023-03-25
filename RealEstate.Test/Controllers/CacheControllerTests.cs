@@ -23,7 +23,7 @@ namespace RealEstate.Test.Controllers
             _controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository
@@ -146,7 +146,7 @@ namespace RealEstate.Test.Controllers
             var controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository
@@ -166,7 +166,7 @@ namespace RealEstate.Test.Controllers
             var controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository
@@ -186,7 +186,7 @@ namespace RealEstate.Test.Controllers
             var controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository
@@ -207,7 +207,7 @@ namespace RealEstate.Test.Controllers
             var controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository
@@ -228,7 +228,7 @@ namespace RealEstate.Test.Controllers
             var controller = new CacheController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null,
                 _repository: _repository

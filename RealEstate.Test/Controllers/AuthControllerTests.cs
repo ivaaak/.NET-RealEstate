@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClientsMicroservice.Authentication.Contracts;
+using ClientsMicroservice.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using RealEstate.ApiGateway.Authentication.Contracts;
-using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 using Xunit;
+
 
 namespace RealEstate.Test.Controllers
 {

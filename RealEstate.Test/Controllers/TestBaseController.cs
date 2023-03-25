@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 
@@ -13,16 +12,16 @@ namespace RealEstate.Test.Controllers
         public TestBaseController(
             RoleManager<IdentityRole> roleManager,
             UserManager<ApplicationUser> userManager,
-            IUserService service,
+            //IUserService service,
             IMediator mediator,
             IMapper mapper)
-            : base(roleManager, userManager, service, mediator, mapper)
+            : base(roleManager, userManager, mediator, mapper)
         {
         }
 
         public RoleManager<IdentityRole> RoleManager => RoleManager;
         public UserManager<ApplicationUser> UserManager => UserManager;
-        public IUserService Service => Service;
+        //public IUserService Service => Service;
         public IMediator Mediator => Mediator;
         public IMapper Mapper => Mapper;
     }

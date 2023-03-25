@@ -23,8 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microservices\ListingsMicroservice\ListingsMicroservice.csproj" />
-    <ProjectReference Include="..\Microservices\UtilitiesMicroservice\UtilitiesMicroservice.csproj" />
+    <ProjectReference Include="..\Microservices\ClientsMicroservice\ClientsMicroservice.csproj" />
+	<ProjectReference Include="..\Microservices\ListingsMicroservice\ListingsMicroservice.csproj" />
+	<ProjectReference Include="..\Microservices\UtilitiesMicroservice\UtilitiesMicroservice.csproj" />
     <ProjectReference Include="..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
     <ProjectReference Include="..\RealEstate.Shared\RealEstate.Shared.csproj" />
   </ItemGroup>

@@ -21,7 +21,7 @@ namespace RealEstate.Test.Controllers
             controller = new SearchController(
                 _roleManager: null,
                 _userManager: null,
-                _service: null,
+                //_service: null,
                 _mediator: null,
                 _mapper: null);
         }
