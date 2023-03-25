@@ -1,9 +1,4 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RealEstate.ApiGateway.Authentication;
-using RealEstate.ApiGateway.Authentication.Contracts;
-using RealEstate.ApiGateway.ServiceExtensions;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
 
 namespace MessagingMicroservice.Properties
@@ -14,7 +9,7 @@ namespace MessagingMicroservice.Properties
         {
             //services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserService, UserService>();
 
             return services;
         }

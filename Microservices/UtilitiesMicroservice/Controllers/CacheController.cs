@@ -3,7 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -27,11 +26,11 @@ namespace UtilitiesMicroservice.Controllers
         public CacheController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IMediator _mediator,
             IMapper _mapper,
             IRepository _repository)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         {
             var redisConnectionString = "localhost";
             var redis = ConnectionMultiplexer.Connect(redisConnectionString);

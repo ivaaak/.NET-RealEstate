@@ -4,7 +4,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.DTOs.Listings;
 using RealEstate.Shared.Models.Entities.Identity;
@@ -24,11 +23,11 @@ namespace ListingsMicroservice.Controllers
         public ListingController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IListingService _listingService,
             IMediator _mediator,
             IMapper _mapper)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         {
             listingService = _listingService;
         }

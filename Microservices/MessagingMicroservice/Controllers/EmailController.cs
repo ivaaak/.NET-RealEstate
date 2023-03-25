@@ -4,7 +4,6 @@ using MessagingMicroservice.Services.Email;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Misc;
@@ -24,11 +23,11 @@ namespace MessagingMicroservice.Controllers
         public EmailController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IMediator _mediator,
             IMapper _mapper,
             IEmailService emailService)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         {
             _emailService = emailService;
         }

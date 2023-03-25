@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RealEstate.ApiGateway.Authentication;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.ServiceExtensions;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
@@ -14,7 +12,7 @@ namespace ContractsMicroservice.Properties
         {
             services.AddScoped(typeof(IRepository), typeof(Repository));
             services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
-            services.AddScoped(typeof(IUserService), typeof(UserService));
+            //services.AddScoped(typeof(IUserService), typeof(UserService));
 
             return services;
         }

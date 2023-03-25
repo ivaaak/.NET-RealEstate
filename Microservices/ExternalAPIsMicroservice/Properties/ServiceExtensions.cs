@@ -1,6 +1,4 @@
 ﻿using Microsoft.OpenApi.Models;
-using RealEstate.ApiGateway.Authentication;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.Shared.Data.Repository;
 
 namespace ExternalAPIsMicroservice.Properties
@@ -11,7 +9,7 @@ namespace ExternalAPIsMicroservice.Properties
         {
             services.AddScoped(typeof(IRepository), typeof(Repository));
             services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
-            services.AddScoped(typeof(IUserService), typeof(UserService));
+            //services.AddScoped(typeof(IUserService), typeof(UserService));
 
             return services;
         }

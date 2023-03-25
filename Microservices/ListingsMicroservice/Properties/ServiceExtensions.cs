@@ -1,8 +1,6 @@
 using ListingsMicroservice.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RealEstate.ApiGateway.Authentication;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.ServiceExtensions;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
@@ -15,7 +13,7 @@ namespace ListingsMicroservice.Properties
         {
             //services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserService, UserService>();
             services.AddTransient<IListingService, ListingService>();
 
             return services;

@@ -4,7 +4,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.DTOs.Estates;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -24,11 +23,11 @@ namespace EstatesMicroservice.Controllers
         public EstateController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IEstateService _estateService,
             IMediator _mediator,
             IMapper _mapper)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         {
             estateService = _estateService;
         }

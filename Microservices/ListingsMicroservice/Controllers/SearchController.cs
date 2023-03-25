@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -19,10 +18,10 @@ namespace ListingsMicroservice.Controllers
         public SearchController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IMediator _mediator,
             IMapper _mapper)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         { }
 
         // SEARCH: api/search/
