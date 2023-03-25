@@ -6,22 +6,37 @@ It can be used for listing, browsing and renting/selling properties.
 ### Architecture (planned):
 
 
-		      ┌────────────────────────────────────┐
-		      │             API Gateway:           │
-          ┌───────│  Identity, Auth0/JWT, Rate Limit   │───────┐   
-          │       └────┬────────────┬────────────┬─────┘       │
-	      │            │            │            │             │   
-      ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌────┴────┐  
-      │Estates│    │Listing│    │ Client│    │ Utils │    │ Payments│    Microservices     
-      └───┬───┘    └───┬───┘    └───┬───┘    └───┬───┘    └────┬────┘
-      ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌───┴───┐    ┌────┴────┐  
-      │Postgre│    │Postgre│    │ Mongo │    │ Redis │    │ Ext API │  Data - Database / External API
-      └───┬───┘    └───┬───┘    └───┬───┘    └───┬───┘    └────┬────┘
-          │            │            │            │             │
-	      │       ┌────┴────────────┴────────────┴────┐        │
-	      └───────│       RabbitMQ  / MassTransit     │────────┘  
-	              │     Event Bus / Transport Layer   │  Producer / Consumer
-	              └─────────────────┬─────────────────┘
+                  ┌────────────────────────────────────────────────────┐
+                  │     API Gateway - Auth, RateLimit, LoadBalance     │        ┌──────────────┐
+                  │             Cross-Cutting Concerns:                │        │External APIs:│  
+          ┌───────│       Logging - ELK, Resilience, Dashboard         │──┐─────│Zillow, Stripe│
+          │       └───┬───────────┬────────────┬────────────┬──────────┘  │     └──────────────┘
+      ┌───┴───┐       │           │            │            │             │        
+      │Clients│   ┌───┴───┐   ┌───┴───┐   ┌────┴────┐   ┌───┴─────┐   ┌───┴─────┐ 
+      │ +Auth │   │Listing│   │Estates│   │Contracts│   │Utilities│   │Messaging│   ===>  Microservices
+      └───┬───┘   └───┬───┘   └───┬───┘   └────┬────┘   └────┬────┘   └────┬────┘
+      ┌───┴───┐   ┌───┴───┐   ┌───┴───┐    ┌───┴───┐    ┌────┴────┐   ┌────┴────┐  
+      │Postgre│   │Postgre│   │Postgre│    │Postgre│    │  Mongo  │   │  Redis  │   ===>  Databases
+      └───┬───┘   └───┬───┘   └───┬───┘    └───┬───┘    └────┬────┘   └────┬────┘
+          │           │           │            │             │             │          
+          │       ┌───┴───────────┴────────────┴─────────────┴──────┐      │
+          └───────│            RabbitMQ  / MassTransit              │──────┘  
+                  │          Event Bus / Transport Layer            │  Producer / Consumer
+                  └─────────────────────────────────────────────────┘
+
+#### [Clients Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Identity, Client profiles, Roles
+
+#### [ListingsMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice) - Estate Listings, Search, Filter, Trends
+
+#### [Estates Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice) - Estates Management, Data Access
+
+#### [Contracts Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ContractsMicroservice) -  Contracts - Save, Modify Documents
+
+#### [UtilitiesMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice) - Background Tasks, File Management, Cache, Formatters
+
+#### [MessagingMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice) - Emails, Notifications 
+
+#### [External APIs](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice) - Zillow API, Stripe API, Scraper
 
 
 ## Built With:
