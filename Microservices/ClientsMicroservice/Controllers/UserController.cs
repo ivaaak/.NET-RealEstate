@@ -185,12 +185,14 @@ namespace ClientsMicroservice.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        [Route("mediator/person/{id}")]
         public async Task Person(string id)
             => await Mediator.Send(new GetClientByIdHandler(id) { Id = id });
 
 
         [HttpGet]
-        public async Task PeopleList()
+        [Route("mediator/personlist/{id}")]
+        public async Task PersonList()
             => await Mediator.Send(new GetClientListQuery());
     }
 }
