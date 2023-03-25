@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Npgsql;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.Shared.Models.Entities.Identity;
 using StackExchange.Redis;
 using System.Net;
@@ -31,10 +30,10 @@ namespace RealEstate.ApiGateway.Controllers
         public HealthController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IMediator _mediator,
             IMapper _mapper)
-            : base(_roleManager, _userManager, _service, _mediator, _mapper)
+            : base(_roleManager, _userManager, _mediator, _mapper)
         { }
 
 

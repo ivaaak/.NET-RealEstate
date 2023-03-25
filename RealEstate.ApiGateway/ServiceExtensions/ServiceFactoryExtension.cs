@@ -1,6 +1,4 @@
-﻿using RealEstate.ApiGateway.Authentication;
-using RealEstate.ApiGateway.Authentication.Contracts;
-using RealEstate.Shared.Data.Repository;
+﻿using RealEstate.Shared.Data.Repository;
 
 namespace RealEstate.ApiGateway.ServiceExtensions
 {
@@ -9,9 +7,9 @@ namespace RealEstate.ApiGateway.ServiceExtensions
         public static IServiceCollection AddServicesFactory(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserService, UserService>();
             //services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IAuth0Service, Auth0Service>();
+            //services.AddTransient<IAuth0Service, Auth0Service>();
             //services.AddTransient<ICacheService, CacheService>();
             //services.AddTransient<IEstateService, EstateService>();
             //services.AddTransient<IFileUploadService, FileUploadService>();

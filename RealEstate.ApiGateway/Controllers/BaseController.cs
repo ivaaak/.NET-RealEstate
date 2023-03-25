@@ -3,7 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Authentication.Contracts;
 using RealEstate.Shared.Models.Entities.Identity;
 
 namespace RealEstate.ApiGateway.Controllers
@@ -18,14 +17,14 @@ namespace RealEstate.ApiGateway.Controllers
 
         private readonly UserManager<ApplicationUser> userManager;
 
-        private readonly IUserService service;
+        //private readonly IUserService service;
 
         private IMediator mediator;
 
         // Getters
         public RoleManager<IdentityRole> GetRoleManager() => roleManager;
         public UserManager<ApplicationUser> GetUserManager() => userManager;
-        public IUserService GetUserService() => service;
+        //public IUserService GetUserService() => service;
         public IMediator GetMediator() => mediator;
         public IMapper GetMapper() => mapper;
 
@@ -33,13 +32,13 @@ namespace RealEstate.ApiGateway.Controllers
         public BaseController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IUserService _service,
+            //IUserService _service,
             IMediator _mediator,
             IMapper _mapper)
         {
             roleManager = _roleManager;
             userManager = _userManager;
-            service = _service;
+            //service = _service;
             mediator = _mediator;
             mapper = _mapper;
         }

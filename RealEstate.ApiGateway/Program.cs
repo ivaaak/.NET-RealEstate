@@ -17,11 +17,11 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 builder.WebHost.UseUrls("http://*:9000");
 
 builder.Services
-    .AddIdentityContext()
-    .AddUserService()
-    .AddJWTAuthService()
-    .AddJWTAuthentication()
-    .AddAuth0Authentication(builder.Configuration)
+    //.AddIdentityContext()
+    //.AddUserService()
+    //.AddJWTAuthService()
+    //.AddJWTAuthentication()
+    //.AddAuth0Authentication(builder.Configuration)
     .AddApiVersioningConfigured()
     .AddOcelot(builder.Configuration);
     //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
