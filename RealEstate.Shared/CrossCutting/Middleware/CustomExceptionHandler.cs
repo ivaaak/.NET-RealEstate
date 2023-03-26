@@ -1,6 +1,7 @@
-﻿using RealEstate.Shared.Core.Exceptions;
+﻿using Microsoft.AspNetCore.Http;
+using RealEstate.Shared.Core.Exceptions;
 
-namespace RealEstate.ApiGateway.Middleware
+namespace RealEstate.Shared.CrossCutting.Middleware
 {
     public class CustomExceptionHandler
     {

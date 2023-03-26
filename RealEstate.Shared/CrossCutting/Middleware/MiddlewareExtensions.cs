@@ -1,4 +1,6 @@
-﻿namespace RealEstate.ApiGateway.Middleware
+﻿using Microsoft.AspNetCore.Builder;
+
+namespace RealEstate.Shared.CrossCutting.Middleware
 {
     public static class MiddlewareExtensions
     {
