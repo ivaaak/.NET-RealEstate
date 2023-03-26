@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace RealEstate.ApiGateway.ServiceExtensions
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     /// <summary>
     /// Configures the Swagger generation options.

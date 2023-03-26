@@ -1,4 +1,6 @@
-﻿namespace RealEstate.ApiGateway.ServiceExtensions
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     public static class AutoMapperExtension
     {

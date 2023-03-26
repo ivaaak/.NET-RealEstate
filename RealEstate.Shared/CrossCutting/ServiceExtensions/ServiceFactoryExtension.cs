@@ -1,6 +1,7 @@
-﻿using RealEstate.Shared.Data.Repository;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RealEstate.Shared.Data.Repository;
 
-namespace RealEstate.ApiGateway.ServiceExtensions
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     public static class ServiceFactoryExtension
     {

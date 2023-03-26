@@ -1,7 +1,8 @@
-﻿using RealEstate.Shared.Core.Constants;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RealEstate.Shared.Core.Constants;
 using RealEstate.Shared.Models.ModelBinders;
 
-namespace RealEstate.ApiGateway.ServiceExtensions
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     public static class _ModelBinderExtension
     {

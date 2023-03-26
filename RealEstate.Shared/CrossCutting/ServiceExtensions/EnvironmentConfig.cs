@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.Json;
 
-namespace RealEstate.ApiGateway.ServiceExtensions
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     public class EnvironmentConfig
     {

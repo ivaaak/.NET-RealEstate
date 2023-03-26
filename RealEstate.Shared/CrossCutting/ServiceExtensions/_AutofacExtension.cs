@@ -2,7 +2,7 @@
 using RealEstate.Shared.Core.Configurations;
 using RealEstate.Shared.Data.FactoryPattern;
 
-namespace RealEstate.ApiGateway.ServiceExtensions
+namespace RealEstate.Shared.CrossCutting.ServiceExtensions
 {
     public class _AutofacExtension
     {
