@@ -1,6 +1,6 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using RealEstate.ApiGateway.ServiceExtensions;
+using RealEstate.Shared.CrossCutting.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
@@ -17,15 +17,16 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 builder.WebHost.UseUrls("http://*:9000");
 
 builder.Services
+    .AddOcelot(builder.Configuration);
     //.AddIdentityContext()
     //.AddUserService()
     //.AddJWTAuthService()
     //.AddJWTAuthentication()
     //.AddAuth0Authentication(builder.Configuration)
-    .AddApiVersioningConfigured()
-    .AddOcelot(builder.Configuration);
+    //.AddApiVersioningConfigured()
     //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
 
+builder.Services.AddTransient<LoggingDelegatingHandler>();
 
 var app = builder.Build();
 

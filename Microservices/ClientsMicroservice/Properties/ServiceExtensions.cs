@@ -2,7 +2,7 @@
 using ClientsMicroservice.Authentication.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RealEstate.ApiGateway.ServiceExtensions;
+using RealEstate.Shared.CrossCutting.ServiceExtensions;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
 
