@@ -1,4 +1,4 @@
-﻿using RealEstate.Shared.CrossCutting.ServiceExtensions;
+﻿using RealEstate.Shared.ServiceExtensions;
 
 namespace UtilitiesMicroservice.Properties
 {

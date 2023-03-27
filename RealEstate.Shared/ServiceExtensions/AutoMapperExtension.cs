@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace RealEstate.Shared.CrossCutting.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions
 {
     public static class AutoMapperExtension
     {

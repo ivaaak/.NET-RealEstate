@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Shared.Data.Context;
 
-namespace RealEstate.Shared.CrossCutting.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions
 {
     public static class ServiceCollectionExtension
     {

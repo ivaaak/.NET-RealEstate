@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RealEstate.Shared.CrossCutting.ServiceExtensions;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.ServiceExtensions;
 
 namespace ContractsMicroservice.Properties
 {

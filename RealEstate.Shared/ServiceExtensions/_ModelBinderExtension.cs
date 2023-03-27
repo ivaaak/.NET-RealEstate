@@ -2,7 +2,7 @@
 using RealEstate.Shared.Core.Constants;
 using RealEstate.Shared.Models.ModelBinders;
 
-namespace RealEstate.Shared.CrossCutting.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions
 {
     public static class _ModelBinderExtension
     {
