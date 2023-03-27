@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Sinks.Elasticsearch;
 
-namespace RealEstate.Shared.CrossCutting.Logging
+namespace RealEstate.Shared.Logging
 {
     public static class SeriLogger
     {

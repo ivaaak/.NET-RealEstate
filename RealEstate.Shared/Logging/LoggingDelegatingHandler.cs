@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace RealEstate.Shared.CrossCutting.Logging
+namespace RealEstate.Shared.Logging
 {
     public class LoggingDelegatingHandler : DelegatingHandler
     {

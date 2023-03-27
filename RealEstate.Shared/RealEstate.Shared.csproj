@@ -61,7 +61,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CrossCutting\EventBus\" />
+    <Folder Include="EventBus\Events\" />
+    <Folder Include="EventBus\Common\" />
   </ItemGroup>
 
 

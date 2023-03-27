@@ -1,6 +1,6 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using RealEstate.Shared.CrossCutting.Logging;
+using RealEstate.Shared.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
