@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace RealEstate.Shared.CrossCutting.Middleware
+namespace RealEstate.Shared.Core.Middleware
 {
     public static class MiddlewareExtensions
     {
