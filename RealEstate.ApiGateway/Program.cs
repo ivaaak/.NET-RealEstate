@@ -1,6 +1,8 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Cache.CacheManager;
 using RealEstate.Shared.Logging;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
@@ -15,22 +17,26 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 
 // Run the Gateway on port 9000
 builder.WebHost.UseUrls("http://*:9000");
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services
-    .AddOcelot(builder.Configuration);
-    //.AddIdentityContext()
-    //.AddUserService()
-    //.AddJWTAuthService()
-    //.AddJWTAuthentication()
-    //.AddAuth0Authentication(builder.Configuration)
-    //.AddApiVersioningConfigured()
-    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
+    .AddOcelot(builder.Configuration)
+    .AddCacheManager(settings => settings.WithDictionaryHandle());
+//.AddIdentityContext()
+//.AddUserService()
+//.AddJWTAuthService()
+//.AddJWTAuthentication()
+//.AddAuth0Authentication(builder.Configuration)
+//.AddApiVersioningConfigured()
+//.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
 
 builder.Services.AddTransient<LoggingDelegatingHandler>();
+
 
 var app = builder.Build();
 
 await app.UseOcelot();
+
 // App routing
 app.UseHttpsRedirection()
     .UseStaticFiles()
