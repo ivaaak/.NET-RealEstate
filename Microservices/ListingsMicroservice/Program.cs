@@ -1,4 +1,6 @@
+using HealthChecks.UI.Client;
 using ListingsMicroservice.Properties;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +19,20 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger().UseSwaggerUI();
+    app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Listings MS v1"));
 }
 
 app.UseHttpsRedirection().UseAuthorization().UseAuthentication();
+
 app.MapControllers();
+
+app.Map("/hc", builder =>
+{
+    builder.UseHealthChecks("/hc", new HealthCheckOptions()
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
+});
 
 app.Run();
