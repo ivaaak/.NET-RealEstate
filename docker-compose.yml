@@ -1,172 +1,100 @@
 version: '3.4'
 
-
-networks:
-  backend:
-    driver: bridge
-  frontend: 
-    driver: bridge
-
-
 services:
-# API GATEWAY
-  api-gateway:
-    container_name: api-gateway
-    image: ${DOCKER_REGISTRY-}realestateapi
+# Databases
+  estatesdb:
+    image: mongo
+
+  listingsdb:
+    image: postgres
+
+  clientsgsdb:
+    image: postgres
+
+  messagessdb:
+    image: redis:alpine
+
+
+# Utilities:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  pgadmin:
+    image: dpage/pgadmin4  
+
+  portainer:
+    image: portainer/portainer-ce
+    
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+
+
+# API Gateway / Aggregator
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile
-    ports:
-      - 8000:80
-    networks: 
-      - backend, frontend 
+      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
 
-# RABBITMQ / MASSTRANSIT
-
-# ESTATE MICROSERVICE
-  estates-webapi:
-    container_name: estates-webapi
-    image: ${DOCKER_REGISTRY-}estateswebapi
+  shopping.aggregator:
+    image: ${DOCKER_REGISTRY-}shoppingaggregator
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
-    networks: 
-      - backend 
-    ports:
-      - 8001:80
-    environment: 
-      - DB_HOST=estatedb
-      - DB_NAME=estates
-      - DB_ROOT_PASSWORD=admin
-    depends_on:
-      - api-gateway
-      - estates-db
+      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
 
-  estates-db:
-    container_name: estates-db
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_DB=EstatesDB
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - '5010:5010'
-    depends_on:
-      - estates-webapi
 
-# LISTING MICROSERVICE
-  listings-webapi:
-    container_name: listings-webapi
-    image: ${DOCKER_REGISTRY-}listingswebapi
+# Microservices
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
-    networks: 
-      - backend 
-    ports:
-      - 8002:80
-    environment: 
-      - DB_HOST=listingdb
-      - DB_NAME=listings
-      - DB_ROOT_PASSWORD=admin
-    depends_on:
-      - api-gateway
-      - listings-db
-  
-  listings-db:
-    container_name: listings-db
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_DB=ListingsDB
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - '5011:5011'
-    depends_on:
-      - listings-webapi
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
-# CLIENTS MICROSERVICE
-  clients-webapi:
-    container_name: clients-webapi
-    image: ${DOCKER_REGISTRY-}clientswebapi
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
-    networks: 
-      - backend 
-    ports:
-      - 8003:80
-    environment: 
-      - DB_HOST=clientsdb
-      - DB_NAME=clients
-      - DB_ROOT_PASSWORD=admin
-    depends_on:
-      - api-gateway
-      - clients-db
-  
-  clients-db:
-    container_name: clients-db
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_DB=ClientsDB
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - '5012:5012'
-    depends_on:
-      - clients-webapi
+      dockerfile: Services/Basket/Basket.API/Dockerfile
 
-# CONTRACTS MICROSERVICE
-  contracts-webapi:
-    container_name: contracts-webapi
-    image: ${DOCKER_REGISTRY-}contractswebapi
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
-    networks: 
-      - backend 
-    ports:
-      - 8004:80
-    environment: 
-      - DB_HOST=contractsdb
-      - DB_NAME=contracts
-      - DB_ROOT_PASSWORD=admin
-    depends_on:
-      - api-gateway
-      - contracts-db
+      dockerfile: Services/Discount/Discount.API/Dockerfile
 
-  contracts-db:
-    container_name: contracts-db
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_DB=ContractsDB
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - '5013:5013'
-    depends_on:
-      - contracts-webapi
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
-# IDENTITY DB
-  identity-db:
-    container_name: identity-db
-    image: postgres:14.1-alpine
-    restart: always
-    networks:
-      - backend
-    environment:
-      - POSTGRES_DB=IdentityDB
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - '5014:5014'
+  discount.grpc:
+    image: ${DOCKER_REGISTRY-}discountgrpc
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
 
-# SEARCH/FILTER MICROSERVICE
-# EMAIL/NOTIFICATION MICROSERVICE
-# PAYMENTS MICROSERVICE
-# USERS/IDENTITY MS
+# Web - todo fix
+  appFrontendHere:
+    image: ${DOCKER_REGISTRY-}appFrontendHere
+    build:
+      context: .
+      dockerfile: WEB/appFrontendHere/Dockerfile
+
+  webstatus:
+    image: ${DOCKER_REGISTRY-}webstatus
+    build:
+      context: .
+      dockerfile: WEB/WebStatus/Dockerfile
+
+# Volumes - persist data from containers
+volumes:
+  mongo_data:
+  portainer_data:
+  postgres_data:
+  pgadmin_data:
+  elasticsearch-data:

@@ -1,8 +1,172 @@
 version: '3.4'
 
+
+networks:
+  backend:
+    driver: bridge
+  frontend: 
+    driver: bridge
+
+
 services:
-  realestate.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+# API GATEWAY
+  api-gateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}realestateapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile
     ports:
-      - "80"
+      - 8000:80
+    networks: 
+      - backend, frontend 
+
+# RABBITMQ / MASSTRANSIT
+
+# ESTATE MICROSERVICE
+  estates-webapi:
+    container_name: estates-webapi
+    image: ${DOCKER_REGISTRY-}estateswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    ports:
+      - 8001:80
+    environment: 
+      - DB_HOST=estatedb
+      - DB_NAME=estates
+      - DB_ROOT_PASSWORD=admin
+    depends_on:
+      - api-gateway
+      - estates-db
+
+  estates-db:
+    container_name: estates-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=EstatesDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5010:5010'
+    depends_on:
+      - estates-webapi
+
+# LISTING MICROSERVICE
+  listings-webapi:
+    container_name: listings-webapi
+    image: ${DOCKER_REGISTRY-}listingswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    ports:
+      - 8002:80
+    environment: 
+      - DB_HOST=listingdb
+      - DB_NAME=listings
+      - DB_ROOT_PASSWORD=admin
+    depends_on:
+      - api-gateway
+      - listings-db
+  
+  listings-db:
+    container_name: listings-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=ListingsDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5011:5011'
+    depends_on:
+      - listings-webapi
+
+# CLIENTS MICROSERVICE
+  clients-webapi:
+    container_name: clients-webapi
+    image: ${DOCKER_REGISTRY-}clientswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    ports:
+      - 8003:80
+    environment: 
+      - DB_HOST=clientsdb
+      - DB_NAME=clients
+      - DB_ROOT_PASSWORD=admin
+    depends_on:
+      - api-gateway
+      - clients-db
+  
+  clients-db:
+    container_name: clients-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=ClientsDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5012:5012'
+    depends_on:
+      - clients-webapi
+
+# CONTRACTS MICROSERVICE
+  contracts-webapi:
+    container_name: contracts-webapi
+    image: ${DOCKER_REGISTRY-}contractswebapi
+    build:
+      context: .
+      dockerfile: RealEstate.API/Dockerfile #fix dir
+    networks: 
+      - backend 
+    ports:
+      - 8004:80
+    environment: 
+      - DB_HOST=contractsdb
+      - DB_NAME=contracts
+      - DB_ROOT_PASSWORD=admin
+    depends_on:
+      - api-gateway
+      - contracts-db
+
+  contracts-db:
+    container_name: contracts-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=ContractsDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5013:5013'
+    depends_on:
+      - contracts-webapi
+
+# IDENTITY DB
+  identity-db:
+    container_name: identity-db
+    image: postgres:14.1-alpine
+    restart: always
+    networks:
+      - backend
+    environment:
+      - POSTGRES_DB=IdentityDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5014:5014'
+
+
+# SEARCH/FILTER MICROSERVICE
+# EMAIL/NOTIFICATION MICROSERVICE
+# PAYMENTS MICROSERVICE
+# USERS/IDENTITY MS
