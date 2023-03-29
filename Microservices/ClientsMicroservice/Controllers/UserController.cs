@@ -1,14 +1,13 @@
-﻿using AutoMapper;
-using ClientsMicroservice.Authentication.Contracts;
+﻿using ClientsMicroservice.Authentication.Contracts;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
+using RealEstate.Shared.MediatR.Commands;
 using RealEstate.Shared.MediatR.Handlers.Query;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.DTOs.Clients;
 using RealEstate.Shared.Models.Entities.Identity;
+using System.Net;
 
 namespace ClientsMicroservice.Controllers
 {
@@ -17,19 +16,23 @@ namespace ClientsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")]
-    public class UserController : BaseController
+    public class UserController : ControllerBase
     {
-        private readonly IUserService userService;
+        private readonly IUserService _userService;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<UserController> _logger;
+
 
         public UserController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IUserService service,
+            IMediator mediator,
+            ILogger<UserController> logger)
         {
-            userService = _service;
+            _userService = service ?? throw new ArgumentNullException(nameof(service));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -40,11 +43,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>An <see cref="ApplicationUser"/> object containing information about the user.</returns>
         [HttpGet]
         [Route("/getuser/{id}")]
-        public async Task<ApplicationUser> GetUserById(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ApplicationUser), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ApplicationUser>> GetUserById(string id)
         {
-            var result = await userService.GetUserById(id);
+            var result = await _userService.GetUserById(id);
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"Result with id: {id}, not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -54,11 +65,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A list of <see cref="ClientDTO"/> objects containing information about the users.</returns>
         [HttpGet]
         [Route("/getusers")]
-        public async Task<IEnumerable<ClientDTO>> GetUsers()
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(IEnumerable<ClientDTO>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ClientDTO>>> GetUsers()
         {
-            var result = await userService.GetUsers();
+            var result = await _userService.GetUsers();
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"Result not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -69,11 +88,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A <see cref="ClientEditDTO"/> object containing information about the user.</returns>
         [HttpGet]
         [Route("/edit/{id}")]
-        public async Task<ClientEditDTO> GetUserForEdit(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ClientEditDTO), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ClientEditDTO>> GetUserForEdit(string id)
         {
-            var result = await userService.GetUserForEdit(id);
+            var result = await _userService.GetUserForEdit(id);
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"User not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -84,9 +111,11 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A boolean indicating whether the update was successful.</returns>
         [HttpPut]
         [Route("update")]
-        public async Task<bool> UpdateUser(ClientEditDTO model)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ClientEditDTO), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> UpdateUser(ClientEditDTO model)
         {
-            var result = await userService.UpdateUser(model);
+            var result = await _userService.UpdateUser(model);
 
             return result;
         }
@@ -99,11 +128,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A boolean indicating whether the delete was successful.</returns>
         [HttpDelete]
         [Route("/harddelete/{id}")]
-        public async Task<bool> HardDeleteUser(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> HardDeleteUser(string id)
         {
-            var result = await userService.HardDeleteUser(id);
+            var result = await _userService.HardDeleteUser(id);
 
-            return result;
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt delete user with id {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -114,11 +151,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A boolean indicating whether the delete was successful.</returns>
         [HttpDelete]
         [Route("/softdelete/{id}")]
-        public async Task<bool> SoftDeleteUser(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> SoftDeleteUser(string id)
         {
-            var result = await userService.SoftDeleteUser(id);
+            var result = await _userService.SoftDeleteUser(id);
 
-            return result;
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt soft delete user with id {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -130,11 +175,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A boolean indicating whether the password change was successful.</returns>
         [HttpPut]
         [Route("/changepassword/{id}")]
-        public async Task<bool> ChangePassword(string id, string newPassword)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> ChangePassword(string id, string newPassword)
         {
-            var result = await userService.ChangePassword(id, newPassword);
+            var result = await _userService.ChangePassword(id, newPassword);
 
-            return result;
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt change password for user with id {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -144,11 +197,20 @@ namespace ClientsMicroservice.Controllers
         /// <param name="searchTerm">The search term to use for the search.</param>
         /// <returns>An enumerable list of <see cref="ClientDTO"/> objects containing information about the matching users.</returns>
         [HttpGet("search")]
-        public async Task<IEnumerable<ClientDTO>> SearchUsers(string searchTerm)
+        [Route("/searchusers/{searchterm}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(IEnumerable<ClientDTO>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ClientDTO>>> SearchUsers(string searchTerm)
         {
-            var result = await userService.SearchUsers(searchTerm);
+            var result = await _userService.SearchUsers(searchTerm);
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt find user with the term {searchTerm}");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -159,11 +221,19 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A string containing the user's role.</returns>
         [HttpGet]
         [Route("/role/{id}")]
-        public async Task<string> GetUserRole(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<string>> GetUserRole(string id)
         {
-            var result = await userService.GetUserRole(id);
+            var result = await _userService.GetUserRole(id);
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt find user's roles with the id {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -175,24 +245,48 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A boolean indicating whether the user has the given role.</returns>
         [HttpGet]
         [Route("/hasrole/{id}")]
-        public async Task<bool> UserHasRole(string id, string role)
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> UserHasRole(string id, string role)
         {
-            var result = await userService.UserHasRole(id, role);
+            var result = await _userService.UserHasRole(id, role);
 
-            return result;
+            return Ok(result);
         }
 
 
         [AllowAnonymous]
         [HttpGet]
         [Route("mediator/person/{id}")]
-        public async Task Person(string id)
-            => await Mediator.Send(new GetClientByIdHandler(id) { Id = id });
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Person(string id)
+        {
+            var result = await _mediator.Send(new GetClientByIdHandler(id) { Id = id });
 
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt find user with the id {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
 
         [HttpGet]
         [Route("mediator/personlist/{id}")]
-        public async Task PersonList()
-            => await Mediator.Send(new GetClientListQuery());
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> PersonList()
+        {
+            var result = await _mediator.Send(new GetClientListQuery());
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt find any users");
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
     }
 }
