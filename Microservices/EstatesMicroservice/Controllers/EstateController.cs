@@ -1,13 +1,12 @@
-﻿using AutoMapper;
-using EstatesMicroservice.Services;
+﻿using EstatesMicroservice.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
+using RealEstate.Shared.MediatR.Commands;
 using RealEstate.Shared.Models.DTOs.Estates;
 using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.Entities.Identity;
+using System.Net;
 
 namespace EstatesMicroservice.Controllers
 {
@@ -16,20 +15,23 @@ namespace EstatesMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")]  // /api/estate
-    public class EstateController : BaseController
+    public class EstateController : ControllerBase
     {
-        private readonly IEstateService estateService;
+        private readonly IEstateService _estateService;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<EstateController> _logger;
+
 
         public EstateController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IEstateService _estateService,
-            IMediator _mediator,
-            IMapper _mapper)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IEstateService estateService,
+            IMediator mediator,
+            ILogger<EstateController> logger)
         {
-            estateService = _estateService;
+            _estateService = estateService ?? throw new ArgumentNullException(nameof(estateService));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -47,10 +49,19 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpPost]
         [Route("create")]
-        public void Create(Estate estate)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult Create(Estate estate)
         {
-            estateService.Create(estate);
-            // check for duplication?
+            var result = _estateService.Create(estate);
+
+            if (result == null)
+            {
+                _logger.LogError($"Estate {estate} not created.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -67,9 +78,19 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpGet]
         [Route("getall")]
-        public async Task<IEnumerable<EstateDTO>> GetAll()
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult<IEnumerable<EstateDTO>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<EstateDTO>>> GetAll()
         {
-            return await estateService.GetEstates();
+            var result = await _estateService.GetEstates();
+
+            if (result == null)
+            {
+                _logger.LogError($"Estates not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -87,9 +108,21 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Estate Object </returns>
         [HttpGet("{id}")]
         [Route("getbyid/{id}")]
-        public async Task<ActionResult<Estate>> GetById(int id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult<EstateDTO>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<EstateDTO>> GetById(int id)
         {
-            return await estateService.GetEstateById(id);
+            var result = await _estateService.GetEstateById(id);
+
+            //automapper for the result?
+
+            if (result == null)
+            {
+                _logger.LogError($"Estate with id: {id} not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -108,9 +141,17 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpPut("{id}")]
         [Route("update/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, EstateDTO estateObject)
         {
-            var result = await estateService.UpdateEstate(id, estateObject);
+            var result = await _estateService.UpdateEstate(id, estateObject);
+
+            if (result == false)
+            {
+                _logger.LogError($"Estate with id: {id} not updated.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -130,9 +171,17 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Ok - result </returns>
         [HttpDelete("{id}")]
         [Route("delete/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await estateService.SoftDeleteEstate(id);
+            var result = await _estateService.SoftDeleteEstate(id);
+
+            if (result == false)
+            {
+                _logger.LogError($"Estate with id: {id} not deleted.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -152,9 +201,17 @@ namespace EstatesMicroservice.Controllers
         /// <returns> Ok - result </returns>
         [HttpDelete("{id}")]
         [Route("harddelete/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
         {
-            var result = await estateService.HardDeleteEstate(id);
+            var result = await _estateService.HardDeleteEstate(id);
+
+            if (result == false)
+            {
+                _logger.LogError($"Estate with id: {id} not hard deleted.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -173,11 +230,19 @@ namespace EstatesMicroservice.Controllers
         /// <returns> exists - boolean </returns>
         [HttpGet("{id}")]
         [Route("exists/{id}")]
-        public bool RealEstateExists(int id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult<bool>), (int)HttpStatusCode.OK)]
+        public ActionResult<bool> RealEstateExists(int id)
         {
-            var exists = estateService.GetEstateById(id).Result != null;
+            var exists = _estateService.GetEstateById(id).Result != null;
 
-            return exists;
+            if (exists == false)
+            {
+                _logger.LogError($"Estate with id: {id} not found.");
+                return NotFound();
+            }
+
+            return Ok(exists);
         }
 
 
@@ -195,11 +260,19 @@ namespace EstatesMicroservice.Controllers
         /// <returns> collection of estate objects </returns>
         [HttpGet("{searchTerm}")]
         [Route("search/{searchTerm}")]
-        public IEnumerable<EstateDTO> Search(string searchTerm)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(IEnumerable<EstateDTO>), (int)HttpStatusCode.OK)]
+        public ActionResult<IEnumerable<EstateDTO>> Search(string searchTerm)
         {
-            var result = estateService.SearchEstates(searchTerm).Result;
+            var result = _estateService.SearchEstates(searchTerm).Result;
 
-            return (IEnumerable<EstateDTO>)result;
+            if (result == null)
+            {
+                _logger.LogError($"Estate with searchTerm: {searchTerm} not found.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace EstatesMicroservice.Services
         }
 
         // CREATE
-        public async void Create(Estate model)
+        public async Task Create(Estate model)
         {
             await repo.AddAsync(model);
         }

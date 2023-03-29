@@ -7,7 +7,7 @@ namespace EstatesMicroservice.Services
     {
 
         // CREATE
-        void Create(Estate model);
+        Task Create(Estate model);
 
         // GET BY ID
         Task<Estate> GetEstateById(int id);
