@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 
-namespace RealEstate.Test.Controllers
+namespace RealEstate.Test.Microservices.Controllers
 {
     public class TestBaseController : BaseController
     {

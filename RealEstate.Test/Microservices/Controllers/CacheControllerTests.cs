@@ -6,7 +6,7 @@ using StackExchange.Redis;
 using UtilitiesMicroservice.Controllers;
 using Xunit;
 
-namespace RealEstate.Test.Controllers
+namespace RealEstate.Test.Microservices.Controllers
 {
     public class CacheControllerTests
     {

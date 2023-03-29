@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace RealEstate.Test.Services
+namespace RealEstate.Test.Microservices.Services
 {
     public class OrderServiceTest
     {

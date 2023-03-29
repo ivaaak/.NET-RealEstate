@@ -9,7 +9,7 @@ using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
 using Xunit;
 
-namespace RealEstate.Test.Controllers
+namespace RealEstate.Test.Microservices.Controllers
 {
     public class BaseControllerTest : BaseController
     {
@@ -55,7 +55,7 @@ namespace RealEstate.Test.Controllers
         {
             // Act
             var controller = new BaseController(RoleManager, null, null, null);
- 
+
             // Assert
             Assert.AreEqual(RoleManager, controller.GetRoleManager());
         }

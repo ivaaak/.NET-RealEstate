@@ -5,7 +5,7 @@ using NUnit.Framework;
 using RealEstate.Shared.Models.Entities.Estates;
 using Xunit;
 
-namespace RealEstate.Test.Controllers
+namespace RealEstate.Test.Microservices.Controllers
 {
     public class SearchControllerTest
     {
@@ -136,7 +136,7 @@ namespace RealEstate.Test.Controllers
             var result = controller.ByParameters(city: "test", minPrice: null, maxPrice: null, id: null, name: null, sort: null).Result;
 
             // Assert
-            Assert.AreEqual("test", ((IEnumerable<Estate>)result.Value).First().City);
+            Assert.AreEqual("test", result.Value.First().City);
         }
 
         [Fact]
@@ -146,7 +146,7 @@ namespace RealEstate.Test.Controllers
             var result = controller.ByParameters(city: null, minPrice: 1, maxPrice: null, id: null, name: null, sort: null).Result;
 
             // Assert
-            Assert.True(((IEnumerable<Estate>)result.Value).All(x => x.Listing.Price >= 1));
+            Assert.True(result.Value.All(x => x.Listing.Price >= 1));
         }
 
         [Fact]
@@ -154,9 +154,9 @@ namespace RealEstate.Test.Controllers
         {
             // Act
             var result = controller.ByParameters(city: null, minPrice: null, maxPrice: 100, id: null, name: null, sort: null).Result;
-            
+
             // Assert
-            if(result.Value != null)
+            if (result.Value != null)
             {
                 Assert.True(result.Value.All(x => x.Listing.Price <= 100));
             }
@@ -179,11 +179,11 @@ namespace RealEstate.Test.Controllers
             var expectedName = "test name";
 
             // Act
-            var result =  controller.ByParameters(city: null, minPrice: null, maxPrice: null, id: null, name: expectedName, sort: null).Result;
+            var result = controller.ByParameters(city: null, minPrice: null, maxPrice: null, id: null, name: expectedName, sort: null).Result;
 
             // Assert
-            Assert.AreEqual(expectedName, ((IEnumerable<Estate>)result.Value).First().Estate_Name);
+            Assert.AreEqual(expectedName, result.Value.First().Estate_Name);
         }
-// ADD CORS
+        // ADD CORS
     }
 }

@@ -7,7 +7,7 @@ using RealEstate.Shared.Models.Entities.Identity;
 using Xunit;
 
 
-namespace RealEstate.Test.Controllers
+namespace RealEstate.Test.Microservices.Controllers
 {
     public class AuthControllerTests
     {

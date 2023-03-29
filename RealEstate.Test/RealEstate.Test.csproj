@@ -5,7 +5,14 @@
 	  <TargetFramework>net7.0</TargetFramework>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
+      <UserSecretsId>ee8bc57c-3e17-4807-abc5-aaedc5700459</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Routing\**" />
+    <EmbeddedResource Remove="Routing\**" />
+    <None Remove="Routing\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.2" />
@@ -18,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Routing\" />
-    <Folder Include="Routing\" />
+    <Folder Include="APIGateway\" />
+    <Folder Include="Shared\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,10 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
-using RealEstate.Test.Constants;
 using RealEstate.Test.Data;
 
-namespace RealEstate.Test.Services
+namespace RealEstate.Test.Microservices.Services
 {
     public class UserServiceTest
     {
