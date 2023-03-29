@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+﻿using Azure.Core;
 using ClientsMicroservice.Authentication.Contracts;
+using Elasticsearch.Net;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Models.Entities.Identity;
+using System.Net;
 
 namespace ClientsMicroservice.Controllers
 {
@@ -15,20 +15,27 @@ namespace ClientsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")] // api/auth/
-    public class AuthController : BaseController
+    public class AuthController : ControllerBase
     {
-        private readonly IAuth0Service authService;
+        private readonly IUserService _userService;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<AuthController> _logger;
+
+        private readonly IAuth0Service _authService;
 
         public AuthController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper,
-            IAuth0Service _authService)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IUserService service,
+            IAuth0Service authService,
+            IMediator mediator,
+            ILogger<AuthController> logger)
         {
-            authService = _authService;
+            _userService = service ?? throw new ArgumentNullException(nameof(service));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _authService = authService;
+
         }
 
 
@@ -40,9 +47,17 @@ namespace ClientsMicroservice.Controllers
         /// <returns>An <see cref="ApplicationUser"/> object containing information about the authenticated user.</returns> 
         [HttpGet]
         [Route("getuser")]
-        public async Task<IActionResult> GetUserInfo(string accessToken)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetUserInfo(string accessToken)
         {
-            var result = await authService.GetUserInfo(accessToken);
+            var result = await _authService.GetUserInfo(accessToken);
+
+            if (result == null)
+            {
+                _logger.LogError($"User with the token: {accessToken}, not found.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -57,9 +72,17 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A string containing the access token.</returns>
         [HttpGet]
         [Route("gettoken")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAccessToken(string code, string redirectUri)
         {
-            var result = await authService.GetAccessToken(code, redirectUri);
+            var result = await _authService.GetAccessToken(code, redirectUri);
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt get the access token from code: {code} and redirectUri: {redirectUri}.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -74,9 +97,17 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A string containing the authorization URL.</returns>
         [HttpGet]
         [Route("getauthurl")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public IActionResult GetAuthorizationUrl(string redirectUri, string state)
         {
-            var result = authService.GetAuthorizationUrl(redirectUri, state);
+            var result = _authService.GetAuthorizationUrl(redirectUri, state);
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt get the AuthorizationUrl from redirectUri: {redirectUri} and state: {state}.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -89,9 +120,17 @@ namespace ClientsMicroservice.Controllers
         /// <param name="accessToken">The access token to revoke.</param>
         [HttpPost]
         [Route("revoketoken")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public IActionResult RevokeAccessToken(string accessToken)
         {
-            var result = authService.RevokeAccessToken(accessToken);
+            var result = _authService.RevokeAccessToken(accessToken);
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt Revoke Access Token {accessToken}.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
@@ -105,9 +144,18 @@ namespace ClientsMicroservice.Controllers
         /// <returns>A string containing the renewed access token.</returns>
         [HttpPost]
         [Route("renewtoken")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public IActionResult RenewAccessToken(string refreshToken)
         {
-            var result = authService.RevokeAccessToken(refreshToken);
+            var result = _authService.RenewAccessToken(refreshToken);
+
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt Renew Access Token {refreshToken}.");
+                return NotFound();
+            }
 
             return Ok(result);
         }
