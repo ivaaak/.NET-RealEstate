@@ -34,7 +34,7 @@ namespace ClientsMicroservice.Controllers
             _userService = service ?? throw new ArgumentNullException(nameof(service));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _authService = authService;
+            _authService = authService ?? throw new ArgumentNullException(nameof(authService));
 
         }
 

@@ -2,10 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Shared.MediatR.Commands;
 using RealEstate.Shared.Models.DTOs.Estates;
 using RealEstate.Shared.Models.Entities.Estates;
-using RealEstate.Shared.Models.Entities.Identity;
 using System.Net;
 
 namespace EstatesMicroservice.Controllers
