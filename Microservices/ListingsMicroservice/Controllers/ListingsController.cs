@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using ListingsMicroservice.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
+using Nest;
 using RealEstate.Shared.Models.DTOs.Listings;
-using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Listings;
+using System.Net;
 
 namespace ListingsMicroservice.Controllers
 {
@@ -16,20 +16,22 @@ namespace ListingsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")]  // /api/listing
-    public class ListingController : BaseController
+    public class ListingController : ControllerBase
     {
-        private readonly IListingService listingService;
+        private readonly IListingService _listingService;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<ListingController> _logger;
 
         public ListingController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IListingService _listingService,
-            IMediator _mediator,
-            IMapper _mapper)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IListingService listingService,
+            IMediator mediator,
+            ILogger<ListingController> logger)
         {
-            listingService = _listingService;
+            _listingService = listingService ?? throw new ArgumentNullException(nameof(_listingService));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -47,10 +49,17 @@ namespace ListingsMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpPost]
         [Route("create")]
-        public void Create(Listing listing)
+        public ActionResult Create(Listing listing)
         {
-            listingService.Create(listing);
-            // check for duplication?
+            var result = _listingService.Create(listing);
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt create Listing");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -67,9 +76,19 @@ namespace ListingsMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpGet]
         [Route("getall")]
-        public async Task<IEnumerable<ListingDTO>> GetAll()
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ListingDTO>>> GetAll()
         {
-            return await listingService.GetListings();
+            var result = await _listingService.GetListings();
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt get Listings");
+                return NotFound(result);
+            }
+
+            return Ok(result);
         }
 
 
@@ -87,9 +106,19 @@ namespace ListingsMicroservice.Controllers
         /// <returns> listing Object </returns>
         [HttpGet("{id}")]
         [Route("getbyid/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Listing>> GetById(int id)
         {
-            return await listingService.GetListingById(id);
+            var result = await _listingService.GetListingById(id);
+            
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt get Listings Listing by ID");
+                return NotFound(result);
+            }
+
+            return Ok(result);
         }
 
 
@@ -108,9 +137,17 @@ namespace ListingsMicroservice.Controllers
         /// <returns> Ok </returns>
         [HttpPut("{id}")]
         [Route("update/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, ListingDTO listingObject)
         {
-            var result = await listingService.UpdateListing(listingObject);
+            var result = await _listingService.UpdateListing(listingObject);
+
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt update Listing by ID {id}");
+                return NotFound(result);
+            }
 
             return Ok(result);
         }
@@ -130,9 +167,17 @@ namespace ListingsMicroservice.Controllers
         /// <returns> Ok - result </returns>
         [HttpDelete("{id}")]
         [Route("delete/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await listingService.SoftDeleteListing(id);
+            var result = await _listingService.SoftDeleteListing(id);
+
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt delete Listing by ID {id}");
+                return NotFound(result);
+            }
 
             return Ok(result);
         }
@@ -152,9 +197,17 @@ namespace ListingsMicroservice.Controllers
         /// <returns> Ok - result </returns>
         [HttpDelete("{id}")]
         [Route("harddelete/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
         {
-            var result = await listingService.DeleteListing(id);
+            var result = await _listingService.DeleteListing(id);
+
+            if (result == false)
+            {
+                _logger.LogError($"Couldnt delete Listing by ID {id}");
+                return NotFound(result);
+            }
 
             return Ok(result);
         }
@@ -173,11 +226,19 @@ namespace ListingsMicroservice.Controllers
         /// <returns> exists - boolean </returns>
         [HttpDelete("{id}")]
         [Route("exists/{id}")]
-        public bool ListingExists(int id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult<bool> ListingExists(int id)
         {
-            var exists = listingService.GetListingById(id).Result != null;
+            var exists = _listingService.GetListingById(id).Result != null;
 
-            return exists;
+            if (exists == false)
+            {
+                _logger.LogError($"Couldnt find Listing by ID {id}");
+                return NotFound(exists);
+            }
+
+            return Ok(exists);
         }
 
 
@@ -195,11 +256,19 @@ namespace ListingsMicroservice.Controllers
         /// <returns> collection of listing objects </returns>
         [HttpDelete("{id}")]
         [Route("search/{id}")]
-        public IEnumerable<ListingDTO> Search(string searchTerm)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult<IEnumerable<ListingDTO>> Search(string searchTerm)
         {
-            var result = listingService.SearchListings(searchTerm).Result;
+            var result = _listingService.SearchListings(searchTerm).Result;
 
-            return result;
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt find Listing by searchTerm {searchTerm}");
+                return NotFound(result);
+            }
+
+            return Ok(result);
         }
     }
 }

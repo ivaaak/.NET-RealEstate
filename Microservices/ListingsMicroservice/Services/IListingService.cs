@@ -6,7 +6,7 @@ namespace ListingsMicroservice.Services
     public interface IListingService
     {
         // CREATE
-        void Create(Listing model);
+        Task<Listing> Create(Listing model);
 
         // GET BY ID
         Task<Listing> GetListingById(int id);

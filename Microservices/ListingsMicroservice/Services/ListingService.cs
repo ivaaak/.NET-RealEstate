@@ -16,9 +16,10 @@ namespace ListingsMicroservice.Services
 
 
         // CREATE
-        public async void Create(Listing model)
+        public async Task<Listing> Create(Listing model)
         {
             await repo.AddAsync(model);
+            return model;
         }
 
         // GET BY ID
