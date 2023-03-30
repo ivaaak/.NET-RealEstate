@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
-using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Misc;
 using Stripe;
+using System.Net;
 
 namespace ExternalAPIsMicroservice.Controllers
 {
@@ -16,20 +13,22 @@ namespace ExternalAPIsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")] // api/payments/
-    public class PaymentsController : BaseController
+    public class PaymentsController : ControllerBase
     {
-        private readonly StripeClient stripeClient;
+        private readonly StripeClient _stripeClient;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<PaymentsController> _logger;
 
         public PaymentsController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper,
-            StripeClient stripeClient)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IMediator mediator,
+            StripeClient stripeClient,
+            ILogger<PaymentsController> logger)
         {
-            this.stripeClient = stripeClient;
+            _stripeClient = stripeClient ?? throw new ArgumentNullException(nameof(stripeClient));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -47,6 +46,8 @@ namespace ExternalAPIsMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("charge")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Charge([FromBody] ChargeDataModel model)
         {
             try
@@ -90,6 +91,8 @@ namespace ExternalAPIsMicroservice.Controllers
         /// </remarks>
         [HttpGet]
         [Route("getCharges")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetCharges(int limit = 10, string? startingAfter = null)
         {
             try
@@ -123,6 +126,8 @@ namespace ExternalAPIsMicroservice.Controllers
         /// </remarks>
         [HttpGet]
         [Route("getCharge{chargeId}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetCharge(string chargeId)
         {
             try
@@ -155,6 +160,8 @@ namespace ExternalAPIsMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("refundCharge")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> RefundCharge([FromBody] RefundChargeDataModel model)
         {
             try
@@ -193,6 +200,8 @@ namespace ExternalAPIsMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("captureCharge")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> CaptureCharge([FromBody] CaptureChargeDataModel model)
         {
             try

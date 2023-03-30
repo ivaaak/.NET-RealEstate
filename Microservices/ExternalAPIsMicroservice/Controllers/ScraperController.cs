@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
+using System.Net;
 
 namespace ExternalAPIsMicroservice.Controllers
 {
@@ -9,28 +10,35 @@ namespace ExternalAPIsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/payments/
-    public class ScraperController
+    [Route("api/[controller]")] // api/scraper/
+    public class ScraperController : ControllerBase
     {
-        private readonly IScraperService scraper;
+        private readonly IScraperService _scraperService;
 
-        public ScraperController(IScraperService scraper) 
+        private readonly ILogger<ScraperController> _logger;
+
+        public ScraperController(
+            IScraperService scraper,
+            ILogger<ScraperController> logger) 
         {
-            this.scraper = scraper;
+            _scraperService = scraper ?? throw new ArgumentNullException(nameof(scraper));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpPost]
         [Route("runScraper")]
-        public string RunScraperAndSaveToDB([FromBody] ChargeDataModel model)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult<string> RunScraperAndSaveToDB([FromBody] ChargeDataModel model)
         {
             try
             {
-                scraper.RunScraper();
-                return "Completed!";
+                _scraperService.RunScraper();
+                return Ok();
             }
             catch (Exception ex)
             {
-                return "Error while running scraper: ";
+                return NotFound();
             }
         }
     }
