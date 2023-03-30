@@ -1,6 +1,4 @@
-﻿using Azure.Core;
-using ClientsMicroservice.Authentication.Contracts;
-using Elasticsearch.Net;
+﻿using ClientsMicroservice.Authentication.Contracts;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +33,6 @@ namespace ClientsMicroservice.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _authService = authService ?? throw new ArgumentNullException(nameof(authService));
-
         }
 
 
