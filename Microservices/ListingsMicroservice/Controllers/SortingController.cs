@@ -1,11 +1,9 @@
-﻿using AutoMapper;
+﻿using ListingsMicroservice.Services.Sorting;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
-using RealEstate.Shared.Models.Entities.Identity;
-using RealEstate.Shared.Models.Entities.Misc;
+using RealEstate.Shared.Models.Entities.Estates;
+using System.Net;
 
 namespace ListingsMicroservice.Controllers
 {
@@ -15,36 +13,49 @@ namespace ListingsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")] // api/auth/
-    public class SortingController : BaseController
+    public class SortingController : ControllerBase
     {
-        //private readonly IEmailService _emailService;
+        private readonly IEstateSortingService _estateSortingService;
+
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<SortingController> _logger;
 
         public SortingController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper)
-            : base(_roleManager, _userManager, _mediator, _mapper)
-        { }
-
+            IMediator mediator,
+            ILogger<SortingController> logger,
+            IEstateSortingService estateSortingService)
+        {
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _estateSortingService = estateSortingService ?? throw new ArgumentNullException(nameof(estateSortingService));
+        }
 
         /// <summary>
-        /// Sends an email with html content.
+        /// Sorts a collection of Estates
         /// </summary>
         /// <param name="request">Object - From, To, Subject, HtmlContent</param>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Post /api/email/send
+        ///     Post /api/sorting/listings
         ///
         /// </remarks>
         [HttpPost]
         [Route("send")]
-        public async Task<IActionResult> SendEmail(SendEmailRequest request)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult Listings([FromQuery] List<Estate> query)
         {
-            //await _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
-            return Ok();
+            var result = _estateSortingService.SortByMultiple(query);
+
+            if (result == null)
+            {
+                _logger.LogError($"Search with the query: {query}, null.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }
