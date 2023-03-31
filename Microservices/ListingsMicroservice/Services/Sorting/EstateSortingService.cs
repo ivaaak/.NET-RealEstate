@@ -2,7 +2,7 @@
 
 namespace ListingsMicroservice.Services.Sorting
 {
-    public class EstateSortingService : ISortingService
+    public class EstateSortingService : IEstateSortingService
     {
         public EstateSortingService()
         { }
