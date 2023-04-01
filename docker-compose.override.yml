@@ -1,27 +1,28 @@
 version: '3.4'
 
-
 networks:
   backend:
     driver: bridge
   frontend: 
     driver: bridge
 
-
 services:
 # API GATEWAY
   api-gateway:
     container_name: api-gateway
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Development
+       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     image: ${DOCKER_REGISTRY-}realestateapi
-    build:
-      context: .
-      dockerfile: RealEstate.API/Dockerfile
     ports:
       - 8000:80
     networks: 
       - backend, frontend 
-
-# RABBITMQ / MASSTRANSIT
+    depends_on:
+      - estates-webapi
+      - listings-webapi
+      - clients-webapi
+      - contracts-webapi
 
 # ESTATE MICROSERVICE
   estates-webapi:
@@ -29,7 +30,7 @@ services:
     image: ${DOCKER_REGISTRY-}estateswebapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
+      dockerfile: Microservices/EstatesMicroservice/Dockerfile #fix dir
     networks: 
       - backend 
     ports:
@@ -61,7 +62,7 @@ services:
     image: ${DOCKER_REGISTRY-}listingswebapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
+      dockerfile: Microservices/ListingsMicroservice/Dockerfile #fix dir
     networks: 
       - backend 
     ports:
@@ -93,7 +94,7 @@ services:
     image: ${DOCKER_REGISTRY-}clientswebapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
+      dockerfile: Microservices/ClientsMicroservice/Dockerfile #fix dir
     networks: 
       - backend 
     ports:
@@ -125,7 +126,7 @@ services:
     image: ${DOCKER_REGISTRY-}contractswebapi
     build:
       context: .
-      dockerfile: RealEstate.API/Dockerfile #fix dir
+      dockerfile: Microservices/ContractsMicroservice/Dockerfile #fix dir
     networks: 
       - backend 
     ports:
@@ -151,7 +152,7 @@ services:
     depends_on:
       - contracts-webapi
 
-# IDENTITY DB
+# IDENTITY DB - Might be migrating to Keycloak?
   identity-db:
     container_name: identity-db
     image: postgres:14.1-alpine
@@ -165,8 +166,53 @@ services:
     ports:
       - '5014:5014'
 
+# UTILITIES:
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+        - "5672:5672"
+        - "15672:15672"
 
-# SEARCH/FILTER MICROSERVICE
-# EMAIL/NOTIFICATION MICROSERVICE
-# PAYMENTS MICROSERVICE
-# USERS/IDENTITY MS
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+        - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+    #Logging stack:
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+        - xpack.monitoring.enabled=true
+        - xpack.watcher.enabled=false
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        - discovery.type=single-node
+    ports:
+        - "9200:9200"
+    volumes:
+        - elasticsearch-data:/usr/share/elasticsearch/data   
+
+  kibana:
+    container_name: kibana
+    environment:        
+        - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+        - elasticsearch
+    ports:
+        - "5601:5601"  
