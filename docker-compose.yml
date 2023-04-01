@@ -15,6 +15,52 @@ services:
     image: redis:alpine
 
 
+# API Gateway / Aggregator
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
+    build:
+      context: .
+      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
+
+  shopping.aggregator:
+    image: ${DOCKER_REGISTRY-}shoppingaggregator
+    build:
+      context: .
+      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+
+
+# Microservices
+  estates-webapi:
+    image: ${DOCKER_REGISTRY-}estateswebapi
+    build:
+      context: .
+      dockerfile: Microservices/EstatesMicroservice/Dockerfile
+
+  listings-webapi:
+    image: ${DOCKER_REGISTRY-}listingswebapi
+    build:
+      context: .
+      dockerfile: Microservices/ListingsMicroservice/Dockerfile
+
+  clients-webapi:
+    image: ${DOCKER_REGISTRY-}clientswebapi
+    build:
+      context: .
+      dockerfile: Microservices/ClientsMicroservice/Dockerfile
+
+  contracts-webapi:
+    image: ${DOCKER_REGISTRY-}contractswebapi
+    build:
+      context: .
+      dockerfile: Microservices/ContractsMicroservice/Dockerfile
+
+  test.grpc:
+    image: ${DOCKER_REGISTRY-}grpc
+    build:
+      context: .
+      dockerfile: Grpc/Dockerfile
+
+
 # Utilities:
   rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -32,64 +78,19 @@ services:
     image: docker.elastic.co/kibana/kibana:7.9.2
 
 
-# API Gateway / Aggregator
-  ocelotapigw:
-    image: ${DOCKER_REGISTRY-}ocelotapigw
-    build:
-      context: .
-      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
-
-  shopping.aggregator:
-    image: ${DOCKER_REGISTRY-}shoppingaggregator
-    build:
-      context: .
-      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
-
-
-# Microservices
-  catalog.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
-    build:
-      context: .
-      dockerfile: Services/Catalog/Catalog.API/Dockerfile
-
-  basket.api:
-    image: ${DOCKER_REGISTRY-}basketapi
-    build:
-      context: .
-      dockerfile: Services/Basket/Basket.API/Dockerfile
-
-  discount.api:
-    image: ${DOCKER_REGISTRY-}discountapi
-    build:
-      context: .
-      dockerfile: Services/Discount/Discount.API/Dockerfile
-
-  ordering.api:
-    image: ${DOCKER_REGISTRY-}orderingapi
-    build:
-      context: .
-      dockerfile: Services/Ordering/Ordering.API/Dockerfile
-
-  discount.grpc:
-    image: ${DOCKER_REGISTRY-}discountgrpc
-    build:
-      context: .
-      dockerfile: Services/Discount/Discount.Grpc/Dockerfile
-
-
 # Web - todo fix
   appFrontendHere:
     image: ${DOCKER_REGISTRY-}appFrontendHere
     build:
       context: .
-      dockerfile: WEB/appFrontendHere/Dockerfile
+      dockerfile: RealEstate.WEB/appFrontendHere/Dockerfile
 
   webstatus:
     image: ${DOCKER_REGISTRY-}webstatus
     build:
       context: .
-      dockerfile: WEB/WebStatus/Dockerfile
+      dockerfile: RealEstate.WEB/WebStatus/Dockerfile
+
 
 # Volumes - persist data from containers
 volumes:
