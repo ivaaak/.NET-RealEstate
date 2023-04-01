@@ -1,17 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using MessagingMicroservice.Services.Notification;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MessagingMicroservice.Controllers
 {
+    [Authorize]
+    [ApiController]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    [Route("api/[controller]")] // api/notifications/
     public class NotificationsController : ControllerBase
     {
-        /*
+        
         private readonly INotificationRepository _notificationRepository;
 
-        public NotificationsController(INotificationRepository notificationRepository)
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<NotificationsController> _logger;
+
+        public NotificationsController(
+            INotificationRepository notificationRepository,
+            IMediator mediator,
+            ILogger<NotificationsController> logger)
         {
-            _notificationRepository = notificationRepository;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
         }
 
+        /*
         [HttpPost]
         public async Task<ActionResult<CreateNotificationResponse>> CreateNotification(CreateNotificationRequest request)
         {
