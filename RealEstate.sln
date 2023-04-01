@@ -36,11 +36,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Test", "RealEsta
 		{D2CC3615-8027-495D-BBB4-FAFDE495E573} = {D2CC3615-8027-495D-BBB4-FAFDE495E573}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7EEE54B-F2C6-491B-BC2D-EF1BCA1B1660}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{362781B5-4C34-45B9-93E2-57F4C55BD4F9}"
 EndProject
 Global

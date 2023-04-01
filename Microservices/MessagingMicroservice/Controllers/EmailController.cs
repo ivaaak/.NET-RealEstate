@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using MessagingMicroservice.Services.Email;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
-using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Misc;
+using System.Net;
 
 namespace MessagingMicroservice.Controllers
 {
@@ -16,20 +13,22 @@ namespace MessagingMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]")] // api/email/
-    public class EmailController : BaseController
+    public class EmailController : ControllerBase
     {
         private readonly IEmailService _emailService;
 
+        private readonly IMediator? _mediator;
+
+        private readonly ILogger<EmailController> _logger;
+
         public EmailController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper,
+            IMediator mediator,
+            ILogger<EmailController> logger,
             IEmailService emailService)
-            : base(_roleManager, _userManager, _mediator, _mapper)
         {
-            _emailService = emailService;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
 
@@ -45,10 +44,19 @@ namespace MessagingMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("send")]
-        public async Task<IActionResult> SendEmail(SendEmailRequest request)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult SendEmail(SendEmailRequest request)
         {
-            await _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
-            return Ok();
+            var result = _emailService.SendEmailAsync(request.From, request.To, request.Subject, request.HtmlContent);
+
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt send email with the request {request}.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -64,10 +72,19 @@ namespace MessagingMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("sendAttachment")]
-        public async Task<IActionResult> SendEmailWithAttachment(SendEmailRequest request)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
+        public ActionResult SendEmailWithAttachment(SendEmailRequest request)
         {
-            await _emailService.SendEmailWithAttachmentAsync(request.From, request.To, request.Subject, request.HtmlContent, request.FileName, request.FileStream);
-            return Ok();
+            var result = _emailService.SendEmailWithAttachmentAsync(request.From, request.To, request.Subject, request.HtmlContent, request.FileName, request.FileStream);
+            
+            if (result == null)
+            {
+                _logger.LogError($"Search with the query: {query}, null.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
 
@@ -83,10 +100,19 @@ namespace MessagingMicroservice.Controllers
         /// </remarks>
         [HttpPost]
         [Route("sendHeaders")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> SendEmailWithCustomHeader(SendEmailRequest request)
         {
-            await _emailService.SendEmailWithCustomHeadersAsync(request.From, request.To, request.Subject, request.HtmlContent, request.Header);
-            return Ok();
+            var result = _emailService.SendEmailWithCustomHeadersAsync(request.From, request.To, request.Subject, request.HtmlContent, request.Header);
+            
+            if (result == null)
+            {
+                _logger.LogError($"Couldnt send email with the request {request}.");
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }
