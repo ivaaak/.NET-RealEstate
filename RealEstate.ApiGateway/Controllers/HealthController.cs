@@ -18,7 +18,7 @@ namespace RealEstate.ApiGateway.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [AllowAnonymous]
-    public class HealthController : BaseController
+    public class HealthController : ControllerBase
     {
         //PostgreSQL Server connection string
         private static string PostgreSQLConnectionString = @"Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin";
@@ -27,13 +27,7 @@ namespace RealEstate.ApiGateway.Controllers
         private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
 
 
-        public HealthController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+        public HealthController()
         { }
 
 

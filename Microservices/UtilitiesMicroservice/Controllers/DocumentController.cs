@@ -12,8 +12,6 @@ namespace UtilitiesMicroservice.Controllers
     {
         private readonly IDocumentService _documentService;
 
-        ///private readonly IMediator? _mediator;
-
         private readonly ILogger<DocumentController> _logger;
 
         public DocumentController(

@@ -19,15 +19,7 @@ namespace RealEstate.Test.Microservices.Controllers
             var redisConnectionString = "localhost";
             var redis = ConnectionMultiplexer.Connect(redisConnectionString);
             var cache = redis.GetDatabase();
-            //_repository = new Repository();
-            _controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            _controller = new CacheController(repository: _repository, logger: null); ;
         }
 
         [Fact]
@@ -143,14 +135,7 @@ namespace RealEstate.Test.Microservices.Controllers
         public void GetCachedEstates_ReturnsOkResult(IDatabase cache)
         {
             // Arrange
-            var controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            var controller = new CacheController(repository: _repository, logger: null);
 
             // Act
             var result = controller.GetCachedEstates();
@@ -163,14 +148,7 @@ namespace RealEstate.Test.Microservices.Controllers
         public void GetCachedEstates_ReturnsListOfEstates(IDatabase cache)
         {
             // Arrange
-            var controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            var controller = new CacheController(repository: _repository, logger: null);
 
             // Act
             var result = controller.GetCachedEstates() as OkObjectResult;
@@ -183,14 +161,8 @@ namespace RealEstate.Test.Microservices.Controllers
         public void GetEstate_ReturnsOkResult(IDatabase cache)
         {
             // Arrange
-            var controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            var controller = new CacheController(repository: _repository, logger: null);
+
             var id = 1;
 
             // Act
@@ -204,14 +176,8 @@ namespace RealEstate.Test.Microservices.Controllers
         public void GetEstate_ReturnsEstate(IDatabase cache)
         {
             // Arrange
-            var controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            var controller = new CacheController(repository: _repository, logger: null);
+
             var id = 1;
 
             // Act
@@ -225,14 +191,8 @@ namespace RealEstate.Test.Microservices.Controllers
         public void GetEstate_ReturnsCachedEstate(IDatabase cache)
         {
             // Arrange
-            var controller = new CacheController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null,
-                _repository: _repository
-            );
+            var controller = new CacheController(repository: _repository, logger: null);
+
             var id = 1;
             var cacheKey = $"item:{id}";
             var estate = new Estate();

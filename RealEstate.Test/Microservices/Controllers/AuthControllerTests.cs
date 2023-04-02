@@ -20,13 +20,7 @@ namespace RealEstate.Test.Microservices.Controllers
             mockAuthService = new Mock<IAuth0Service>();
 
             // Set up the controller
-            controller = new AuthController(
-                _roleManager: null,
-                _userManager: null,
-                _service: null,
-                _mediator: null,
-                _mapper: null,
-                _authService: mockAuthService.Object);
+            controller = new AuthController(service: null, authService: mockAuthService.Object, mediator: null, logger: null);
         }
 
         [Fact]

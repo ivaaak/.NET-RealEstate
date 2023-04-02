@@ -18,12 +18,7 @@ namespace RealEstate.Test.Microservices.Controllers
             //_mediator = new Mock<IMediator>();
 
             // Set up the controller
-            controller = new SearchController(
-                _roleManager: null,
-                _userManager: null,
-                //_service: null,
-                _mediator: null,
-                _mapper: null);
+            controller = new SearchController(mediator: null, logger: null);
         }
 
 

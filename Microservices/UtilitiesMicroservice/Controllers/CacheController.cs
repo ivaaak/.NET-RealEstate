@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -8,7 +7,6 @@ using StackExchange.Redis;
 namespace UtilitiesMicroservice.Controllers
 {
     [Authorize]
-    //[AjaxFilter]
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]

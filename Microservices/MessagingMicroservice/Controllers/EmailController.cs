@@ -80,7 +80,7 @@ namespace MessagingMicroservice.Controllers
             
             if (result == null)
             {
-                _logger.LogError($"Search with the query: {query}, null.");
+                _logger.LogError($"Search with the query: {request}, null.");
                 return NotFound();
             }
 
