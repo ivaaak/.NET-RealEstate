@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Estates;
-using RealEstate.Shared.Models.Entities.Identity;
 using StackExchange.Redis;
 
 namespace UtilitiesMicroservice.Controllers
@@ -16,27 +12,24 @@ namespace UtilitiesMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/auth/
-    public class CacheController : BaseController
+    [Route("api/[controller]")] // api/cache/
+    public class CacheController : ControllerBase
     {
         private readonly IDatabase cache;
 
-        private readonly IRepository repository;
+        private readonly IRepository _repository;
+
+        private readonly ILogger<DocumentController> _logger;
 
         public CacheController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper,
-            IRepository _repository)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IRepository repository,
+            ILogger<DocumentController> logger)
         {
             var redisConnectionString = "localhost";
             var redis = ConnectionMultiplexer.Connect(redisConnectionString);
             cache = redis.GetDatabase();
-            // separate caches for each context?
-            repository = _repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -65,7 +58,7 @@ namespace UtilitiesMicroservice.Controllers
             }
 
             // Get the item from the database
-            var item = await repository.GetByIdAsync<Estate>(id);
+            var item = await _repository.GetByIdAsync<Estate>(id);
 
             // Re-Cache the item
             cache.StringSet(cacheKey, item.ToString(), TimeSpan.FromMinutes(5));
@@ -87,7 +80,7 @@ namespace UtilitiesMicroservice.Controllers
                 return Ok(cachedValue);
             }
 
-            var item = repository.All<Estate>();
+            var item = _repository.All<Estate>();
 
             cache.StringSet(cacheKey, item.ToString(), TimeSpan.FromMinutes(5));
 
