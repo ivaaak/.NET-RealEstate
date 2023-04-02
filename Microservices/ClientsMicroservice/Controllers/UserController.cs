@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.Shared.MediatR.Commands;
 using RealEstate.Shared.MediatR.Handlers.Query;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.DTOs.Clients;

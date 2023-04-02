@@ -1,10 +1,5 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate.ApiGateway.Controllers;
-using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Misc;
 using UtilitiesMicroservice.Services.DocumentManagement;
 
@@ -13,20 +8,21 @@ namespace UtilitiesMicroservice.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class DocumentController : BaseController
+    public class DocumentController : ControllerBase
     {
-        private readonly IDocumentService documentService;
+        private readonly IDocumentService _documentService;
+
+        ///private readonly IMediator? _mediator;
+
+        private readonly ILogger<DocumentController> _logger;
 
         public DocumentController(
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<ApplicationUser> _userManager,
-            //IUserService _service,
-            IMediator _mediator,
-            IMapper _mapper,
-            IDocumentService _documentService)
-            : base(_roleManager, _userManager, _mediator, _mapper)
+            IDocumentService documentService,
+            ILogger<DocumentController> logger)
         {
-            documentService = _documentService;
+            _documentService = documentService ?? throw new ArgumentNullException(nameof(documentService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         }
 
 
@@ -36,8 +32,8 @@ namespace UtilitiesMicroservice.Controllers
         {
             try
             {
-                documentService.ValidateModel(model);
-                documentService.UploadDocument(userId, model);
+                _documentService.ValidateModel(model);
+                _documentService.UploadDocument(userId, model);
                 return Ok();
             }
             catch (ArgumentException ex)
@@ -61,7 +57,7 @@ namespace UtilitiesMicroservice.Controllers
         {
             try
             {
-                var documents = documentService.GetDocumentsList(userId);
+                var documents = _documentService.GetDocumentsList(userId);
                 return Ok(documents);
             }
             catch (Exception)
@@ -76,7 +72,7 @@ namespace UtilitiesMicroservice.Controllers
         public async Task<IActionResult> DownloadDocument(int userId, int documentId)
         {
             // Check if the user has the document
-            if (!await documentService.CheckIfUserHasDocument(userId, documentId))
+            if (!await _documentService.CheckIfUserHasDocument(userId, documentId))
             {
                 // Return a "not found" error if the user doesn't have the document
                 return NotFound();
@@ -85,7 +81,7 @@ namespace UtilitiesMicroservice.Controllers
             try
             {
                 // Download the document
-                await documentService.DownloadDocument(Response, userId, documentId);
+                await _documentService.DownloadDocument(Response, userId, documentId);
             }
             catch (Exception ex)
             {
@@ -97,14 +93,12 @@ namespace UtilitiesMicroservice.Controllers
         }
 
 
-
-
         public async Task<IActionResult> DeleteDocument(int userId, int documentId)
         {
             try
             {
                 // Check if the user has the document
-                bool hasDocument = await documentService.CheckIfUserHasDocument(userId, documentId);
+                bool hasDocument = await _documentService.CheckIfUserHasDocument(userId, documentId);
                 if (!hasDocument)
                 {
                     throw new Exception("The user does not have this document");
@@ -112,7 +106,7 @@ namespace UtilitiesMicroservice.Controllers
 
                 // Delete the document
                 // (Implementation details will depend on the specific storage system being used)
-                await documentService.DeleteDocument(userId, documentId);
+                await _documentService.DeleteDocument(userId, documentId);
                 return NoContent();
             }
             catch (Exception ex)
@@ -132,7 +126,7 @@ namespace UtilitiesMicroservice.Controllers
         {
             try
             {
-                bool result = await documentService.CheckIfUserHasDocument(userId, documentId);
+                bool result = await _documentService.CheckIfUserHasDocument(userId, documentId);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -149,7 +143,7 @@ namespace UtilitiesMicroservice.Controllers
         {
             try
             {
-                documentService.ValidateModel(model);
+                _documentService.ValidateModel(model);
                 return Ok();
             }
             catch (ArgumentException ex)
