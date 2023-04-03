@@ -195,7 +195,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
-    #Logging stack:
+#Redis
+  message-db:
+    container_name: message-db
+    restart: always    
+    ports:
+        - "6379:6379"
+
+#Logging stack:
   elasticsearch:
     container_name: elasticsearch
     environment:
