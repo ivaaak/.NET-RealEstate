@@ -1,5 +1,7 @@
 using EstatesMicroservice.Properties;
 using HealthChecks.UI.Client;
+using MediatR;
+using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9003");
 
 builder.Services
-    .AddSwaggerWithConfig();
+    .AddSwaggerWithConfig()
+    .AddMediatR(typeof(MediatREntryPoint).Assembly);
     //.AddServices()
     //.Use_PostgreSQL_Estates_Context(builder.Configuration);
     //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly

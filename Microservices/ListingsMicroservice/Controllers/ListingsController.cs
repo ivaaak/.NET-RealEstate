@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Azure.Core;
-using ListingsMicroservice.Services;
+﻿using ListingsMicroservice.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Nest;
 using RealEstate.Shared.Models.DTOs.Listings;
 using RealEstate.Shared.Models.Entities.Listings;
 using System.Net;

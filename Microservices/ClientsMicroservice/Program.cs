@@ -1,6 +1,8 @@
 using ClientsMicroservice.Properties;
 using HealthChecks.UI.Client;
+using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9001");
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerWithConfig();
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerWithConfig()
+    .AddMediatR(typeof(MediatREntryPoint).Assembly);
 
 builder.Configuration.AddJsonFile("Properties/appsettings.json");
 

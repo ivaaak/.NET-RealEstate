@@ -1,13 +1,9 @@
 ﻿using Amazon.S3;
-using AutoMapper;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Npgsql;
-using RealEstate.Shared.Models.Entities.Identity;
-using StackExchange.Redis;
+using StackExchange.Redis; 
 using System.Net;
 using System.Net.NetworkInformation;
 

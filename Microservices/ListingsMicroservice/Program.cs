@@ -1,6 +1,8 @@
 using HealthChecks.UI.Client;
 using ListingsMicroservice.Properties;
+using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +11,9 @@ builder.WebHost.UseUrls("http://*:9005");
 
 builder.Services
     .AddSwaggerWithConfig()
-    .AddServices();
+    .AddServices()
+    .AddMediatR(typeof(MediatREntryPoint).Assembly);
     //.Use_PostgreSQL_Listings_Context(builder.Configuration);
-    //.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the MediatR Assembly
 
 builder.Services.AddControllers();
 

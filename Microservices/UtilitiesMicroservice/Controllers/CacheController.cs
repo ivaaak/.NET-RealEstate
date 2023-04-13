@@ -17,11 +17,11 @@ namespace UtilitiesMicroservice.Controllers
 
         private readonly IRepository _repository;
 
-        private readonly ILogger<DocumentController> _logger;
+        private readonly ILogger<CacheController> _logger;
 
         public CacheController(
             IRepository repository,
-            ILogger<DocumentController> logger)
+            ILogger<CacheController> logger)
         {
             var redisConnectionString = "localhost";
             var redis = ConnectionMultiplexer.Connect(redisConnectionString);
