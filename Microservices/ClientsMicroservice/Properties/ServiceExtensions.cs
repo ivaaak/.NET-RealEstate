@@ -1,36 +1,25 @@
 ﻿using ClientsMicroservice.Authentication;
 using ClientsMicroservice.Authentication.Contracts;
-using Microsoft.EntityFrameworkCore;
+using HealthChecks.UI.Client;
+using MassTransit;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
-using RealEstate.Shared.ServiceExtensions;
 
 namespace ClientsMicroservice.Properties
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection AddSharedServices(this IServiceCollection services)
+        public static IServiceCollection AddRepositoryAndServices(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IRepository), typeof(Repository));
-            services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
-            services.AddScoped(typeof(IUserService), typeof(UserService));
-
-            return services;
-        }
-
-        public static IServiceCollection Use_PostgreSQL_Clients_Context(this IServiceCollection services, IConfiguration config)
-        {
-            // This just needs to be called once on application startup
-            EnvironmentConfig.LoadFromEnvironmentVariable();
-
-            // Fetch config from connectionStrings.json
-            var estatesConnectionString = EnvironmentConfig.Current.PostgreEstatesConnection;
-
-            // Microdatabases
-            services.AddDbContext<ClientsDBContext>(options => options.UseNpgsql(estatesConnectionString));
-
-            //services.AddDatabaseDeveloperPageExceptionFilter();
+            //services.AddScoped(typeof(IRepository), typeof(Repository));
+            //services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
+            //services.AddScoped(typeof(IUserService), typeof(UserService));
+            services.AddScoped<IAuth0Service, Auth0Service>();
+            services.AddScoped<IJWTAuthService, JWTAuthService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
+            services.AddScoped<Repository, Repository>();
 
             return services;
         }
@@ -48,6 +37,60 @@ namespace ClientsMicroservice.Properties
             });
 
             return services;
+        }
+
+        public static IServiceCollection AddRedisCacheWithConnectionString(this IServiceCollection services, WebApplicationBuilder builder)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = builder.Configuration["CacheSettings:ConnectionString"];
+            });
+            //services.AddHealthChecks().AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
+
+            return services;
+        }
+
+        public static IServiceCollection AddMassTransitWithRabbitMQProvider(this IServiceCollection services, WebApplicationBuilder builder)
+        {
+            // MassTransit-RabbitMQ Configuration
+            services.AddMassTransit(config => {
+                config.UsingRabbitMq((context, cfg) => {
+                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+                    //cfg.UseHealthCheck(context);
+                });
+            });
+            services.AddMassTransitHostedService();
+            //services.AddHealthChecks().AddRedis(builder.Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
+            //services.AddHealthChecks().AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
+
+            return services;
+        }
+
+
+        // WebApplication Extensions
+        public static WebApplication AddSwaggerDevelopmentDocs(this WebApplication app)
+        {
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clients MS v1"));
+            }
+
+            return app;
+        }
+
+        public static WebApplication MapHealthCheckEndpoint(this WebApplication app)
+        {
+            app.Map("/hc", builder =>
+            {
+                builder.UseHealthChecks("/hc", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+            });
+
+            return app;
         }
     }
 }
