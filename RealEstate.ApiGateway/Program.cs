@@ -7,12 +7,12 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
-    .AddJsonFile("GatewayConfigs/ocelotClientsConfig.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("GatewayConfigs/ocelotContractsConfig.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("GatewayConfigs/ocelotEstatesConfig.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("GatewayConfigs/ocelotExternalConfig.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("GatewayConfigs/ocelotListingsConfig.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("GatewayConfigs/ocelotMessagingConfig.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotClientsConfig.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotContractsConfig.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotEstatesConfig.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotExternalConfig.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotListingsConfig.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("GatewayConfigs/ocelotMessagingConfig.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
 // Run the Gateway on port 9000
@@ -22,16 +22,7 @@ builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Services
     .AddOcelot(builder.Configuration)
     .AddCacheManager(settings => settings.WithDictionaryHandle());
-//.AddIdentityContext()
-//.AddUserService()
-//.AddJWTAuthService()
-//.AddJWTAuthentication()
-//.AddAuth0Authentication(builder.Configuration)
-//.AddApiVersioningConfigured()
-//.AddMediatR(typeof(MediatREntryPoint).Assembly); //Reference to the CQRS Assembly
-
 builder.Services.AddTransient<LoggingDelegatingHandler>();
-
 
 var app = builder.Build();
 
