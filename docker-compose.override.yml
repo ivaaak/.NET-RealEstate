@@ -3,34 +3,35 @@ version: '3.4'
 networks:
   backend:
     driver: bridge
-  frontend: 
-    driver: bridge
 
 services:
 # API GATEWAY
-  api-gateway:
-    container_name: api-gateway
+  apigateway:
+    container_name: apigateway
     environment:
        - ASPNETCORE_ENVIRONMENT=Development
        - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-    image: ${DOCKER_REGISTRY-}realestateapi
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: RealEstate.ApiGateway/Dockerfile
     ports:
       - 8000:80
     networks: 
-      - backend, frontend 
+      - backend 
     depends_on:
-      - estates-webapi
-      - listings-webapi
-      - clients-webapi
-      - contracts-webapi
+      - estateswebapi
+      - listingswebapi
+      - clientswebapi
+      - contractswebapi
 
 # ESTATE MICROSERVICE
-  estates-webapi:
-    container_name: estates-webapi
+  estateswebapi:
+    container_name: estateswebapi
     image: ${DOCKER_REGISTRY-}estateswebapi
     build:
       context: .
-      dockerfile: Microservices/EstatesMicroservice/Dockerfile #fix dir
+      dockerfile: Microservices/EstatesMicroservice/Dockerfile
     networks: 
       - backend 
     ports:
@@ -40,11 +41,10 @@ services:
       - DB_NAME=estates
       - DB_ROOT_PASSWORD=admin
     depends_on:
-      - api-gateway
-      - estates-db
+      - estatesdb
 
-  estates-db:
-    container_name: estates-db
+  estatesdb:
+    container_name: estatesdb
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -53,16 +53,14 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - '5010:5010'
-    depends_on:
-      - estates-webapi
 
 # LISTING MICROSERVICE
-  listings-webapi:
-    container_name: listings-webapi
+  listingswebapi:
+    container_name: listingswebapi
     image: ${DOCKER_REGISTRY-}listingswebapi
     build:
       context: .
-      dockerfile: Microservices/ListingsMicroservice/Dockerfile #fix dir
+      dockerfile: Microservices/ListingsMicroservice/Dockerfile
     networks: 
       - backend 
     ports:
@@ -72,11 +70,10 @@ services:
       - DB_NAME=listings
       - DB_ROOT_PASSWORD=admin
     depends_on:
-      - api-gateway
-      - listings-db
+      - listingsdb
   
-  listings-db:
-    container_name: listings-db
+  listingsdb:
+    container_name: listingsdb
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -85,16 +82,14 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - '5011:5011'
-    depends_on:
-      - listings-webapi
 
 # CLIENTS MICROSERVICE
-  clients-webapi:
-    container_name: clients-webapi
+  clientswebapi:
+    container_name: clientswebapi
     image: ${DOCKER_REGISTRY-}clientswebapi
     build:
       context: .
-      dockerfile: Microservices/ClientsMicroservice/Dockerfile #fix dir
+      dockerfile: Microservices/ClientsMicroservice/Dockerfile
     networks: 
       - backend 
     ports:
@@ -104,11 +99,10 @@ services:
       - DB_NAME=clients
       - DB_ROOT_PASSWORD=admin
     depends_on:
-      - api-gateway
-      - clients-db
+      - clientsdb
   
-  clients-db:
-    container_name: clients-db
+  clientsdb:
+    container_name: clientsdb
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -117,16 +111,14 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - '5012:5012'
-    depends_on:
-      - clients-webapi
 
 # CONTRACTS MICROSERVICE
-  contracts-webapi:
-    container_name: contracts-webapi
+  contractswebapi:
+    container_name: contractswebapi
     image: ${DOCKER_REGISTRY-}contractswebapi
     build:
       context: .
-      dockerfile: Microservices/ContractsMicroservice/Dockerfile #fix dir
+      dockerfile: Microservices/ContractsMicroservice/Dockerfile
     networks: 
       - backend 
     ports:
@@ -136,11 +128,10 @@ services:
       - DB_NAME=contracts
       - DB_ROOT_PASSWORD=admin
     depends_on:
-      - api-gateway
-      - contracts-db
+      - contractsdb
 
-  contracts-db:
-    container_name: contracts-db
+  contractsdb:
+    container_name: contractsdb
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -149,12 +140,10 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - '5013:5013'
-    depends_on:
-      - contracts-webapi
 
 # IDENTITY DB - Might be migrating to Keycloak?
-  identity-db:
-    container_name: identity-db
+  identitydb:
+    container_name: identitydb
     image: postgres:14.1-alpine
     restart: always
     networks:
@@ -196,8 +185,8 @@ services:
       - portainer_data:/data
 
 #Redis
-  message-db:
-    container_name: message-db
+  messagedb:
+    container_name: messagedb
     restart: always    
     ports:
         - "6379:6379"

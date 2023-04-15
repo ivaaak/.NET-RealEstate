@@ -8,57 +8,57 @@ services:
   listingsdb:
     image: postgres
 
-  clientsgsdb:
+  clientsdb:
     image: postgres
 
-  message-db:
+  messagedb:
     image: redis:alpine
 
 
 # API Gateway / Aggregator
-  ocelotapigw:
-    image: ${DOCKER_REGISTRY-}ocelotapigw
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
     build:
       context: .
-      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
+      dockerfile: RealEstate.ApiGateway/Dockerfile
 
-  shopping.aggregator:
-    image: ${DOCKER_REGISTRY-}shoppingaggregator
-    build:
-      context: .
-      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+#  shopping.aggregator:
+#    image: ${DOCKER_REGISTRY-}shoppingaggregator
+#    build:
+#      context: .
+#      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
 
 
 # Microservices
-  estates-webapi:
+  estateswebapi:
     image: ${DOCKER_REGISTRY-}estateswebapi
     build:
       context: .
       dockerfile: Microservices/EstatesMicroservice/Dockerfile
 
-  listings-webapi:
+  listingswebapi:
     image: ${DOCKER_REGISTRY-}listingswebapi
     build:
       context: .
       dockerfile: Microservices/ListingsMicroservice/Dockerfile
 
-  clients-webapi:
+  clientswebapi:
     image: ${DOCKER_REGISTRY-}clientswebapi
     build:
       context: .
       dockerfile: Microservices/ClientsMicroservice/Dockerfile
 
-  contracts-webapi:
+  contractswebapi:
     image: ${DOCKER_REGISTRY-}contractswebapi
     build:
       context: .
       dockerfile: Microservices/ContractsMicroservice/Dockerfile
 
-  test.grpc:
-    image: ${DOCKER_REGISTRY-}grpc
-    build:
-      context: .
-      dockerfile: Grpc/Dockerfile
+#  test.grpc:
+#    image: ${DOCKER_REGISTRY-}grpc
+#    build:
+#      context: .
+#      dockerfile: Grpc/Dockerfile
 
 
 # Utilities:
@@ -79,17 +79,17 @@ services:
 
 
 # Web - todo fix
-  appFrontendHere:
-    image: ${DOCKER_REGISTRY-}appFrontendHere
-    build:
-      context: .
-      dockerfile: RealEstate.WEB/appFrontendHere/Dockerfile
+#  appFrontendHere:
+#    image: ${DOCKER_REGISTRY-}appFrontendHere
+#    build:
+#      context: .
+#      dockerfile: RealEstate.WEB/appFrontendHere/Dockerfile
 
-  webstatus:
-    image: ${DOCKER_REGISTRY-}webstatus
-    build:
-      context: .
-      dockerfile: RealEstate.WEB/WebStatus/Dockerfile
+#  webstatus:
+#    image: ${DOCKER_REGISTRY-}webstatus
+#    build:
+#      context: .
+#      dockerfile: RealEstate.WEB/WebStatus/Dockerfile
 
 
 # Volumes - persist data from containers
