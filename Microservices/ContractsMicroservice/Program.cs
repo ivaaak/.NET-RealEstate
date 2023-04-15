@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Run on port 9002
 builder.WebHost.UseUrls("http://*:9002");
+builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerWithConfig();
 
-builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
 var app = builder.Build();
 
