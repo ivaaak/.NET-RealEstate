@@ -8,7 +8,6 @@ using System.Net;
 namespace MessagingMicroservice.Controllers
 {
     [Authorize]
-    //[AjaxFilter]
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
