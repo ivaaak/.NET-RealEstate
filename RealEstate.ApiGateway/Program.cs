@@ -23,10 +23,13 @@ builder.Services
     .AddOcelot(builder.Configuration)
     .AddCacheManager(settings => settings.WithDictionaryHandle());
 builder.Services.AddTransient<LoggingDelegatingHandler>();
+builder.Services.AddCors();
+
 
 var app = builder.Build();
 
 await app.UseOcelot();
+app.UseCors();
 
 // App routing
 app.UseHttpsRedirection()
