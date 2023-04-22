@@ -80,14 +80,5 @@ It can be used for listing, browsing and renting/selling properties.
 - xunit and NUnit
 - coverlet / CodeCov
 
-
 #### Roles :  Guest, User, Agent, Admin
 
-Features I intend to implement:
-
-- Auth0  (Authorization using the standard JWT middleware)
-- Build/Configure a cralwer to copy listings from a real site/dataset
-- SignalR for on-page notifications/messaging
-- Sendgrid for emails
-- Cloudinary.Net for file upload/storage
-- Polly Persistance/Retries
