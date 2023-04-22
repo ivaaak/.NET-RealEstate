@@ -39,30 +39,40 @@ It can be used for listing, browsing and renting/selling properties.
 #### [External APIs](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice) - Zillow API, Stripe API, Scraper
 
 
-## Built With:
+### Built With:
 - [**✔**]  .NET  7 
--  [**✔**]  Microservices
--  [**✔**]  Ocelot - API Gateway
--  Camunda - Orchestration
--  [**✔**]  Auth:  .NET Identity System, Auth0, JWT 
+-  [**✔**]  Microservices (Clean Architecture)
+-  [**✔**]  API Gateway/Reverse Proxy - Ocelot
 -  [**✔**]  MediatR / CQRS Pattern
 -  [**✔**]  ORM - Entity Framework Core 6
--  [**✔**]  PostgreSQL
+-  [**✔**]  PostgreSQL (and MongoDB possibly?)
 -  [**✔**]  Redis Caching
--  Event Bus - RabbitMQ / MassTransit
 -  [**✔**]  Docker - Microservices and DBs Containerization
--  [**✔**]  Fluent Validation
--  A Scraper which takes listings from real sites
--  SignalR for on-page notifications/messaging
 -  [**✔**]  Sendgrid for emails
--  Cloudinary.Net for file upload/storage
--  [**✔**]  Polly - Persistance/Retries
--  [**✔**]  HangFire for task scheduling / background execution
--  Automapper
--  [**✔**]  Swagger / Swashbuckle
+-  [**✔**]  Cloudinary.Net for file upload/storage
+-  [**✔**]  Swagger / Swashbuckle API Docs
 -  [**✔**]  Stripe Payments API
--  Algolia / Elasticsearch
--  ELK stack for logging - Elasticsearch / Logstash / Kibana
+-  [**✔**]  ELK stack for logging - Elasticsearch / Logstash / Kibana
+-  [**✔**]  Automapper
+-  [**✔**]  Nuke Build Pipeline
+
+#### Not implemented yet / In Progress:
+-  Auth / User Management:  Keycloak + a Token Handler
+-  Fluent Validation
+-  A Scraper which takes listings from real sites
+-  Event Bus - RabbitMQ / MassTransit
+-  SignalR for on-page notifications/messaging
+-  Resilience - Polly - Persistance/Retries
+-  HangFire for task scheduling / background execution
+-  CI/CD Pipeline with github actions
+
+#### Future plans:
+-  Camunda - Orchestration Engine
+-  Consul - Service Discovery
+-  An Aggregator service for fetching from multiple DBs
+-  Token Handler Middleware which is used for the Keycloak Auth
+-  Monitoring -  Grafana + Prometheus
+-  Code Coverage and Reports - CodeCov
 
 (Testing)
 - MyTested.AspNetCore.Mvc 
