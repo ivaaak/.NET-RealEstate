@@ -31,7 +31,7 @@ namespace RealEstate.Shared.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Client_Id).IsUnique();
 
             modelBuilder
                 .Entity<Contact>()

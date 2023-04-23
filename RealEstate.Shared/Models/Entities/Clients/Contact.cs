@@ -1,5 +1,5 @@
-﻿using RealEstate.Shared.Models.Entities.BaseEntityModel;
-using RealEstate.Shared.Models.Entities.Identity;
+﻿#nullable disable
+using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,7 +23,7 @@ namespace RealEstate.Shared.Models.Entities.Clients
 
         public Client Client { get; init; }
         public string Client_Id { get; init; }
-        public ApplicationUser ApplicationUser { get; set; }
+        //public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUser_Id { get; set; }
 
 

@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.Models.Entities.Misc
+﻿#nullable disable
+namespace RealEstate.Shared.Models.Entities.Misc
 {
     public class CaptureChargeDataModel
     {

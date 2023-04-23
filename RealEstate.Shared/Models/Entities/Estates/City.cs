@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Models.Entities.BaseEntityModel;
+﻿#nullable disable
+using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

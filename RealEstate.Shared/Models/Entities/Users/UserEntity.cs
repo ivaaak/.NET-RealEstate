@@ -1,7 +1,9 @@
 ﻿#nullable disable
+using RealEstate.Shared.Models.Entities.BaseEntityModel;
+
 namespace RealEstate.Shared.Models.Entities.Users
 {
-    public class UserEntity
+    public class UserEntity : IDeletableEntity
     {
         public UserEntity()
         {
@@ -24,10 +26,15 @@ namespace RealEstate.Shared.Models.Entities.Users
         public string ServiceAccountClientLink { get; set; }
         public int NotBefore { get; set; }
 
+
         //public virtual ICollection<Credential> Credentials { get; set; }
         //public virtual ICollection<FederatedIdentity> FederatedIdentities { get; set; }
         public virtual ICollection<UserAttribute> UserAttributes { get; set; }
         public virtual ICollection<UserGroupMembership> UserGroupMemberships { get; set; }
         public virtual ICollection<UserRoleMapping> UserRoleMappings { get; set; }
+
+
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

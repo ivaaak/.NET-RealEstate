@@ -3,20 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Contracts;
 using RealEstate.Shared.Models.Entities.Estates;
-using RealEstate.Shared.Models.Entities.Identity;
 using RealEstate.Shared.Models.Entities.Listings;
 
 namespace RealEstate.Shared.Data.Context
 {
 
-    public class _CombinedContext : IdentityDbContext<ApplicationUser>
+    public class _CombinedContext : DbContext //: IdentityDbContext<ApplicationUser>
     {
         public _CombinedContext(DbContextOptions<_CombinedContext> options)
             : base(options) { }
 
 
         // Identity Users
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         // Clients
         public DbSet<Client> Clients { get; set; }

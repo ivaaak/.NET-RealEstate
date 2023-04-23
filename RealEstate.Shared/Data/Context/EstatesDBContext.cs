@@ -63,7 +63,7 @@ namespace RealEstate.Shared.Data.Context
                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Client_Id).IsUnique();
 
             modelBuilder
                .Entity<Listing>()

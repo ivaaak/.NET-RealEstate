@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿#nullable disable
+using Microsoft.AspNetCore.Identity;
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Contracts;

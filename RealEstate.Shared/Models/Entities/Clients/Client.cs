@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿#nullable disable
+using Microsoft.AspNetCore.Identity;
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using RealEstate.Shared.Models.Entities.Contracts;
-using RealEstate.Shared.Models.Entities.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Shared.Models.Entities.Clients
 {
     // should inherit ApplicationUser which inherits IdentityUser?
-    public class Client : ApplicationUser, IDeletableEntity
+    public class Client : 
+        //ApplicationUser, 
+        IDeletableEntity
     {
         [ForeignKey("Client_Id")]
         public string Client_Id { get; init; }
@@ -33,5 +35,7 @@ namespace RealEstate.Shared.Models.Entities.Clients
         public IEnumerable<Contract> Contracts { get; set; }
 
         public List<IdentityRole> Roles { get; set; }
+        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
