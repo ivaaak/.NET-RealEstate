@@ -2,7 +2,6 @@
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.BehaviorModels.ResponseModels;
 using RealEstate.Shared.MediatR.Commands.Update;
-using RealEstate.Shared.Models.Entities.Identity;
 
 namespace RealEstate.Shared.MediatR.Handlers.Update
 {
@@ -17,6 +16,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Update
 
         public Task<Response> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
+            /*
             var updatedUser = new ApplicationUser()
             {
                 UserName = request.UserName,
@@ -24,7 +24,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Update
             };
 
             repo.Update(updatedUser);
-
+            */
             return (Task<Response>)Task.CompletedTask;
         }
     }

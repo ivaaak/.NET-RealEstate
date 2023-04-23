@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace RealEstate.Shared.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions.Swagger
 {
     /// <summary>
     /// Configures the Swagger generation options.

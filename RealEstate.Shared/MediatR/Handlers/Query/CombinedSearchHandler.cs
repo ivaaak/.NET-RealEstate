@@ -46,10 +46,10 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 
             var clients = await clientsRepository
                 .AllAsNoTracking()
-                .Where(p => p.UserName
+                .Where(p => p.Client_Name
                     .ToLower()
                     .Contains(queryNormalized))
-                .OrderBy(p => p.UserName)
+                .OrderBy(p => p.Client_Name)
                 .ProjectTo<ClientDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

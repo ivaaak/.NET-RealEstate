@@ -34,24 +34,5 @@ namespace RealEstate.Shared.ServiceExtensions
 
             return services;
         }
-
-        public static IServiceCollection Use_MicrosoftSQL_Context(this IServiceCollection services, IConfiguration config)
-        {
-            // This just needs to be called once on application startup
-            EnvironmentConfig.LoadFromEnvironmentVariable();
-
-            // Fetch config from connectionStrings.json
-            var mySQLConnectionString = EnvironmentConfig.Current.MySQLMainConnection;
-
-            services.AddDbContext<_CombinedContext>(options => options.UseSqlServer(mySQLConnectionString));
-            services.AddDbContext<ClientsDBContext>(options => options.UseSqlServer(mySQLConnectionString));
-            services.AddDbContext<ContractsDBContext>(options => options.UseSqlServer(mySQLConnectionString));
-            services.AddDbContext<EstatesDBContext>(options => options.UseSqlServer(mySQLConnectionString));
-            services.AddDbContext<ListingsDBContext>(options => options.UseSqlServer(mySQLConnectionString));
-
-            //services.AddDatabaseDeveloperPageExceptionFilter();
-
-            return services;
-        }
     }
 }

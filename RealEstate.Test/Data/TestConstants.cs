@@ -7,12 +7,11 @@ namespace RealEstate.Test.Data
     {
         public static Client client = new Client()
         {
-            Id = "1",
             Client_Id = "1",
             Client_Address = "ul. Hubavka",
             Client_Details = "details placeholder",
             Client_Name = "Giga Chikadze",
-            Email = "",
+            EMail = "",
             Mobile = "088",
             Phone = "02",
         };

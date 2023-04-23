@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
-namespace RealEstate.Shared.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions.Swagger
 {
     /// <summary>
     /// Configure the Swagger generator.

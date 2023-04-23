@@ -2,18 +2,18 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RealEstate.Shared.ServiceExtensions
+namespace RealEstate.Shared.ServiceExtensions.Swagger
 {
     /// <summary>
     /// Configure the API versioning properties of the project.
     /// </summary>
-    public static class SwaggerAPIExtension
+    public static class AddApiVersioningConfigured
     {
         /// <summary>
         /// Configure the API versioning properties of the project, such as return headers, version format, etc.
         /// </summary>
         /// <param name="services"></param>
-        public static IServiceCollection AddApiVersioningConfigured(this IServiceCollection services)
+        public static IServiceCollection AddApiVersioningConfiguration(this IServiceCollection services)
         {
             services.AddApiVersioning(options =>
             {
