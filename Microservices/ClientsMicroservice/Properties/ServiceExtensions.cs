@@ -1,6 +1,4 @@
-﻿using ClientsMicroservice.Authentication;
-using ClientsMicroservice.Authentication.Contracts;
-using HealthChecks.UI.Client;
+﻿using HealthChecks.UI.Client;
 using MassTransit;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
@@ -12,12 +10,9 @@ namespace ClientsMicroservice.Properties
     {
         public static IServiceCollection AddRepositoryAndServices(this IServiceCollection services)
         {
-            //services.AddScoped(typeof(IRepository), typeof(Repository));
-            //services.AddScoped(typeof(IApplicationDbRepository), typeof(ApplicationDbRepository));
-            //services.AddScoped(typeof(IUserService), typeof(UserService));
-            services.AddScoped<IAuth0Service, Auth0Service>();
-            services.AddScoped<IJWTAuthService, JWTAuthService>();
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IAuth0Service, Auth0Service>();
+            //services.AddScoped<IJWTAuthService, JWTAuthService>();
+            //services.AddScoped<IUserService, UserService>();
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<Repository, Repository>();
 
