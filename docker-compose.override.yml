@@ -6,12 +6,12 @@ networks:
 
 services:
 # API GATEWAY
-  apigateway:
-    container_name: apigateway
+  api-gateway:
+    container_name: api-gateway
     environment:
        - ASPNETCORE_ENVIRONMENT=Development
        - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-    image: ${DOCKER_REGISTRY-}apigateway
+    image: ${DOCKER_REGISTRY-}api-gateway
     build:
       context: .
       dockerfile: RealEstate.ApiGateway/Dockerfile
@@ -20,17 +20,17 @@ services:
     networks: 
       - backend 
     depends_on:
-      - estateswebapi
-      - listingswebapi
-      - clientswebapi
-      - contractswebapi
+      - api.estates
+      - api.listings
+      - api.clients
+      - api.contracts
 
 
 # MICROSERVICES
 # Estates Microservice
-  estateswebapi:
-    container_name: estateswebapi
-    image: ${DOCKER_REGISTRY-}estateswebapi
+  api.estates:
+    container_name: api.estates
+    image: ${DOCKER_REGISTRY-}api.estates
     build:
       context: .
       dockerfile: Microservices/EstatesMicroservice/Dockerfile
@@ -42,9 +42,9 @@ services:
       - db.postgresql
 
 # Listings Microservice
-  listingswebapi:
-    container_name: listingswebapi
-    image: ${DOCKER_REGISTRY-}listingswebapi
+  api.listings:
+    container_name: api.listings
+    image: ${DOCKER_REGISTRY-}api.listings
     build:
       context: .
       dockerfile: Microservices/ListingsMicroservice/Dockerfile
@@ -56,9 +56,9 @@ services:
       - db.postgresql
   
 # Clients Microservice
-  clientswebapi:
-    container_name: clientswebapi
-    image: ${DOCKER_REGISTRY-}clientswebapi
+  api.clients:
+    container_name: api.clients
+    image: ${DOCKER_REGISTRY-}api.clients
     build:
       context: .
       dockerfile: Microservices/ClientsMicroservice/Dockerfile
@@ -70,9 +70,9 @@ services:
       - db.postgresql
   
 # Contracts Microservice
-  contractswebapi:
-    container_name: contractswebapi
-    image: ${DOCKER_REGISTRY-}contractswebapi
+  api.contracts:
+    container_name: api.contracts
+    image: ${DOCKER_REGISTRY-}api.contracts
     build:
       context: .
       dockerfile: Microservices/ContractsMicroservice/Dockerfile
@@ -125,10 +125,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - database
-    networks:
-      - net_nginx
-      - net_postgres
+      - db.postgresql
 
   db.messages:
     container_name: db.messages
@@ -138,15 +135,15 @@ services:
 
 
 # UTILITIES:
-  rabbitmq:
-    container_name: rabbitmq
+  util.rabbitmq:
+    container_name: util.rabbitmq
     restart: always
     ports:
         - "5672:5672"
         - "15672:15672"
 
-  pgadmin:
-    container_name: pgadmin
+  util.pgadmin:
+    container_name: util.pgadmin
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=admin1234
@@ -156,20 +153,19 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
 
-  portainer:
-    container_name: portainer
+  util.portainer:
+    container_name: util.portainer
     restart: always
     ports:
-      - "8080:8000"
-      - "9000:9000"
+      - "9090:9090"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
 
 #Logging stack:
-  elasticsearch:
-    container_name: elasticsearch
+  util.elasticsearch:
+    container_name: util.elasticsearch
     environment:
         - xpack.monitoring.enabled=true
         - xpack.watcher.enabled=false
@@ -180,12 +176,12 @@ services:
     volumes:
         - elasticsearch-data:/usr/share/elasticsearch/data   
 
-  kibana:
-    container_name: kibana
+  util.kibana:
+    container_name: util.kibana
     environment:        
         - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
-        - elasticsearch
+        - util.elasticsearch
     ports:
         - "5601:5601"  
 

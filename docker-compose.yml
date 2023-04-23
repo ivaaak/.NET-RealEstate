@@ -1,29 +1,30 @@
 version: '3.4'
+name: realestate-microservices
 
 services:
 # API Gateway
-  apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
+  api-gateway:
+    image: ${DOCKER_REGISTRY-}api-gateway
     build:
       context: .
       dockerfile: RealEstate.ApiGateway/Dockerfile
 
 
 # Microservices
-  estateswebapi:
-    image: ${DOCKER_REGISTRY-}estateswebapi
+  api.estates:
+    image: ${DOCKER_REGISTRY-}api.estates
     build:
       context: .
       dockerfile: Microservices/EstatesMicroservice/Dockerfile
 
-  listingswebapi:
-    image: ${DOCKER_REGISTRY-}listingswebapi
+  api.listings:
+    image: ${DOCKER_REGISTRY-}api.listings
     build:
       context: .
       dockerfile: Microservices/ListingsMicroservice/Dockerfile
 
-  clientswebapi:
-    image: ${DOCKER_REGISTRY-}clientswebapi
+  api.clients:
+    image: ${DOCKER_REGISTRY-}api.clients
     build:
       context: .
       dockerfile: Microservices/ClientsMicroservice/Dockerfile
@@ -31,23 +32,23 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
-  contractswebapi:
-    image: ${DOCKER_REGISTRY-}contractswebapi
+  api.contracts:
+    image: ${DOCKER_REGISTRY-}api.contracts
     build:
       context: .
       dockerfile: Microservices/ContractsMicroservice/Dockerfile
 
 
 # Utilities:
-  rabbitmq:
+  util.rabbitmq:
     image: rabbitmq:3-management-alpine
-  pgadmin:
+  util.pgadmin:
     image: dpage/pgadmin4  
-  portainer:
+  util.portainer:
     image: portainer/portainer-ce
-  elasticsearch:
+  util.elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-  kibana:
+  util.kibana:
     image: docker.elastic.co/kibana/kibana:7.9.2
 
 
