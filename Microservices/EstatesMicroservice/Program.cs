@@ -1,7 +1,5 @@
 using EstatesMicroservice.Properties;
 using HealthChecks.UI.Client;
-using MediatR;
-using RealEstate.Shared.MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 

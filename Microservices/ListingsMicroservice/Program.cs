@@ -11,8 +11,8 @@ builder.WebHost.UseUrls("http://*:9005");
 
 builder.Services
     .AddSwaggerWithConfig()
-    .AddServices()
-    .AddMediatR(typeof(MediatREntryPoint).Assembly);
+    .AddServices();
+    //.AddMediatR(typeof(MediatREntryPoint).Assembly);
     //.Use_PostgreSQL_Listings_Context(builder.Configuration);
 
 builder.Services.AddControllers();
