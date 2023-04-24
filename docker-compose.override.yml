@@ -1,4 +1,5 @@
 version: '3.4'
+name: realestate-microservices
 
 networks:
   backend:
@@ -88,10 +89,6 @@ services:
   db.postgresql:
     container_name: db.postgresql
     image: postgres:13.3
-    command:
-      - "postgres"
-      - "-c"
-      - "max_connections=50"
     environment:
       POSTGRES_DB: "keycloak"
       POSTGRES_USER: "keycloak"
@@ -106,15 +103,15 @@ services:
 
   keycloak:
     container_name: keycloak
-    image: quay.io/keycloak/keycloak:16.1.1
+    image: jboss/keycloak:12.0.4
     volumes:
       - ./keycloak/imports:/keycloak/imports
     environment:
       KEYCLOAK_LOGLEVEL: DEBUG
       ROOT_LOGLEVEL: DEBUG
-      KEYCLOAK_IMPORT: /keycloak/imports/realm-export.json
+      # KEYCLOAK_IMPORT: /keycloak/imports/realm-export.json
       DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
+      DB_ADDR: db.postgresql
       DB_DATABASE: keycloak
       DB_USER: keycloak
       DB_SCHEMA: public
