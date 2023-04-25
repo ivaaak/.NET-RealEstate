@@ -1,6 +1,6 @@
 {
   "id": "DPO",
-  "realm": "EDU",
+  "realm": "RE",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -69,7 +69,7 @@
       {
         "id": "566d211f-e89d-48df-b20e-8979408c569c",
         "name": "Admin",
-        "description": "Преподаватель? Админ?",
+        "description": "Administrator",
         "composite": false,
         "clientRole": false,
         "containerId": "DPO",
@@ -464,13 +464,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/EDU/account/",
+      "baseUrl": "/realms/RE/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/EDU/account/*"
+        "/realms/RE/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -802,13 +802,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/EDU/console/",
+      "baseUrl": "/admin/RE/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/EDU/console/*"
+        "/admin/RE/console/*"
       ],
       "webOrigins": [
         "+"
