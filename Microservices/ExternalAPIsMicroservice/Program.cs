@@ -1,36 +1,28 @@
-using ExternalAPIsMicroservice.Properties;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using RealEstate.Shared.Logging;
+using RealEstate.Shared.ServiceExtensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Run on port 9004
 builder.WebHost.UseUrls("http://*:9004");
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerWithConfig();
-
+builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
+builder.Services.AddControllers();
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerWithConfig("External")
+    .AddRepositories()
+    .AddRedisCacheWithConnectionString(builder)
+    .AddMassTransitWithRabbitMQProvider(builder)
+    .AddHealthChecks();
+//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
+//  .AddServices();
+
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ExternalAPI MS v1"));
-}
-
+app.AddSwaggerDevelopmentDocs("External");
 app.UseHttpsRedirection().UseAuthorization();
-
 app.MapControllers();
-
-app.Map("/hc", builder =>
-{
-    builder.UseHealthChecks("/hc", new HealthCheckOptions()
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
-});
-
+app.MapHealthCheckEndpoint();
 app.Run();

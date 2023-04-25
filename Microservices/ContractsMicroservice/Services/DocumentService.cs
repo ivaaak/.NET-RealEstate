@@ -1,7 +1,7 @@
 ﻿using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Misc;
 
-namespace UtilitiesMicroservice.Services.DocumentManagement
+namespace ContractsMicroservice.Services
 {
     public class DocumentService : IDocumentService
     {

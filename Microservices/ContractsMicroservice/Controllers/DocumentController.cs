@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using ContractsMicroservice.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
-using UtilitiesMicroservice.Services.DocumentManagement;
 
 namespace UtilitiesMicroservice.Controllers
 {

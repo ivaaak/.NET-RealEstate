@@ -1,7 +1,5 @@
-using ClientsMicroservice.Properties;
-using MediatR;
 using RealEstate.Shared.Logging;
-using RealEstate.Shared.MediatR;
+using RealEstate.Shared.ServiceExtensions;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,14 +11,16 @@ builder.Configuration.AddJsonFile("Properties/appsettings.json");
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
-    .AddSwaggerWithConfig()
-    .AddRepositoryAndServices()
-    .AddMediatR(typeof(MediatREntryPoint).Assembly)
+    .AddSwaggerWithConfig("Clients")
+    .AddRepositories()
     .AddRedisCacheWithConnectionString(builder)
-    .AddMassTransitWithRabbitMQProvider(builder);
+    .AddMassTransitWithRabbitMQProvider(builder)
+    .AddHealthChecks();
+//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
+//  .AddServices();
 
 var app = builder.Build();
-app.AddSwaggerDevelopmentDocs();
+app.AddSwaggerDevelopmentDocs("Clients");
 app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
 app.MapHealthCheckEndpoint();

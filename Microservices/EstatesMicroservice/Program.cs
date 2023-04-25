@@ -1,39 +1,28 @@
-using EstatesMicroservice.Properties;
-using HealthChecks.UI.Client;
+using RealEstate.Shared.Logging;
+using RealEstate.Shared.ServiceExtensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Run on port 9003
 builder.WebHost.UseUrls("http://*:9003");
-
-builder.Services
-    .AddSwaggerWithConfig();
-    //.AddMediatR(typeof(MediatREntryPoint).Assembly);
-    //.AddServices()
-    //.Use_PostgreSQL_Estates_Context(builder.Configuration);
-
-builder.Services.AddControllers();
-
+builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
+builder.Services.AddControllers();
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerWithConfig("Estates")
+    .AddRepositories()
+    .AddRedisCacheWithConnectionString(builder)
+    .AddMassTransitWithRabbitMQProvider(builder)
+    .AddHealthChecks();
+//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
+//  .AddServices();
+
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Estates MS v1"));
-}
-
-app.UseHttpsRedirection().UseAuthorization().UseAuthentication();
-
+app.AddSwaggerDevelopmentDocs("Estates");
+app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
-
-app.Map("/hc", builder =>
-{
-    builder.UseHealthChecks("/hc", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
-});
-
+app.MapHealthCheckEndpoint();
 app.Run();
