@@ -8,7 +8,7 @@ publish:
 	dotnet publish --os linux --arch x64 -c Release --self-contained
 
 dcu: # docker-compose up
-	docker-compose up
+	docker-compose -p="realestate-microservices" up
 dcd: # docker-compose down
 	docker-compose -f down
 
