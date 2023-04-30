@@ -21,6 +21,8 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="7.0.0" />
     <PackageReference Include="AWSSDK.S3" Version="3.7.103.25" />
+    <PackageReference Include="Keycloak.AuthServices.Authentication" Version="1.5.1" />
+    <PackageReference Include="Keycloak.AuthServices.Authorization" Version="1.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.3" />
@@ -52,6 +54,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Shared\RealEstate.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Authentication\Assets\" />
+    <Folder Include="Authorization\" />
   </ItemGroup>
 
 </Project>
