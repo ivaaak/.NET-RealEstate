@@ -1,0 +1,131 @@
+﻿{
+  "Routes": [
+    // ClientsMicroservice - 9001
+    {
+      "DownstreamPathTemplate": "/api/clients/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.clients",
+          "Port": 9001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/clients/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "ClientsMicroservice"
+    },
+    // ContractsMicroservice - 9002
+    {
+      "DownstreamPathTemplate": "/api/contracts/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.contracts",
+          "Port": 9002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/contracts/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "ContractsMicroservice"
+    },
+    // EstatesMicroservice - 9003
+    {
+      "DownstreamPathTemplate": "/api/estates/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.estates",
+          "Port": 9003
+        }
+      ],
+      "UpstreamPathTemplate": "/api/estates/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "EstatesMicroservice"
+    },
+    // ExternalAPIsMicroservice - 9004
+    {
+      "DownstreamPathTemplate": "/api/external/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.external",
+          "Port": 9004
+        }
+      ],
+      "UpstreamPathTemplate": "/api/external/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "ExternalAPIsMicroservice"
+    },
+    // ListingsMicroservice - 9005
+    {
+      "DownstreamPathTemplate": "/api/listings/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.listings",
+          "Port": 9005
+        }
+      ],
+      "UpstreamPathTemplate": "/api/listings/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "ListingsMicroservice"
+    }
+  ],
+
+  "SwaggerEndPoints": [
+    {
+      "Key": "ClientsMicroservice",
+      "Config": [
+        {
+          "Name": "ClientsMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:9001/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ContractsMicroservice",
+      "Config": [
+        {
+          "Name": "ContractsMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:9002/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "EstatesMicroservice",
+      "Config": [
+        {
+          "Name": "EstatesMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:9003/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ExternalAPIsMicroservice",
+      "Config": [
+        {
+          "Name": "ExternalAPIsMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:9004/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ListingsMicroservice",
+      "Config": [
+        {
+          "Name": "ListingsMicroservice",
+          "Version": "v1",
+          "Url": "http://localhost:9005/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:9000"
+  }
+}
