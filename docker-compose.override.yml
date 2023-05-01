@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: RealEstate.ApiGateway/Dockerfile
     ports:
-      - 8000:80
+      - 9000:9000
     networks: 
       - backend 
     depends_on:
@@ -28,34 +28,6 @@ services:
 
 
 # MICROSERVICES
-# Estates Microservice
-  api.estates:
-    container_name: api.estates
-    image: ${DOCKER_REGISTRY-}api.estates
-    build:
-      context: .
-      dockerfile: Microservices/EstatesMicroservice/Dockerfile
-    networks: 
-      - backend 
-    ports:
-      - 8001:80
-    depends_on:
-      - db.postgresql
-
-# Listings Microservice
-  api.listings:
-    container_name: api.listings
-    image: ${DOCKER_REGISTRY-}api.listings
-    build:
-      context: .
-      dockerfile: Microservices/ListingsMicroservice/Dockerfile
-    networks: 
-      - backend 
-    ports:
-      - 8002:80
-    depends_on:
-      - db.postgresql
-  
 # Clients Microservice
   api.clients:
     container_name: api.clients
@@ -66,7 +38,7 @@ services:
     networks: 
       - backend 
     ports:
-      - 8003:80
+      - 9001:9001
     depends_on:
       - db.postgresql
   
@@ -80,23 +52,52 @@ services:
     networks: 
       - backend 
     ports:
-      - 8004:80
+      - 9002:9002
     depends_on:
       - db.postgresql
 
+# Estates Microservice
+  api.estates:
+    container_name: api.estates
+    image: ${DOCKER_REGISTRY-}api.estates
+    build:
+      context: .
+      dockerfile: Microservices/EstatesMicroservice/Dockerfile
+    networks: 
+      - backend 
+    ports:
+      - 9003:9003
+    depends_on:
+      - db.postgresql
+
+# External APIs Microservice :9004
+
+# Listings Microservice
+  api.listings:
+    container_name: api.listings
+    image: ${DOCKER_REGISTRY-}api.listings
+    build:
+      context: .
+      dockerfile: Microservices/ListingsMicroservice/Dockerfile
+    networks: 
+      - backend 
+    ports:
+      - 9005:9005
+    depends_on:
+      - db.postgresql
+  
 
 # DATABASES: PostgreSQL + Keycloak + Redis
   db.postgresql:
     container_name: db.postgresql
     image: postgres:13.3
     environment:
-      POSTGRES_DB: "keycloak"
-      POSTGRES_USER: "keycloak"
+      POSTGRES_DB: "RealEstate"
+      POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "password"
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
-      - ../2. Init Database:/docker-entrypoint-initdb.d
-      - .:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
     restart: unless-stopped
