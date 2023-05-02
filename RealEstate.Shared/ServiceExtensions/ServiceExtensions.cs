@@ -47,18 +47,15 @@ namespace RealEstate.Shared.ServiceExtensions
 
         public static IServiceCollection AddMassTransitWithRabbitMQProvider(this IServiceCollection services, WebApplicationBuilder builder)
         {
-            // MassTransit-RabbitMQ Configuration
             services.AddMassTransit(config =>
             {
+                //x.AddConsumer<EventBusConsumer>();
+
                 config.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
-                    //cfg.UseHealthCheck(context);
                 });
             });
-            //services.AddMassTransitHostedService();
-            //services.AddHealthChecks().AddRedis(builder.Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
-            //services.AddHealthChecks().AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
 
             return services;
         }
