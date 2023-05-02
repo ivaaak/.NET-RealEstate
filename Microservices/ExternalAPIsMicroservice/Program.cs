@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Run on port 9004
 builder.WebHost.UseUrls("http://*:9004");
 builder.Host.UseSerilog(SeriLogger.Configure);
-builder.Configuration.AddJsonFile("Properties/appsettings.json");
 
 builder.Services.AddControllers();
 builder.Services

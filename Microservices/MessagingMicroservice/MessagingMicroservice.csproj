@@ -26,5 +26,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
   </ItemGroup>
-
+	<ItemGroup>
+		<None Include="appsettings.json" />
+	</ItemGroup>
+	<PropertyGroup>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
 </Project>

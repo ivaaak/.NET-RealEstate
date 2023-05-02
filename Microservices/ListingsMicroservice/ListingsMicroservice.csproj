@@ -26,11 +26,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EstatesMicroservice\EstatesMicroservice.csproj" />
-
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Services\Search\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.json" />
+  </ItemGroup>
+
+	<PropertyGroup>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
 
 </Project>
