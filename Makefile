@@ -7,10 +7,30 @@ nuget:
 publish:
 	dotnet publish --os linux --arch x64 -c Release --self-contained
 
+compose: # docker-compose up
+	docker-compose -p="realestate-microservices" up
+compose-build: # docker-compose up
+	docker-compose -p="realestate-microservices" up --build
 dcu: # docker-compose up
 	docker-compose -p="realestate-microservices" up
 dcd: # docker-compose down
 	docker-compose -f down
+
+build-clients-ms:
+	docker build -t clients.api -f Microservices/ClientsMicroservice/Dockerfile Microservices/ClientsMicroservice
+
+build-contracts-ms:
+	docker build -t contracts.api -f Microservices/ContractsMicroservice/Dockerfile Microservices/ContractsMicroservice
+
+build-estates-ms:
+	docker build -t estates.api -f Microservices/EstatesMicroservice/Dockerfile Microservices/EstatesMicroservice
+
+build-external-ms:
+	docker build -t external.api -f Microservices/ExternalAPIsMicroservice/Dockerfile Microservices/ExternalAPIsMicroservice
+
+build-listings-ms:
+	docker build -t listings.api -f Microservices/ListingsMicroservice/Dockerfile Microservices/ListingsMicroservice
+
 
 
 gw: # git docker workflow to push docker image to the repository based on the main branch
