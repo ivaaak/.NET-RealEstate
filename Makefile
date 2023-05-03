@@ -7,15 +7,46 @@ nuget:
 publish:
 	dotnet publish --os linux --arch x64 -c Release --self-contained
 
+# Docker compose with/without build
 compose: # docker-compose up
 	docker-compose -p="realestate-microservices" up
-compose-build: # docker-compose up
+
+compose-build: # docker-compose up with build
 	docker-compose -p="realestate-microservices" up --build
+
+compose-down:
+	docker-compose -f down
+
 dcu: # docker-compose up
 	docker-compose -p="realestate-microservices" up
+
 dcd: # docker-compose down
 	docker-compose -f down
 
+# Start service alone
+start-clients: #9001
+	docker-compose up db.postgresql db.messages util.rabbitmq api.clients
+
+start-contracts: #9002
+	docker-compose up db.postgresql api.contracts
+
+start-external: #9003
+	docker-compose up db.postgresql api.external
+
+start-estates: #9004
+	docker-compose up db.postgresql api.estates
+
+start-listings: #9005
+	docker-compose up db.postgresql api.listings
+
+start-messaging: #9006
+	docker-compose up db.postgresql api.messaging
+
+start-utilities: #9007
+	docker-compose up db.postgresql api.utilities
+
+
+# Build service alone 
 build-clients-ms:
 	docker build -t clients.api -f Microservices/ClientsMicroservice/Dockerfile Microservices/ClientsMicroservice
 
