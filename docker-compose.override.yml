@@ -71,6 +71,20 @@ services:
       - db.postgresql
 
 # External APIs Microservice :9004
+  api.external:
+    container_name: api.external
+    image: ${DOCKER_REGISTRY-}api.external
+    build:
+      context: .
+      dockerfile: Microservices/ExternalAPIsMicroservice/Dockerfile
+    networks: 
+      - backend 
+    ports:
+      - 9004:9004
+    depends_on:
+      - db.postgresql
+  
+
 
 # Listings Microservice
   api.listings:
@@ -86,6 +100,7 @@ services:
     depends_on:
       - db.postgresql
   
+
 
 # DATABASES: PostgreSQL + Keycloak + Redis
   db.postgresql:
