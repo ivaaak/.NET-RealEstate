@@ -10,7 +10,7 @@ namespace UtilitiesMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/cache/
+    [Route("api/[controller]/[action]")] // api/cache/
     public class CacheController : ControllerBase
     {
         private readonly IDatabase cache;
@@ -120,5 +120,11 @@ namespace UtilitiesMicroservice.Controllers
 
             return Ok(estatesList);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        //http://localhost:9007/api/cache/gethealth
+        //http://localhost:9000/api/cache/gethealth behind gateway
+        public string getHealth() => "Utilities Microservice up and running";
     }
 }

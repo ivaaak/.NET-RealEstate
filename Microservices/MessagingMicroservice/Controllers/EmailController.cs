@@ -11,7 +11,7 @@ namespace MessagingMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/email/
+    [Route("api/[controller]/[action]")] // api/email/
     public class EmailController : ControllerBase
     {
         private readonly IEmailService _emailService;
@@ -113,5 +113,11 @@ namespace MessagingMicroservice.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        // http://localhost:9006/api/email/gethealth
+        // http://localhost:9000/api/email/gethealth behind gateway
+        public string getHealth() => "Messaging Microservice up and running";
     }
 }

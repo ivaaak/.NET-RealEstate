@@ -12,7 +12,7 @@ namespace ListingsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")]  // /api/listing
+    [Route("api/[controller]/[action]")]  // /api/listing
     public class ListingController : ControllerBase
     {
         private readonly IListingService _listingService;
@@ -267,5 +267,11 @@ namespace ListingsMicroservice.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        //http://localhost:9005/api/listings/gethealth
+        //http://localhost:9000/api/listings/gethealth behind gateway
+        public string getHealth() => "Listings Microservice up and running";
     }
 }

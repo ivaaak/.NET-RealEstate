@@ -1,6 +1,10 @@
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
+using UtilitiesMicroservice.Services.Cache;
+using UtilitiesMicroservice.Services.CloudinaryService;
+using UtilitiesMicroservice.Services.FileUpload;
+using UtilitiesMicroservice.Services.Serializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9007");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddTransient<ICacheService, CacheService>();
+builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
+builder.Services.AddTransient<IFileUploadService, FileUploadService>();
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
@@ -16,8 +23,7 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
     .AddHealthChecks();
-//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
-//  .AddServices();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("Utilities");

@@ -1,3 +1,5 @@
+using MessagingMicroservice.Services.Email;
+using MessagingMicroservice.Services.Notification;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -8,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9006");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<INotificationService, NotificationService>();
+builder.Services.AddScoped<INotificationRepository>();
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
@@ -16,8 +21,8 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
     .AddHealthChecks();
-//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
-//  .AddServices();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("Messaging");
