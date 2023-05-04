@@ -24,26 +24,48 @@ dcd: # docker-compose down
 	docker-compose -f down
 
 # Start service alone
-start-clients: #9001
+s-clients: #9001
 	docker-compose up db.postgresql db.messages util.rabbitmq api.clients
 
-start-contracts: #9002
-	docker-compose up db.postgresql api.contracts
+s-contracts: #9002
+	docker-compose up db.postgresql db.messages util.rabbitmq api.contracts
 
-start-external: #9003
-	docker-compose up db.postgresql api.external
+s-external: #9003
+	docker-compose up db.postgresql db.messages util.rabbitmq api.external
 
-start-estates: #9004
-	docker-compose up db.postgresql api.estates
+s-estates: #9004
+	docker-compose up db.postgresql db.messages util.rabbitmq api.estates --build
 
-start-listings: #9005
-	docker-compose up db.postgresql api.listings
+s-listings: #9005
+	docker-compose up db.postgresql db.messages util.rabbitmq api.listings
 
-start-messaging: #9006
-	docker-compose up db.postgresql api.messaging
+s-messaging: #9006
+	docker-compose up db.postgresql db.messages util.rabbitmq api.messaging
 
-start-utilities: #9007
-	docker-compose up db.postgresql api.utilities
+s-utilities: #9007
+	docker-compose up db.postgresql db.messages util.rabbitmq api.utilities
+
+# Build-Start service alone
+b-s-clients: #9001
+	docker-compose up db.postgresql db.messages util.rabbitmq api.clients --build
+
+b-s-contracts: #9002
+	docker-compose up db.postgresql db.messages util.rabbitmq api.contracts --build
+
+b-s-external: #9003
+	docker-compose up db.postgresql db.messages util.rabbitmq api.external --build
+
+b-s-estates: #9004
+	docker-compose up db.postgresql db.messages util.rabbitmq api.estates --build
+
+b-s-listings: #9005
+	docker-compose up db.postgresql db.messages util.rabbitmq api.listings --build
+
+b-s-messaging: #9006
+	docker-compose up db.postgresql db.messages util.rabbitmq api.messaging --build
+
+b-s-utilities: #9007
+	docker-compose up db.postgresql db.messages util.rabbitmq api.utilities --build
 
 
 # Build service alone 
