@@ -8,12 +8,12 @@ namespace ClientsMicroservice.Services
     {
         private readonly IUserRepository _userRepository;
 
-        private readonly IMapper _mapper;
+        // private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository) //IMapper mapper)
         {
             _userRepository = userRepository;
-            _mapper = mapper;
+            // _mapper = mapper;
         }
 
 

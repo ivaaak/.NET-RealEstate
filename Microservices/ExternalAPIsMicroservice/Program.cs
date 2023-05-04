@@ -1,3 +1,4 @@
+using ExternalAPIsMicroservice.Services;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -8,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9004");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddTransient<IPaymentService, PaymentService>();
+builder.Services.AddTransient<IScraperService, ScraperService>();
 builder.Services.AddControllers();
+builder.Services.AddStripeInfrastructure(builder.Configuration);
+
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerWithConfig("External")
@@ -16,8 +21,8 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
     .AddHealthChecks();
-//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
-//  .AddServices();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("External");

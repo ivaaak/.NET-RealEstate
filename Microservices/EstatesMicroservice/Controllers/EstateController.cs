@@ -31,7 +31,7 @@ namespace EstatesMicroservice.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-
+        
 
         // CREATE: api/estate/create  //object
         /// <summary>
@@ -272,5 +272,12 @@ namespace EstatesMicroservice.Controllers
 
             return Ok(result);
         }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        //http://localhost:9003/api/estate
+        //http://localhost:9000/api/estate behind gateway
+        public string getHealth() => " Estates Microservice up and running";
     }
 }

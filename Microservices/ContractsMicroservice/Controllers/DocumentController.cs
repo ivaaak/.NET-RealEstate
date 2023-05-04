@@ -7,7 +7,7 @@ namespace UtilitiesMicroservice.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]/[action]")]
     public class DocumentController : ControllerBase
     {
         private readonly IDocumentService _documentService;
@@ -171,6 +171,12 @@ namespace UtilitiesMicroservice.Controllers
                 throw;
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        // http://localhost:9002/api/v1/document/gethealth
+        // http://localhost:9000/api/v1/document/gethealth behind gateway
+        public string getHealth() => "Contracts Microservice up and running";
 
         static string GetContentTypeUtil(string fileName)
         {

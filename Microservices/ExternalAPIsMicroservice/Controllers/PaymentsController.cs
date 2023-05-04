@@ -11,7 +11,7 @@ namespace ExternalAPIsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/payments/
+    [Route("api/v1/[controller]/[action]")] // api/payments/
     public class PaymentsController : ControllerBase
     {
         private readonly StripeClient _stripeClient;
@@ -219,5 +219,11 @@ namespace ExternalAPIsMicroservice.Controllers
                 return StatusCode(500, "Error while capturing charge: " + ex.Message);
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        //http://localhost:9004/api/v1/payments/gethealth
+        //http://localhost:9000/api/v1/payments/gethealth behind gateway
+        public string getHealth() => "External APIs Microservice up and running";
     }
 }

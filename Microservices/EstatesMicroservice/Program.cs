@@ -1,6 +1,8 @@
+using EstatesMicroservice.Services;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ builder.WebHost.UseUrls("http://*:9003");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddControllers();
+builder.Services.AddTransient<IEstateService, EstateService>(); // move this to its own collection/method
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerWithConfig("Estates")
@@ -16,8 +19,7 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
     .AddHealthChecks();
-//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
-//  .AddServices();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("Estates");

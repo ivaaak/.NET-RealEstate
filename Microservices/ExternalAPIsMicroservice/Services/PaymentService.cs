@@ -1,6 +1,6 @@
 ﻿namespace ExternalAPIsMicroservice.Services
 {
-    public class PaymentService
+    public class PaymentService : IPaymentService
     {
     }
 }

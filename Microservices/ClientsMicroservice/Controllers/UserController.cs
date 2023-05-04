@@ -76,5 +76,11 @@ namespace ClientsMicroservice.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        //http://localhost:9001/api/user
+        //http://localhost:9000/api/user behind gateway
+        public string getHealth() => "Clients Microservice up and running";
     }
 }

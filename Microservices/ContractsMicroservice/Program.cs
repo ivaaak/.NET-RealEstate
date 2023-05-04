@@ -1,3 +1,4 @@
+using ContractsMicroservice.Services;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9002");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddTransient<IDocumentService, DocumentService>();
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
@@ -16,8 +18,7 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
     .AddHealthChecks();
-//  .AddMediatR(typeof(MediatREntryPoint).Assembly)
-//  .AddServices();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("Contracts");
