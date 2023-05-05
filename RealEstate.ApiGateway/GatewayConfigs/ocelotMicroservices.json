@@ -12,7 +12,11 @@
       ],
       "UpstreamPathTemplate": "/api/clients/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ClientsMicroservice"
+      "SwaggerKey": "ClientsMicroservice",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
     },
     // ContractsMicroservice - 9002
     {
@@ -26,7 +30,11 @@
       ],
       "UpstreamPathTemplate": "/api/contracts/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ContractsMicroservice"
+      "SwaggerKey": "ContractsMicroservice",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
     },
     // EstatesMicroservice - 9003
     {
@@ -40,7 +48,11 @@
       ],
       "UpstreamPathTemplate": "/api/estates/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "EstatesMicroservice"
+      "SwaggerKey": "EstatesMicroservice",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
     },
     // ExternalAPIsMicroservice - 9004
     {
@@ -54,7 +66,11 @@
       ],
       "UpstreamPathTemplate": "/api/external/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ExternalAPIsMicroservice"
+      "SwaggerKey": "ExternalAPIsMicroservice",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
     },
     // ListingsMicroservice - 9005
     {
@@ -68,7 +84,11 @@
       ],
       "UpstreamPathTemplate": "/api/listings/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ListingsMicroservice"
+      "SwaggerKey": "ListingsMicroservice",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
     }
   ],
 
@@ -77,7 +97,7 @@
       "Key": "ClientsMicroservice",
       "Config": [
         {
-          "Name": "ClientsMicroservice",
+          "Name": "Gateway - ClientsMicroservice",
           "Version": "v1",
           "Url": "http://localhost:9001/swagger/v1/swagger.json"
         }
@@ -87,7 +107,7 @@
       "Key": "ContractsMicroservice",
       "Config": [
         {
-          "Name": "ContractsMicroservice",
+          "Name": "Gateway - ContractsMicroservice",
           "Version": "v1",
           "Url": "http://localhost:9002/swagger/v1/swagger.json"
         }
@@ -97,7 +117,7 @@
       "Key": "EstatesMicroservice",
       "Config": [
         {
-          "Name": "EstatesMicroservice",
+          "Name": "Gateway - EstatesMicroservice",
           "Version": "v1",
           "Url": "http://localhost:9003/swagger/v1/swagger.json"
         }
@@ -107,7 +127,7 @@
       "Key": "ExternalAPIsMicroservice",
       "Config": [
         {
-          "Name": "ExternalAPIsMicroservice",
+          "Name": "Gateway - ExternalAPIsMicroservice",
           "Version": "v1",
           "Url": "http://localhost:9004/swagger/v1/swagger.json"
         }
@@ -117,7 +137,7 @@
       "Key": "ListingsMicroservice",
       "Config": [
         {
-          "Name": "ListingsMicroservice",
+          "Name": "Gateway - ListingsMicroservice",
           "Version": "v1",
           "Url": "http://localhost:9005/swagger/v1/swagger.json"
         }
@@ -126,6 +146,28 @@
   ],
 
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:9000"
+    "BaseUrl": "http://localhost:9000",
+    "RequestIdKey": "OcRequestId",
+
+    "AdministrationPath": "/administration",
+    "AuthenticationOptions": {
+      "AuthenticationProviderKey": "Bearer",
+      "AllowedScopes": []
+    },
+
+    "LoadBalancer": "RoundRobin",
+    "QoSOptions": {
+      "ExceptionsAllowedBeforeBreaking": 5,
+      "DurationOfBreak": 5000,
+      "TimeoutValue": 2000
+    },
+    "RateLimitOptions": {
+      "EnableRateLimiting": true,
+      "Period": "1h",
+      "PeriodTimespan": 100,
+      "Limit": 1000,
+      "QuotaExceededMessage": "You are sending too many requests, slow down!"
+    },
+    "FileCacheOptions": { "TtlSeconds": 15 }
   }
 }
