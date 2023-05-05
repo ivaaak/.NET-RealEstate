@@ -64,12 +64,9 @@ namespace RealEstate.Shared.ServiceExtensions
         // WebApplication Extensions
         public static WebApplication AddSwaggerDevelopmentDocs(this WebApplication app, string MicroserviceName)
         {
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{MicroserviceName} Microservice v1"));
-            }
-
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{MicroserviceName} Microservice v1"));
+            
             return app;
         }
 

@@ -26,7 +26,9 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 
 var app = builder.Build();
 app.AddSwaggerDevelopmentDocs("Clients");
-app.UseHttpsRedirection().UseAuthorization();
+
+app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthCheckEndpoint();
+
 app.Run();
