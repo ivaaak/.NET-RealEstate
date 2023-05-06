@@ -5,6 +5,9 @@ It can be used for listing, browsing and renting/selling properties.
 ## Frontend: [RealEstate Frontend](https://github.com/ivaaak/RealEstate-Frontend)
 ### Architecture (planned):
 
+![.](https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/633761c45bf0154a1c65cfada079460b31f98b62/RealEstate.ApiGateway/RealEstateAPI-Architecture-light.png#gh-dark-mode-only)
+![.](https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/633761c45bf0154a1c65cfada079460b31f98b62/RealEstate.ApiGateway/RealEstateAPI-Architecture.png#gh-light-mode-only)
+
 <img src="https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/633761c45bf0154a1c65cfada079460b31f98b62/RealEstate.ApiGateway/RealEstateAPI-Architecture.png"></img> 
 
 
