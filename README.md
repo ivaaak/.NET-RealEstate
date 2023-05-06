@@ -5,8 +5,7 @@ It can be used for listing, browsing and renting/selling properties.
 ## Frontend: [RealEstate Frontend](https://github.com/ivaaak/RealEstate-Frontend)
 ### Architecture (planned):
 
-![.](./RealEstate.ApiGateway/RealEstateAPI-Architecture.png#gh-dark-mode-only)
-![.](./RealEstate.ApiGateway/RealEstateAPI-Architecture-light.png#gh-light-mode-only)
+![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture-light.png#gh-dark-mode-only)![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture.png#gh-light-mode-only)
 
 
 #### [Clients Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Identity, Client profiles, Roles
