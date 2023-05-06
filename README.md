@@ -5,24 +5,8 @@ It can be used for listing, browsing and renting/selling properties.
 ## Frontend: [RealEstate Frontend](https://github.com/ivaaak/RealEstate-Frontend)
 ### Architecture (planned):
 
+<img src="https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/633761c45bf0154a1c65cfada079460b31f98b62/RealEstate.ApiGateway/RealEstateAPI-Architecture.png"></img> 
 
-                  ┌────────────────────────────────────────────────────┐
-                  │     API Gateway - Auth, RateLimit, LoadBalance     │        ┌──────────────┐
-                  │             Cross-Cutting Concerns:                │        │External APIs:│  
-          ┌───────│       Logging - ELK, Resilience, Dashboard         │──┐─────│Zillow, Stripe│
-          │       └───┬───────────┬────────────┬────────────┬──────────┘  │     └──────────────┘
-      ┌───┴───┐       │           │            │            │             │        
-      │Clients│   ┌───┴───┐   ┌───┴───┐   ┌────┴────┐   ┌───┴─────┐   ┌───┴─────┐ 
-      │ +Auth │   │Listing│   │Estates│   │Contracts│   │Utilities│   │Messaging│   ===>  Microservices
-      └───┬───┘   └───┬───┘   └───┬───┘   └────┬────┘   └────┬────┘   └────┬────┘
-      ┌───┴───┐   ┌───┴───┐   ┌───┴───┐    ┌───┴───┐    ┌────┴────┐   ┌────┴────┐  
-      │Postgre│   │Postgre│   │Postgre│    │Postgre│    │  Mongo  │   │  Redis  │   ===>  Databases
-      └───┬───┘   └───┬───┘   └───┬───┘    └───┬───┘    └────┬────┘   └────┬────┘
-          │           │           │            │             │             │          
-          │       ┌───┴───────────┴────────────┴─────────────┴──────┐      │
-          └───────│            RabbitMQ  / MassTransit              │──────┘  
-                  │          Event Bus / Transport Layer            │  Producer / Consumer
-                  └─────────────────────────────────────────────────┘
 
 #### [Clients Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Identity, Client profiles, Roles
 
