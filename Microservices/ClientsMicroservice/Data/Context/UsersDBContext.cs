@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Users;
 
-namespace ClientsMicroservice.Data
+namespace ClientsMicroservice.Data.Context
 {
-    public partial class UserContext : DbContext
+    public partial class UsersDBContext : DbContext
     {
-        public UserContext()
+        public UsersDBContext()
         {
         }
 
-        public UserContext(DbContextOptions<UserContext> options)
+        public UsersDBContext(DbContextOptions<UsersDBContext> options)
             : base(options)
         {
         }

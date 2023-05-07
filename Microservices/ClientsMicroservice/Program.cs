@@ -1,6 +1,7 @@
-using ClientsMicroservice.Data;
+using ClientsMicroservice.Data.Context;
 using ClientsMicroservice.Data.Repository;
 using ClientsMicroservice.Services;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -12,7 +13,10 @@ builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddDbContext<UserContext>();
+builder.Services.AddDbContext<UsersDBContext>();
+builder.Services.AddDbContext<ClientsDBContext>();
+
+builder.Services.AddScoped<IClientsDbRepository, ClientsDbRepository>();
 
 builder.Services.AddControllers();
 builder.Services

@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using ClientsMicroservice.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Users;
 using System.Linq.Expressions;
@@ -7,9 +8,9 @@ namespace ClientsMicroservice.Data.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UserContext _context;
+        private readonly UsersDBContext _context;
 
-        public UserRepository(UserContext context)
+        public UserRepository(UsersDBContext context)
         {
             _context = context;
         }
