@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿#nullable disable
+using System.ComponentModel;
 using RealEstate.Shared.Core.Extensions;
 
 namespace RealEstate.Shared.Core.Types

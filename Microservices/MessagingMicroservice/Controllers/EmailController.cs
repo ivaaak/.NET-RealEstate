@@ -101,7 +101,7 @@ namespace MessagingMicroservice.Controllers
         [Route("sendHeaders")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> SendEmailWithCustomHeader(SendEmailRequest request)
+        public IActionResult SendEmailWithCustomHeader(SendEmailRequest request)
         {
             var result = _emailService.SendEmailWithCustomHeadersAsync(request.From, request.To, request.Subject, request.HtmlContent, request.Header);
             

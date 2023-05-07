@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Models.Entities.Estates;
+﻿#nullable disable
+using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.Entities.Listings;
 
 namespace RealEstate.Shared.Models.DTOs.Listings
@@ -7,11 +8,11 @@ namespace RealEstate.Shared.Models.DTOs.Listings
     {
         public string Id { get; init; }
 
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
-        public string? ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public int Year { get; set; }
 
@@ -27,10 +28,10 @@ namespace RealEstate.Shared.Models.DTOs.Listings
 
         public int CategoryId { get; set; }
 
-        public Category? Category { get; init; }
+        public Category Category { get; init; }
 
         public int EmployeeId { get; init; }
 
-        public Employee? Employee { get; init; }
+        public Employee Employee { get; init; }
     }
 }

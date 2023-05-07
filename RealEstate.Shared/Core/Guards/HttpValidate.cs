@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Core.Exceptions;
+﻿#nullable disable
+using RealEstate.Shared.Core.Exceptions;
 using RealEstate.Shared.Core.Types;
 using System.Collections;
 using System.Net;

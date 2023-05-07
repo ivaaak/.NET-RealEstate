@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Models.Entities.Clients;
+﻿#nullable disable
+using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Contracts;
 
 namespace RealEstate.Shared.Models.DTOs.Clients

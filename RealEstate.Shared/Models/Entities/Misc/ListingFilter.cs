@@ -3,13 +3,13 @@ namespace RealEstate.Shared.Models.Entities.Misc
 {
     public class ListingFilter
     {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
-        public string? Estate_Id { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Estate_Id { get; set; }
         public int? Price { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public string? ImageUrl { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public int? Year { get; set; }
         public bool? IsPublic { get; set; }
         public DateTime? DateBuilt { get; set; }

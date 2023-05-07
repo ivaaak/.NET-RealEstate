@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.MediatR.BehaviorModels.RequestModels
+﻿#nullable disable
+namespace RealEstate.Shared.MediatR.BehaviorModels.RequestModels
 {
     public class Request
     {

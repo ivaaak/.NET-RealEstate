@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿#nullable disable
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Models.Entities.Estates;
 
@@ -67,9 +69,9 @@ namespace ListingsMicroservice.Services.Sorting
         public async Task<SortResult> Handle(SortQuery request, CancellationToken cancellationToken)
         {
             // Perform sorting using the provided options.
-            var resultList = _context.Estates
+            var resultList = await _context.Estates
                 .OrderBy(x => x.GetType().GetProperty(request.Options.Property.ToString()).GetValue(x))
-                .ToList();
+                .ToListAsync();
 
             if (request.Options.Direction == SortDirection.Descending)
             {

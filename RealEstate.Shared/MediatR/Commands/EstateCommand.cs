@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿#nullable disable
+using FluentValidation.Results;
 using MediatR;
 using RealEstate.Shared.Core.Validators;
 using System.Windows.Input;
@@ -16,14 +17,14 @@ namespace RealEstate.Shared.MediatR.Commands
 
         public ValidationResult ValidationResult { get; set; }
 
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object parameter)
         {
             throw new NotImplementedException();
         }
 
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
             throw new NotImplementedException();
         }

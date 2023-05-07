@@ -32,7 +32,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         public bool Is_From_An_Agency { get; set; }
 
-        public string? ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public List<Comment> Comments { get; set; }
         public bool IsPublic { get; set; }
@@ -47,14 +47,14 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         public int CategoryId { get; set; }
 
-        public Category? Category { get; init; }
+        public Category Category { get; init; }
 
-        public Address? Address { get; set; }
+        public Address Address { get; set; }
 
         public ListingStats ListingStats { get; set; }
 
         public int EmployeeId { get; init; }
-        public Employee? Employee { get; init; }
+        public Employee Employee { get; init; }
 
         public string Agent_Id { get; set; }
         public Agent Agent { get; set; }

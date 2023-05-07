@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#nullable disable
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Shared.Core.CustomAttributes
 {
@@ -12,7 +13,7 @@ namespace RealEstate.Shared.Core.CustomAttributes
             ErrorMessage = errorMessage;
         }
 
-        protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             try
             {

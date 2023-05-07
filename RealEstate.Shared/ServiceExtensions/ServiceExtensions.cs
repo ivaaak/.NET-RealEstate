@@ -3,7 +3,6 @@ using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RealEstate.Shared.Data.Repository;
 
@@ -13,7 +12,7 @@ namespace RealEstate.Shared.ServiceExtensions
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
+            //services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IRepository, Repository>();
 
             return services;

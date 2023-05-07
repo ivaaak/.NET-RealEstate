@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using RealEstate.Shared.Models.Entities.Contracts;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Shared.Models.Entities.Clients
@@ -11,6 +12,7 @@ namespace RealEstate.Shared.Models.Entities.Clients
         //ApplicationUser, 
         IDeletableEntity
     {
+        [Key]
         [ForeignKey("Client_Id")]
         public string Client_Id { get; init; }
 

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿#nullable disable
+using System.Net;
 
 namespace RealEstate.Shared.Core.Exceptions
 {

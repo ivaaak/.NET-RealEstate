@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿#nullable disable
 namespace RealEstate.Shared.Core.Configurations
 {
     public abstract class EnvironmentDefinition

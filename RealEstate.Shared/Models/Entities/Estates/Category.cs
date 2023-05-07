@@ -14,7 +14,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
         public string Name { get; set; }
 
         [StringLength(500)]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         public IEnumerable<Estate> Estates { get; init; } = new List<Estate>();
 

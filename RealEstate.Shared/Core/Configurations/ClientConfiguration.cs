@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.Core.Configurations
+﻿#nullable disable
+namespace RealEstate.Shared.Core.Configurations
 {
     /// <summary>
     /// Client Configuration

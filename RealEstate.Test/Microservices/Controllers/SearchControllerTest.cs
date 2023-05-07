@@ -1,6 +1,8 @@
-﻿using ListingsMicroservice.Controllers;
+﻿#nullable disable
+using ListingsMicroservice.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using NUnit.Framework;
 using RealEstate.Shared.Models.Entities.Estates;
 using Xunit;
@@ -9,13 +11,14 @@ namespace RealEstate.Test.Microservices.Controllers
 {
     public class SearchControllerTest
     {
-        private IMediator _mediator;
+        private Mock<IMediator> _mediator;
+
         private SearchController controller;
 
         public SearchControllerTest()
         {
             // Set up mock dependencies
-            //_mediator = new Mock<IMediator>();
+            _mediator = new Mock<IMediator>();
 
             // Set up the controller
             controller = new SearchController(mediator: null, logger: null);

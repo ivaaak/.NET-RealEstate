@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿#nullable disable
+using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 using RealEstate.Shared.MediatR.BehaviorModels.ResponseModels;

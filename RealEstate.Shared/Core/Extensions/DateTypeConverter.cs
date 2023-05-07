@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Core.Types;
+﻿#nullable disable
+using RealEstate.Shared.Core.Types;
 using System.ComponentModel;
 using System.Globalization;
 

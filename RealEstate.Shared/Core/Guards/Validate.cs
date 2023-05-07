@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Core.Constants;
+﻿#nullable disable
+using RealEstate.Shared.Core.Constants;
 using RealEstate.Shared.Core.Types;
 using System.Collections;
 using System.Globalization;

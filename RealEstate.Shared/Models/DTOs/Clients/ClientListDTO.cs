@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.Models.DTOs.Clients
+﻿#nullable disable
+namespace RealEstate.Shared.Models.DTOs.Clients
 {
     public class ClientListDTO
     {

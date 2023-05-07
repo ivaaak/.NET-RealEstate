@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿#nullable disable
+using HtmlAgilityPack;
 using Npgsql;
 using System.Net;
 

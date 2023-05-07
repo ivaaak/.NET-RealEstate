@@ -14,7 +14,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
 
         [Required]
         [StringLength(100)]
-        public string? Estate_Name { get; set; }
+        public string Estate_Name { get; set; }
 
         [ForeignKey("City_Id")]
         public int City_Id { get; set; }
@@ -28,8 +28,8 @@ namespace RealEstate.Shared.Models.Entities.Estates
         public int Number_Of_Garages { get; set; }
         public int Number_Of_Parking_Spaces { get; set; }
         public bool Pets_Allowed { get; set; }
-        public string? Estate_Description { get; set; }
-        public string? Estate_Status_Id { get; set; }
+        public string Estate_Description { get; set; }
+        public string Estate_Status_Id { get; set; }
         public string Estate_ImageUrl { get; set; }
         public int Estate_Year_Built { get; set; }
         public int Estate_Year_Listed { get; set; }

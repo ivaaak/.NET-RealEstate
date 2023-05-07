@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿#nullable disable
+using System.Collections.ObjectModel;
 
 namespace RealEstate.Shared.MediatR.BehaviorModels.ResponseModels
 {

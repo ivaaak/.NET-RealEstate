@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.EventBus.Events
+﻿#nullable disable
+namespace RealEstate.Shared.EventBus.Events
 {
     public class PurchaseEvent : IntegrationBaseEvent
     {

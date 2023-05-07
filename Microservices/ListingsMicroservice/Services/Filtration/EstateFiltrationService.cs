@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#nullable disable
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.Entities.Misc;
 

@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Models.Entities.Estates;
+﻿#nullable disable
+using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.Entities.Listings;
 
 namespace RealEstate.Shared.Models.DTOs.Estates
@@ -7,7 +8,7 @@ namespace RealEstate.Shared.Models.DTOs.Estates
     {
         public string Id { get; init; }
 
-        public string? Estate_Name { get; set; }
+        public string Estate_Name { get; set; }
 
         public int City_Id { get; set; }
 
@@ -31,9 +32,9 @@ namespace RealEstate.Shared.Models.DTOs.Estates
 
         public bool Pets_Allowed { get; set; }
 
-        public string? Estate_Description { get; set; }
+        public string Estate_Description { get; set; }
 
-        public string? Estate_Status_Id { get; set; }
+        public string Estate_Status_Id { get; set; }
 
         public string Estate_ImageUrl { get; set; }
 

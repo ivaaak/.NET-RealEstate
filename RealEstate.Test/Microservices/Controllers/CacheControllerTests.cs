@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#nullable disable
+using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Estates;

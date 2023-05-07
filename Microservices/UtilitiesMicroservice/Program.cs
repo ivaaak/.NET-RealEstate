@@ -4,7 +4,6 @@ using Serilog;
 using UtilitiesMicroservice.Services.Cache;
 using UtilitiesMicroservice.Services.CloudinaryService;
 using UtilitiesMicroservice.Services.FileUpload;
-using UtilitiesMicroservice.Services.Serializer;
 
 var builder = WebApplication.CreateBuilder(args);
 

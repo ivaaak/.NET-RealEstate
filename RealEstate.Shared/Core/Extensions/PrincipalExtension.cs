@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Core.Constants;
+﻿#nullable disable
+using RealEstate.Shared.Core.Constants;
 using System.Security.Claims;
 using System.Security.Principal;
 

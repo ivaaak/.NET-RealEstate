@@ -39,7 +39,7 @@ namespace UtilitiesMicroservice.Services.CloudinaryService
 
             imageStream.Dispose();
 
-            return uploadResult.SecureUri.AbsoluteUri;
+            return uploadResult.SecureUrl.AbsoluteUri;
         }
     }
 }

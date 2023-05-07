@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#nullable disable
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.DTOs.Listings;
 using RealEstate.Shared.Models.Entities.Listings;
@@ -7,9 +8,9 @@ namespace ListingsMicroservice.Services
 {
     public class ListingService : IListingService
     {
-        private readonly IApplicationDbRepository repo;
+        private readonly IListingsDbRepository repo;
 
-        public ListingService(IApplicationDbRepository _repo)
+        public ListingService(IListingsDbRepository _repo)
         {
             repo = _repo;
         }

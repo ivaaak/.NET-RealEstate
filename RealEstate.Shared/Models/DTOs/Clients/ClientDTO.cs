@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿#nullable disable
+using AutoMapper;
 using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Contracts;
 using RealEstate.Shared.Models.Mapping;

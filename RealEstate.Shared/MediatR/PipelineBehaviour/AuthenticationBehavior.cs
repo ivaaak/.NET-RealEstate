@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿#nullable disable
+using MediatR;
 using Microsoft.AspNetCore.Http;
 
 namespace RealEstate.Shared.MediatR.PipelineBehaviour

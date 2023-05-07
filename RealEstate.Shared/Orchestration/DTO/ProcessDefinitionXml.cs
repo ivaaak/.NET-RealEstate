@@ -1,4 +1,5 @@
-﻿namespace RealEstate.Shared.Orchestration.DTO
+﻿#nullable disable
+namespace RealEstate.Shared.Orchestration.DTO
 {
     public class ProcessDefinitionXml
     {

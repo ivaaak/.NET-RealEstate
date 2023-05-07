@@ -7,24 +7,24 @@ namespace RealEstate.Test.Data
     public class InMemoryDbContext : DbContext
     {
         private readonly SqliteConnection connection;
-        private readonly DbContextOptions<_CombinedContext> dbContextOptions;
+        private readonly DbContextOptions<CombinedAppContext> dbContextOptions;
 
         public InMemoryDbContext()
         {
             connection = new SqliteConnection("Filename=:memory:");
             connection.Open();
 
-            dbContextOptions = new DbContextOptionsBuilder<_CombinedContext>()
+            dbContextOptions = new DbContextOptionsBuilder<CombinedAppContext>()
                 .UseSqlServer(connection)
                 .Options;
 
-            using var context = new _CombinedContext(dbContextOptions);
+            using var context = new CombinedAppContext(dbContextOptions);
 
             context.Database.EnsureCreated();
 
         }
 
-        public _CombinedContext CreateContext() => new _CombinedContext(dbContextOptions);
+        public CombinedAppContext CreateContext() => new CombinedAppContext(dbContextOptions);
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

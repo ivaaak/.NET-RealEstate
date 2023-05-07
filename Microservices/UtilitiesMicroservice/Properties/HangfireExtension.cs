@@ -6,10 +6,10 @@ namespace UtilitiesMicroservice.Properties
     public static class HangfireExtension
     {
         //PostgreSQL Server connection string
-        private static string PostgreSQLConnectionString = @"Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin";
+        //private static string PostgreSQLConnectionString = @"Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin";
 
         // Microsoft SQL Server connection string (SQL Express Server)
-        private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
+        //private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
 
 
         public static IServiceCollection AddHangfireWithPostgreSQLServer(

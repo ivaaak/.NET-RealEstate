@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿#nullable disable
+using System.Reflection;
 
 namespace RealEstate.Shared.Orchestration.DTO
 {

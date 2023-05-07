@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿#nullable disable
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

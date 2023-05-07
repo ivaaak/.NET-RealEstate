@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿#nullable disable
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.Entities.Estates;
@@ -12,7 +13,7 @@ namespace ListingsMicroservice.Controllers
     [Route("api/[controller]")]
     public class SearchController : ControllerBase
     {
-        private readonly IMediator? _mediator;
+        private readonly IMediator _mediator;
 
         private readonly ILogger<SearchController> _logger;
 
@@ -97,7 +98,7 @@ namespace ListingsMicroservice.Controllers
         [HttpGet("byParameters")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Estate>>> ByParameters(string? city, int? minPrice, int? maxPrice, string? id, string? name, string sort)
+        public async Task<ActionResult<IEnumerable<Estate>>> ByParameters(string city, int? minPrice, int? maxPrice, string id, string name, string sort)
         {
             var results = await _mediator.Send(new EstatesSearchQuery() //change to viewmodel?
             {

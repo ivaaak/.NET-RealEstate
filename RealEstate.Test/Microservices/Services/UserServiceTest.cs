@@ -1,6 +1,7 @@
+#nullable disable
+using ClientsMicroservice.Data.Context;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Test.Data;
 
@@ -19,7 +20,6 @@ namespace RealEstate.Test.Microservices.Services
 
             serviceProvider = serviceCollection
                 .AddSingleton(sp => dbContext.CreateContext())
-                .AddSingleton<IApplicationDbRepository, ApplicationDbRepository>()
                 .BuildServiceProvider();
             //.AddSingleton<IUserService, UserService>()
 

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿#nullable disable
+using MediatR;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.Queries;
 using RealEstate.Shared.Models.DTOs.Clients;

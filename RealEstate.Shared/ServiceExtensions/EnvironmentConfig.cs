@@ -40,7 +40,7 @@ namespace RealEstate.Shared.ServiceExtensions
             Load((MyEnvironment)env);
         }
 
-        public static void Load(object? env)
+        public static void Load(object env)
         {
             var path = Assembly.GetExecutingAssembly().Location;
             var dir = Path.GetDirectoryName(path);
