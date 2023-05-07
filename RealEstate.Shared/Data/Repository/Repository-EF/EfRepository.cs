@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
 
 namespace RealEstate.Infrastructure.Data.Repository
@@ -7,7 +6,7 @@ namespace RealEstate.Infrastructure.Data.Repository
     public class EfRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
-        public EfRepository(_CombinedContext context)
+        public EfRepository(DbContext context)
         {
             this.Context = context ?? throw new ArgumentNullException(nameof(context));
             this.DbSet = this.Context.Set<TEntity>();
@@ -15,7 +14,7 @@ namespace RealEstate.Infrastructure.Data.Repository
 
         protected DbSet<TEntity> DbSet { get; set; }
 
-        protected _CombinedContext Context { get; set; }
+        protected DbContext Context { get; set; }
 
         public virtual IQueryable<TEntity> All() => this.DbSet;
 

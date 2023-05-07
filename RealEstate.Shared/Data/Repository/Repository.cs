@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#nullable disable
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
@@ -6,7 +7,7 @@ namespace RealEstate.Shared.Data.Repository
 {
     public class Repository : IRepository
     {
-        protected DbContext? Context { get; set; }
+        protected DbContext Context { get; set; }
 
         protected DbSet<T> DbSet<T>() where T : class
         {

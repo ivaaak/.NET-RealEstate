@@ -12,11 +12,7 @@
       ],
       "UpstreamPathTemplate": "/api/clients/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ClientsMicroservice",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "ClientsMicroservice"
     },
     // ContractsMicroservice - 9002
     {
@@ -30,11 +26,7 @@
       ],
       "UpstreamPathTemplate": "/api/contracts/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ContractsMicroservice",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "ContractsMicroservice"
     },
     // EstatesMicroservice - 9003
     {
@@ -48,11 +40,7 @@
       ],
       "UpstreamPathTemplate": "/api/estates/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "EstatesMicroservice",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "EstatesMicroservice"
     },
     // ExternalAPIsMicroservice - 9004
     {
@@ -66,11 +54,7 @@
       ],
       "UpstreamPathTemplate": "/api/external/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ExternalAPIsMicroservice",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "ExternalAPIsMicroservice"
     },
     // ListingsMicroservice - 9005
     {
@@ -84,11 +68,7 @@
       ],
       "UpstreamPathTemplate": "/api/listings/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
-      "SwaggerKey": "ListingsMicroservice",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "ListingsMicroservice"
     }
   ],
 
@@ -152,15 +132,10 @@
     "AdministrationPath": "/administration",
     "AuthenticationOptions": {
       "AuthenticationProviderKey": "Bearer",
-      "AllowedScopes": []
+      "AllowedScopes": [ "openid" ]
     },
 
     "LoadBalancer": "RoundRobin",
-    "QoSOptions": {
-      "ExceptionsAllowedBeforeBreaking": 5,
-      "DurationOfBreak": 5000,
-      "TimeoutValue": 2000
-    },
     "RateLimitOptions": {
       "EnableRateLimiting": true,
       "Period": "1h",
@@ -169,5 +144,5 @@
       "QuotaExceededMessage": "You are sending too many requests, slow down!"
     },
     "FileCacheOptions": { "TtlSeconds": 15 }
-  }
+  } 
 }

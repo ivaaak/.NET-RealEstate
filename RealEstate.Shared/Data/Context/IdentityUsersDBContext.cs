@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Models.Entities.Clients;
 
 namespace RealEstate.Shared.Data.Context
@@ -28,7 +27,7 @@ namespace RealEstate.Shared.Data.Context
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseNpgsql("Host=127.0.0.1;Database=IdentityUsers;Username=postgres;Password=admin");
+                    .UseNpgsql("Host=127.0.0.1;Database=IdentityUsers;Username=admin;Password=password");
             }
         }
 
