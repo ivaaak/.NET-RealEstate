@@ -7,6 +7,8 @@ nuget:
 publish:
 	dotnet publish --os linux --arch x64 -c Release --self-contained
 
+
+
 # Docker compose with/without build
 compose: # docker-compose up
 	docker-compose -p="realestate-microservices" up
@@ -23,50 +25,66 @@ dcu: # docker-compose up
 dcd: # docker-compose down
 	docker-compose -f down
 
+
+#clear volumes to re-initialize the DB
+clear-volumes:
+	docker-compose down -v
+
+
 # Start service alone
-s-clients: #9001
-	docker-compose up db.postgresql db.messages util.rabbitmq api.clients
+s-clients:   #9001
+	docker-compose up db.clients db.messages util.rabbitmq api.clients
 
 s-contracts: #9002
-	docker-compose up db.postgresql db.messages util.rabbitmq api.contracts
+	docker-compose up db.contracts db.messages util.rabbitmq api.contracts
 
-s-external: #9003
-	docker-compose up db.postgresql db.messages util.rabbitmq api.external
+s-external:  #9003
+	docker-compose up db.messages util.rabbitmq api.external
 
-s-estates: #9004
-	docker-compose up db.postgresql db.messages util.rabbitmq api.estates --build
+s-estates:   #9004
+	docker-compose up db.estates db.messages util.rabbitmq api.estates --build
 
-s-listings: #9005
-	docker-compose up db.postgresql db.messages util.rabbitmq api.listings
+s-listings:  #9005
+	docker-compose up db.listings db.messages util.rabbitmq api.listings
 
 s-messaging: #9006
-	docker-compose up db.postgresql db.messages util.rabbitmq api.messaging
+	docker-compose up db.messages util.rabbitmq api.messaging
 
 s-utilities: #9007
-	docker-compose up db.postgresql db.messages util.rabbitmq api.utilities
+	docker-compose up db.messages util.rabbitmq api.utilities
+
+
 
 # Build-Start service alone
-b-s-clients: #9001
-	docker-compose up db.postgresql db.messages util.rabbitmq api.clients --build
+b-s-gateway:   #9000
+	docker-compose up api-gateway --build
+	
+b-s-clients:   #9001
+	docker-compose up db.clients db.messages util.rabbitmq api.clients --build
 
 b-s-contracts: #9002
-	docker-compose up db.postgresql db.messages util.rabbitmq api.contracts --build
+	docker-compose up db.contracts db.messages util.rabbitmq api.contracts --build
 
-b-s-external: #9003
-	docker-compose up db.postgresql db.messages util.rabbitmq api.external --build
+b-s-external:  #9003
+	docker-compose up db.messages util.rabbitmq api.external --build
 
-b-s-estates: #9004
-	docker-compose up db.postgresql db.messages util.rabbitmq api.estates --build
+b-s-estates:   #9004
+	docker-compose up db.estates db.messages util.rabbitmq api.estates --build
 
-b-s-listings: #9005
-	docker-compose up db.postgresql db.messages util.rabbitmq api.listings --build
+b-s-listings:  #9005
+	docker-compose up db.listings db.messages util.rabbitmq api.listings --build
 
 b-s-messaging: #9006
-	docker-compose up db.postgresql db.messages util.rabbitmq api.messaging --build
+	docker-compose up db.messages util.rabbitmq api.messaging --build
 
 b-s-utilities: #9007
-	docker-compose up db.postgresql db.messages util.rabbitmq api.utilities --build
+	docker-compose up db.messages util.rabbitmq api.utilities --build
 
+
+b-s-db:
+	docker-compose up db.clients db.contracts db.estates db.listings --build
+	
+	
 
 # Build service alone 
 build-clients-ms:

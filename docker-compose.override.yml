@@ -40,7 +40,7 @@ services:
     ports:
       - 9001:9001
     depends_on:
-      - db.postgresql
+      - db.clients
   
 # Contracts Microservice
   api.contracts:
@@ -54,7 +54,7 @@ services:
     ports:
       - 9002:9002
     depends_on:
-      - db.postgresql
+      - db.contracts
 
 # Estates Microservice
   api.estates:
@@ -68,7 +68,7 @@ services:
     ports:
       - 9003:9003
     depends_on:
-      - db.postgresql
+      - db.estates
 
 # External APIs Microservice :9004
   api.external:
@@ -81,8 +81,7 @@ services:
       - backend 
     ports:
       - 9004:9004
-    depends_on:
-      - db.postgresql
+
   
 
 
@@ -98,34 +97,67 @@ services:
     ports:
       - 9005:9005
     depends_on:
-      - db.postgresql
+      - db.listings
   
 
 
 # DATABASES: PostgreSQL + Keycloak + Redis
-  db.postgresql:
-    container_name: db.postgresql
-    image: postgres:13.3
+  db.clients:
+    container_name: db.clients
     environment:
-      POSTGRES_DB: "RealEstate"
-      POSTGRES_USER: "admin"
-      POSTGRES_PASSWORD: "password"
-      PGDATA: "/var/lib/postgresql/data/pgdata"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - POSTGRES_USER=clients
+      - POSTGRES_PASSWORD=clients
+      - POSTGRES_DB=Clients
+    restart: always
     ports:
-      - "5432:5432"
-    restart: unless-stopped
+        - "5001:5001"
+    volumes:
+      - clients_data:/var/lib/postgresql/clients/
+
+  db.contracts:
+    container_name: db.contracts
+    environment:
+      - POSTGRES_USER=contracts
+      - POSTGRES_PASSWORD=contracts
+      - POSTGRES_DB=Contracts
+    restart: always
+    ports:
+        - "5002:5002"
+    volumes:
+      - contracts_data:/var/lib/postgresql/contracts/
+
+  db.estates:
+    container_name: db.estates
+    environment:
+      - POSTGRES_USER=estates
+      - POSTGRES_PASSWORD=estates
+      - POSTGRES_DB=Estates
+    restart: always
+    ports:
+        - "5003:5003"
+    volumes:
+      - estates_data:/var/lib/postgresql/estates/
+
+
+  db.listings:
+    container_name: db.listings
+    environment:
+      - POSTGRES_USER=listings
+      - POSTGRES_PASSWORD=listings
+      - POSTGRES_DB=Listings
+    restart: always
+    ports:
+        - "5005:5005"
+    volumes:
+      - listings_data:/var/lib/postgresql/listings/
+
 
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command:
-      [
-        'start-dev'
-      ]
+    command: [ 'start-dev' ]
     ports:
       - 8080:8080
 

@@ -57,9 +57,18 @@ services:
     image: docker.elastic.co/kibana/kibana:7.9.2
 
 
-# Database + Keycloak
-  db.postgresql:
-    image: postgres:13.3
+# Databases + Keycloak
+  db.clients:
+    image: postgres
+
+  db.contracts:
+    image: postgres
+
+  db.estates:
+    image: postgres
+
+  db.listings:
+    image: postgres
 
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
@@ -70,9 +79,12 @@ services:
 
 # Volumes - persist data from containers
 volumes:
+  clients_data:
+  contracts_data:
+  estates_data:
+  listings_data:
   mongo_data:
   portainer_data:
-  postgres_data:
   pgadmin_data:
   elasticsearch-data:
 
