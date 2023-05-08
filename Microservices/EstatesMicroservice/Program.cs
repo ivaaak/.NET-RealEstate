@@ -1,8 +1,10 @@
 using EstatesMicroservice.Services;
+using Microsoft.EntityFrameworkCore;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
-using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,12 @@ builder.WebHost.UseUrls("http://*:9003");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<IEstateService, EstateService>(); // move this to its own collection/method
+builder.Services.AddTransient<IEstateService, EstateService>();
+builder.Services.AddTransient<IEstatesDbRepository, EstatesDbRepository>();
+
+builder.Services.AddDbContext<EstatesDBContext>(options =>
+    options.UseNpgsql(builder.Configuration["DatabaseSettings:ConnectionString"]));
+
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerWithConfig("Estates")
