@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
 
-namespace UtilitiesMicroservice.Controllers
+namespace ContractsMicroservice.Controllers
 {
     [Authorize]
     [ApiController]

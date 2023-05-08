@@ -1,4 +1,6 @@
+using ContractsMicroservice.Data.Context;
 using ContractsMicroservice.Services;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -10,7 +12,10 @@ builder.WebHost.UseUrls("http://*:9002");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddTransient<IDocumentService, DocumentService>();
+builder.Services.AddTransient<IContractsDbRepository, ContractsDbRepository>();
+builder.Services.AddDbContext<ContractsDBContext>();
 builder.Services.AddControllers();
+
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerWithConfig("Contracts")
