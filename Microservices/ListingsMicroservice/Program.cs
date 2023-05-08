@@ -1,5 +1,7 @@
 using ListingsMicroservice.Services;
 using ListingsMicroservice.Services.Sorting;
+using RealEstate.Shared.Data.Context;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -12,6 +14,9 @@ builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddTransient<IListingService, ListingService>();
 builder.Services.AddTransient<IEstateSortingService, EstateSortingService>();
+builder.Services.AddTransient<IListingsDbRepository, ListingsDbRepository>();
+builder.Services.AddDbContext<ListingsDBContext>();
+
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
