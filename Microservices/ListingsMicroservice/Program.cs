@@ -1,7 +1,4 @@
-using ListingsMicroservice.Services;
-using ListingsMicroservice.Services.Sorting;
-using RealEstate.Shared.Data.Context;
-using RealEstate.Shared.Data.Repository;
+using ListingsMicroservice.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -12,25 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://*:9005");
 builder.Host.UseSerilog(SeriLogger.Configure);
 
-builder.Services.AddTransient<IListingService, ListingService>();
-builder.Services.AddTransient<IEstateSortingService, EstateSortingService>();
-builder.Services.AddTransient<IListingsDbRepository, ListingsDbRepository>();
-builder.Services.AddDbContext<ListingsDBContext>();
-
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
-    .AddSwaggerWithConfig("Listings")
-    .AddRepositories()
+    .AddRepositoriesAndContexts(builder.Configuration)
+    .AddSwaggerWithConfig("Contracts")
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider(builder)
+    .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
     .AddHealthChecks();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-
 
 var app = builder.Build();
+
 app.AddSwaggerDevelopmentDocs("Listings");
 app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
-app.MapHealthCheckEndpoint();
+app.MapHealthChecks("/health");
+
 app.Run();
