@@ -1,8 +1,6 @@
 ﻿#nullable disable
-using RealEstate.Shared.Core.Constants;
 using RealEstate.Shared.Core.Types;
 using System.Collections;
-using System.Globalization;
 
 namespace RealEstate.Shared.Core.Guards
 {
@@ -98,30 +96,12 @@ namespace RealEstate.Shared.Core.Guards
             if (startDate > endDate) throw new ArgumentException($"{nameof(startDate)} cannot be later than {nameof(endDate)}");
         }
 
-        public static void ValidRange(Date startDate, Date endDate)
-        {
-            NotNull(startDate, nameof(startDate));
-            NotNull(endDate, nameof(endDate));
-            ValidRange(startDate.ToDateTime(), endDate.ToDateTime());
-        }
 
         public static void ValidRange(string startDate, string endDate)
         {
             ValidDateTime(startDate);
             ValidDateTime(endDate);
             ValidRange(Convert.ToDateTime(startDate), Convert.ToDateTime(endDate));
-        }
-
-        public static void DateFormatYmd(string date)
-        {
-            if (DateTime.TryParseExact(date, DateFormats.DateYmd, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt) == false)
-            {
-                throw new ArgumentException(Errors.InvalidMessage(date, nameof(date)));
-            }
-            else if (dt.Year < 1900 || dt.Year > 2099)
-            {
-                throw new ArgumentOutOfRangeException(Errors.InvalidMessage(date, nameof(date)));
-            }
         }
     }
 }
