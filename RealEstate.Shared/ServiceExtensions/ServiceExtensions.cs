@@ -4,20 +4,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using RealEstate.Shared.Data.Repository;
 
 namespace RealEstate.Shared.ServiceExtensions
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
-        {
-            //services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-            services.AddScoped<IRepository, Repository>();
-
-            return services;
-        }
-
+        // Swagger
         public static IServiceCollection AddSwaggerWithConfig(this IServiceCollection services, string MicroserviceName)
         {
             services.AddSwaggerGen(options =>
@@ -32,43 +24,41 @@ namespace RealEstate.Shared.ServiceExtensions
 
             return services;
         }
-
-        public static IServiceCollection AddRedisCacheWithConnectionString(this IServiceCollection services, WebApplicationBuilder builder)
-        {
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = builder.Configuration["CacheSettings:ConnectionString"];
-            });
-            //services.AddHealthChecks().AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
-
-            return services;
-        }
-
-        public static IServiceCollection AddMassTransitWithRabbitMQProvider(this IServiceCollection services, WebApplicationBuilder builder)
-        {
-            services.AddMassTransit(config =>
-            {
-                //x.AddConsumer<EventBusConsumer>();
-
-                config.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
-                });
-            });
-
-            return services;
-        }
-
-
         // WebApplication Extensions
         public static WebApplication AddSwaggerDevelopmentDocs(this WebApplication app, string MicroserviceName)
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{MicroserviceName} Microservice v1"));
-            
+
             return app;
         }
 
+        // Redis
+        public static IServiceCollection AddRedisCacheWithConnectionString(this IServiceCollection services, WebApplicationBuilder builder)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = GlobalConnectionStrings.Redis_Connection;
+            });
+
+            return services;
+        }
+
+        // RabbitMQ MassTransit
+        public static IServiceCollection AddMassTransitWithRabbitMQProvider(this IServiceCollection services, WebApplicationBuilder builder)
+        {
+            // MassTransit-RabbitMQ Configuration
+            services.AddMassTransit(config => {
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host(GlobalConnectionStrings.RabbitMQ_Connection);
+                });
+            });
+            // services.AddMassTransitHostedService();
+
+            return services;
+        }
+
+        // HealthChecks
         public static WebApplication MapHealthCheckEndpoint(this WebApplication app)
         {
             app.Map("/hc", builder =>

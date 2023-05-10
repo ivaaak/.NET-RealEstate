@@ -1,8 +1,8 @@
 
-Add-Migration InitialCreate -Context ClientsDBContext -OutputDir Migrations/ClientsDB
-Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Migrations/ContractsDB
-Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Migrations/EstatesDB
-Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Migrations/ListingsDB
+Add-Migration InitialCreate -Context ClientsDBContext -OutputDir Data/Migrations/ClientsDB
+Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Data/Migrations/ContractsDB
+Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Data/Migrations/EstatesDB
+Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Data/Migrations/ListingsDB
 
 
 Update-Database -Context ClientsDBContext
@@ -10,7 +10,7 @@ Update-Database -Context ContractsDBContext
 Update-Database -Context EstatesDBContext
 Update-Database -Context ListingsDBContext
 
-
+// unused after moving to MicroDBs
 // Add-Migration InitialCreate -Context IdentityUsersDBContext -OutputDir Migrations/IdentityUsersDB
-// Update-Database -Context IdentityUsersDBContext
 // Add-Migration InitialCreate -Context _CombinedContext -OutputDir Migrations.Combined
+// Update-Database -Context IdentityUsersDBContext
