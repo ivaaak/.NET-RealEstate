@@ -47,12 +47,16 @@ services:
 # Utilities:
   util.rabbitmq:
     image: rabbitmq:3-management-alpine
+
   util.pgadmin:
     image: dpage/pgadmin4  
+
   util.portainer:
     image: portainer/portainer-ce
+
   util.elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+
   util.kibana:
     image: docker.elastic.co/kibana/kibana:7.9.2
 

@@ -173,8 +173,8 @@ services:
     container_name: util.rabbitmq
     restart: always
     ports:
-        - "5672:5672"
-        - "15672:15672"
+      - 5672:5672
+      - 15672:15672
 
   util.pgadmin:
     container_name: util.pgadmin
@@ -183,7 +183,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin1234
     restart: always
     ports:
-        - "5050:80"
+      - "5050:80"
     volumes:
       - pgadmin_data:/root/.pgadmin
 
@@ -201,23 +201,23 @@ services:
   util.elasticsearch:
     container_name: util.elasticsearch
     environment:
-        - xpack.monitoring.enabled=true
-        - xpack.watcher.enabled=false
-        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-        - discovery.type=single-node
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
     ports:
-        - "9200:9200"
+      - "9200:9200"
     volumes:
-        - elasticsearch-data:/usr/share/elasticsearch/data   
+      - elasticsearch-data:/usr/share/elasticsearch/data   
 
   util.kibana:
     container_name: util.kibana
     environment:        
-        - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
-        - util.elasticsearch
+      - util.elasticsearch
     ports:
-        - "5601:5601"  
+      - "5601:5601"  
 
 
 

@@ -7,7 +7,9 @@ nuget:
 publish:
 	dotnet publish --os linux --arch x64 -c Release --self-contained
 
-
+# If facing memory issues:
+reset-vm:
+	wsl --shutdown wsl
 
 # Docker compose with/without build
 compose: # docker-compose up
