@@ -12,7 +12,7 @@ namespace EstatesMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")]  // /api/estate
+    [Route("api/[controller]/[action]")]  // /api/estate
     public class EstateController : ControllerBase
     {
         private readonly IEstateService _estateService;
@@ -46,7 +46,6 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpPost]
-        [Route("create")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult Create(Estate estate)
@@ -75,7 +74,6 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpGet]
-        [Route("getall")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult<IEnumerable<EstateDTO>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<EstateDTO>>> GetAll()
@@ -104,8 +102,8 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Estate Object </returns>
-        [HttpGet("{id}")]
-        [Route("getbyid/{id}")]
+        [HttpGet]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult<EstateDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<EstateDTO>> GetById(int id)
@@ -137,8 +135,8 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok </returns>
-        [HttpPut("{id}")]
-        [Route("update/{id}")]
+        [HttpPut]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, EstateDTO estateObject)
@@ -167,8 +165,8 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok - result </returns>
-        [HttpDelete("{id}")]
-        [Route("delete/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
@@ -197,8 +195,8 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok - result </returns>
-        [HttpDelete("{id}")]
-        [Route("harddelete/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
@@ -226,11 +224,11 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> exists - boolean </returns>
-        [HttpGet("{id}")]
-        [Route("exists/{id}")]
+        [HttpGet]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult<bool>), (int)HttpStatusCode.OK)]
-        public ActionResult<bool> RealEstateExists(int id)
+        public ActionResult<bool> Exists(int id)
         {
             var exists = _estateService.GetEstateById(id).Result != null;
 
@@ -256,8 +254,8 @@ namespace EstatesMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> collection of estate objects </returns>
-        [HttpGet("{searchTerm}")]
-        [Route("search/{searchTerm}")]
+        [HttpGet]
+        [Route("/{searchTerm}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(IEnumerable<EstateDTO>), (int)HttpStatusCode.OK)]
         public ActionResult<IEnumerable<EstateDTO>> Search(string searchTerm)

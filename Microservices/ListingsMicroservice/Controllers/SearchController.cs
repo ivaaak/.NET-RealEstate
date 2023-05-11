@@ -10,7 +10,7 @@ namespace ListingsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class SearchController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -26,7 +26,7 @@ namespace ListingsMicroservice.Controllers
         }
 
         // SEARCH: api/search/
-        [HttpGet("/")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Search([FromQuery] string query)
@@ -43,7 +43,7 @@ namespace ListingsMicroservice.Controllers
         }
 
         // CLIENT: api/search/client
-        [HttpGet("client")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Client([FromQuery] string query)
@@ -60,7 +60,7 @@ namespace ListingsMicroservice.Controllers
         }
 
         // ESTATE: api/search/estate
-        [HttpGet("estate")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Estate([FromQuery] string query)
@@ -77,7 +77,7 @@ namespace ListingsMicroservice.Controllers
         }
 
         // LISTING: api/search/listing
-        [HttpGet("listing")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Listing([FromQuery] string query)
@@ -95,7 +95,7 @@ namespace ListingsMicroservice.Controllers
 
 
         // GET: api/search/search?city={city}&minPrice={minPrice}&maxPrice={maxPrice}&id={id}&name={name}&sort={sort}
-        [HttpGet("byParameters")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Estate>>> ByParameters(string city, int? minPrice, int? maxPrice, string id, string name, string sort)

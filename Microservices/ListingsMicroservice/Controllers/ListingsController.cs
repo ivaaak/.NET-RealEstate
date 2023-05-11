@@ -45,7 +45,6 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpPost]
-        [Route("create")]
         public ActionResult Create(Listing listing)
         {
             var result = _listingService.Create(listing);
@@ -72,7 +71,6 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpGet]
-        [Route("getall")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<ListingDTO>>> GetAll()
@@ -101,8 +99,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> listing Object </returns>
-        [HttpGet("{id}")]
-        [Route("getbyid/{id}")]
+        [HttpGet]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Listing>> GetById(int id)
@@ -132,8 +130,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok </returns>
-        [HttpPut("{id}")]
-        [Route("update/{id}")]
+        [HttpPut]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, ListingDTO listingObject)
@@ -162,8 +160,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok - result </returns>
-        [HttpDelete("{id}")]
-        [Route("delete/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
@@ -192,8 +190,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> Ok - result </returns>
-        [HttpDelete("{id}")]
-        [Route("harddelete/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
@@ -221,8 +219,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> exists - boolean </returns>
-        [HttpDelete("{id}")]
-        [Route("exists/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult<bool> ListingExists(int id)
@@ -251,8 +249,8 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         /// <returns> collection of listing objects </returns>
-        [HttpDelete("{id}")]
-        [Route("search/{id}")]
+        [HttpDelete]
+        [Route("/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult<IEnumerable<ListingDTO>> Search(string searchTerm)

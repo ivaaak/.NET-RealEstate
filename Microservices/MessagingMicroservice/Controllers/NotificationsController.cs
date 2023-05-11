@@ -9,7 +9,7 @@ namespace MessagingMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/notifications/
+    [Route("api/[controller]/[action]")] // api/notifications/
     public class NotificationsController : ControllerBase
     {
         

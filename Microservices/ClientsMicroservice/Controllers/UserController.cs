@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 namespace ClientsMicroservice.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     [Authorize]
     public class UserController : ControllerBase
     {

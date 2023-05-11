@@ -42,7 +42,7 @@ namespace UtilitiesMicroservice.Controllers
         ///
         /// </remarks>
         [HttpGet]
-        [Route("getEstate/{id}")]
+        [Route("/{id}")]
         [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetEstate(int id)
         {
@@ -67,7 +67,6 @@ namespace UtilitiesMicroservice.Controllers
 
 
         [HttpGet]
-        [Route("getEstates")]
         [ResponseCache(Duration = 60)]
         public IActionResult GetCachedEstates()
         {
@@ -97,7 +96,6 @@ namespace UtilitiesMicroservice.Controllers
         ///
         /// </remarks>
         [HttpGet]
-        [Route("setEstate")]
         [ResponseCache(Duration = 60)]
         public IActionResult SetEstate(Estate estateObject)
         {
@@ -108,7 +106,6 @@ namespace UtilitiesMicroservice.Controllers
         }
 
         [HttpGet]
-        [Route("setEstates")]
         [ResponseCache(Duration = 60)]
         public IActionResult SetCachedEstates(List<Estate> estatesList)
         {

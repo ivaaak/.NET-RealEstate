@@ -11,7 +11,7 @@ namespace ListingsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/[controller]")] // api/auth/
+    [Route("api/[controller]/[action]")] // api/auth/
     public class SortingController : ControllerBase
     {
         private readonly IEstateSortingService _estateSortingService;
@@ -41,7 +41,6 @@ namespace ListingsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("send")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult Listings([FromQuery] List<Estate> query)

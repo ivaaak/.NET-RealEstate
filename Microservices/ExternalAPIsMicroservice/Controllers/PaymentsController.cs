@@ -11,7 +11,7 @@ namespace ExternalAPIsMicroservice.Controllers
     [ApiController]
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/v1/[controller]/[action]")] // api/payments/
+    [Route("api/[controller]/[action]")] // api/payments/
     public class PaymentsController : ControllerBase
     {
         private readonly StripeClient _stripeClient;
@@ -44,7 +44,6 @@ namespace ExternalAPIsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("charge")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Charge([FromBody] ChargeDataModel model)
@@ -89,7 +88,6 @@ namespace ExternalAPIsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpGet]
-        [Route("getCharges")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetCharges(int limit = 10, string? startingAfter = null)
@@ -124,7 +122,7 @@ namespace ExternalAPIsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpGet]
-        [Route("getCharge{chargeId}")]
+        [Route("/{chargeId}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetCharge(string chargeId)
@@ -158,7 +156,6 @@ namespace ExternalAPIsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("refundCharge")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> RefundCharge([FromBody] RefundChargeDataModel model)
@@ -198,7 +195,6 @@ namespace ExternalAPIsMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("captureCharge")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> CaptureCharge([FromBody] CaptureChargeDataModel model)

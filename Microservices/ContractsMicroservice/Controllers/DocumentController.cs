@@ -7,7 +7,7 @@ namespace ContractsMicroservice.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/v1/[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class DocumentController : ControllerBase
     {
         private readonly IDocumentService _documentService;
@@ -25,7 +25,6 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpPost]
-        [Route("api/[controller]/upload")]
         public IActionResult UploadDocument(int userId, DocumentModel model)
         {
             try
@@ -50,7 +49,6 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpGet]
-        [Route("api/[controller]/getdocuments")]
         public IActionResult GetDocumentsList(int userId)
         {
             try
@@ -66,7 +64,7 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpGet]
-        [Route("api/[controller]/download/{userId}/{documentId}")]
+        [Route("/{userId}/{documentId}")]
         public async Task<IActionResult> DownloadDocument(int userId, int documentId)
         {
             // Check if the user has the document
@@ -90,7 +88,7 @@ namespace ContractsMicroservice.Controllers
             return Ok();
         }
 
-
+        [HttpDelete]
         public async Task<IActionResult> DeleteDocument(int userId, int documentId)
         {
             try
@@ -119,7 +117,6 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpGet]
-        [Route("api/[controller]/checkdocument")]
         public async Task<IActionResult> CheckIfUserHasDocument(int userId, int documentId)
         {
             try
@@ -136,8 +133,7 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpPost]
-        [Route("api/[controller]/validatemodel")]
-        public IActionResult ValidateModel(DocumentModel model)
+        public IActionResult ValidateDocument(DocumentModel model)
         {
             try
             {
@@ -174,8 +170,8 @@ namespace ContractsMicroservice.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        // http://localhost:9002/api/v1/document/gethealth
-        // http://localhost:9000/api/v1/document/gethealth behind gateway
+        // http://localhost:9002/api/document/gethealth
+        // http://localhost:9000/api/document/gethealth behind gateway
         public string getHealth() => "Contracts Microservice up and running";
 
         static string GetContentTypeUtil(string fileName)

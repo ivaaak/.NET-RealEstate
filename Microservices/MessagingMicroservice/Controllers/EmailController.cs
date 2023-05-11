@@ -42,7 +42,6 @@ namespace MessagingMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("send")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult SendEmail(SendEmailRequest request)
@@ -70,7 +69,6 @@ namespace MessagingMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("sendAttachment")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult SendEmailWithAttachment(SendEmailRequest request)
@@ -98,7 +96,6 @@ namespace MessagingMicroservice.Controllers
         ///
         /// </remarks>
         [HttpPost]
-        [Route("sendHeaders")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public IActionResult SendEmailWithCustomHeader(SendEmailRequest request)
