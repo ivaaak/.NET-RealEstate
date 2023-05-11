@@ -1,16 +1,40 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
+using RealEstate.Shared;
+using RealEstate.Shared.Data.Repository;
+using UtilitiesMicroservice.Services.Cache;
+using UtilitiesMicroservice.Services.CloudinaryService;
+using UtilitiesMicroservice.Services.FileUpload;
 
 namespace UtilitiesMicroservice.Properties
 {
-    public static class HangfireExtension
+    public static class UtilitiesStartupExtentions
     {
-        //PostgreSQL Server connection string
-        //private static string PostgreSQLConnectionString = @"Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin";
+        public static IServiceCollection AddRepositoriesAndContexts(this IServiceCollection services)
+        {
+            // Services
+            services.AddTransient<ICacheService, CacheService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IFileUploadService, FileUploadService>();
 
-        // Microsoft SQL Server connection string (SQL Express Server)
-        //private static string MySQLConnectionString = @"Server=DESKTOP-6PR2R6Q\SQLEXPRESS01;Database=RealEstate;Trusted_Connection=True";
+            // Repositories
+            services.AddScoped<IRepository, Repository>(); //base repo implementation
 
+            return services;
+        }
+
+
+        public static IServiceCollection AddRedisCache(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddStackExchangeRedisCache(redisOptions =>
+            {
+                string connection = GlobalConnectionStrings.Redis_Connection;
+
+                redisOptions.Configuration = connection;
+            });
+            services.AddMemoryCache();
+            return services;
+        }
 
         public static IServiceCollection AddHangfireWithPostgreSQLServer(
             this IServiceCollection services,
@@ -36,8 +60,6 @@ namespace UtilitiesMicroservice.Properties
             */
             return services;
         }
-
-
         static void HangfireSettings()
         {
             GlobalConfiguration.Configuration
