@@ -7,24 +7,27 @@ It can be used for listing, browsing and renting/selling properties.
 
 ![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture-light.png#gh-dark-mode-only)![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture.png#gh-light-mode-only)
 
+#### [API Gateway :9000](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.ApiGateway) - Routing, Auth/Authz, Load Balancer, CORS, Rate Limiter, Health Checks, Swagger
 
-#### [Clients Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Identity, Client profiles, Roles
+#### [Clients Microservice :9001](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Client profiles, Roles, Saved Items/Settings
 
-#### [ListingsMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice) - Estate Listings, Search, Filter, Trends
+#### [Contracts Microservice :9002](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ContractsMicroservice) -  Contracts - Save, Modify Documents
 
-#### [Estates Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice) - Estates Management, Data Access
+#### [Estates Microservice :9003](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice) - Estates Management, Data Access
 
-#### [Contracts Microservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ContractsMicroservice) -  Contracts - Save, Modify Documents
+#### [External APIs :9004](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice) - Zillow API, Stripe API, Scraper
 
-#### [UtilitiesMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice) - Background Tasks, File Management, Cache, Formatters
+#### [ListingsMicroservice :9005](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice) - Estate Listings, Search, Filter, Trends
 
-#### [MessagingMicroservice](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice) - Emails, Notifications 
+#### [MessagingMicroservice :9006](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice) - Emails, Notifications 
 
-#### [External APIs](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice) - Zillow API, Stripe API, Scraper
+#### [UtilitiesMicroservice :9007](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice) - Background Tasks, File Management, Cache, Formatters, Shared Resources
+
+#### [Cross-Cutting Concerns / Shared](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Shared) - Generic Repository, Event Bus, Logging, MediatR, Models - Entities, DTOs, Startup Extensions
 
 
 ### Built With:
-- [**✔**]  .NET  7 
+-  [**✔**]  .NET  7 
 -  [**✔**]  Microservices (Clean Architecture)
 -  [**✔**]  API Gateway/Reverse Proxy - Ocelot
 -  [**✔**]  MediatR / CQRS Pattern
@@ -39,23 +42,24 @@ It can be used for listing, browsing and renting/selling properties.
 -  [**✔**]  ELK stack for logging - Elasticsearch / Logstash / Kibana
 -  [**✔**]  Automapper
 -  [**✔**]  Nuke Build Pipeline
+-  [**✔**]  Authentication / Authorization and User Management:  Keycloak
+
 
 #### Not implemented yet / In Progress:
--  Auth / User Management:  Keycloak + a Token Handler
--  Fluent Validation
+-  Fluent Validation for MediatR commands
 -  A Scraper which takes listings from real sites
 -  Event Bus - RabbitMQ / MassTransit
 -  SignalR for on-page notifications/messaging
 -  Resilience - Polly - Persistance/Retries
 -  HangFire for task scheduling / background execution
 -  CI/CD Pipeline with github actions
+-  Consul - Service Discovery
+-  Monitoring -  Grafana + Prometheus
 
 #### Future plans:
--  Camunda - Orchestration Engine
--  Consul - Service Discovery
+-  Camunda - Orchestration and BPMN Engine
 -  An Aggregator service for fetching from multiple DBs
 -  Token Handler Middleware which is used for the Keycloak Auth
--  Monitoring -  Grafana + Prometheus
 -  Code Coverage and Reports - CodeCov
 
 (Testing)
@@ -65,4 +69,3 @@ It can be used for listing, browsing and renting/selling properties.
 - coverlet / CodeCov
 
 #### Roles :  Guest, User, Agent, Admin
-
