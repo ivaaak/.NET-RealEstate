@@ -153,6 +153,7 @@ services:
 
 
   keycloak:
+    container_name: keycloak
     image: quay.io/keycloak/keycloak:19.0.1
     environment:
       KEYCLOAK_ADMIN: admin
