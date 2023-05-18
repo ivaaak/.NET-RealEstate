@@ -15,18 +15,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.5" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
     <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="xunit.extensibility.core" Version="2.4.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="APIGateway\" />
-    <Folder Include="Shared\" />
+    <Folder Include="FunctionalTests\ClientsMicroserviceTests\" />
+    <Folder Include="FunctionalTests\ContractsMicroserviceTests\" />
+    <Folder Include="FunctionalTests\EstatesMicroserviceTests\" />
+    <Folder Include="FunctionalTests\ListingsMicroserviceTests\" />
+    <Folder Include="FunctionalTests\ExternalAPIsMicroserviceTests\" />
+    <Folder Include="FunctionalTests\MessagingMicroserviceTests\" />
+    <Folder Include="FunctionalTests\UtilitiesMicroserviceTests\" />
+    <Folder Include="IntegrationTests\Databases\" />
+    <Folder Include="IntegrationTests\Repositories\UserRepositoryTests\" />
   </ItemGroup>
 
   <ItemGroup>
