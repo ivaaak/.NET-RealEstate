@@ -27,40 +27,50 @@ It can be used for listing, browsing and renting/selling properties.
 
 
 ### Built With:
--  [**✔**]  .NET  7 
--  [**✔**]  Microservices (Clean Architecture)
--  [**✔**]  API Gateway/Reverse Proxy - Ocelot
--  [**✔**]  MediatR / CQRS Pattern
--  [**✔**]  ORM - Entity Framework Core 6
--  [**✔**]  PostgreSQL (and MongoDB possibly?)
--  [**✔**]  Redis Caching
--  [**✔**]  Docker - Microservices and DBs Containerization
--  [**✔**]  Sendgrid for emails
--  [**✔**]  Cloudinary.Net for file upload/storage
--  [**✔**]  Swagger / Swashbuckle API Docs
--  [**✔**]  Stripe Payments API
--  [**✔**]  ELK stack for logging - Elasticsearch / Logstash / Kibana
--  [**✔**]  Automapper
--  [**✔**]  Nuke Build Pipeline
--  [**✔**]  Authentication / Authorization and User Management:  Keycloak
+-  [**✔**]  `.NET  7`
+-  [**✔**]  `Microservices` (and Clean Architecture)
+-  [**✔**]  `Vertical Slice Architecture`
+-  [**✔**]  `Domain Driven Design (DDD)` to implement all business processes in microservices.
+-  [**✔**]  `Fluent Validation` and a `Validation Pipeline Behaviour` on top of `MediatR`.
+-  [**✔**]  `Built-In Containerization` for `Docker` images of microservices and DBs
+-  [**✔**]  `Ocelot` - API Gateway/Reverse Proxy 
+-  [**✔**]  `MediatR` / CQRS Pattern
+-  [**✔**]  `Entity Framework Core 6` - ORM
+-  [**✔**]  `PostgreSQL` (and MongoDB possibly?)
+-  [**✔**]  `Redis` Caching
+-  [**✔**]  `Sendgrid` for emails
+-  [**✔**]  `Cloudinary.Net` for file upload/storage
+-  [**✔**]  `Swagger` / Swashbuckle API Docs
+-  [**✔**]  `Stripe` Payments API
+-  [**✔**]  `Elasticsearch / Logstash / Kibana` - ELK stack for logging
+-  [**✔**]  `Automapper`
+-  [**✔**]  `Nuke` Build Pipeline
+-  [**✔**]  `Keycloak` - Authentication / Authorization and User Management
 
 
 #### Not implemented yet / In Progress:
--  Fluent Validation for MediatR commands
 -  A Scraper which takes listings from real sites
--  Event Bus - RabbitMQ / MassTransit
--  SignalR for on-page notifications/messaging
--  Resilience - Polly - Persistance/Retries
--  HangFire for task scheduling / background execution
--  CI/CD Pipeline with github actions
--  Consul - Service Discovery
--  Monitoring -  Grafana + Prometheus
+-  `RabbitMQ / MassTransit` - Event Bus
+-  `SignalR` for on-page notifications/messaging
+-  `Polly` Resilience - Persistance/Retries
+-  `HangFire` for task scheduling / background execution
+-  `CI/CD Pipeline` with github actions
+-  `Consul` - Service Discovery
+-  `Grafana + Prometheus` - Monitoring
+-  `CodeCov` - Code Coverage and Reports
+-  `SonarAnalyzer + StyleCop` - Code quality gate
+-  `Sieve` - Sorting and Filtering
+-  `Spectre Console`
+-  `Zipkin` - distributed tracing
+
 
 #### Future plans:
--  Camunda - Orchestration and BPMN Engine
--  An Aggregator service for fetching from multiple DBs
--  Token Handler Middleware which is used for the Keycloak Auth
--  Code Coverage and Reports - CodeCov
+-  `Camunda` - Orchestration and BPMN Engine
+-  `Aggregator service` for fetching from multiple DBs
+-  `Token Handler Middleware` which is used for the Keycloak Auth
+-  `MVC Versioning API` 
+-  `opentelemetry-dotnet`
+
 
 (Testing)
 - MyTested.AspNetCore.Mvc 
