@@ -1,7 +1,7 @@
 ﻿using RealEstate.Shared.Models.Entities.Clients;
 using RealEstate.Shared.Models.Entities.Contracts;
 
-namespace RealEstate.Test.Data
+namespace RealEstate.Test._TestSetup.Data
 {
     public class TestConstants
     {

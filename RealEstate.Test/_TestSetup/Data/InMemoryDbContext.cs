@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Context;
 
-namespace RealEstate.Test.Data
+namespace RealEstate.Test._TestSetup.Data
 {
     public class InMemoryDbContext : DbContext
     {
