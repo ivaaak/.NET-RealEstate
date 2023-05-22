@@ -44,19 +44,6 @@ namespace RealEstate.Shared.ServiceExtensions
             return services;
         }
 
-        // RabbitMQ MassTransit
-        public static IServiceCollection AddMassTransitWithRabbitMQProvider(this IServiceCollection services, WebApplicationBuilder builder)
-        {
-            // MassTransit-RabbitMQ Configuration
-            services.AddMassTransit(config => {
-                config.UsingRabbitMq((ctx, cfg) => {
-                    cfg.Host(GlobalConnectionStrings.RabbitMQ_Connection);
-                });
-            });
-            // services.AddMassTransitHostedService();
-
-            return services;
-        }
 
         // HealthChecks
         public static WebApplication MapHealthCheckEndpoint(this WebApplication app)

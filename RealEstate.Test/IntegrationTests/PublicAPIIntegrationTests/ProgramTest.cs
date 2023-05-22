@@ -7,7 +7,7 @@ namespace RealEstate.Test.IntegrationTests.PublicAPIIntegrationTests
     [TestClass]
     public class ProgramTest
     {
-        private static WebApplicationFactory<Program> _application = new();
+        private static WebApplicationFactory<ProgramTest> _application = new();
 
         public static HttpClient NewClient
         {
@@ -18,9 +18,9 @@ namespace RealEstate.Test.IntegrationTests.PublicAPIIntegrationTests
         }
 
         [AssemblyInitialize]
-        public static void AssemblyInitialize(TestContext _)
+        public static void AssemblyInitialize(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _)
         {
-            _application = new WebApplicationFactory<Program>();
+            _application = new WebApplicationFactory<ProgramTest>();
 
         }
     }
