@@ -1,4 +1,5 @@
 ﻿using ContractsMicroservice.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
@@ -14,13 +15,16 @@ namespace ContractsMicroservice.Controllers
 
         private readonly ILogger<DocumentController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public DocumentController(
             IDocumentService documentService,
-            ILogger<DocumentController> logger)
+            ILogger<DocumentController> logger,
+            IPublishEndpoint publishEndpoint)
         {
             _documentService = documentService ?? throw new ArgumentNullException(nameof(documentService));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
 

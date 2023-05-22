@@ -1,4 +1,5 @@
 ﻿using ExternalAPIsMicroservice.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
@@ -17,12 +18,16 @@ namespace ExternalAPIsMicroservice.Controllers
 
         private readonly ILogger<ScraperController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public ScraperController(
             IScraperService scraper,
-            ILogger<ScraperController> logger) 
+            ILogger<ScraperController> logger, 
+            IPublishEndpoint publishEndpoint) 
         {
             _scraperService = scraper ?? throw new ArgumentNullException(nameof(scraper));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger)); 
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
         [HttpPost]

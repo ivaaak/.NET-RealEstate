@@ -1,4 +1,5 @@
 ﻿using EstatesMicroservice.Services;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +22,18 @@ namespace EstatesMicroservice.Controllers
 
         private readonly ILogger<EstateController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public EstateController(
             IEstateService estateService,
             IMediator mediator,
-            ILogger<EstateController> logger)
+            ILogger<EstateController> logger,
+            IPublishEndpoint publishEndpoint)
         {
             _estateService = estateService ?? throw new ArgumentNullException(nameof(estateService));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
         
 

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.Models.Entities.Misc;
@@ -20,14 +21,18 @@ namespace ExternalAPIsMicroservice.Controllers
 
         private readonly ILogger<PaymentsController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public PaymentsController(
             IMediator mediator,
             StripeClient stripeClient,
-            ILogger<PaymentsController> logger)
+            ILogger<PaymentsController> logger, 
+            IPublishEndpoint publishEndpoint)
         {
             _stripeClient = stripeClient ?? throw new ArgumentNullException(nameof(stripeClient));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
 

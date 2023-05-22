@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Shared.MediatR.Queries;
@@ -17,12 +18,16 @@ namespace ListingsMicroservice.Controllers
 
         private readonly ILogger<SearchController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public SearchController(
             IMediator mediator,
-            ILogger<SearchController> logger)
+            ILogger<SearchController> logger, 
+            IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
         // SEARCH: api/search/

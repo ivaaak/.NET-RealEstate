@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using MessagingMicroservice.Services.Notification;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,14 +20,18 @@ namespace MessagingMicroservice.Controllers
 
         private readonly ILogger<NotificationsController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public NotificationsController(
             INotificationRepository notificationRepository,
             IMediator mediator,
-            ILogger<NotificationsController> logger)
+            ILogger<NotificationsController> logger,
+            IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
         /*

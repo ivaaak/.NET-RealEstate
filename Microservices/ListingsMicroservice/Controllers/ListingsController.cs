@@ -1,4 +1,5 @@
 ﻿using ListingsMicroservice.Services;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +22,18 @@ namespace ListingsMicroservice.Controllers
 
         private readonly ILogger<ListingController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public ListingController(
             IListingService listingService,
             IMediator mediator,
-            ILogger<ListingController> logger)
+            ILogger<ListingController> logger, 
+            IPublishEndpoint publishEndpoint)
         {
             _listingService = listingService ?? throw new ArgumentNullException(nameof(_listingService));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
 

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using MessagingMicroservice.Services.Email;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,18 @@ namespace MessagingMicroservice.Controllers
 
         private readonly ILogger<EmailController> _logger;
 
+        private readonly IPublishEndpoint _publishEndpoint;
+
         public EmailController(
             IMediator mediator,
             ILogger<EmailController> logger,
-            IEmailService emailService)
+            IEmailService emailService, 
+            IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
+            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService)); 
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
 

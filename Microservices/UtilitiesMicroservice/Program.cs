@@ -15,7 +15,7 @@ builder.Services
     .AddRepositoriesAndContexts()
     .AddSwaggerWithConfig("Utilities")
     .AddRedisCacheWithConnectionString(builder)
-    .AddMassTransitWithRabbitMQProvider(builder)
+    .AddMassTransitWithRabbitMQProvider()
     .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
     .AddHealthChecks();
 

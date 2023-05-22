@@ -1,5 +1,6 @@
 ﻿using ClientsMicroservice.Data;
 using ClientsMicroservice.Services;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,20 @@ namespace ClientsMicroservice.Controllers
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         private readonly IUserService _userService;
 
-        public UserController(IMediator mediator, IUserService userService)
+        private readonly IPublishEndpoint _publishEndpoint;
+
+
+        public UserController(
+            IMediator mediator, 
+            IUserService userService, 
+            IPublishEndpoint publishEndpoint)
         {
-            _mediator = mediator;
-            _userService = userService;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator)); 
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
 
