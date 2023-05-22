@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Shared.EventBus.Common
+﻿namespace RealEstate.Shared.EventBus
 {
     public static class EventBusConstants
     {
@@ -6,7 +6,7 @@
 
         public const string ListingsQueue = "listings-queue";
 
-        public const string MessageQueue = "message-queue";
+        public const string MessagesQueue = "messages-queue";
 
         public const string NotificationsQueue = "notifications-queue";
     }
