@@ -11,7 +11,7 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 // Configure API Gateway
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
-    .AddJsonFile("GatewayConfigs/ocelotMicroservices.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("ocelotMicroservices.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
 // Run the Gateway on port 9000
