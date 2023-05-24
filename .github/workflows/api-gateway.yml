@@ -34,10 +34,10 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
-      
+      run: dotnet restore RealEstate.ApiGateway/RealEstate.ApiGateway.csproj
+
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build RealEstate.ApiGateway/RealEstate.ApiGateway.csproj --no-restore
 
 
 # When using Registry:
