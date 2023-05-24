@@ -23,14 +23,18 @@ env:
   IMAGE: api.estates
 
 jobs:
-
-  BuildContainersForPR_Linux:
+  build:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - uses: ./.github/workflows/composite/build
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
-        service: ${{ env.SERVICE }}
-        registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore Microservices/EstatesMicroservice/EstatesMicroservice.csproj
+
+    - name: Build
+      run: dotnet build Microservices/EstatesMicroservice/EstatesMicroservice.csproj --no-restore
