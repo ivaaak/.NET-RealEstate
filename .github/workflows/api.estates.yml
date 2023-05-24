@@ -1,0 +1,36 @@
+name: api.estates
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - Microservices/EstatesMicroservice**
+    - .github/workflows/api.estates.yml
+  
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - Microservices/EstatesMicroservice**
+    - .github/workflows/api.estates.yml
+
+env:
+  SERVICE: api.estates
+  IMAGE: api.estates
+
+jobs:
+
+  BuildContainersForPR_Linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - uses: ./.github/workflows/composite/build
+      with:
+        service: ${{ env.SERVICE }}
+        registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}

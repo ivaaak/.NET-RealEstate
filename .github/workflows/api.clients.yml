@@ -1,0 +1,36 @@
+name: api.clients
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - Microservices/ClientsMicroservice**
+    - .github/workflows/api.clients.yml
+  
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - Microservices/ClientsMicroservice**
+    - .github/workflows/api.clients.yml
+
+env:
+  SERVICE: api.clients
+  IMAGE: api.clients
+
+jobs:
+
+  BuildContainersForPR_Linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - uses: ./.github/workflows/composite/build
+      with:
+        service: ${{ env.SERVICE }}
+        registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
