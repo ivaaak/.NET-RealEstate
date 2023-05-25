@@ -7,24 +7,31 @@ It can be used for listing, browsing and renting/selling properties.
 
 ![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture-light.png#gh-dark-mode-only)![.](https://github.com/ivaaak/.NET-RealEstate/blob/main/RealEstate.ApiGateway/RealEstateAPI-Architecture.png#gh-light-mode-only)
 
-#### [API Gateway :9000](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.ApiGateway) - Routing, Auth/Authz, Load Balancer, CORS, Rate Limiter, Health Checks, Swagger
+## Microservice, Build Status (GitHub Actions), Description:
+| Microservice | Status | Description |
+| ------------- | ------------- | ------------- |
+| [API Gateway :9000](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.ApiGateway) | [![api-gateway](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api-gateway.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api-gateway.yml) | Routing, Auth/Authz, Load Balancer, CORS, Rate Limiter, Health Checks, Swagger |
+|[Clients :9001](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice)| [![api.clients](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.clients.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.clients.yml) | Client profiles, Roles, Saved Items/Settings |
+| [Contracts :9002](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ContractsMicroservice)| [![api.contracts](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.contracts.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.contracts.yml)| Contracts - Save, Modify Documents |
+| [Estates :9003](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice)| [![api.estates](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.estates.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.estates.yml) | Estates Management, Data Access |
+| [External API :9004](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice)| [![api.external](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.external.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.external.yml) | Zillow API, Stripe API, Scraper |
+| [Listings :9005](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice)| [![api.listings](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.listings.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.listings.yml) | Estate Listings, Search, Filter, Trends |
+| [Messaging :9006](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice)| | Emails, Notifications |
+| [Utilities :9007](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice)| | Background Tasks, File Management, Cache, Formatters, Shared Resources |
+| [Cross-Cutting / Shared](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Shared)| | Generic Repository, Event Bus, Logging, MediatR, Models - Entities, DTOs, Startup Extensions |
 
-#### [Clients Microservice :9001](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ClientsMicroservice) - Client profiles, Roles, Saved Items/Settings
+### Getting Started
+Make sure you have [installed](https://docs.docker.com/docker-for-windows/install/) and [configured](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup#configure-docker) docker in your environment. After that, you can run the below commands from the **.NET RealEstate** directory and start the project:
 
-#### [Contracts Microservice :9002](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ContractsMicroservice) -  Contracts - Save, Modify Documents
+```cmd
+docker-compose build
+docker-compose up
+```
 
-#### [Estates Microservice :9003](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice) - Estates Management, Data Access
-
-#### [External APIs :9004](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice) - Zillow API, Stripe API, Scraper
-
-#### [ListingsMicroservice :9005](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice) - Estate Listings, Search, Filter, Trends
-
-#### [MessagingMicroservice :9006](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice) - Emails, Notifications 
-
-#### [UtilitiesMicroservice :9007](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice) - Background Tasks, File Management, Cache, Formatters, Shared Resources
-
-#### [Cross-Cutting Concerns / Shared](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Shared) - Generic Repository, Event Bus, Logging, MediatR, Models - Entities, DTOs, Startup Extensions
-
+```make
+make compose-build
+make compose
+```
 
 ### Built With:
 -  [**✔**]  `.NET  7`
