@@ -1,0 +1,40 @@
+name: test-unit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - RealEstate.Test/UnitTests**
+    - .github/workflows/test-unit.yml
+
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - RealEstate.Test/UnitTests**
+    - .github/workflows/test-unit.yml
+
+env:
+  SERVICE: test-unit
+  IMAGE: test-unit
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore RealEstate.Test/RealEstate.Test.csproj
+
+    - name: Build
+      run: dotnet build RealEstate.Test/RealEstate.Test.csproj --no-restore

@@ -1,0 +1,40 @@
+name: shared
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - RealEstate.Shared**
+    - .github/workflows/shared.yml
+
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - RealEstate.Shared**
+    - .github/workflows/shared.yml
+
+env:
+  SERVICE: shared
+  IMAGE: shared
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore RealEstate.Shared/RealEstate.Shared.csproj
+
+    - name: Build
+      run: dotnet build RealEstate.Shared/RealEstate.Shared.csproj --no-restore
