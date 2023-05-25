@@ -1,0 +1,41 @@
+name: api.utilities
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - Microservices/UtilitiesMicroservice**
+    - .github/workflows/api.utilities.yml
+  
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - Microservices/UtilitiesMicroservice**
+    - .github/workflows/api.utilities.yml
+
+env:
+  SERVICE: api.utilities
+  IMAGE: api.utilities
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore Microservices/UtilitiesMicroservice/UtilitiesMicroservice.csproj
+
+    - name: Build
+      run: dotnet build Microservices/UtilitiesMicroservice/UtilitiesMicroservice.csproj --no-restore
+      

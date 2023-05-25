@@ -1,0 +1,40 @@
+name: api.messaging
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+    paths:
+    - Microservices/MessagingMicroservice**
+    - .github/workflows/api.messaging.yml
+  
+  pull_request:
+    branches:
+    - main
+
+    paths:
+    - Microservices/MessagingMicroservice**
+    - .github/workflows/api.messaging.yml
+
+env:
+  SERVICE: api.messaging
+  IMAGE: api.messaging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore Microservices/MessagingMicroservice/MessagingMicroservice.csproj
+
+    - name: Build
+      run: dotnet build Microservices/MessagingMicroservice/MessagingMicroservice.csproj --no-restore
