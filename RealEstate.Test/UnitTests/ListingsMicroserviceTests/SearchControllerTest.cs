@@ -21,7 +21,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
             _mediator = new Mock<IMediator>();
 
             // Set up the controller
-            controller = new SearchController(mediator: null, logger: null);
+            controller = new SearchController(mediator: null, logger: null, publishEndpoint: null);
         }
 
 
