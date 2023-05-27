@@ -53,15 +53,15 @@ make compose
 -  [**✔**]  `Automapper`
 -  [**✔**]  `Nuke` Build Pipeline
 -  [**✔**]  `Keycloak` - Authentication / Authorization and User Management
+-  [**✔**]  `RabbitMQ / MassTransit` - Event Bus
+-  [**✔**]  `CI/CD Pipeline` with github actions
+
 
 
 #### Not implemented yet / In Progress:
 -  A Scraper which takes listings from real sites
--  `RabbitMQ / MassTransit` - Event Bus
--  `SignalR` for on-page notifications/messaging
 -  `Polly` Resilience - Persistance/Retries
 -  `HangFire` for task scheduling / background execution
--  `CI/CD Pipeline` with github actions
 -  `Consul` - Service Discovery
 -  `Grafana + Prometheus` - Monitoring
 -  `CodeCov` - Code Coverage and Reports
@@ -69,6 +69,7 @@ make compose
 -  `Sieve` - Sorting and Filtering
 -  `Spectre Console`
 -  `Zipkin` - distributed tracing
+-  `SignalR` for on-page notifications/messaging
 
 
 #### Future plans:
