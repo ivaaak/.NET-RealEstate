@@ -21,7 +21,7 @@ builder.Services
 
 var app = builder.Build();
 
-app.AddSwaggerDevelopmentDocs("Contracts");
+app.UseSwaggerDevelopmentDocs("Contracts");
 app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");

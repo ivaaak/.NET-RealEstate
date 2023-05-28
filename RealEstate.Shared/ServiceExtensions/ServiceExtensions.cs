@@ -25,7 +25,7 @@ namespace RealEstate.Shared.ServiceExtensions
             return services;
         }
         // WebApplication Extensions
-        public static WebApplication AddSwaggerDevelopmentDocs(this WebApplication app, string MicroserviceName)
+        public static WebApplication UseSwaggerDevelopmentDocs(this WebApplication app, string MicroserviceName)
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger().UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{MicroserviceName} Microservice v1"));

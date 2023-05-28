@@ -25,6 +25,7 @@
 
         public const string GRPC_Connection = "http://localhost:5003";
 
+        // Logginng
         public const string Elasticsearch_Connection = "http://localhost:9200";
     }
 }

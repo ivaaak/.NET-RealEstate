@@ -21,7 +21,7 @@ builder.Services
 
 var app = builder.Build();
 
-app.AddSwaggerDevelopmentDocs("Messaging");
+app.UseSwaggerDevelopmentDocs("Messaging");
 app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
