@@ -16,10 +16,10 @@ It can be used for listing, browsing and renting/selling properties.
 | [Estates :9003](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/EstatesMicroservice)| [![api.estates](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.estates.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.estates.yml) | Estates Management, Data Access |
 | [External API :9004](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ExternalAPIsMicroservice)| [![api.external](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.external.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.external.yml) | Zillow API, Stripe API, Scraper |
 | [Listings :9005](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/ListingsMicroservice)| [![api.listings](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.listings.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.listings.yml) | Estate Listings, Search, Filter, Trends |
-| [Messaging :9006](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice)| | Emails, Notifications |
-| [Utilities :9007](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice)| | Background Tasks, File Management, Cache, Formatters, Shared Resources |
-| [Cross-Cutting / Shared](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Shared)| | Generic Repository, Event Bus, Logging, MediatR, Models - Entities, DTOs, Startup Extensions |
-
+| [Messaging :9006](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/MessagingMicroservice)| [![api.messaging](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.messaging.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.messaging.yml) | Emails, Notifications |
+| [Utilities :9007](https://github.com/ivaaak/.NET-RealEstate/tree/main/Microservices/UtilitiesMicroservice)| [![api.utilities](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.utilities.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/api.utilities.yml) | Background Tasks, File Management, Cache, Formatters, Shared Resources |
+| [Cross-Cutting / Shared](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Shared)| [![shared](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/shared.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/shared.yml) | Generic Repository, Event Bus, Logging, MediatR, Models - Entities, DTOs, Startup Extensions |
+| [Tests](https://github.com/ivaaak/.NET-RealEstate/tree/main/RealEstate.Test) | [![test-unit](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/test-unit.yml/badge.svg)](https://github.com/ivaaak/.NET-RealEstate/actions/workflows/test-unit.yml) | e2e, Functional. Integration, Unit Tests |
 ### Getting Started
 Make sure you have [installed](https://docs.docker.com/docker-for-windows/install/) and [configured](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup#configure-docker) docker in your environment. After that, you can run the below commands from the **.NET RealEstate** directory and start the project:
 
@@ -53,15 +53,15 @@ make compose
 -  [**✔**]  `Automapper`
 -  [**✔**]  `Nuke` Build Pipeline
 -  [**✔**]  `Keycloak` - Authentication / Authorization and User Management
+-  [**✔**]  `RabbitMQ / MassTransit` - Event Bus
+-  [**✔**]  `CI/CD Pipeline` with github actions
+
 
 
 #### Not implemented yet / In Progress:
 -  A Scraper which takes listings from real sites
--  `RabbitMQ / MassTransit` - Event Bus
--  `SignalR` for on-page notifications/messaging
 -  `Polly` Resilience - Persistance/Retries
 -  `HangFire` for task scheduling / background execution
--  `CI/CD Pipeline` with github actions
 -  `Consul` - Service Discovery
 -  `Grafana + Prometheus` - Monitoring
 -  `CodeCov` - Code Coverage and Reports
@@ -69,6 +69,7 @@ make compose
 -  `Sieve` - Sorting and Filtering
 -  `Spectre Console`
 -  `Zipkin` - distributed tracing
+-  `SignalR` for on-page notifications/messaging
 
 
 #### Future plans:
