@@ -2,7 +2,7 @@
   "Routes": [
     // ClientsMicroservice - 9001
     {
-      "DownstreamPathTemplate": "/api/clients/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -16,7 +16,7 @@
     },
     // ContractsMicroservice - 9002
     {
-      "DownstreamPathTemplate": "/api/contracts/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -30,7 +30,7 @@
     },
     // EstatesMicroservice - 9003
     {
-      "DownstreamPathTemplate": "/api/estates/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -44,7 +44,7 @@
     },
     // ExternalAPIsMicroservice - 9004
     {
-      "DownstreamPathTemplate": "/api/external/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -58,7 +58,7 @@
     },
     // ListingsMicroservice - 9005
     {
-      "DownstreamPathTemplate": "/api/listings/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
