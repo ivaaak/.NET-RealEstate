@@ -79,7 +79,7 @@
         {
           "Name": "Gateway - ClientsMicroservice",
           "Version": "v1",
-          "Url": "http://localhost:9001/swagger/v1/swagger.json"
+          "Url": "http://host.docker.internal:9001/swagger/v1/swagger.json"
         }
       ]
     },
@@ -89,7 +89,7 @@
         {
           "Name": "Gateway - ContractsMicroservice",
           "Version": "v1",
-          "Url": "http://localhost:9002/swagger/v1/swagger.json"
+          "Url": "http://host.docker.internal:9002/swagger/v1/swagger.json"
         }
       ]
     },
@@ -99,7 +99,7 @@
         {
           "Name": "Gateway - EstatesMicroservice",
           "Version": "v1",
-          "Url": "http://localhost:9003/swagger/v1/swagger.json"
+          "Url": "http://host.docker.internal:9003/swagger/v1/swagger.json"
         }
       ]
     },
@@ -109,7 +109,7 @@
         {
           "Name": "Gateway - ExternalAPIsMicroservice",
           "Version": "v1",
-          "Url": "http://localhost:9004/swagger/v1/swagger.json"
+          "Url": "http://host.docker.internal:9004/swagger/v1/swagger.json"
         }
       ]
     },
@@ -119,7 +119,7 @@
         {
           "Name": "Gateway - ListingsMicroservice",
           "Version": "v1",
-          "Url": "http://localhost:9005/swagger/v1/swagger.json"
+          "Url": "http://host.docker.internal:9005/swagger/v1/swagger.json"
         }
       ]
     }
