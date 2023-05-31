@@ -4,58 +4,58 @@ updates:
   - package-ecosystem: "nuget"
     # Look for NuGet dependency info from the `Api Gateway` directory
     directory: "/RealEstate.ApiGateway" 
-    # Check the nuget registry for updates weekly: 
+    # Check the nuget registry for updates monthly: 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/RealEstate.Shared" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/RealEstate.Test" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
 # Microservice projects
   - package-ecosystem: "nuget"
     directory: "/Microservices.ClientsMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.ContractsMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.EstatesMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.ExternalAPIsMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.ListingsMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.MessagingMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "nuget"
     directory: "/Microservices.UtilitiesMicroservice" 
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
 # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
