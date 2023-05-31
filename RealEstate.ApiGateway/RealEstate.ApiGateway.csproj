@@ -29,6 +29,10 @@
     <PackageReference Include="Ocelot" Version="19.0.2" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="18.0.0" />
     <PackageReference Include="Ocelot.Provider.Polly" Version="19.0.2" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.2.0.71021">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StackExchange.Redis" Version="2.6.111" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />

@@ -39,6 +39,10 @@
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.1" />
     <PackageReference Include="Serilog.Sinks.SpectreConsole" Version="0.3.3" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.2.0.71021">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />

@@ -27,6 +27,10 @@
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.2.0.71021">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StackExchange.Redis" Version="2.6.111" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
