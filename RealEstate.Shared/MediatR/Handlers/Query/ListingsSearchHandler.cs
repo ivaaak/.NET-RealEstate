@@ -13,14 +13,14 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 {
     public class ListingsSearchHandler : IRequestHandler<CombinedSearchQuery, SearchDTO>
     {
-        private readonly IDeletableEntityRepository<Listing> listingsRepository;
+        private readonly IRepository repository;
         private readonly IMapper mapper;
 
         public ListingsSearchHandler(
-            IDeletableEntityRepository<Listing> listingsRepository,
+            IRepository repository,
             IMapper mapper)
         {
-            this.listingsRepository = listingsRepository;
+            this.repository = repository;
             this.mapper = mapper;
         }
 
@@ -35,8 +35,8 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 
             var queryNormalized = request.Query.ToLower();
 
-            var listings = await listingsRepository
-              .AllAsNoTracking()
+            var listings = await repository
+              .All<Listing>()
               .Where(p => p.Name
                     .ToLower()
                     .Contains(queryNormalized))

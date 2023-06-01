@@ -17,20 +17,15 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 {
     public class CombinedSearchHandler : IRequestHandler<CombinedSearchQuery, SearchDTO>
     {
-        private readonly IDeletableEntityRepository<Client> clientsRepository;
-        private readonly IDeletableEntityRepository<Estate> estatesRepository;
-        private readonly IDeletableEntityRepository<Listing> listingsRepository;
+        private readonly IRepository repository;
         private readonly IMapper mapper;
 
         public CombinedSearchHandler(
-            IDeletableEntityRepository<Client> clientsRepository,
-            IDeletableEntityRepository<Estate> estatesRepository,
-            IDeletableEntityRepository<Listing> listingsRepository,
+            IRepository repository,
             IMapper mapper)
         {
-            this.clientsRepository = clientsRepository;
-            this.estatesRepository = estatesRepository;
-            this.listingsRepository = listingsRepository;
+            this.repository = repository;
+
             this.mapper = mapper;
         }
 
@@ -45,8 +40,8 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 
             var queryNormalized = request.Query.ToLower();
 
-            var clients = await clientsRepository
-                .AllAsNoTracking()
+            var clients = await repository
+                .All<Client>()
                 .Where(p => p.Client_Name
                     .ToLower()
                     .Contains(queryNormalized))
@@ -54,8 +49,8 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
                 .ProjectTo<ClientDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            var estates = await estatesRepository
-                .AllAsNoTracking()
+            var estates = await repository
+                .All<Estate>()
                 .Where(p => p.Estate_Name
                     .ToLower()
                     .Contains(queryNormalized))
@@ -63,8 +58,8 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
                 .ProjectTo<EstateDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            var listings = await listingsRepository
-              .AllAsNoTracking()
+            var listings = await repository
+              .All<Listing>()
               .Where(p => p.Name
                     .ToLower()
                     .Contains(queryNormalized))
