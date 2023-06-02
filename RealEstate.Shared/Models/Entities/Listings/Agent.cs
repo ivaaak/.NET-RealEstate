@@ -35,7 +35,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public Agency Agency { get; set; }
         public List<Listing> Listings { get; set; }
 
-
+        // IDeletableEntity
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
     }

@@ -19,6 +19,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public Listing Listing { get; set; }
 
 
+        // IDeletableEntity
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
     }

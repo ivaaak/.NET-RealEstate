@@ -65,6 +65,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public List<Review> Reviews { get; set; }
 
 
+        // IDeletableEntity
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
     }

@@ -23,12 +23,12 @@ namespace RealEstate.Shared.Models.Entities.Clients
 
         public Client Client { get; init; }
         public string Client_Id { get; init; }
-        //public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUser_Id { get; set; }
 
 
 
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

@@ -12,7 +12,10 @@ namespace RealEstate.Shared.Models.Entities.Contracts
         public string Contract_Type_Name { get; set; }
 
         public decimal Fee_Percentage { get; set; }
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

@@ -34,7 +34,8 @@ namespace RealEstate.Shared.Models.Entities.Users
         public virtual ICollection<UserRoleMapping> UserRoleMappings { get; set; }
 
 
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

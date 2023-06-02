@@ -18,11 +18,11 @@ namespace RealEstate.Shared.Models.Entities.Estates
 
         public IEnumerable<Estate> Estates { get; init; } = new List<Estate>();
 
-
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime? DeletedOn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Estate Estate { get; set; }
         public int Estate_Id { get; set; }
 
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

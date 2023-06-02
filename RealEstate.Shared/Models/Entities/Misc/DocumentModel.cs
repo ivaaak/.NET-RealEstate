@@ -1,9 +1,10 @@
 ﻿#nullable disable
+using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.Shared.Models.Entities.Misc
 {
-    public class DocumentModel
+    public class DocumentModel : IDeletableEntity
     {
         public int Id { get; set; }
 
@@ -29,5 +30,10 @@ namespace RealEstate.Shared.Models.Entities.Misc
             FileSize = 0;
             FileContent = null;
         }
+
+
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

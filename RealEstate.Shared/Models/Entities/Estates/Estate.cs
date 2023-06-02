@@ -41,6 +41,8 @@ namespace RealEstate.Shared.Models.Entities.Estates
         public string Listing_Id { get; set; }
         public Estate_Type Estate_Type { get; set; }
 
+
+        // IDeletableEntity
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
 
