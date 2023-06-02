@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using RealEstate.Shared.Models.Entities.BaseEntityModel;
+using System.Linq.Expressions;
 
 namespace RealEstate.Shared.Data.Repository
 {
@@ -25,17 +26,21 @@ namespace RealEstate.Shared.Data.Repository
 
         void UpdateRange<T>(IEnumerable<T> entities) where T : class;
 
-        Task DeleteAsync<T>(object id) where T : class;
-
         void Delete<T>(T entity) where T : class;
-
-        void DeleteRange<T>(IEnumerable<T> entities) where T : class;
-        void DeleteRange<T>(Expression<Func<T, bool>> deleteWhereClause) where T : class;
-
 
         void Detach<T>(T entity) where T : class;
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
+
+
+        // Soft Delete:
+        Task DeleteAsync<T>(object id) where T : class, IDeletableEntity;
+
+        void DeleteRange<T>(IEnumerable<T> entities) where T : class, IDeletableEntity;
+
+        void DeleteRange<T>(Expression<Func<T, bool>> deleteWhereClause) where T : class, IDeletableEntity;
+
+        Task UndeleteAsync<T>(object id) where T : class, IDeletableEntity;
     }
 }
