@@ -49,23 +49,22 @@ make compose
 -  [**✔**]  `Cloudinary.Net` for file upload/storage
 -  [**✔**]  `Swagger` / Swashbuckle API Docs
 -  [**✔**]  `Stripe` Payments API
--  [**✔**]  `Elasticsearch / Logstash / Kibana` - ELK stack for logging
--  [**✔**]  `Automapper`
+-  [**✔**]  `Elasticsearch / Logstash|Serilog / Kibana` - ELK stack for logging
+-  [**✔**]  `Automapper` 
 -  [**✔**]  `Nuke` Build Pipeline
 -  [**✔**]  `Keycloak` - Authentication / Authorization and User Management
 -  [**✔**]  `RabbitMQ / MassTransit` - Event Bus
 -  [**✔**]  `CI/CD Pipeline` with github actions
-
+-  [**✔**]  `Polly` Resilience - Persistance/Retries
+-  [**✔**]  `SonarAnalyzer + StyleCop` - Code quality gate
+-  [**✔**]  `CodeCov` - Code Coverage and Reports
 
 
 #### Not implemented yet / In Progress:
 -  A Scraper which takes listings from real sites
--  `Polly` Resilience - Persistance/Retries
 -  `HangFire` for task scheduling / background execution
 -  `Consul` - Service Discovery
 -  `Grafana + Prometheus` - Monitoring
--  `CodeCov` - Code Coverage and Reports
--  `SonarAnalyzer + StyleCop` - Code quality gate
 -  `Sieve` - Sorting and Filtering
 -  `Spectre Console`
 -  `Zipkin` - distributed tracing
@@ -74,7 +73,7 @@ make compose
 
 #### Future plans:
 -  `Camunda` - Orchestration and BPMN Engine
--  `Aggregator service` for fetching from multiple DBs
+-  `Aggregator service` - Data from multiple DBs / Microservices and transformations
 -  `Token Handler Middleware` which is used for the Keycloak Auth
 -  `MVC Versioning API` 
 -  `opentelemetry-dotnet`
