@@ -25,7 +25,7 @@ namespace ExternalAPIsMicroservice.Services
         }
 
 
-        public void ExtractWebsiteData()
+        public object ExtractWebsiteData()
         {
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
@@ -38,6 +38,15 @@ namespace ExternalAPIsMicroservice.Services
 
             var descriptionNode = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='descriptionClass']");
             var description = descriptionNode.InnerText.Trim();
+
+            var obj = new
+            {
+                PropertyName = propertyName,
+                Price = price,
+                Description = description
+            };
+
+            return obj;
         }
 
         public void Do()

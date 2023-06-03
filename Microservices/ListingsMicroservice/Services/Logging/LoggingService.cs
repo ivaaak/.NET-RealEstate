@@ -6,7 +6,7 @@ namespace ListingsMicroservice.Services.Logging
 {
     public class LoggingService
     {
-        private ElasticClient client = new ElasticClient(new Uri("http://localhost:9200"));
+        private readonly ElasticClient client = new ElasticClient(new Uri("http://localhost:9200"));
 
         /*
         public void CreateIndexAttempt()

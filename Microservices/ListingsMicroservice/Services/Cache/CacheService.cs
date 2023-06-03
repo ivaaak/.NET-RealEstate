@@ -75,7 +75,7 @@ namespace ListingsMicroservice.Services.Cache
         public IEnumerable<string> GetAllKeys()
         {
             var endpoints = _cache.Multiplexer.GetEndPoints();
-            var server = _cache.Multiplexer.GetServer(endpoints.First());
+            var server = _cache.Multiplexer.GetServer(endpoints[0]);
             var keys = server.Keys(_cache.Database);
             return keys.Select(x => x.ToString());
         }

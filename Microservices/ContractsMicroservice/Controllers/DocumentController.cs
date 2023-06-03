@@ -156,7 +156,7 @@ namespace ContractsMicroservice.Controllers
         {
             try
             {
-                var mimeType = GetContentTypeUtil(Path.GetExtension(fileName));
+                var mimeType = GetContentTypeUtil();
                 if (string.IsNullOrEmpty(mimeType))
                 {
                     throw new Exception($"Could not determine MIME type for file '{fileName}'");
@@ -178,7 +178,7 @@ namespace ContractsMicroservice.Controllers
         // http://localhost:9000/api/document/gethealth behind gateway
         public string getHealth() => "Contracts Microservice up and running";
 
-        static string GetContentTypeUtil(string fileName)
+        static string GetContentTypeUtil()
         {
             return System.Net.Mime.MediaTypeNames.Application.Octet;
         }

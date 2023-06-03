@@ -1,8 +1,6 @@
-﻿using Polly;
-
-namespace UtilitiesMicroservice.Services.Polly
+﻿namespace UtilitiesMicroservice.Services.Polly
 {
-    public class DbQueryPolicy
+    public interface IDbQueryPolicy
     {
         /*
         private static readonly Policy _policy = Policy

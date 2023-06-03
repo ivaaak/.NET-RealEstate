@@ -7,7 +7,7 @@ using Polly.Wrap;
 
 namespace UtilitiesMicroservice.Services.Polly
 {
-    public class Policies
+    public static class Policies
     {
         private static readonly Random jitterer = new Random();
 

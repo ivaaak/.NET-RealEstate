@@ -1,7 +1,6 @@
 ﻿using Polly;
 using Polly.Bulkhead;
 using Polly.CircuitBreaker;
-using Polly.Fallback;
 using Polly.Retry;
 
 namespace UtilitiesMicroservice.Services.Polly

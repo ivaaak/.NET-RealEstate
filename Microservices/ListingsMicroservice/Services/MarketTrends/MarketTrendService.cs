@@ -25,7 +25,7 @@ namespace ListingsMicroservice.Services.MarketTrends
             }
 
             // calculate the average price
-            decimal average = sum / (decimal)estates.Count();
+            decimal average = sum / (decimal)estates.Count;
 
             return average;
         }
@@ -43,7 +43,7 @@ namespace ListingsMicroservice.Services.MarketTrends
             }
 
             // calculate the average price
-            double average = sum / (double)estates.Count();
+            double average = sum / (double)estates.Count;
 
             return average;
         }

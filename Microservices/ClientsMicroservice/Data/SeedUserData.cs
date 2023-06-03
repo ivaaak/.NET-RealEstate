@@ -3,9 +3,9 @@ using MediatR;
 
 namespace ClientsMicroservice.Data
 {
-    public class SeedUserData
+    public static class SeedUserData
     {
-        public static async void EnsureSeedData(IServiceCollection services)
+        public static async Task EnsureSeedData(IServiceCollection services)
         {
             await using (var serviceProvider = services.BuildServiceProvider())
             {

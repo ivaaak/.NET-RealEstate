@@ -104,12 +104,12 @@ namespace ListingsMicroservice.Services.DocumentManagement
 
             if (string.IsNullOrEmpty(model.FileName))
             {
-                throw new ArgumentException("FileName cannot be null or empty", nameof(model.FileName));
+                throw new ArgumentException("FileName cannot be null or empty", nameof(model));
             }
 
             if (string.IsNullOrEmpty(model.ContentType))
             {
-                throw new ArgumentException("ContentType cannot be null or empty", nameof(model.ContentType));
+                throw new ArgumentException("ContentType cannot be null or empty", nameof(model));
             }
         }
 

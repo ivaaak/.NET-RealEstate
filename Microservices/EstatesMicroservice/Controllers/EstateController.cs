@@ -147,7 +147,7 @@ namespace EstatesMicroservice.Controllers
         {
             var result = await _estateService.UpdateEstate(id, estateObject);
 
-            if (result == false)
+            if (!result)
             {
                 _logger.LogError($"Estate with id: {id} not updated.");
                 return NotFound();
@@ -177,7 +177,7 @@ namespace EstatesMicroservice.Controllers
         {
             var result = await _estateService.SoftDeleteEstate(id);
 
-            if (result == false)
+            if (!result)
             {
                 _logger.LogError($"Estate with id: {id} not deleted.");
                 return NotFound();
@@ -207,7 +207,7 @@ namespace EstatesMicroservice.Controllers
         {
             var result = await _estateService.HardDeleteEstate(id);
 
-            if (result == false)
+            if (!result)
             {
                 _logger.LogError($"Estate with id: {id} not hard deleted.");
                 return NotFound();
@@ -236,7 +236,7 @@ namespace EstatesMicroservice.Controllers
         {
             var exists = _estateService.GetEstateById(id).Result != null;
 
-            if (exists == false)
+            if (!exists)
             {
                 _logger.LogError($"Estate with id: {id} not found.");
                 return NotFound();

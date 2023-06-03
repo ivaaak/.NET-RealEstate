@@ -1,6 +1,6 @@
 ﻿namespace ClientsMicroservice.Services
 {
-    public class ClientService
+    public interface IClientService
     {
     }
 }

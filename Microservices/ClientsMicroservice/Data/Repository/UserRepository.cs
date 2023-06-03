@@ -29,9 +29,9 @@ namespace ClientsMicroservice.Data.Repository
         }
 
 
-        public Task UpdateAsync(UserEntity userEntity)
+        public Task UpdateAsync(UserEntity user)
         {
-            _context.UserEntities.Update(userEntity);
+            _context.UserEntities.Update(user);
             return _context.SaveChangesAsync();
         }
 
@@ -41,9 +41,9 @@ namespace ClientsMicroservice.Data.Repository
         }
 
 
-        public async Task<UserEntity> FindByUsernameAsync(string username)
+        public async Task<UserEntity> FindByUsernameAsync(string name)
         {
-            return await _context.UserEntities.FirstOrDefaultAsync(x => x.Username == username);
+            return await _context.UserEntities.FirstOrDefaultAsync(x => x.Username == name);
         }
 
 

@@ -30,7 +30,7 @@ namespace ListingsMicroservice.Controllers
             ILogger<ListingController> logger, 
             IPublishEndpoint publishEndpoint)
         {
-            _listingService = listingService ?? throw new ArgumentNullException(nameof(_listingService));
+            _listingService = listingService ?? throw new ArgumentNullException(nameof(listingService));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
@@ -143,7 +143,7 @@ namespace ListingsMicroservice.Controllers
         {
             var result = await _listingService.UpdateListing(listingObject);
 
-            if (result == false)
+            if (!result)
             {
                 _logger.LogError($"Couldnt update Listing by ID {id}");
                 return NotFound(result);
@@ -232,7 +232,7 @@ namespace ListingsMicroservice.Controllers
         {
             var exists = _listingService.GetListingById(id).Result != null;
 
-            if (exists == false)
+            if (!exists)
             {
                 _logger.LogError($"Couldnt find Listing by ID {id}");
                 return NotFound(exists);

@@ -6,7 +6,7 @@
 
         void DownloadWebsiteString();
 
-        void ExtractWebsiteData();
+        object ExtractWebsiteData();
 
         void Do();
 

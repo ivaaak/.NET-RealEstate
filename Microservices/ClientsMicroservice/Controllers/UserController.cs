@@ -69,7 +69,7 @@ namespace ClientsMicroservice.Controllers
         {
             var userId = User.GetLoggedInUserId();
 
-            var response = await _userService.GetUserAttributesById(userId); ;
+            var response = await _userService.GetUserAttributesById(userId);
 
             return Ok(response);
         }

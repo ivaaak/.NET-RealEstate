@@ -2,7 +2,7 @@
 
 namespace UtilitiesMicroservice.Services.HangFire
 {
-    public class HangfireJobs
+    public static class HangfireJobs
     {
         public static void BackgroundJobsCollection()
         {

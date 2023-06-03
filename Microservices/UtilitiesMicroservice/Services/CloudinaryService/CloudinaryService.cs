@@ -13,17 +13,17 @@ namespace UtilitiesMicroservice.Services.CloudinaryService
         }
 
         public async Task<string> UploadImage(
-            IFormFile formFileObject,
+            IFormFile fileForm,
             string name,
             Transformation? transformation = null)
         {
-            formFileObject = formFileObject ?? throw new ArgumentNullException(nameof(formFileObject));
+            fileForm = fileForm ?? throw new ArgumentNullException(nameof(fileForm));
 
             byte[] imageFile;
 
             using (var memoryStream = new MemoryStream())
             {
-                await formFileObject.CopyToAsync(memoryStream);
+                await fileForm.CopyToAsync(memoryStream);
                 imageFile = memoryStream.ToArray();
             }
 

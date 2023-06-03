@@ -2,7 +2,7 @@
 
 namespace UtilitiesMicroservice.Services.CloudinaryService
 {
-    public class CloudinaryClientFactory
+    public static class CloudinaryClientFactory
     {
         public static Cloudinary GetInstance(IConfiguration configuration)
         {

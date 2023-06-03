@@ -6,7 +6,7 @@ namespace ListingsMicroservice.Services.Filtration
 {
     public class ListingFiltrationService : IFiltrationService
     {
-        public async Task<List<Listing>> FilterListings(IQueryable<Listing> listings, ListingFilter filter)
+        public async Task<List<Listing>> FilterListings(IQueryable<Listing> listings, ListingFilter filter, Listing x)
         {
             var query = listings;
 
