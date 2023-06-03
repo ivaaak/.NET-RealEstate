@@ -13,7 +13,7 @@ namespace RealEstate.Shared.Core.Configurations
         {
             string environment = Environment.GetEnvironmentVariable(nameof(Environment));
 
-            if (string.IsNullOrEmpty(environment) == true)
+            if (string.IsNullOrEmpty(environment))
             {
                 return EnvironmentConstants.Production;
             }
@@ -25,7 +25,7 @@ namespace RealEstate.Shared.Core.Configurations
         {
             string environment = GetEnvironment();
 
-            if (string.IsNullOrEmpty(environment) == true)
+            if (string.IsNullOrEmpty(environment))
             {
                 throw new ArgumentNullException(nameof(environment), "Current environment is not defined in config settings");
             }

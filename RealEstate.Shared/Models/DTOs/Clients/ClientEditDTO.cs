@@ -6,7 +6,6 @@ namespace RealEstate.Shared.Models.DTOs.Clients
 {
     public class ClientEditDTO
     {
-        //TODO add validations/annotations
         public string Client_Id { get; init; }
 
         public string Client_Name { get; init; }

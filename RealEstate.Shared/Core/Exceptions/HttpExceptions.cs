@@ -3,7 +3,7 @@ using System.Net;
 
 namespace RealEstate.Shared.Core.Exceptions
 {
-    public class HttpExceptions
+    public static class HttpExceptions
     {
         #region Client Errors
 

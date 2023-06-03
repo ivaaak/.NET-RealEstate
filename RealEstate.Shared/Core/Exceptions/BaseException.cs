@@ -2,8 +2,8 @@
 {
     public abstract class BaseException : Exception
     {
-        public BaseException() { }
+        private protected BaseException() { }
 
-        public BaseException(string message) : base(message) { }
+        private protected BaseException(string message) : base(message) { }
     }
 }

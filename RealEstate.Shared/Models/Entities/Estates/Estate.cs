@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RealEstate.Shared.Models.Entities.Estates
 {
     public class Estate : IDeletableEntity
-    //TODO: add properties/attributes
     {
         [Key]
         public string Id { get; init; }

@@ -56,11 +56,6 @@ namespace RealEstate.Shared.Data.Context
                     .UseNpgsql("");
             }
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
     }
     // Comment this class out when creating migrations or updating db so nothing is generated twice
 }

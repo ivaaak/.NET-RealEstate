@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 
 namespace RealEstate.Test.IntegrationTests.PublicAPIIntegrationTests
 {

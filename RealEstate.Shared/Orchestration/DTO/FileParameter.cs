@@ -27,7 +27,6 @@ namespace RealEstate.Shared.Orchestration.DTO
                 resourceAsBytearray = ms.ToArray();
             }
 
-            // TODO: Verify if this is the correct way of doing it:
             string assemblyBaseName = assembly.GetName().Name;
             string fileLocalName = resourcePath.Replace(assemblyBaseName + ".", "");
 

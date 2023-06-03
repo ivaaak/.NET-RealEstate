@@ -34,11 +34,5 @@ namespace RealEstate.Test._TestSetup.Data
                     .UseSqlServer(connection);
             }
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //TODO add entity relations
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RealEstate.Shared.Core.Configurations
 {
-    public class EnvironmentConstants
+    public static class EnvironmentConstants
     {
         public const string Local = "local";
 

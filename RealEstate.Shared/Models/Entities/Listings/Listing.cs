@@ -21,14 +21,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         public int Price { get; set; }
 
-        public double PricePerSquareMeter
-        {
-            get { return PricePerSquareMeter; }
-            set
-            {
-                if (value > 0 && Estate != null) { value = (double)(Price / Estate.Floor_Space_Square_Meters); }
-            }
-        }
+        public double PricePerSquareMeter { get; set; }
 
         public bool Is_From_An_Agency { get; set; }
 

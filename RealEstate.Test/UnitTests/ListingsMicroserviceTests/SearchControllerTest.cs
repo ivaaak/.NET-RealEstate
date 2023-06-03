@@ -11,7 +11,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
 {
     public class SearchControllerTest
     {
-        private Mock<IMediator> _mediator;
+        private readonly Mock<IMediator> _mediator;
 
         private SearchController controller;
 
@@ -167,7 +167,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
             var result = controller.ByParameters(city: null, minPrice: null, maxPrice: null, id: "1", name: null, sort: null).Result;
 
             // Assert
-            Assert.AreEqual("1", (result.Value as IEnumerable<Estate>).First().Id);
+            Assert.AreEqual("1", result.Value.First().Id);
         }
 
         [Fact]

@@ -3,7 +3,7 @@ using RealEstate.Shared.Models.Entities.Contracts;
 
 namespace RealEstate.Test._TestSetup.Data
 {
-    public class TestConstants
+    public static class TestConstants
     {
         public static Client client = new Client()
         {

@@ -9,15 +9,10 @@ namespace RealEstate.Shared.MediatR.Commands.Update
 
         public string Email { get; }
 
-        //public string Password { get; }
-
-
-        // TODO Update commands depending on the input fields 
-        public UpdateUserCommand(string username, string email, string password)
+        public UpdateUserCommand(string username, string email)
         {
             UserName = username;
             Email = email;
-            //Password = password;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Result
     {
-        private List<string> _errors;
+        private readonly List<string> _errors;
 
         public List<string> Errors => _errors;
 

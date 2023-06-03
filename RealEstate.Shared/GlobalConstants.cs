@@ -1,6 +1,6 @@
 ﻿namespace RealEstate.Shared
 {
-    public class GlobalConstants
+    public static class GlobalConstants
     {
         #region Environments
         public const string ENV_LOCAL = "Local";

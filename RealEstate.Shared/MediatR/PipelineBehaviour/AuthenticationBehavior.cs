@@ -38,7 +38,7 @@ namespace RealEstate.Shared.MediatR.PipelineBehaviour
 
             if (!user.Identity.IsAuthenticated ||
                 !user.IsInRole("admin") ||
-                !IsAuthorized((IRequest)request))
+                !IsAuthorized())
             {
                 throw new UnauthorizedAccessException();
             }
@@ -46,7 +46,7 @@ namespace RealEstate.Shared.MediatR.PipelineBehaviour
             return await next();
         }
 
-        private bool IsAuthorized(IRequest request)
+        private bool IsAuthorized()
         {
             var context = _httpContextAccessor.HttpContext;
 

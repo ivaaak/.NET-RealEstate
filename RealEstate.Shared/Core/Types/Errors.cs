@@ -1,6 +1,6 @@
 ﻿namespace RealEstate.Shared.Core.Types
 {
-    public class Errors
+    public static class Errors
     {
         public static string NullExceptionMessage(object value, string inputName) => $"{inputName} cannot be null";
 

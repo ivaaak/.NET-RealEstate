@@ -14,17 +14,18 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         private readonly CacheController _controller;
         private readonly IRepository _repository;
 
-        public CacheControllerTests()
+        public CacheControllerTests(IRepository repository)
         {
             // Set up the necessary dependencies for the controller
             var redisConnectionString = "localhost";
             var redis = ConnectionMultiplexer.Connect(redisConnectionString);
-            var cache = redis.GetDatabase();
-            _controller = new CacheController(repository: _repository, logger: null); ;
+            _ = redis.GetDatabase();
+            _repository = repository;
+            _controller = new CacheController(repository: _repository, logger: null);
         }
 
         [Fact]
-        public async void GetEstate_ReturnsOkResult()
+        public async Task GetEstateReturnsOkResult()
         {
             // Arrange
             var id = 1;
@@ -37,7 +38,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         }
 
         [Fact]
-        public async void GetEstate_ReturnsEstateObject()
+        public async Task GetEstateReturnsEstateObject()
         {
             // Arrange
             var id = 1;
@@ -50,7 +51,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         }
 
         [Fact]
-        public void GetCachedEstates_ReturnsOkResult()
+        public void GetCachedEstatesReturnsOkResult()
         {
             // Act
             var result = _controller.GetCachedEstates();
@@ -59,7 +60,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
             Assert.IsAssignableFrom<OkObjectResult>(result);
         }
         [Fact]
-        public void GetCachedEstates_ReturnsListOfEstates()
+        public void GetCachedEstatesReturnsListOfEstates()
         {
             // Act
             var result = _controller.GetCachedEstates() as OkObjectResult;
@@ -69,7 +70,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         }
 
         [Fact]
-        public void SetEstate_ReturnsOkResult()
+        public void SetEstateReturnsOkResult()
         {
             // Arrange
             var estate = new Estate();
@@ -82,7 +83,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         }
 
         [Fact]
-        public void SetEstate_SetsEstateInCache(IDatabase cache)
+        public void SetEstateSetsEstateInCache(IDatabase cache)
         {
             // Arrange
             var estate = new Estate();
@@ -97,7 +98,7 @@ namespace RealEstate.Test.UnitTests.UtilitiesMicroserviceTests
         }
 
         [Fact]
-        public void SetCachedEstates_ReturnsOkResult()
+        public void SetCachedEstatesReturnsOkResult()
         {
             // Arrange
             var estates = new List<Estate>

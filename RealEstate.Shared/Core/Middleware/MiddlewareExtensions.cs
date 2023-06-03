@@ -6,6 +6,5 @@ namespace RealEstate.Shared.Core.Middleware
     {
         public static IApplicationBuilder UseCustomMiddleware(this IApplicationBuilder builder)
             => builder.UseMiddleware<CustomExceptionHandler>();
-        //todo - add diff middlewares
     }
 }

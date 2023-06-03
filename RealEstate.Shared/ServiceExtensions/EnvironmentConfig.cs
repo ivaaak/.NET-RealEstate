@@ -51,7 +51,7 @@ namespace RealEstate.Shared.ServiceExtensions
 
         public static void LoadFromDifferentAssembly(MyEnvironment env, string assemblyFilePath)
         {
-            var assembly = Assembly.LoadFrom(assemblyFilePath);
+            var assembly = Assembly.Load(assemblyFilePath);
             var resourceName = "MyAssemblyName.connectionStrings.json";
             using var stream = assembly.GetManifestResourceStream(resourceName);
             if (stream == null)
