@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddRepositoriesAndContexts(builder.Configuration)
-    .AddSwaggerWithConfig("Contracts")
+    .AddSwaggerWithConfig("Listings")
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider()
     .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
@@ -22,7 +22,7 @@ builder.Services
 var app = builder.Build();
 
 app.UseSwaggerDevelopmentDocs("Listings");
-app.UseHttpsRedirection().UseAuthorization();
+app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
 

@@ -105,7 +105,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> listing Object </returns>
         [HttpGet]
-        [Route("/{id}")]
+        [Route("GetById/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Listing>> GetById(int id)
@@ -136,7 +136,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpPut]
-        [Route("/{id}")]
+        [Route("UpdateListing/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, ListingDTO listingObject)
@@ -166,7 +166,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok - result </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("Delete/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
@@ -196,7 +196,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok - result </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("HardDelete/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
@@ -225,7 +225,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> exists - boolean </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("ListingExists/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult<bool> ListingExists(int id)
@@ -255,7 +255,7 @@ namespace ListingsMicroservice.Controllers
         /// </remarks>
         /// <returns> collection of listing objects </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("Search/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public ActionResult<IEnumerable<ListingDTO>> Search(string searchTerm)

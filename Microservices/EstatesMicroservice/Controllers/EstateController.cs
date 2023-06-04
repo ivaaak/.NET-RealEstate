@@ -107,7 +107,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Estate Object </returns>
         [HttpGet]
-        [Route("/{id}")]
+        [Route("GetById/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult<EstateDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<EstateDTO>> GetById(int id)
@@ -140,7 +140,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok </returns>
         [HttpPut]
-        [Route("/{id}")]
+        [Route("Update/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, EstateDTO estateObject)
@@ -170,7 +170,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok - result </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("Delete/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Delete(int id)
@@ -200,7 +200,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> Ok - result </returns>
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("HardDelete/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> HardDelete(int id)
@@ -229,7 +229,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> exists - boolean </returns>
         [HttpGet]
-        [Route("/{id}")]
+        [Route("Exists/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ActionResult<bool>), (int)HttpStatusCode.OK)]
         public ActionResult<bool> Exists(int id)
@@ -259,7 +259,7 @@ namespace EstatesMicroservice.Controllers
         /// </remarks>
         /// <returns> collection of estate objects </returns>
         [HttpGet]
-        [Route("/{searchTerm}")]
+        [Route("Search/{searchTerm}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(IEnumerable<EstateDTO>), (int)HttpStatusCode.OK)]
         public ActionResult<IEnumerable<EstateDTO>> Search(string searchTerm)
@@ -280,6 +280,6 @@ namespace EstatesMicroservice.Controllers
         [AllowAnonymous]
         //http://localhost:9003/api/estate
         //http://localhost:9000/api/estate behind gateway
-        public string getHealth() => " Estates Microservice up and running";
+        public string getHealth() => "Estates Microservice up and running";
     }
 }
