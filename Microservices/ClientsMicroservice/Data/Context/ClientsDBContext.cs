@@ -9,8 +9,8 @@ namespace ClientsMicroservice.Data.Context
             : base(options) { }
 
         public DbSet<Client> Clients { get; set; }
-
         public DbSet<Contact> Contacts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

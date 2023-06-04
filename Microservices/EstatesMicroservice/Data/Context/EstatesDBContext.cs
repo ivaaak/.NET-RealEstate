@@ -11,17 +11,11 @@ namespace RealEstate.Shared.Data.Context
             : base(options) { }
 
         public DbSet<Estate> Estates { get; set; }
-
         public DbSet<Estate_Status> Estate_Statuses { get; set; }
-
         public DbSet<Estate_Type> Estate_Types { get; set; }
-
         public DbSet<In_Charge> In_Charges { get; set; }
-
         public DbSet<Country> Countries { get; set; }
-
         public DbSet<City> Cities { get; set; }
-
         public DbSet<Category> Categories { get; set; }
 
 

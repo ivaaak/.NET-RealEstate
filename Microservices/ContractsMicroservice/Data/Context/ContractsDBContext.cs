@@ -10,14 +10,15 @@ namespace ContractsMicroservice.Data.Context
             : base(options) { }
 
         public DbSet<Contract> Contracts { get; set; }
-
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Checklist> Checklists { get; set; }
+        public DbSet<Note> Notes { get; set; }
+        public DbSet<Project> Projects { get; set; }
         public DbSet<Contract_Invoice> Contract_Invoices { get; set; }
-
         public DbSet<Contract_Type> Contract_Type { get; set; }
-
         public DbSet<Payment_Frequency> Payment_Frequencies { get; set; }
-
         public DbSet<Under_Contract> Under_Contracts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -6,20 +6,12 @@ namespace ClientsMicroservice.Data.Context
 {
     public partial class UsersDBContext : DbContext
     {
-        public UsersDBContext()
-        {
-        }
-
-        public UsersDBContext(DbContextOptions<UsersDBContext> options)
-            : base(options)
-        {
-        }
-
         public virtual DbSet<UserEntity> UserEntities { get; set; }
         public virtual DbSet<UserAttribute> UserAttributes { get; set; }
         public virtual DbSet<UserGroupMembership> UserGroupMemberships { get; set; }
         public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
         public virtual DbSet<UsernameLoginFailure> UsernameLoginFailures { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

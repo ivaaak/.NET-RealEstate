@@ -26,6 +26,10 @@ namespace RealEstate.Shared.Data.Context
         public DbSet<Contract_Type> Contract_Type { get; set; }
         public DbSet<Payment_Frequency> Payment_Frequencies { get; set; }
         public DbSet<Under_Contract> Under_Contracts { get; set; }
+        public DbSet<Note> Notes { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Checklist> Checklists { get; set; }
 
         // Estates
         public DbSet<Estate> Estates { get; set; }
