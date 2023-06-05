@@ -14,6 +14,7 @@ namespace ListingsMicroservice.Controllers
     [Route("api/[controller]/[action]")]
     public class SearchController : ControllerBase
     {
+        // Add Filtration Service
         private readonly IMediator _mediator;
 
         private readonly ILogger<SearchController> _logger;

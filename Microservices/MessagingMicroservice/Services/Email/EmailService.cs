@@ -6,10 +6,11 @@ namespace MessagingMicroservice.Services.Email
     public class EmailService : IEmailService
     {
         private readonly SendGridClient _client;
+        private readonly string apiKey = "api-key-goes-here";
 
-        public EmailService(string apiKey)
+        public EmailService()
         {
-            _client = new SendGridClient(apiKey);
+            _client = new SendGridClient(this.apiKey);
         }
 
         // SEND EMAIL

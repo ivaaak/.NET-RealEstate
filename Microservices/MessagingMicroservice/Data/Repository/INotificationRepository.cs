@@ -1,4 +1,4 @@
-﻿namespace MessagingMicroservice.Services.Notification
+﻿namespace MessagingMicroservice.Data.Repository
 {
     public interface INotificationRepository
     {

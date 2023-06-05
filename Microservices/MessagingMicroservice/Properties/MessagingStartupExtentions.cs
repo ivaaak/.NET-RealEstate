@@ -1,4 +1,5 @@
-﻿using MessagingMicroservice.Services.Email;
+﻿using MessagingMicroservice.Data.Repository;
+using MessagingMicroservice.Services.Email;
 using MessagingMicroservice.Services.Notification;
 using RealEstate.Shared.Data.Repository;
 
@@ -13,7 +14,7 @@ namespace MessagingMicroservice.Properties
             services.AddTransient<INotificationService, NotificationService>();
 
             // Repositories
-            services.AddScoped<INotificationRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddScoped<IRepository, Repository>(); //base repo implementation
 
             return services;

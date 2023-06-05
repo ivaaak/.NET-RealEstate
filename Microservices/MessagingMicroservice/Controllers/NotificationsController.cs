@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 using MediatR;
-using MessagingMicroservice.Services.Notification;
+using MessagingMicroservice.Data.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
