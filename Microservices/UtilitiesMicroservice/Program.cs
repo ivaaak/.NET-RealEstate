@@ -17,13 +17,13 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider()
     .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
-    .AddHealthChecks();
+    .AddHealthCheckServices()
+    .AddSwaggerWithSchemaOptions(builder.Configuration);
 
 var app = builder.Build();
 
 app.UseSwaggerDevelopmentDocs("Utilities");
-app.UseHttpsRedirection().UseAuthorization();
+app.MapAndUseMultipleHealthChecks("/health");
 app.MapControllers();
-app.MapHealthChecks("/health");
 
 app.Run();
