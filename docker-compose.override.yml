@@ -20,11 +20,6 @@ services:
       - 9000:9000
     networks: 
       - backend 
-    depends_on:
-      - api.estates
-      - api.listings
-      - api.clients
-      - api.contracts
 
 
 # MICROSERVICES
@@ -39,8 +34,6 @@ services:
       - backend 
     ports:
       - 9001:9001
-    depends_on:
-      - db.clients
   
 # Contracts Microservice
   api.contracts:
@@ -53,8 +46,6 @@ services:
       - backend 
     ports:
       - 9002:9002
-    depends_on:
-      - db.contracts
 
 # Estates Microservice
   api.estates:
@@ -67,8 +58,6 @@ services:
       - backend 
     ports:
       - 9003:9003
-    depends_on:
-      - db.estates
 
 # External APIs Microservice :9004
   api.external:
@@ -82,9 +71,6 @@ services:
     ports:
       - 9004:9004
 
-  
-
-
 # Listings Microservice
   api.listings:
     container_name: api.listings
@@ -96,9 +82,31 @@ services:
       - backend 
     ports:
       - 9005:9005
-    depends_on:
-      - db.listings
-  
+
+# Messaging Microservice
+  api.messaging:
+    container_name: api.messaging
+    image: ${DOCKER_REGISTRY-}api.messaging
+    build:
+      context: .
+      dockerfile: Microservices/MessagingMicroservice/Dockerfile
+    networks: 
+      - backend 
+    ports:
+      - 9006:9006
+
+# Utilities Microservice
+  api.utilities:
+    container_name: api.utilities
+    image: ${DOCKER_REGISTRY-}api.utilities
+    build:
+      context: .
+      dockerfile: Microservices/UtilitiesMicroservice/Dockerfile
+    networks: 
+      - backend 
+    ports:
+      - 9007:9007
+
 
 
 # DATABASES: PostgreSQL + Keycloak + Redis

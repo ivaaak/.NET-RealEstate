@@ -6,8 +6,14 @@
     <ProjectGuid>362781b5-4c34-45b9-93e2-57f4c55bd4f9</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="docker-compose.microDB.yml">
+          <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
     <None Include="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
+          <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.unused.yml">     
+        <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />

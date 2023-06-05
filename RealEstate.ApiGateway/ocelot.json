@@ -69,6 +69,34 @@
       "UpstreamPathTemplate": "/api/listings/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
       "SwaggerKey": "ListingsMicroservice"
+    },
+    // MessagingMicroservice - 9006
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.messaging",
+          "Port": 9006
+        }
+      ],
+      "UpstreamPathTemplate": "/api/messaging/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "MessagingMicroservice"
+    },
+    // UtilitiesMicroservice - 9007
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.utilities",
+          "Port": 9007
+        }
+      ],
+      "UpstreamPathTemplate": "/api/utilities/{everything}",
+      "FileCacheOptions": { "TtlSeconds": 30 },
+      "SwaggerKey": "UtilitiesMicroservice"
     }
   ],
 
@@ -120,6 +148,26 @@
           "Name": "Gateway - ListingsMicroservice",
           "Version": "v1",
           "Url": "http://host.docker.internal:9005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "MessagingMicroservice",
+      "Config": [
+        {
+          "Name": "Gateway - MessagingMicroservice",
+          "Version": "v1",
+          "Url": "http://host.docker.internal:9006/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "UtilitiesMicroservice",
+      "Config": [
+        {
+          "Name": "Gateway - UtilitiesMicroservice",
+          "Version": "v1",
+          "Url": "http://host.docker.internal:9007/swagger/v1/swagger.json"
         }
       ]
     }

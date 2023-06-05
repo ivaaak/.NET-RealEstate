@@ -4,7 +4,6 @@ using Ocelot.Middleware;
 using Ocelot.Provider.Polly;
 using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Authorization;
-using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +19,7 @@ builder.AddSerilogElasticsearch();
 builder.Services.AddOcelot(builder.Configuration).AddPolly().AddCacheManager(s => s.WithDictionaryHandle());
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 builder.Services.AddCors().AddEndpointsApiExplorer();
-builder.Services.AddHealthCheckServices();
+
 builder.Services.AddElasticClientAndLoggingDelegateHandler();
 builder.Services.AddKeycloakAuthenticationConfigured(builder.Configuration);
 builder.Services.AddKeycloakAuthorizationConfigured(builder.Configuration);
@@ -35,7 +34,6 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-app.MapHealthChecks("/health");
 app.UseOcelot().Wait();
 
 app.Run();

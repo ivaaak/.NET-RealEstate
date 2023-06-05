@@ -1,0 +1,100 @@
+# =================== Unused / Testing Containers below ==========================
+
+# Keycloak using external Postgres DB:
+  #db.postgresql:
+  #  container_name: db.postgresql
+  #  image: postgres:13.3
+  #  environment:
+  #    POSTGRES_DB: "keycloak"
+  #    POSTGRES_USER: "keycloak"
+  #    POSTGRES_PASSWORD: "password"
+  #    PGDATA: "/var/lib/postgresql/data/pgdata"
+  #  volumes:
+  #    - ../2. Init Database:/docker-entrypoint-initdb.d
+  #    - .:/var/lib/postgresql/data
+  #  ports:
+  #    - "5432:5432"
+  #  restart: unless-stopped
+
+  #keycloak:
+  #  container_name: keycloak
+  #  image: quay.io/keycloak/keycloak:19.0.1
+  #  volumes:
+  #    - ./keycloak/imports:/keycloak/imports
+  #  environment:
+  #    KEYCLOAK_LOGLEVEL: DEBUG
+  #    ROOT_LOGLEVEL: DEBUG
+  #    # KEYCLOAK_IMPORT: /keycloak/imports/realm-export.json
+  #    DB_VENDOR: POSTGRES
+  #    DB_ADDR: db.postgresql
+  #    DB_DATABASE: keycloak
+  #    DB_USER: keycloak
+  #    DB_SCHEMA: public
+  #    DB_PASSWORD: password
+  #    KEYCLOAK_USER: admin
+  #    KEYCLOAK_PASSWORD: Pa55w0rd
+  #    # KEYCLOAK_FRONTEND_URL: http://keycloak.local.dev
+  #  ports:
+  #    - 8080:8080
+  #  depends_on:
+  #    - db.postgresql
+
+
+
+  ## MicroDatabases: Not keeping the MicroDBs / consolidating them into one
+#  db.estates:
+#    container_name: db.estates
+#    image: postgres:14.1-alpine
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=EstatesDB
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#    ports:
+#      - '5010:5010'
+
+#  db.contracts:
+#    container_name: db.ontracts
+#    image: postgres:14.1-alpine
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=ContractsDB
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#    ports:
+#      - '5013:5013'
+
+#  db.clients:
+#    container_name: db.clients
+#    image: postgres:14.1-alpine
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=ClientsDB
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#    ports:
+#      - '5012:5012'
+
+#  db.listings:
+#    container_name: db.listings
+#    image: postgres:14.1-alpine
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=ListingsDB
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#    ports:
+#      - '5011:5011'
+
+#  db.identity:
+#    container_name: db.identity
+#    image: postgres:14.1-alpine
+#    restart: always
+#    networks:
+#      - backend
+#    environment:
+#      - POSTGRES_DB=IdentityDB
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#    ports:
+#      - '5014:5014'

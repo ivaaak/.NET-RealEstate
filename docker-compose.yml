@@ -37,12 +37,24 @@ services:
     build:
       context: .
       dockerfile: Microservices/ContractsMicroservice/Dockerfile
-  
+ 
   api.external:
     image: ${DOCKER_REGISTRY-}api.external
     build:
       context: .
       dockerfile: Microservices/ExternalAPIsMicroservice/Dockerfile
+
+  api.messaging:
+    image: ${DOCKER_REGISTRY-}api.messaging
+    build:
+      context: .
+      dockerfile: Microservices/MessagingMicroservice/Dockerfile  
+
+  api.utilities:
+    image: ${DOCKER_REGISTRY-}api.utilities
+    build:
+      context: .
+      dockerfile: Microservices/UtilitiesMicroservice/Dockerfile
 
 # Utilities:
   util.rabbitmq:

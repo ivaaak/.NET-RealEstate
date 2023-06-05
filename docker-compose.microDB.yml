@@ -1,0 +1,30 @@
+version: '3.4'
+name: realestate-microdatabases
+
+services:
+# Databases + Keycloak
+  db.clients:
+    image: postgres
+
+  db.contracts:
+    image: postgres
+
+  db.estates:
+    image: postgres
+
+  db.listings:
+    image: postgres
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+
+  db.messages:
+    image: redis:alpine
+
+
+# Volumes - persist data from containers
+volumes:
+  clients_data:
+  contracts_data:
+  estates_data:
+  listings_data:

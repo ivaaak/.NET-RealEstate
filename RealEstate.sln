@@ -19,6 +19,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalAPIsMicroservice", "Microservices\ExternalAPIsMicroservice\ExternalAPIsMicroservice.csproj", "{5E60D210-9D53-4CBA-B39F-6ED091059DA9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagingMicroservice", "Microservices\MessagingMicroservice\MessagingMicroservice.csproj", "{F7842855-3F21-46B2-8801-C4FCF7756DC2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{30D53BF8-8DE4-4A75-8519-119266763293} = {30D53BF8-8DE4-4A75-8519-119266763293}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilitiesMicroservice", "Microservices\UtilitiesMicroservice\UtilitiesMicroservice.csproj", "{5CAAC822-3A93-4851-B056-D660C7E2EF70}"
 EndProject
