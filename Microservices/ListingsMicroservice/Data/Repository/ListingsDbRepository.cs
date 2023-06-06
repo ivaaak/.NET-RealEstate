@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Data.Context;
+﻿using ListingsMicroservice.Data.Context;
+using ListingsMicroservice.Data.Repository;
 
 namespace RealEstate.Shared.Data.Repository
 {
