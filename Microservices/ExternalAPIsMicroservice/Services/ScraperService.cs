@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using ExternalAPIsMicroservice.Services.Interfaces;
 using HtmlAgilityPack;
 using Npgsql;
 using System.Net;

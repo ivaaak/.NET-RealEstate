@@ -1,4 +1,4 @@
-﻿using EstatesMicroservice.Services;
+﻿using EstatesMicroservice.Services.Interfaces;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

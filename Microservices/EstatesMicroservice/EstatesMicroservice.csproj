@@ -35,6 +35,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RealEstate.ApiGateway\RealEstate.ApiGateway.csproj" />
     <ProjectReference Include="..\..\RealEstate.Shared\RealEstate.Shared.csproj" />
+    <ProjectReference Include="..\ClientsMicroservice\ClientsMicroservice.csproj" />
   </ItemGroup>
   <ItemGroup>
 	<None Include="appsettings.json" />

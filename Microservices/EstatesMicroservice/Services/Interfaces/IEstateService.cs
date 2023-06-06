@@ -1,7 +1,7 @@
 ﻿using RealEstate.Shared.Models.DTOs.Estates;
 using RealEstate.Shared.Models.Entities.Estates;
 
-namespace EstatesMicroservice.Services
+namespace EstatesMicroservice.Services.Interfaces
 {
     public interface IEstateService
     {

@@ -1,4 +1,5 @@
 ﻿using ExternalAPIsMicroservice.Services;
+using ExternalAPIsMicroservice.Services.Interfaces;
 using RealEstate.Shared.Data.Repository;
 using Stripe;
 

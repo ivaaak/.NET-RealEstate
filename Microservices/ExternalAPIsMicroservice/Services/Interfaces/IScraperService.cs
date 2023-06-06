@@ -1,4 +1,4 @@
-﻿namespace ExternalAPIsMicroservice.Services
+﻿namespace ExternalAPIsMicroservice.Services.Interfaces
 {
     public interface IScraperService
     {

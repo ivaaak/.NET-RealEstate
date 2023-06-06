@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using RealEstate.Shared.Models.Entities.Contracts;
+using RealEstate.Shared.Models.Entities.Estates;
+using RealEstate.Shared.Models.Entities.Listings;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,6 +39,8 @@ namespace RealEstate.Shared.Models.Entities.Clients
         public IEnumerable<Contract> Contracts { get; set; }
 
         public List<IdentityRole> Roles { get; set; }
+        public List<Estate> Estates { get; set; }
+        public List<Listing> Listings { get; set; }
 
 
         // IDeletableEntity

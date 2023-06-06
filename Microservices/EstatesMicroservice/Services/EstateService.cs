@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using EstatesMicroservice.Services.Interfaces;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.MediatR.BehaviorModels.ResponseModels;

@@ -1,4 +1,5 @@
 ﻿using EstatesMicroservice.Services;
+using EstatesMicroservice.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared;
 using RealEstate.Shared.Data.Context;

@@ -1,4 +1,4 @@
-﻿using ExternalAPIsMicroservice.Services;
+﻿using ExternalAPIsMicroservice.Services.Interfaces;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
