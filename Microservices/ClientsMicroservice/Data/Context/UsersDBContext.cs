@@ -13,6 +13,9 @@ namespace ClientsMicroservice.Data.Context
         public virtual DbSet<UsernameLoginFailure> UsernameLoginFailures { get; set; }
 
 
+        public UsersDBContext() { }
+        public UsersDBContext(DbContextOptions<UsersDBContext> options) : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

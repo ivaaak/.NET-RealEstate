@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ClientsMicroservice.Data.Repository;
+using ClientsMicroservice.Services.Interfaces;
 using RealEstate.Shared.Models.Entities.Users;
 
 namespace ClientsMicroservice.Services

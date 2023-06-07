@@ -1,5 +1,5 @@
 ﻿using ClientsMicroservice.Data;
-using ClientsMicroservice.Services;
+using ClientsMicroservice.Services.Interfaces;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

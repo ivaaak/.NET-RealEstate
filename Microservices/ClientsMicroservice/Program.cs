@@ -1,4 +1,5 @@
 using ClientsMicroservice.Properties;
+using Ocelot.Values;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -13,11 +14,13 @@ builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddRepositoriesAndContexts(builder.Configuration)
+    .AddKeycloakClientConfigured(builder.Configuration)
     .AddSwaggerWithConfig("Clients")
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider()
     .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
     .AddHealthChecks();
+
 
 var app = builder.Build();
 

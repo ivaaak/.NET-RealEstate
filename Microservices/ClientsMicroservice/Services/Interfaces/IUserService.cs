@@ -1,6 +1,6 @@
 ﻿using RealEstate.Shared.Models.Entities.Users;
 
-namespace ClientsMicroservice.Services
+namespace ClientsMicroservice.Services.Interfaces
 {
     public interface IUserService
     {
