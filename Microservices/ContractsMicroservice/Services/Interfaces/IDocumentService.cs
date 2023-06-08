@@ -1,6 +1,6 @@
 ﻿using RealEstate.Shared.Models.Entities.Misc;
 
-namespace ContractsMicroservice.Services
+namespace ContractsMicroservice.Services.Interfaces
 {
     /// <summary>
     /// Represents a service for managing documents.

@@ -1,4 +1,5 @@
-﻿using RealEstate.Shared.Data.Repository;
+﻿using ContractsMicroservice.Services.Interfaces;
+using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ContractsMicroservice.Services

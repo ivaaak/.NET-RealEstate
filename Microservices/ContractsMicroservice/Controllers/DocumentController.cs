@@ -1,4 +1,4 @@
-﻿using ContractsMicroservice.Services;
+﻿using ContractsMicroservice.Services.Interfaces;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -68,7 +68,7 @@ namespace ContractsMicroservice.Controllers
 
 
         [HttpGet]
-        [Route("/{userId}/{documentId}")]
+        [Route("DownloadDocument/{userId}/{documentId}")]
         public async Task<IActionResult> DownloadDocument(int userId, int documentId)
         {
             // Check if the user has the document
