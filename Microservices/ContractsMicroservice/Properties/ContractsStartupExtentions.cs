@@ -1,5 +1,6 @@
 ﻿using ContractsMicroservice.Data.Context;
 using ContractsMicroservice.Services;
+using ContractsMicroservice.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared;
 using RealEstate.Shared.Data.Repository;
@@ -12,6 +13,7 @@ namespace ContractsMicroservice.Properties
         {
             // Services
             services.AddTransient<IDocumentService, DocumentService>();
+            services.AddTransient<IChecklistService, ChecklistService>();
 
             // DbContexts using pooling for better performance
             services.AddDbContextPool<ContractsDBContext>(options => 
