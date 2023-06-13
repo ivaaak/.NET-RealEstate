@@ -1,5 +1,5 @@
 using ClientsMicroservice.Properties;
-using Ocelot.Values;
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -28,5 +28,5 @@ app.UseSwaggerDevelopmentDocs("Clients");
 app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
-
+ConsoleMessageUtil.MicroserviceStartupMessage("Clients");
 app.Run();

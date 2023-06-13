@@ -1,4 +1,5 @@
 using EstatesMicroservice.Properties;
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -25,5 +26,5 @@ app.UseSwaggerDevelopmentDocs("Estates");
 app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
-
+ConsoleMessageUtil.MicroserviceStartupMessage("Estates");
 app.Run();

@@ -1,3 +1,4 @@
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -25,5 +26,5 @@ var app = builder.Build();
 app.UseSwaggerDevelopmentDocs("Utilities");
 app.MapAndUseMultipleHealthChecks("/health");
 app.MapControllers();
-
+ConsoleMessageUtil.MicroserviceStartupMessage("Utilities");
 app.Run();

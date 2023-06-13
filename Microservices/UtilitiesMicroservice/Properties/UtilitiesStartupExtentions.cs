@@ -13,9 +13,12 @@ namespace UtilitiesMicroservice.Properties
         public static IServiceCollection AddRepositoriesAndContexts(this IServiceCollection services)
         {
             // Services
-            services.AddTransient<ICacheService, CacheService>();
+            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<string>("example");
+
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IFileUploadService, FileUploadService>();
+            services.AddSingleton<CloudinaryDotNet.Cloudinary>();
 
             // Repositories
             services.AddScoped<IRepository, Repository>(); //base repo implementation
@@ -23,8 +26,8 @@ namespace UtilitiesMicroservice.Properties
             return services;
         }
 
-
-        public static IServiceCollection AddRedisCache(this IServiceCollection services, IConfiguration configuration)
+        // unused
+        public static IServiceCollection AddRedisCache(this IServiceCollection services)
         {
             services.AddStackExchangeRedisCache(redisOptions =>
             {
@@ -36,30 +39,6 @@ namespace UtilitiesMicroservice.Properties
             return services;
         }
 
-        public static IServiceCollection AddHangfireWithPostgreSQLServer(
-            this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            /*
-            services.AddHangfire(config => config
-                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                .UseColouredConsoleLogProvider()
-                .UseSimpleAssemblyNameTypeSerializer()
-                .UseRecommendedSerializerSettings()
-                .UseSqlServerStorage(configuration.GetConnectionString(PostgreSQLConnectionString), new SqlServerStorageOptions
-                {
-                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                    QueuePollInterval = TimeSpan.Zero,
-                    UseRecommendedIsolationLevel = true,
-                    UsePageLocksOnDequeue = true,
-                    DisableGlobalLocks = true
-                }));
-           
-            services.AddHangfireServer();
-            */
-            return services;
-        }
         static void HangfireSettings()
         {
             GlobalConfiguration.Configuration

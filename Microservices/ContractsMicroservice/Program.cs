@@ -1,4 +1,5 @@
 using ContractsMicroservice.Properties;
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -25,5 +26,5 @@ app.UseSwaggerDevelopmentDocs("Contracts");
 app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
-
+ConsoleMessageUtil.MicroserviceStartupMessage("Contracts");
 app.Run();

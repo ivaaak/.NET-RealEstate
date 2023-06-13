@@ -1,4 +1,5 @@
 using MessagingMicroservice.Properties;
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
 using Serilog;
@@ -25,5 +26,5 @@ app.UseSwaggerDevelopmentDocs("Messaging");
 app.UseHttpsRedirection().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
-
+ConsoleMessageUtil.MicroserviceStartupMessage("Messaging");
 app.Run();
