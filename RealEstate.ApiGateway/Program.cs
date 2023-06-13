@@ -4,6 +4,7 @@ using Ocelot.Middleware;
 using Ocelot.Provider.Polly;
 using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Authorization;
+using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,4 +37,5 @@ app.UseAuthorization();
 app.MapControllers();
 app.UseOcelot().Wait();
 
+ConsoleMessageUtil.APIGatewayStartupMessage();
 app.Run();

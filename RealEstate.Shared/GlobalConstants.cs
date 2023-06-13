@@ -32,5 +32,16 @@
         public const string DELETED_SUCCESSFULLY_MSG = "has been deleted successfully!";
         public const string MODIFIED_SUCCESSFULLY_MSG = "has been modified successfully!";
         #endregion
+
+        #region Microservices Naming Scheme
+        public const string API_GATEWAY = "API Gateway";
+        public const string CLIENTS = "Clients";
+        public const string CONTRACTS = "Contracts";
+        public const string ESTATES = "Estates";
+        public const string EXTERNAL = "External APIs";
+        public const string LISTINGS = "Listings";
+        public const string MESSAGING = "Messaging";
+        public const string UTILITIES = "Utilities";
+        #endregion
     }
 }
