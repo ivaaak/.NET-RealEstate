@@ -14,6 +14,9 @@ namespace ContractsMicroservice.Properties
             // Services
             services.AddTransient<IDocumentService, DocumentService>();
             services.AddTransient<IChecklistService, ChecklistService>();
+            services.AddTransient<INoteService, NoteService>();
+            services.AddTransient<IOfferService, OfferService>();
+            services.AddTransient<IProjectService, ProjectService>();
 
             // DbContexts using pooling for better performance
             services.AddDbContextPool<ContractsDBContext>(options => 
