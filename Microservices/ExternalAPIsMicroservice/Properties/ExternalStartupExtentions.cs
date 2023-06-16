@@ -13,6 +13,11 @@ namespace ExternalAPIsMicroservice.Properties
             services.AddTransient<IPaymentService, PaymentService>();
             services.AddTransient<IScraperService, ScraperService>();
 
+            //
+            services.AddTransient<IZillowApiService, ZillowApiService>();
+            services.AddTransient<IZillowAgentService, ZillowAgentService>();
+            services.AddTransient<IZillowSimilarListingsService, ZillowSimilarListingsService>();
+
             // Repository
             services.AddScoped<IRepository, Repository>(); //base repo implementation
 
