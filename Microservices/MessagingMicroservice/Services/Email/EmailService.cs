@@ -1,5 +1,7 @@
-﻿using SendGrid;
+﻿using Hangfire;
+using SendGrid;
 using SendGrid.Helpers.Mail;
+using SendGrid.Helpers.Mail.Model;
 
 namespace MessagingMicroservice.Services.Email
 {
@@ -7,10 +9,12 @@ namespace MessagingMicroservice.Services.Email
     {
         private readonly SendGridClient _client;
         private readonly string apiKey = "api-key-goes-here";
+        private readonly IBackgroundJobClient _backgroundJobClient;
 
-        public EmailService()
+        public EmailService(IBackgroundJobClient backgroundJobClient)
         {
             _client = new SendGridClient(this.apiKey);
+            _backgroundJobClient = backgroundJobClient;
         }
 
         // SEND EMAIL
@@ -84,6 +88,12 @@ namespace MessagingMicroservice.Services.Email
             }
 
             await _client.SendEmailAsync(msg);
+        }
+
+        public void ScheduleNotification(SendGridMessage email, DateTime time)
+        {
+            // Use the IBackgroundJobClient instance to schedule the SendNotification method.
+            _backgroundJobClient.Schedule(() => SendEmailAsync(email.From.Name, email.ReplyTo.Email, email.Subject, email.HtmlContent), time);
         }
 
 

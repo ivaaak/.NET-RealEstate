@@ -18,6 +18,7 @@ builder.Services
     .AddRedisCacheWithConnectionString(builder)
     .AddMassTransitWithRabbitMQProvider()
     .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly))
+    .AddMediatRNotificationsConfigured()
     .AddHealthChecks();
 
 var app = builder.Build();

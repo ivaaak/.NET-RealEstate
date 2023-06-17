@@ -1,12 +1,12 @@
-﻿using MessagingMicroservice.Data.Repository;
+﻿using RealEstate.Shared.Data.Repository;
 
-namespace RealEstate.Shared.Data.Repository
+namespace MessagingMicroservice.Data.Repository
 {
-    public class NotificationRepository : Repository, INotificationRepository
+    public class NotificationRepository : INotificationRepository
     {
         public NotificationRepository()
         {
-            
+
         }
     }
 }
