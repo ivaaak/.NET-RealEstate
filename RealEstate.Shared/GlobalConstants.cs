@@ -2,6 +2,12 @@
 {
     public static class GlobalConstants
     {
+        #region API Keys
+        public const string STRIPE_API_KEY = "";
+        public const string CURRENCY_API_KEY = "";
+        public const string ZILLOW_API_KEY = "";
+        #endregion
+
         #region Environments
         public const string ENV_LOCAL = "Local";
         public const string ENV_DEVELOPMENT = "Development";

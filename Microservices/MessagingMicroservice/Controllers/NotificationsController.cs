@@ -1,8 +1,11 @@
 ﻿using MassTransit;
 using MediatR;
 using MessagingMicroservice.Data.Repository;
+using MessagingMicroservice.MediatR.Notifications.Estates;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.Shared.Models.Entities.Estates;
+using RealEstate.Shared.Models.Entities.Listings;
 
 namespace MessagingMicroservice.Controllers
 {
@@ -17,6 +20,7 @@ namespace MessagingMicroservice.Controllers
         private readonly INotificationRepository _notificationRepository;
 
         private readonly IMediator? _mediator;
+        private readonly IPublisher? _publisher;
 
         private readonly ILogger<NotificationsController> _logger;
 
@@ -25,84 +29,112 @@ namespace MessagingMicroservice.Controllers
         public NotificationsController(
             INotificationRepository notificationRepository,
             IMediator mediator,
+            IPublisher? publisher,
             ILogger<NotificationsController> logger,
             IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
-            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
-        /*
+
+        // MediatR Actions
         [HttpPost]
-        public async Task<ActionResult<CreateNotificationResponse>> CreateNotification(CreateNotificationRequest request)
+        public async Task<IActionResult> MediatRPostEstateNotification([FromBody] Estate estate)
         {
-            // Validate the request
-            if (!ModelState.IsValid)
+            var notification = new EstateNotification
             {
-                return BadRequest(ModelState);
-            }
-
-            // Create the notification object
-            var notification = new Notification
-            {
-                UserId = request.UserId,
-                Type = request.Type,
-                Title = request.Title,
-                Message = request.Message,
-                ScheduledDate = request.ScheduledDate,
-                CreatedDate = DateTime.UtcNow
+                Estate = estate,
+                NotificationMessage = $"Notification published to MediatR from the Notifications Controller"
             };
 
-            // Save the notification to the repository
-            await _notificationRepository.AddAsync(notification);
+            // Publish the estate notification using MediatR
+            await _mediator.Publish(notification);
 
-            // Return the response
-            return new CreateNotificationResponse
-            {
-                NotificationId = notification.Id
-            };
+            return Ok();
         }
 
-        [HttpGet]
-        public async Task<ActionResult<GetNotificationsResponse>> GetNotifications(string userId)
+        [HttpPost]
+        public async Task<IActionResult> MediatRPostListingNotification([FromBody] Listing listing)
         {
-            // Get the notifications for the specified user
-            var notifications = await _notificationRepository.GetByUserIdAsync(userId);
-
-            // Return the response
-            return new GetNotificationsResponse
+            var notification = new ListingNotification
             {
-                Notifications = notifications.Select(n => new NotificationDto
-                {
-                    Id = n.Id,
-                    Type = n.Type,
-                    Title = n.Title,
-                    ScheduledDate = n.ScheduledDate
-                }).ToList()
+                Listing = listing,
+                NotificationMessage = $"Notification published to MediatR from the Notifications Controller"
             };
+
+            // Publish the estate notification using MediatR
+            await _mediator.Publish(notification);
+
+            return Ok();
         }
 
-        [HttpDelete("{notificationId}")]
-        public async Task<ActionResult<DeleteNotificationResponse>> DeleteNotification(string notificationId)
+        // IPublisher Actions
+        [HttpPost]
+        public async Task<IActionResult> IPublisherPostEstateNotification([FromBody] Estate estate)
         {
-            // Get the notification
-            var notification = await _notificationRepository.GetByIdAsync(notificationId);
-            if (notification == null)
+            var notification = new EstateNotification
             {
-                return NotFound();
-            }
-
-            // Delete the notification from the repository
-            await _notificationRepository.DeleteAsync(notification);
-
-            // Return the response
-            return new DeleteNotificationResponse
-            {
-                NotificationId = notification.Id
+                Estate = estate,
+                NotificationMessage = $"Notification published to IPublisher from the Notifications Controller"
             };
+
+            // Publish the estate notification using MediatR
+            await _publisher.Publish(notification);
+
+            return Ok();
         }
-        */
+
+        [HttpPost]
+        public async Task<IActionResult> IPublisherPostListingNotification([FromBody] Listing listing)
+        {
+            var notification = new ListingNotification
+            {
+                Listing = listing,
+                NotificationMessage = $"Notification published to IPublisher from the Notifications Controller"
+            };
+
+            // Publish the estate notification using MediatR
+            await _publisher.Publish(notification);
+
+            return Ok();
+        }
+
+
+        // MassTransit Bus/Queue Actions:
+        [HttpPost]
+        public async Task<IActionResult> MassTransitPostEstateNotification([FromBody] Estate estate)
+        {
+            var notification = new EstateNotification
+            {
+                Estate = estate,
+                NotificationMessage = $"Notification published to MassTransit PublisherEndpoint from the Notifications Controller"
+            };
+
+            // Publish the estate notification using MediatR
+            await _publishEndpoint.Publish(notification);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MassTransitPostListingNotification([FromBody] Listing listing)
+        {
+            var notification = new ListingNotification
+            {
+                Listing = listing,
+                NotificationMessage = $"Notification published from the Notifications Controller"
+            };
+
+            // Publish the estate notification using MediatR
+            await _publishEndpoint.Publish(notification);
+
+            return Ok();
+        }
     }
 }
