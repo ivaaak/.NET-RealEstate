@@ -12,6 +12,7 @@ namespace ExternalAPIsMicroservice.Properties
             // Services
             services.AddTransient<IPaymentService, PaymentService>();
             services.AddTransient<IScraperService, ScraperService>();
+            services.AddSingleton<CurrencyConverterService>();
 
             //
             services.AddTransient<IZillowApiService, ZillowApiService>();
