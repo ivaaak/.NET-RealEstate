@@ -5,6 +5,7 @@
         #region API Keys
         public const string STRIPE_API_KEY = "";
         public const string CURRENCY_API_KEY = "";
+        public const string CRAFTMYPDF_API_KEY = "";
         public const string ZILLOW_API_KEY = "";
         #endregion
 
