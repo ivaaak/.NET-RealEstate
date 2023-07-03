@@ -85,4 +85,16 @@ make compose
 - xunit and NUnit
 - coverlet / CodeCov
 
-#### Roles :  Guest, User, Agent, Admin
+#### Roles :  Guest, User, Agent, Admin (Editable in the Keycloak client)
+
+#### Services / Utilities and where to find them:
+| Service: | Where to find it: | Description |
+| ------------- | ------------- | ------------- |
+| API Gateway Swagger | http://localhost:9000/swagger/index.html | Swagger pages for all microservices |
+| Microservice openapi.json | http://localhost:900X/swagger/v1/swagger.json | OpenAPI config for each service |
+| Microservice Swagger UI: | http://localhost:900X/swagger/index.html | Swagger interface for each service |
+| Keycloak Dashboard | http://localhost:8080/ | Keycloak UI for managing Users, Roles, Realms |
+| RabbitMQ Dashboard | http://localhost:15672/#/ | RabbitMQ UI for visualising queues/buses |
+| PgAdmin | http://localhost:5050/browser/ | In-Browser DB management |
+| Elasticsearch | http://localhost:9200/ | Elasticsearch instance config |
+| Kibana | http://localhost:5601/ | Kibana UI for elasticsearch/logging |
