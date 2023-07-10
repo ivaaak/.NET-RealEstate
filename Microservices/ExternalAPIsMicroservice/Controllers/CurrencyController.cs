@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ExternalAPIsMicroservice.Controllers
 {
-    [Route("api/currency")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CurrencyController : ControllerBase
     {
