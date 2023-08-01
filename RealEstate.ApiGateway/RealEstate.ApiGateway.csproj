@@ -25,7 +25,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
-    <PackageReference Include="MMLib.SwaggerForOcelot" Version="6.3.0" />
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="7.0.0" />
     <PackageReference Include="Ocelot" Version="19.0.2" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="18.0.0" />
     <PackageReference Include="Ocelot.Provider.Polly" Version="19.0.2" />
