@@ -29,7 +29,7 @@
     <PackageReference Include="Ocelot" Version="19.0.2" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="18.0.0" />
     <PackageReference Include="Ocelot.Provider.Polly" Version="19.0.2" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.2.0.71021">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.6.0.74858">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
