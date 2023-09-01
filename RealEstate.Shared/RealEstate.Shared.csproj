@@ -39,7 +39,7 @@
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.1" />
     <PackageReference Include="Serilog.Sinks.SpectreConsole" Version="0.3.3" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.2.0.71021">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.8.0.76515">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
