@@ -14,6 +14,8 @@ namespace EstatesMicroservice.Properties
             // Services
             services.AddTransient<IEstateService, EstateService>();
 
+            services.AddAutoMapper(typeof(Program));
+
             // DbContexts using pooling for better performance
             services.AddDbContextPool<EstatesDBContext>(options => 
                 options.UseNpgsql(GlobalConnectionStrings.Estates_MicroDB_Connection));

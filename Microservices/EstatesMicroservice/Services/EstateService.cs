@@ -1,4 +1,5 @@
-﻿using EstatesMicroservice.Services.Interfaces;
+﻿using AutoMapper;
+using EstatesMicroservice.Services.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
@@ -14,137 +15,79 @@ namespace EstatesMicroservice.Services
 {
     public class EstateService : IEstateService
     {
-        private readonly IRepository repo;
+        private readonly IRepository repository;
 
-        private IMediator mediator;
+        private readonly IMapper mapper;
+
+        private readonly IMediator mediator;
 
         public EstateService(
-            IRepository _repo,
-            IMediator _mediator)
+            IRepository repository,
+            IMapper mapper,
+            IMediator mediator)
         {
-            repo = _repo;
-            mediator = _mediator;
+            this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
+
 
         // CREATE
         public async Task Create(Estate model)
         {
-            await repo.AddAsync(model);
+            await repository.AddAsync(model);
         }
 
         // GET BY ID
         public async Task<Estate> GetEstateById(int id)
         {
-            return await repo.GetByIdAsync<Estate>(id);
+            return await repository.GetByIdAsync<Estate>(id);
         }
 
         // GET FOR EDIT
         public async Task<EstateDTO> GetEstateForEdit(int id)
         {
-            var estate = await repo.GetByIdAsync<Estate>(id);
+            var estate = await repository.GetByIdAsync<Estate>(id);
 
-            return new EstateDTO()
-            {
-                Id = estate.Id,
-                Estate_Name = estate.Estate_Name,
-                City_Id = estate.City_Id,
-                City = estate.City,
-                Estate_Type_Id = estate.Estate_Type_Id,
-                Floor_Space = estate.Floor_Space_Square_Meters,
-                Number_Of_Balconies = estate.Number_Of_Balconies,
-                Balconies_Space = estate.Balconies_Space,
-                Number_Of_Bedrooms = estate.Number_Of_Bedrooms,
-                Number_Of_Bathrooms = estate.Number_Of_Bathrooms,
-                Number_Of_Garages = estate.Number_Of_Garages,
-                Number_Of_Parking_Spaces = estate.Number_Of_Parking_Spaces,
-                Pets_Allowed = estate.Pets_Allowed,
-                Estate_Description = estate.Estate_Description,
-                Estate_Status_Id = estate.Estate_Status_Id,
-                Estate_ImageUrl = estate.Estate_ImageUrl,
-                Estate_Year_Built = estate.Estate_Year_Built,
-                Estate_Year_Listed = estate.Estate_Year_Listed,
-                Listing = estate.Listing,
-                Estate_Type = estate.Estate_Type,
-            };
+            return mapper.Map<EstateDTO>(estate);
         }
 
         // GET ALL
         public async Task<IEnumerable<EstateDTO>> GetEstates()
         {
-            return await repo.All<Estate>()
-            .Select(e => new EstateDTO()
-            {
-                Id = e.Id,
-                Estate_Name = e.Estate_Name,
-                City_Id = e.City_Id,
-                City = e.City,
-                Estate_Type_Id = e.Estate_Type_Id,
-                Floor_Space = e.Floor_Space_Square_Meters,
-                Number_Of_Balconies = e.Number_Of_Balconies,
-                Balconies_Space = e.Balconies_Space,
-                Number_Of_Bedrooms = e.Number_Of_Bedrooms,
-                Number_Of_Bathrooms = e.Number_Of_Bathrooms,
-                Number_Of_Garages = e.Number_Of_Garages,
-                Number_Of_Parking_Spaces = e.Number_Of_Parking_Spaces,
-                Pets_Allowed = e.Pets_Allowed,
-                Estate_Description = e.Estate_Description,
-                Estate_Status_Id = e.Estate_Status_Id,
-                Estate_ImageUrl = e.Estate_ImageUrl,
-                Estate_Year_Built = e.Estate_Year_Built,
-                Estate_Year_Listed = e.Estate_Year_Listed,
-                Listing = e.Listing,
-                Estate_Type = e.Estate_Type,
-            })
-            .ToListAsync();
+            var estates = await repository.All<Estate>().ToListAsync();
+
+            return mapper.Map<IEnumerable<EstateDTO>>(estates);
         }
 
         // UPDATE
         public async Task<bool> UpdateEstate(int id, EstateDTO model)
         {
-            bool result = false;
             // Search for the model using the id
-            var estate = await repo.GetByIdAsync<Estate>(id);
+            var estate = await repository.GetByIdAsync<Estate>(id);
 
             if (estate != null)
             {
-                // Set the props to the new model
-                estate.Estate_Name = model.Estate_Name;
-                estate.City_Id = model.City_Id;
-                estate.City = model.City;
-                estate.Estate_Type_Id = model.Estate_Type_Id;
-                estate.Floor_Space_Square_Meters = model.Floor_Space;
-                estate.Number_Of_Balconies = model.Number_Of_Balconies;
-                estate.Balconies_Space = model.Balconies_Space;
-                estate.Number_Of_Bedrooms = model.Number_Of_Bedrooms;
-                estate.Number_Of_Bathrooms = model.Number_Of_Bathrooms;
-                estate.Number_Of_Garages = model.Number_Of_Garages;
-                estate.Number_Of_Parking_Spaces = model.Number_Of_Parking_Spaces;
-                estate.Pets_Allowed = model.Pets_Allowed;
-                estate.Estate_Description = model.Estate_Description;
-                estate.Estate_Status_Id = model.Estate_Status_Id;
-                estate.Estate_ImageUrl = model.Estate_ImageUrl;
-                estate.Estate_Year_Built = model.Estate_Year_Built;
-                estate.Estate_Year_Listed = model.Estate_Year_Listed;
-                estate.Listing = model.Listing;
-                estate.Estate_Type = model.Estate_Type;
+                // Use AutoMapper to map properties from model to estate
+                mapper.Map(model, estate);
 
-                await repo.SaveChangesAsync();
-                result = true;
+                await repository.SaveChangesAsync();
+                return true;
             }
 
-            return result;
+            return false;
         }
 
         // HARD DELETE
         public async Task<bool> HardDeleteEstate(int id)
         {
             bool result = false;
-            var estate = await repo.GetByIdAsync<Estate>(id);
+            var estate = await repository.GetByIdAsync<Estate>(id);
 
             if (estate != null)
             {
-                repo.Delete(estate);
-                await repo.SaveChangesAsync();
+                repository.Delete(estate);
+                await repository.SaveChangesAsync();
                 result = true;
             }
 
@@ -155,13 +98,13 @@ namespace EstatesMicroservice.Services
         public async Task<bool> SoftDeleteEstate(int id)
         {
             bool result = false;
-            var estate = await repo.GetByIdAsync<Estate>(id);
+            var estate = await repository.GetByIdAsync<Estate>(id);
 
             if (estate != null)
             {
                 estate.IsDeleted = true;
                 estate.DeletedOn = DateTime.UtcNow;
-                await repo.SaveChangesAsync();
+                await repository.SaveChangesAsync();
                 result = true;
             }
 
@@ -171,39 +114,32 @@ namespace EstatesMicroservice.Services
         // SEARCH
         public async Task<IEnumerable<EstateDTO>> SearchEstates(string searchTerm)
         {
-            return await repo.All<Estate>()
-            .Where(e =>
-                e.Estate_Name.Contains(searchTerm) ||
-                e.Estate_Description.Contains(searchTerm) ||
-                e.Estate_Type.Type_Name.Contains(searchTerm) ||
-                e.Listing.Name.Contains(searchTerm))
-            .Select(e => new EstateDTO()
-            {
-                Id = e.Id,
-                Estate_Name = e.Estate_Name,
-                City_Id = e.City_Id,
-                City = e.City,
-                Estate_Type_Id = e.Estate_Type_Id,
-                Floor_Space = e.Floor_Space_Square_Meters,
-                Number_Of_Balconies = e.Number_Of_Balconies,
-                Balconies_Space = e.Balconies_Space,
-                Number_Of_Bedrooms = e.Number_Of_Bedrooms,
-                Number_Of_Bathrooms = e.Number_Of_Bathrooms,
-                Number_Of_Garages = e.Number_Of_Garages,
-                Number_Of_Parking_Spaces = e.Number_Of_Parking_Spaces,
-                Pets_Allowed = e.Pets_Allowed,
-                Estate_Description = e.Estate_Description,
-                Estate_Status_Id = e.Estate_Status_Id,
-                Estate_ImageUrl = e.Estate_ImageUrl,
-                Estate_Year_Built = e.Estate_Year_Built,
-                Estate_Year_Listed = e.Estate_Year_Listed,
-                Listing = e.Listing,
-                Estate_Type = e.Estate_Type,
-            })
-            .ToListAsync();
+            var estates = await repository.All<Estate>()
+                .Where(e =>
+                    e.Estate_Name.Contains(searchTerm) ||
+                    e.Estate_Description.Contains(searchTerm) ||
+                    e.Estate_Type.Type_Name.Contains(searchTerm) ||
+                    e.Listing.Name.Contains(searchTerm))
+                .ToListAsync();
+
+            return mapper.Map<IEnumerable<EstateDTO>>(estates);
         }
 
-        // MEDIATOR 
+        // SEARCH ASYNC Method
+        public async Task<IEnumerable<EstateDTO>> SearchEstatesAsync(string searchTerm)
+        {
+            var estates = await repository.All<Estate>()
+                .Where(e =>
+                    e.Estate_Name.Contains(searchTerm) ||
+                    e.Estate_Description.Contains(searchTerm) ||
+                    e.Estate_Type.Type_Name.Contains(searchTerm) ||
+                    e.Listing.Name.Contains(searchTerm))
+                .ToListAsync();
+
+            return estates.Select(e => mapper.Map<EstateDTO>(e));
+        }
+
+    // MEDIATOR 
 
         // MEDIATOR CREATE ESTATE
         public async Task<Response> MediatorCreateEstate(Estate estate)
