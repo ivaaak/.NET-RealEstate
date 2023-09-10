@@ -21,7 +21,7 @@ namespace EstatesMicroservice.Controllers
     public class EstateController : ControllerBase
     {
         private readonly IEstateService _estateService;
-        //private readonly IEstateQueryService _estateQueryService;
+        private readonly IEstateQueryService _estateQueryService;
         private readonly IMediator _mediator;
         private readonly ILogger<EstateController> _logger;
         private readonly IPublishEndpoint _publishEndpoint;
@@ -31,13 +31,13 @@ namespace EstatesMicroservice.Controllers
         /// </summary>
         public EstateController(
             IEstateService estateService,
-            //IEstateQueryService estateQueryService,
+            IEstateQueryService estateQueryService,
             IMediator mediator,
             ILogger<EstateController> logger,
             IPublishEndpoint publishEndpoint)
         {
             _estateService = estateService ?? throw new ArgumentNullException(nameof(estateService));
-            //_estateQueryService = estateQueryService ?? throw new ArgumentNullException(nameof(estateQueryService));
+            _estateQueryService = estateQueryService ?? throw new ArgumentNullException(nameof(estateQueryService));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
@@ -249,6 +249,24 @@ namespace EstatesMicroservice.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Returns a collection of estates which are filtered, sorted and paginated
+        /// </summary>
+        /// <param name="searchTerm">The search keyword (string).</param>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/estate/search
+        ///
+        /// </remarks>
+        [HttpPost("search")]
+        [ProducesResponseType(typeof(PagedResult<EstateDTO>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PagedResult<EstateDTO>>> Search([FromBody] SearchCriteriaObject criteria)
+        {
+            var result = await _estateQueryService.FindByCriteriaAsync(criteria);
+
+            return Ok(result);
+        }
 
         /// <summary>
         /// Returns a health status message for the microservice.
