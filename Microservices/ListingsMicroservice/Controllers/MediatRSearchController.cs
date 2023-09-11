@@ -12,18 +12,18 @@ namespace ListingsMicroservice.Controllers
     [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/[controller]/[action]")]
-    public class SearchController : ControllerBase
+    public class MediatRSearchController : ControllerBase
     {
         // Add Filtration Service
         private readonly IMediator _mediator;
 
-        private readonly ILogger<SearchController> _logger;
+        private readonly ILogger<MediatRSearchController> _logger;
 
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public SearchController(
+        public MediatRSearchController(
             IMediator mediator,
-            ILogger<SearchController> logger, 
+            ILogger<MediatRSearchController> logger, 
             IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));

@@ -241,36 +241,6 @@ namespace ListingsMicroservice.Controllers
             return Ok(exists);
         }
 
-
-        // SEARCH: api/listing/search/2-bedroom
-        /// <summary>
-        /// Returns a collection of listings which contain the search keyword.
-        /// </summary>
-        /// <param name="searchTerm"> searchTerm - keyword (string) </param>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     Put /api/listing/exists/5
-        ///
-        /// </remarks>
-        /// <returns> collection of listing objects </returns>
-        [HttpDelete]
-        [Route("Search/{id}")]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ActionResult), (int)HttpStatusCode.OK)]
-        public ActionResult<IEnumerable<ListingDTO>> Search(string searchTerm)
-        {
-            var result = _listingService.SearchListings(searchTerm).Result;
-
-            if (result == null)
-            {
-                _logger.LogError($"Couldnt find Listing by searchTerm {searchTerm}");
-                return NotFound(result);
-            }
-
-            return Ok(result);
-        }
-
         [HttpGet]
         [AllowAnonymous]
         //http://localhost:9005/api/listings/gethealth
