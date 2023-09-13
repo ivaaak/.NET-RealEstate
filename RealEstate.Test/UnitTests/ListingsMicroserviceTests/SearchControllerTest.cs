@@ -13,7 +13,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
     {
         private readonly Mock<IMediator> _mediator;
 
-        private SearchController controller;
+        private MediatRSearchController controller;
 
         public SearchControllerTest()
         {
@@ -21,7 +21,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
             _mediator = new Mock<IMediator>();
 
             // Set up the controller
-            controller = new SearchController(mediator: null, logger: null, publishEndpoint: null);
+            controller = new MediatRSearchController(mediator: null, logger: null, publishEndpoint: null);
         }
 
 
