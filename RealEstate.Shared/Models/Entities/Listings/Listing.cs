@@ -9,7 +9,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
     public class Listing : IDeletableEntity
     {
         [Key]
-        public string Listing_Id { get; init; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 

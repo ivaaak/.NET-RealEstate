@@ -31,7 +31,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 
             var userViewModel = new ClientDTO
             {
-                Client_Id = foundUser.Client_Id,
+                Id = foundUser.Id,
                 Client_Name = foundUser.Client_Name,
                 Client_Details = foundUser.Client_Details,
                 EMail = foundUser.EMail,

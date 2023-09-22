@@ -26,38 +26,46 @@ namespace RealEstate.Shared.Data.Repository
             await DbSet<T>().AddRangeAsync(entities);
         }
 
-// Get All Methods
-        public IQueryable<T> All<T>() where T : class
-        {
-            return DbSet<T>().AsQueryable();
-        }
-
-        public IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class
-        {
-            return DbSet<T>().Where(search).AsQueryable();
-        }
-
-        public IQueryable<T> AllReadonly<T>() where T : class
+// Get All Methods with Soft Delete
+        public IQueryable<T> All<T>() where T : class, IDeletableEntity
         {
             return DbSet<T>()
+                .Where(e => !e.IsDeleted)
+                .AsQueryable();
+        }
+
+        public IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class, IDeletableEntity
+        {
+            return DbSet<T>()
+                .Where(e => !e.IsDeleted)
+                .Where(search)
+                .AsQueryable();
+        }
+
+        public IQueryable<T> AllReadonly<T>() where T : class, IDeletableEntity
+        {
+            return DbSet<T>()
+                .Where(e => !e.IsDeleted)
                 .AsQueryable()
                 .AsNoTracking();
         }
-        public IQueryable<T> AllReadonly<T>(Expression<Func<T, bool>> search) where T : class
+
+        public IQueryable<T> AllReadonly<T>(Expression<Func<T, bool>> search) where T : class, IDeletableEntity
         {
             return DbSet<T>()
+                .Where(e => !e.IsDeleted)
                 .Where(search)
                 .AsQueryable()
                 .AsNoTracking();
         }
 
 // Get All Methods
-        public async Task<T> GetByIdAsync<T>(object id) where T : class
+        public async Task<T> GetByIdAsync<T>(object id) where T : class, IDeletableEntity
         {
             return await DbSet<T>().FindAsync(id);
         }
 
-        public async Task<T> GetByIdsAsync<T>(object[] id) where T : class
+        public async Task<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity
         {
             return await DbSet<T>().FindAsync(id);
         }

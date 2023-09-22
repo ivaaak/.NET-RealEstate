@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class In_Charge : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; set; }
 
         public int Estate_Id { get; init; }
 

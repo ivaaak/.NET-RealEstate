@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
     public class Review : IDeletableEntity
     {
         [Key]
-        public string Review_Id { get; init; }
+        public string Id { get; set; }
 
         public string Review_Title { get; set; }
 

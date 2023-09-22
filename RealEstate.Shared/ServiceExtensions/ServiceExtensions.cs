@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using RealEstate.Shared.Data.Cache;
 
 namespace RealEstate.Shared.ServiceExtensions
 {
@@ -39,6 +40,8 @@ namespace RealEstate.Shared.ServiceExtensions
             {
                 options.Configuration = GlobalConnectionStrings.Redis_Connection;
             });
+
+            services.AddTransient<ICacheService, CacheService>();
 
             return services;
         }

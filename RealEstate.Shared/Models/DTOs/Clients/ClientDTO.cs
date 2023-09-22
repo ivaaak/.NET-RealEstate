@@ -8,7 +8,7 @@ namespace RealEstate.Shared.Models.DTOs.Clients
 {
     public class ClientDTO : IMapFrom<Client>, IHasCustomMapping
     {
-        public string Client_Id { get; init; }
+        public string Id { get; init; }
 
         public string Client_Name { get; init; }
 

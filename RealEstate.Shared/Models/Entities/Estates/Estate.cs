@@ -9,7 +9,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class Estate : IDeletableEntity
     {
         [Key]
-        public string Id { get; init; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(100)]

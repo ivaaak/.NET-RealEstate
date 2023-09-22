@@ -17,7 +17,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
         }
 
         [Key]
-        public string Company_Id { get; init; }
+        public string Id { get; set; }
 
         public string Company_Name { get; init; }
 

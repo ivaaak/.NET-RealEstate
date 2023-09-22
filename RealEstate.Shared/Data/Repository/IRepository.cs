@@ -5,24 +5,23 @@ namespace RealEstate.Shared.Data.Repository
 {
     public interface IRepository : IDisposable
     {
-        IQueryable<T> All<T>() where T : class;
+        IQueryable<T> All<T>() where T : class, IDeletableEntity;
 
+        IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class, IDeletableEntity;
 
-        IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class;
+        IQueryable<T> AllReadonly<T>() where T : class, IDeletableEntity;
 
-        IQueryable<T> AllReadonly<T>() where T : class;
+        IQueryable<T> AllReadonly<T>(Expression<Func<T, bool>> search) where T : class, IDeletableEntity;
 
-        IQueryable<T> AllReadonly<T>(Expression<Func<T, bool>> search) where T : class;
+        Task<T> GetByIdAsync<T>(object id) where T : class, IDeletableEntity;
 
-        Task<T> GetByIdAsync<T>(object id) where T : class;
-
-        Task<T> GetByIdsAsync<T>(object[] id) where T : class;
+        Task<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity;
 
         Task AddAsync<T>(T entity) where T : class;
 
         Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class;
 
-        void Update<T>(T entity) where T : class;
+        void Update<T>(T entity) where T : class; // softdelete check here?
 
         void UpdateRange<T>(IEnumerable<T> entities) where T : class;
 
@@ -31,6 +30,7 @@ namespace RealEstate.Shared.Data.Repository
         void Detach<T>(T entity) where T : class;
 
         int SaveChanges();
+
         Task<int> SaveChangesAsync();
 
 

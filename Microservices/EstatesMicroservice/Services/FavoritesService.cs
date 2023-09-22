@@ -86,7 +86,7 @@ namespace EstatesMicroservice.Services
 
             if (client != null)
             {
-                var listingToRemove = client.Listings.Find(listing => listing.Listing_Id == listingId);
+                var listingToRemove = client.Listings.Find(listing => listing.Id == listingId);
                 if (listingToRemove != null)
                 {
                     client.Listings.Remove(listingToRemove);
@@ -105,7 +105,7 @@ namespace EstatesMicroservice.Services
 
             if (client != null)
             {
-                return client.Listings.Exists(listing => listing.Listing_Id == listingId);
+                return client.Listings.Exists(listing => listing.Id == listingId);
             }
 
             return false;

@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Contracts
     public class Contract_Invoice : IDeletableEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Contract_Invoice_Name { get; set; }
 

@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class Estate_Status : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; set; }
 
         public string Estate_Status_Name { get; init; }
 

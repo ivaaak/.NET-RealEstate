@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
     public class Comment : IDeletableEntity
     {
         [Key]
-        public string Comment_Id { get; init; }
+        public string Id { get; set; }
 
         public string Comment_Title { get; set; }
 

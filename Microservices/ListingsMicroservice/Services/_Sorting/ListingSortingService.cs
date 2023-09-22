@@ -11,7 +11,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Listing> SortById(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderBy(e => e.Listing_Id)
+                .OrderBy(e => e.Id)
                 .ToList();
 
             return sortedListings;
@@ -19,7 +19,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Listing> SortByIdDescending(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderByDescending(e => e.Listing_Id)
+                .OrderByDescending(e => e.Id)
                 .ToList();
 
             return sortedListings;

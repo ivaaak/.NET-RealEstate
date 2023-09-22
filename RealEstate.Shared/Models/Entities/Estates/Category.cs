@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class Category : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; set; }
 
         [Required]
         [MaxLength(100)]

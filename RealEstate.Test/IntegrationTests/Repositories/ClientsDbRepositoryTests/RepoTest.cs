@@ -32,11 +32,11 @@ namespace RealEstate.Test.IntegrationTests.Repositories.ClientsDbRepositoryTests
             };
             _clientsContext.Clients.Add(existingClient);
             _clientsContext.SaveChanges();
-            string clientId = existingClient.Client_Id;
+            string clientId = existingClient.Id;
             _output.WriteLine($"clientId: {clientId}");
 
             var clientFromRepo = await _clientsRepository.GetByIdAsync<Client>(clientId);
-            Assert.AreEqual("thing", clientFromRepo.Client_Id);
+            Assert.AreEqual("thing", clientFromRepo.Id);
         }
     }
 }

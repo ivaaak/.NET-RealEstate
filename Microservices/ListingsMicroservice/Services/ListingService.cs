@@ -36,7 +36,7 @@ namespace ListingsMicroservice.Services
 
             return new ListingDTO()
             {
-                Id = listing.Listing_Id,
+                Id = listing.Id,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
@@ -50,7 +50,7 @@ namespace ListingsMicroservice.Services
             return await repo.All<Listing>()
             .Select(listing => new ListingDTO()
             {
-                Id = listing.Listing_Id,
+                Id = listing.Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,
@@ -133,7 +133,7 @@ namespace ListingsMicroservice.Services
             // Execute the query and return the matching listings as a list of ListingViewModel objects
             return await query.Select(listing => new ListingDTO()
             {
-                Id = listing.Listing_Id,
+                Id = listing.Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
                 Estate_Type = listing.Estate_Type,

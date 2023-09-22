@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Misc
     public class FileEntity : IDeletableEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -26,5 +26,4 @@ namespace RealEstate.Shared.Models.Entities.Misc
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
     }
-
 }

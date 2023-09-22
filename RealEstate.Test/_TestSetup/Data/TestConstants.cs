@@ -7,7 +7,7 @@ namespace RealEstate.Test._TestSetup.Data
     {
         public static Client client = new Client()
         {
-            Client_Id = "1",
+            Id = "1",
             Client_Address = "ul. Hubavka",
             Client_Details = "details placeholder",
             Client_Name = "Giga Chikadze",

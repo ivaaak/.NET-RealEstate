@@ -8,7 +8,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class City : IDeletableEntity
     {
         [Key]
-        public int Id { get; init; }
+        public string Id { get; set; }
 
         public string City_Name { get; init; }
 

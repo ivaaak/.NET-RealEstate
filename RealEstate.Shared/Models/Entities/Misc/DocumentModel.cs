@@ -6,7 +6,7 @@ namespace RealEstate.Shared.Models.Entities.Misc
 {
     public class DocumentModel : IDeletableEntity
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public int UserId { get; set; }
 
@@ -23,7 +23,7 @@ namespace RealEstate.Shared.Models.Entities.Misc
 
         public DocumentModel()
         {
-            Id = 0;
+            Id = "0";
             UserId = 0;
             FileName = "";
             ContentType = "";

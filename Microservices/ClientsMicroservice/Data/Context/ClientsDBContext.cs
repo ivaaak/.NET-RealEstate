@@ -15,13 +15,13 @@ namespace ClientsMicroservice.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Client>().HasIndex(c => c.Client_Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
 
             modelBuilder
                 .Entity<Contact>()
                 .HasOne(cl => cl.Client)
                 .WithOne(c => c.Contact)
-                .HasForeignKey<Client>(cl => cl.Client_Id)
+                .HasForeignKey<Client>(cl => cl.Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder

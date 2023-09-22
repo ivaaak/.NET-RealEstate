@@ -15,8 +15,8 @@ namespace RealEstate.Shared.Models.Entities.Clients
         IDeletableEntity
     {
         [Key]
-        [ForeignKey("Client_Id")]
-        public string Client_Id { get; init; }
+        [ForeignKey("Id")]
+        public string Id { get; set; }
 
         public string Client_Name { get; set; }
 

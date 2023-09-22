@@ -8,7 +8,7 @@ namespace RealEstate.Shared.Models.Entities.Clients
     public class Contact : IDeletableEntity
     {
         [Key]
-        public string Id { get; init; }
+        public string Id { get; set; }
 
         [ForeignKey("ApplicationUserId")]
         public string ApplicationUserId { get; init; }

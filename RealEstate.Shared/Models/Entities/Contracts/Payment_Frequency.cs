@@ -7,7 +7,7 @@ namespace RealEstate.Shared.Models.Entities.Contracts
     public class Payment_Frequency : IDeletableEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Payment_Frequency_Name { get; set; }
 

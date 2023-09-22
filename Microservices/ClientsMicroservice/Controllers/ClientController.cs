@@ -75,7 +75,7 @@ namespace ClientsMicroservice.Controllers
         {
             var addedClient = await _clientService.AddClient(client);
 
-            return CreatedAtAction(nameof(GetClientById), new { clientId = addedClient.Client_Id }, addedClient);
+            return CreatedAtAction(nameof(GetClientById), new { clientId = addedClient.Id }, addedClient);
         }
 
         // PUT update client

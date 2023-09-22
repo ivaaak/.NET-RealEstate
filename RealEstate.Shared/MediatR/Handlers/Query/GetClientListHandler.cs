@@ -19,7 +19,7 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
             var clients = repo.All<Client>()
                 .Select(u => new ClientDTO
                 {
-                    Client_Id = u.Client_Id,
+                    Id = u.Id,
                     Client_Details = u.Client_Details,
                     Client_Address = u.Client_Address,
                     Client_Name = u.Client_Name,
