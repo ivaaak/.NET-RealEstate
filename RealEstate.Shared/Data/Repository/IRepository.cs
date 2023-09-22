@@ -15,7 +15,7 @@ namespace RealEstate.Shared.Data.Repository
 
         Task<T> GetByIdAsync<T>(object id) where T : class, IDeletableEntity;
 
-        Task<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity;
+        IQueryable<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity;
 
         Task AddAsync<T>(T entity) where T : class;
 

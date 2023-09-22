@@ -62,12 +62,12 @@ namespace RealEstate.Shared.Data.Repository
 // Get All Methods
         public async Task<T> GetByIdAsync<T>(object id) where T : class, IDeletableEntity
         {
-            return await DbSet<T>().FindAsync(id);
+            return await DbSet<T>().FirstOrDefaultAsync(e => !e.IsDeleted && e.Id == id.ToString());
         }
 
-        public async Task<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity
+        public IQueryable<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity
         {
-            return await DbSet<T>().FindAsync(id);
+            return DbSet<T>().Where(e => !e.IsDeleted && id.Contains(e.Id)).AsQueryable();
         }
 
 // Save Methods
