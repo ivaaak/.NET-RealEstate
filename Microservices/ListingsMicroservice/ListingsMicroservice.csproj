@@ -39,10 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Search\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="appsettings.json" />
   </ItemGroup>
 

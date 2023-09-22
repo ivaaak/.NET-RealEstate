@@ -44,6 +44,7 @@
     <Folder Include="FunctionalTests\UtilitiesMicroserviceTests\" />
     <Folder Include="IntegrationTests\Databases\" />
     <Folder Include="IntegrationTests\Repositories\UserRepositoryTests\" />
+    <Folder Include="UnitTests\UtilitiesMicroserviceTests\" />
   </ItemGroup>
 
   <ItemGroup>

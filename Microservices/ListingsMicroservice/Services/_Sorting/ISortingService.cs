@@ -1,4 +1,4 @@
-﻿namespace ListingsMicroservice.Services.Sorting
+﻿namespace ListingsMicroservice.Services._Sorting
 {
     public interface ISortingService
     {

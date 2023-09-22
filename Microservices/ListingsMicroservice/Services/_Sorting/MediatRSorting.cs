@@ -1,10 +1,11 @@
 ﻿#nullable disable
+using ListingsMicroservice;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Models.Entities.Estates;
 
-namespace ListingsMicroservice.Services.Sorting
+namespace ListingsMicroservice.Services._Sorting
 {
     internal class MediatRSortService
     {

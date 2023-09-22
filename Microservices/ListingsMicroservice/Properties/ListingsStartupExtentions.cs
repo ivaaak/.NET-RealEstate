@@ -1,7 +1,7 @@
 ﻿using ListingsMicroservice.Data.Context;
 using ListingsMicroservice.Data.Repository;
 using ListingsMicroservice.Services;
-using ListingsMicroservice.Services.Sorting;
+using ListingsMicroservice.Services._Sorting;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared;
 using RealEstate.Shared.Data.Context;

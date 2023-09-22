@@ -1,8 +1,8 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
 using RealEstate.Shared;
+using RealEstate.Shared.Data.Cache;
 using RealEstate.Shared.Data.Repository;
-using UtilitiesMicroservice.Services.Cache;
 using UtilitiesMicroservice.Services.CloudinaryService;
 using UtilitiesMicroservice.Services.FileUpload;
 

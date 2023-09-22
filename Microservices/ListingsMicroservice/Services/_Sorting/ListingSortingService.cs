@@ -1,6 +1,6 @@
 ﻿using RealEstate.Shared.Models.Entities.Listings;
 
-namespace ListingsMicroservice.Services.Sorting
+namespace ListingsMicroservice.Services._Sorting
 {
     public class ListingSortingService : ISortingService
     {

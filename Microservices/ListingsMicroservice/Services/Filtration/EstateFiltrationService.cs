@@ -5,6 +5,7 @@ using RealEstate.Shared.Models.Entities.Misc;
 
 namespace ListingsMicroservice.Services.Filtration
 {
+    // Unused way of filtering as a showcase
     public class EstateFiltrationService : IFiltrationService
     {
         public IEnumerable<Estate> FilterEstatesForRange(IEnumerable<Estate> estates,

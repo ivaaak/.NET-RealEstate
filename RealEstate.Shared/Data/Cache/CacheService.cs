@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using StackExchange.Redis;
 using IDatabase = StackExchange.Redis.IDatabase;
 
-namespace ListingsMicroservice.Services.Cache
+namespace RealEstate.Shared.Data.Cache
 {
     public class CacheService : ICacheService
     {

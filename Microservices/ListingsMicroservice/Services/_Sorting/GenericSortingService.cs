@@ -1,7 +1,8 @@
 ﻿#nullable disable
+using ListingsMicroservice;
 using System.Linq.Expressions;
 
-namespace ListingsMicroservice.Services.Sorting
+namespace ListingsMicroservice.Services._Sorting
 {
     public class GenericSortingService<T>
     {

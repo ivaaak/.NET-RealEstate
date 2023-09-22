@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RealEstate.Shared.Data.Context;
+﻿using RealEstate.Shared.Data.Context;
 
 namespace RealEstate.Shared.Data.Repository
 {

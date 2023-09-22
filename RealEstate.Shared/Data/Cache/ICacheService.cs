@@ -1,4 +1,4 @@
-﻿namespace ListingsMicroservice.Services.Cache
+﻿namespace RealEstate.Shared.Data.Cache
 {
     public interface ICacheService
     {

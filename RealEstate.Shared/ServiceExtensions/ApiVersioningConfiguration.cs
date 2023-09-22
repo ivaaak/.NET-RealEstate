@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RealEstate.Shared
+namespace RealEstate.Shared.ServiceExtensions
 {
     /// <summary>
     /// Configure the API versioning properties of the project.
