@@ -17,17 +17,17 @@ namespace RealEstate.Shared.Data.Repository
 
         IQueryable<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity;
 
-        Task AddAsync<T>(T entity) where T : class;
+        Task AddAsync<T>(T entity) where T : class, IDeletableEntity;
 
-        Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class;
+        Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class, IDeletableEntity;
 
-        void Update<T>(T entity) where T : class; // softdelete check here?
+        void Update<T>(T entity) where T : class, IDeletableEntity; // softdelete check here?
 
-        void UpdateRange<T>(IEnumerable<T> entities) where T : class;
+        void UpdateRange<T>(IEnumerable<T> entities) where T : class, IDeletableEntity;
 
-        void Delete<T>(T entity) where T : class;
+        void Delete<T>(T entity) where T : class, IDeletableEntity;
 
-        void Detach<T>(T entity) where T : class;
+        void Detach<T>(T entity) where T : class, IDeletableEntity;
 
         int SaveChanges();
 
