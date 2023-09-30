@@ -1,6 +1,7 @@
 ﻿using ClientsMicroservice.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using RealEstate.Shared.Data.Cache;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Clients;
 using Xunit;
@@ -13,6 +14,7 @@ namespace RealEstate.Test.IntegrationTests.Repositories.ClientsDbRepositoryTests
         private readonly ClientsDBContext _clientsContext;
         private readonly ClientsDbRepository _clientsRepository;
         private readonly ITestOutputHelper _output;
+        private readonly ICacheService cacheService;
         public GetById(ITestOutputHelper output)
         {
             _output = output;
@@ -20,7 +22,7 @@ namespace RealEstate.Test.IntegrationTests.Repositories.ClientsDbRepositoryTests
                 .UseInMemoryDatabase(databaseName: "TestClient")
                 .Options;
             _clientsContext = new ClientsDBContext(dbOptions);
-            _clientsRepository = new ClientsDbRepository(_clientsContext);
+            _clientsRepository = new ClientsDbRepository(_clientsContext, cacheService);
         }
 
         [Fact]

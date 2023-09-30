@@ -12,10 +12,6 @@ namespace RealEstate.Shared.Data.Context
         public CombinedAppContext(DbContextOptions<CombinedAppContext> options)
             : base(options) { }
 
-
-        // Identity Users
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
         // Clients
         public DbSet<Client> Clients { get; set; }
         public DbSet<Contact> Contacts { get; set; }
@@ -52,13 +48,84 @@ namespace RealEstate.Shared.Data.Context
         public DbSet<Review> Review { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder
-                    .UseNpgsql("");
-            }
+            modelBuilder.Entity<Contact>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Contract>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Contract_Invoice>().HasIndex(ci => ci.Id).IsUnique();
+            modelBuilder.Entity<Contract_Type>().HasIndex(ci => ci.Id).IsUnique();
+            modelBuilder.Entity<Payment_Frequency>().HasIndex(ci => ci.Id).IsUnique();
+            modelBuilder.Entity<Under_Contract>().HasIndex(ci => ci.Id).IsUnique();
+
+            modelBuilder
+                .Entity<Contact>()
+                .HasOne(cl => cl.Client)
+                .WithOne(c => c.Contact)
+                .HasForeignKey<Client>(cl => cl.Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<Client>()
+                .HasOne(c => c.Contact)
+                .WithOne(cl => cl.Client)
+                .HasForeignKey<Contact>(cl => cl.Contact_Details)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<Contract>()
+                .HasOne(cl => cl.Client)
+                .WithMany(c => c.Contracts)
+                .HasForeignKey(cl => cl.Client_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Client>()
+                .HasOne(cl => cl.Contact)
+                .WithOne(c => c.Client)
+                .HasForeignKey<Contact>(c => c.Client_Id);
+
+            modelBuilder
+                .Entity<Estate>()
+                .HasOne(cl => cl.City)
+                .WithMany(c => c.Estates)
+                .HasForeignKey(cl => cl.City_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<City>()
+                .HasOne(c => c.Country)
+                .WithMany(cl => cl.Cities)
+                .HasForeignKey(c => c.Country_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Category>()
+                .HasKey(t => new { t.Id });
+
+            modelBuilder.Entity<PriceHistory>()
+                .Ignore(ph => ph.OffersHistoryTouples);
+
+            modelBuilder
+                .Entity<Listing>()
+                .HasOne(c => c.Estate)
+                .WithOne(cl => cl.Listing)
+                .HasForeignKey<Estate>(cl => cl.Listing_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<Listing>()
+                .HasOne(c => c.PriceHistory)
+                .WithOne(cl => cl.Listing)
+                .HasForeignKey<PriceHistory>(cl => cl.Listing_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Entity<Employee>()
+                .HasOne(cl => cl.Company)
+                .WithMany(cl => cl.Employees)
+                .HasForeignKey(cl => cl.Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
     // Comment this class out when creating migrations or updating db so nothing is generated twice
