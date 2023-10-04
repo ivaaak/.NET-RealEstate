@@ -6,7 +6,10 @@ using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared;
+using RealEstate.Shared.Data.Cache;
+using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
+using System.Configuration;
 
 namespace ClientsMicroservice.Properties
 {
@@ -23,11 +26,18 @@ namespace ClientsMicroservice.Properties
 
             services.AddDbContextPool<ClientsDBContext>(options =>
                 options.UseNpgsql(GlobalConnectionStrings.Clients_MicroDB_Connection));
+            
+            services.AddDbContextPool<CombinedAppContext>(options =>
+                 options.UseNpgsql(GlobalConnectionStrings.RealEstate_DB_Connection));
 
             // Repositories
             services.AddScoped<IClientsDbRepository, ClientsDbRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRepository, Repository>(); //base repo implementation
+
+
+            // Register CacheService with the provided connection string
+            services.AddSingleton<ICacheService>(new CacheService(GlobalConnectionStrings.Redis_Connection));
 
             return services;
         }

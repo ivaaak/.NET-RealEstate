@@ -11,6 +11,7 @@ namespace RealEstate.Shared.Data.Context
     {
         public CombinedAppContext(DbContextOptions<CombinedAppContext> options)
             : base(options) { }
+        public CombinedAppContext() { }
 
         // Clients
         public DbSet<Client> Clients { get; set; }
