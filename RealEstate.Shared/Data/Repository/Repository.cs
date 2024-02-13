@@ -28,7 +28,7 @@ namespace RealEstate.Shared.Data.Repository
             await SaveChangesAsync();
 
             // Update the cache with the newly added entity 
-            var cacheKey = GetCacheKey<T>("GetById");
+            var cacheKey = GetCacheKey<T>("GetById", entity.Id);
             _cacheService.Set(cacheKey, All<T>(), _defaultCacheExpiration);
         }
 

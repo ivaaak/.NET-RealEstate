@@ -17,7 +17,7 @@
         public const string Listings_MicroDB_Connection = "Server=localhost;Port=5005;Database=Listings;User Id=listings;Password=listings;";
 
         // NoSQL Databases
-        public const string Redis_Connection = "localhost:6379";
+        public const string Redis_Connection = "localhost:6379,abortConnect=false";
         public const string Mongo_Connection = "";
 
         // Event Bus
