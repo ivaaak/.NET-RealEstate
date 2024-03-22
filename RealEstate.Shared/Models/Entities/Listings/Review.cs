@@ -8,22 +8,17 @@ namespace RealEstate.Shared.Models.Entities.Listings
     {
         [Key]
         public string Id { get; set; }
+        public DateTime At { get; set; }
+        public string Txt { get; set; }
+        public int Rate { get; set; }
+        
+        // Foreign Key
+        public string ById { get; set; }
 
-        public string Review_Title { get; set; }
+        [ForeignKey("ById")]
+        public Client By { get; set; }
 
-        public string Review_Content { get; set; }
-
-        public string Review_Rating { get; set; }
-
-        public DateTime Date_Posted { get; set; }
-
-
-        public string Listing_Id { get; set; }
-        public Listing Listing { get; set; }
-
-
-        // IDeletableEntity
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedOn { get; set; }
+        // Navigation Property
+        public Estate Estate { get; set; }
     }
 }

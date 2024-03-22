@@ -15,8 +15,12 @@ namespace RealEstate.Shared.Models.Entities.Clients
         IDeletableEntity
     {
         [Key]
-        [ForeignKey("Id")]
         public string Id { get; set; }
+        public string Fullname { get; set; }
+        public string ImgUrl { get; set; }
+
+        // Navigation Property
+        public List<Review> Reviews { get; set; }
 
         public string Client_Name { get; set; }
 
