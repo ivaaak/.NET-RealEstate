@@ -9,7 +9,7 @@ namespace ListingsMicroservice.Services.Filtration
     public class EstateFiltrationService : IFiltrationService
     {
         public IEnumerable<Estate> FilterEstatesForRange(IEnumerable<Estate> estates,
-            string estateName = null, int cityId = 0, int estateTypeId = 0,
+            string estateName = null, string cityId = null, int estateTypeId = 0,
             decimal minFloorSpace = 0, decimal maxFloorSpace = decimal.MaxValue,
             int minNumberOfBalconies = 0, int maxNumberOfBalconies = int.MaxValue,
             decimal minBalconiesSpace = 0, decimal maxBalconiesSpace = decimal.MaxValue,
@@ -31,33 +31,25 @@ namespace ListingsMicroservice.Services.Filtration
 
             if (estateName != null)
             {
-                filteredEstates = filteredEstates.Where(x => x.Estate_Name.Contains(estateName));
+                filteredEstates = filteredEstates.Where(x => x.Name.Contains(estateName));
             }
 
-            if (cityId != 0)
+            if (cityId.Length > 0)
             {
                 filteredEstates = filteredEstates.Where(x => x.City_Id == cityId);
-            }
-
-            if (estateTypeId != 0)
-            {
-                filteredEstates = filteredEstates.Where(x => x.Estate_Type_Id == estateTypeId);
             }
 
             filteredEstates = filteredEstates
                 .Where(x => x.Floor_Space_Square_Meters >= minFloorSpace && x.Floor_Space_Square_Meters <= maxFloorSpace);
 
             filteredEstates = filteredEstates
-                .Where(x => x.Number_Of_Balconies >= minNumberOfBalconies && x.Number_Of_Balconies <= maxNumberOfBalconies);
+                .Where(x => x.Balconies >= minNumberOfBalconies && x.Balconies <= maxNumberOfBalconies);
 
             filteredEstates = filteredEstates
-                .Where(x => x.Balconies_Space >= minBalconiesSpace && x.Balconies_Space <= maxBalconiesSpace);
+                .Where(x => x.Bedrooms >= minNumberOfBedrooms && x.Bedrooms <= maxNumberOfBedrooms);
 
             filteredEstates = filteredEstates
-                .Where(x => x.Number_Of_Bedrooms >= minNumberOfBedrooms && x.Number_Of_Bedrooms <= maxNumberOfBedrooms);
-
-            filteredEstates = filteredEstates
-                .Where(x => x.Number_Of_Bathrooms >= minNumberOfBathrooms && x.Number_Of_Bathrooms <= maxNumberOfBedrooms);
+                .Where(x => x.Bathrooms >= minNumberOfBathrooms && x.Bathrooms <= maxNumberOfBedrooms);
 
             // ... more property checks
             return estates;
@@ -69,54 +61,45 @@ namespace ListingsMicroservice.Services.Filtration
         {
             var query = estates;
 
-            if (filter.Estate_Name.Length > 0)
+            if (filter.Name.Length > 0)
             {
-                query = query.Where(x => x.Estate_Name.Contains(filter.Estate_Name.ToString()));
+                query = query.Where(x => x.Name.Contains(filter.Name.ToString()));
             }
 
-            if (filter.Estate_Description.Length > 0)
+            if (filter.Summary.Length > 0)
             {
-                query = query.Where(x => x.Estate_Description.Contains(filter.Estate_Description.ToString()));
+                query = query.Where(x => x.Summary.Contains(filter.Summary.ToString()));
             }
 
-            if (filter.Pets_Allowed.HasValue)
+            if (filter.Pets_Allowed)
             {
-                query = query.Where(x => x.Pets_Allowed == filter.Pets_Allowed.Value);
+                query = query.Where(x => x.Pets_Allowed == filter.Pets_Allowed);
             }
 
-            if (filter.City_Id.HasValue)
+            if (filter.City_Id.Length > 0)
             {
-                query = query.Where(x => x.City_Id == filter.City_Id.Value);
+                query = query.Where(x => x.City_Id == filter.City_Id);
             }
 
-            if (filter.Estate_Type_Id.HasValue)
+
+            if (filter.Bedrooms != 0)
             {
-                query = query.Where(x => x.Estate_Type_Id == filter.Estate_Type_Id.Value);
+                query = query.Where(x => x.Bedrooms == filter.Bedrooms);
             }
 
-            if (filter.Number_Of_Bedrooms.HasValue)
+            if (filter.Bathrooms != 0)
             {
-                query = query.Where(x => x.Number_Of_Bedrooms == filter.Number_Of_Bedrooms.Value);
+                query = query.Where(x => x.Bathrooms == filter.Bathrooms);
             }
 
-            if (filter.Number_Of_Bathrooms.HasValue)
+            if (filter.Balconies != 0)
             {
-                query = query.Where(x => x.Number_Of_Bathrooms == filter.Number_Of_Bathrooms.Value);
+                query = query.Where(x => x.Balconies == filter.Balconies);
             }
 
-            if (filter.Number_Of_Balconies.HasValue)
+            if (filter.Garages != 0)
             {
-                query = query.Where(x => x.Number_Of_Balconies == filter.Number_Of_Balconies.Value);
-            }
-
-            if (filter.Number_Of_Garages.HasValue)
-            {
-                query = query.Where(x => x.Number_Of_Garages == filter.Number_Of_Garages.Value);
-            }
-
-            if (filter.Number_Of_ParkingSpaces.HasValue)
-            {
-                query = query.Where(x => x.Number_Of_Parking_Spaces == filter.Number_Of_ParkingSpaces.Value);
+                query = query.Where(x => x.Garages == filter.Garages);
             }
 
             return await query.ToListAsync();

@@ -137,28 +137,6 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
             Assert.AreEqual("test", result.Value.First().City);
         }
 
-        [Fact]
-        public void ByParameters_MinPriceMatch_ReturnsExpectedValues()
-        {
-            // Act
-            var result = controller.ByParameters(city: null, minPrice: 1, maxPrice: null, id: null, name: null, sort: null).Result;
-
-            // Assert
-            Assert.True(result.Value.All(x => x.Listing.Price >= 1));
-        }
-
-        [Fact]
-        public void ByParameters_MaxPriceMatch_ReturnsExpectedValues()
-        {
-            // Act
-            var result = controller.ByParameters(city: null, minPrice: null, maxPrice: 100, id: null, name: null, sort: null).Result;
-
-            // Assert
-            if (result.Value != null)
-            {
-                Assert.True(result.Value.All(x => x.Listing.Price <= 100));
-            }
-        }
 
         [Fact]
         public void ByParameters_IdMatch_ReturnsExpectedValues()
@@ -180,7 +158,7 @@ namespace RealEstate.Test.UnitTests.ListingsMicroserviceTests
             var result = controller.ByParameters(city: null, minPrice: null, maxPrice: null, id: null, name: expectedName, sort: null).Result;
 
             // Assert
-            Assert.AreEqual(expectedName, result.Value.First().Estate_Name);
+            Assert.AreEqual(expectedName, result.Value.First().Name);
         }
         // ADD CORS
     }

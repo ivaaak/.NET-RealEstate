@@ -3,7 +3,7 @@ using RealEstate.Shared.Models.Entities.Clients;
 
 namespace ClientsMicroservice.Data.Context
 {
-    public class ClientsDBContext : DbContext
+    public class ClientsDBContext : DbContext // unused since switching to combined DBContext and single DB instance
     {
         public ClientsDBContext(DbContextOptions<ClientsDBContext> options)
             : base(options) { }

@@ -31,7 +31,6 @@ namespace RealEstate.Shared.Data.Context
         // Estates
         public DbSet<Estate> Estates { get; set; }
         public DbSet<Estate_Status> Estate_Statuses { get; set; }
-        public DbSet<Estate_Type> Estate_Types { get; set; }
         public DbSet<In_Charge> In_Charges { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
@@ -104,13 +103,6 @@ namespace RealEstate.Shared.Data.Context
 
             modelBuilder.Entity<PriceHistory>()
                 .Ignore(ph => ph.OffersHistoryTouples);
-
-            modelBuilder
-                .Entity<Listing>()
-                .HasOne(c => c.Estate)
-                .WithOne(cl => cl.Listing)
-                .HasForeignKey<Estate>(cl => cl.Listing_Id)
-                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .Entity<Listing>()

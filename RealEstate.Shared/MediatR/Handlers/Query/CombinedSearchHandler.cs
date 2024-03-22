@@ -51,10 +51,10 @@ namespace RealEstate.Shared.MediatR.Handlers.Query
 
             var estates = await repository
                 .All<Estate>()
-                .Where(p => p.Estate_Name
+                .Where(p => p.Name
                     .ToLower()
                     .Contains(queryNormalized))
-                .OrderBy(p => p.Estate_Name)
+                .OrderBy(p => p.Name)
                 .ProjectTo<EstateDTO>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

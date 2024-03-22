@@ -35,9 +35,6 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public DateTime DateListed { get; set; }
 
 
-
-        public Estate_Type Estate_Type { get; set; }
-
         public int CategoryId { get; set; }
 
         public Category Category { get; init; }

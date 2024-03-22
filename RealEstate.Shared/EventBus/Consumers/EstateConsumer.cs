@@ -15,7 +15,7 @@ namespace RealEstate.Shared.EventBus.Consumers
 
         public Task Consume(ConsumeContext<EstateEvent> context)
         {
-            var estateName = context.Message.Estate.Estate_Name; 
+            var estateName = context.Message.Estate.Name; 
             var estateObject = context.Message.Estate;
             var messageId = context.MessageId;
 

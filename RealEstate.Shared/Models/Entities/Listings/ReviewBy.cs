@@ -1,16 +1,15 @@
-﻿#nullable disable
+#nullable disable
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Shared.Models.Entities.Estates
+namespace RealEstate.Shared.Models.Entities.Listings
 {
-    public class Estate_Type : IDeletableEntity
+    public class ReviewBy : IDeletableEntity
     {
         [Key]
         public string Id { get; set; }
-
-        public string Type_Name { get; init; }
-
+        public string Fullname { get; set; }
+        public string ImgUrl { get; set; }
 
         // IDeletableEntity
         public bool IsDeleted { get; set; }

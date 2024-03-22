@@ -38,7 +38,6 @@ namespace ListingsMicroservice.Services
             {
                 Id = listing.Id,
                 ImageUrl = listing.ImageUrl,
-                Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
                 Description = listing.Description,
             };
@@ -53,7 +52,6 @@ namespace ListingsMicroservice.Services
                 Id = listing.Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
-                Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
                 SquareMeters = listing.Estate.Floor_Space_Square_Meters,
                 Description = listing.Description,
@@ -124,9 +122,8 @@ namespace ListingsMicroservice.Services
                         where
                 listing.Name.Contains(searchTerm) ||
                 listing.Description.Contains(searchTerm) ||
-                listing.Estate_Type.ToString().Contains(searchTerm) ||
-                listing.Estate.Estate_Name.Contains(searchTerm) ||
-                listing.Estate.Estate_Description.Contains(searchTerm) ||
+                listing.Estate.Name.Contains(searchTerm) ||
+                listing.Estate.Summary.Contains(searchTerm) ||
                 listing.Estate.City.ToString().Contains(searchTerm)
                         select listing;
 
@@ -136,7 +133,6 @@ namespace ListingsMicroservice.Services
                 Id = listing.Id,
                 Name = listing.Name,
                 ImageUrl = listing.ImageUrl,
-                Estate_Type = listing.Estate_Type,
                 IsPublic = listing.IsPublic,
                 SquareMeters = listing.Estate.Floor_Space_Square_Meters,
                 Description = listing.Description,
