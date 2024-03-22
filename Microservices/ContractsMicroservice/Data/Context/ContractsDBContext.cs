@@ -4,7 +4,7 @@ using RealEstate.Shared.Models.Entities.Contracts;
 
 namespace ContractsMicroservice.Data.Context
 {
-    public class ContractsDBContext : DbContext
+    public class ContractsDBContext : DbContext // unused since switching to combined DBContext and single DB instance
     {
         public ContractsDBContext(DbContextOptions<ContractsDBContext> options)
             : base(options) { }

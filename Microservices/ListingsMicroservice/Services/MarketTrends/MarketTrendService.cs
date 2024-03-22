@@ -21,7 +21,7 @@ namespace ListingsMicroservice.Services.MarketTrends
             decimal sum = 0;
             foreach (var estate in estates)
             {
-                sum += estate.Listing.Price;
+                sum += estate.Price;
             }
 
             // calculate the average price
@@ -30,20 +30,20 @@ namespace ListingsMicroservice.Services.MarketTrends
             return average;
         }
 
-        public double GetAveragePricePerSquareMeter()
+        public decimal GetAveragePricePerSquareMeter()
         {
             // retrieve the list of estates from the database
             var estates = estateService.GetEstates().Result.ToList();
 
             // calculate the sum of the prices
-            double sum = 0;
+            decimal sum = 0;
             foreach (var estate in estates)
             {
-                sum += estate.Listing.PricePerSquareMeter;
+                sum += estate.Price;
             }
 
             // calculate the average price
-            double average = sum / (double)estates.Count;
+            decimal average = sum / (decimal)estates.Count;
 
             return average;
         }

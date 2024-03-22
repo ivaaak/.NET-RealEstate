@@ -9,7 +9,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
     public class Location : IDeletableEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Country { get; set; }
         public string CountryCode { get; set; }
         public string City { get; set; }
@@ -19,5 +19,9 @@ namespace RealEstate.Shared.Models.Entities.Estates
 
         // Navigation Property
         public List<Estate> Estates { get; set; }
+
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

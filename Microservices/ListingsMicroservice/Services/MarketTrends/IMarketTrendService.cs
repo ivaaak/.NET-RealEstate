@@ -4,7 +4,7 @@
     {
         decimal GetAveragePrice();
 
-        double GetAveragePricePerSquareMeter();
+        decimal GetAveragePricePerSquareMeter();
 
 
     }

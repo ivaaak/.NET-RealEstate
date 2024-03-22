@@ -30,7 +30,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByName(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Estate_Name)
+                .OrderBy(e => e.Name)
                 .ToList();
 
             return sortedEstates;
@@ -38,7 +38,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByNameDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Estate_Name)
+                .OrderByDescending(e => e.Name)
                 .ToList();
 
             return sortedEstates;
@@ -87,7 +87,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByType(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Estate_Type)
+                .OrderBy(e => e.Type)
                 .ToList();
 
             return sortedEstates;
@@ -95,7 +95,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByTypeDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Estate_Type)
+                .OrderByDescending(e => e.Type)
                 .ToList();
 
             return sortedEstates;
@@ -106,7 +106,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByYearBuilt(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Estate_Year_Built)
+                .OrderBy(e => e.YearBuilt)
                 .ToList();
 
             return sortedEstates;
@@ -114,7 +114,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByYearBuiltDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Estate_Year_Built)
+                .OrderByDescending(e => e.YearBuilt)
                 .ToList();
 
             return sortedEstates;
@@ -144,7 +144,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByNrOfBedrooms(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Number_Of_Bedrooms)
+                .OrderBy(e => e.Bedrooms)
                 .ToList();
 
             return sortedEstates;
@@ -152,7 +152,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByNrOfBedroomsDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Number_Of_Bedrooms)
+                .OrderByDescending(e => e.Bedrooms)
                 .ToList();
 
             return sortedEstates;
@@ -163,7 +163,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByNrOfBathrooms(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderBy(e => e.Number_Of_Bathrooms)
+                .OrderBy(e => e.Bathrooms)
                 .ToList();
 
             return sortedEstates;
@@ -171,7 +171,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Estate> SortByNrOfBathroomsDescending(List<Estate> estates)
         {
             var sortedEstates = estates
-                .OrderByDescending(e => e.Number_Of_Bathrooms)
+                .OrderByDescending(e => e.Bathrooms)
                 .ToList();
 
             return sortedEstates;
@@ -181,20 +181,18 @@ namespace ListingsMicroservice.Services._Sorting
 
         public List<Estate> SortByMultiple(List<Estate> estates)
         {
-            var sortedEstates = estates.OrderBy(e => e.Estate_Name)
+            var sortedEstates = estates.OrderBy(e => e.Name)
                            .ThenBy(e => e.City.City_Name)
                            .ThenBy(e => e.Id)
                            .ThenBy(e => e.Floor_Space_Square_Meters)
-                           .ThenBy(e => e.Number_Of_Balconies)
-                           .ThenBy(e => e.Number_Of_Bedrooms)
-                           .ThenBy(e => e.Number_Of_Bathrooms)
-                           .ThenBy(e => e.Number_Of_Garages)
-                           .ThenBy(e => e.Estate_Type)
-                           .ThenBy(e => e.Estate_Year_Built)
+                           .ThenBy(e => e.Balconies)
+                           .ThenBy(e => e.Bedrooms)
+                           .ThenBy(e => e.Bathrooms)
+                           .ThenBy(e => e.Garages)
+                           .ThenBy(e => e.Type)
+                           .ThenBy(e => e.YearBuilt)
                            .ThenBy(e => e.Pets_Allowed)
-                           .ThenBy(e => e.Estate_Name)
-                           .ThenBy(e => e.Estate_Status_Id)
-                           .ThenBy(e => e.Estate_Year_Listed)
+                           .ThenBy(e => e.Name)
                            .ToList();
 
             return sortedEstates;

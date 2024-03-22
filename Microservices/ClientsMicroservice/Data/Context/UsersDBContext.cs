@@ -4,7 +4,7 @@ using RealEstate.Shared.Models.Entities.Users;
 
 namespace ClientsMicroservice.Data.Context
 {
-    public partial class UsersDBContext : DbContext
+    public partial class UsersDBContext : DbContext //Keycloak DB
     {
         public virtual DbSet<UserEntity> UserEntities { get; set; }
         public virtual DbSet<UserAttribute> UserAttributes { get; set; }

@@ -1,6 +1,9 @@
 ﻿#nullable disable
 using RealEstate.Shared.Models.Entities.BaseEntityModel;
+using RealEstate.Shared.Models.Entities.Estates;
+using RealEstate.Shared.Models.Entities.Clients;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Shared.Models.Entities.Listings
 {
@@ -20,5 +23,9 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         // Navigation Property
         public Estate Estate { get; set; }
+
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

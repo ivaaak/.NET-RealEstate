@@ -75,10 +75,10 @@ namespace EstatesMicroservice.Services
                 {
                     // Handle the case where the specified sorting column doesn't exist
                     // You can throw an exception or apply a default sorting logic here
-                    // For example, you can sort by a default column like Estate_Name
+                    // For example, you can sort by a default column like Name
                     query = criteria.SortDescending
-                        ? query.OrderByDescending(e => e.Estate_Name)
-                        : query.OrderBy(e => e.Estate_Name);
+                        ? query.OrderByDescending(e => e.Name)
+                        : query.OrderBy(e => e.Name);
                 }
             }
 

@@ -15,5 +15,8 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public decimal Location { get; set; }
         public decimal Value { get; set; }
 
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

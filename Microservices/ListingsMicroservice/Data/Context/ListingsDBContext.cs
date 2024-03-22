@@ -31,13 +31,6 @@ namespace ListingsMicroservice.Data.Context
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
-               .Entity<Listing>()
-               .HasOne(li => li.Estate)
-               .WithOne(es => es.Listing)
-               .HasForeignKey<Estate>(es => es.Id)
-               .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
                .Entity<Contact>()
                .HasOne(co => co.Client)
                .WithOne(cl => cl.Contact)

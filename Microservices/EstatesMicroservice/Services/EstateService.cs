@@ -116,10 +116,9 @@ namespace EstatesMicroservice.Services
         {
             var estates = await repository.All<Estate>()
                 .Where(e =>
-                    e.Estate_Name.Contains(searchTerm) ||
-                    e.Estate_Description.Contains(searchTerm) ||
-                    e.Estate_Type.Type_Name.Contains(searchTerm) ||
-                    e.Listing.Name.Contains(searchTerm))
+                    e.Name.Contains(searchTerm) ||
+                    e.Summary.Contains(searchTerm) ||
+                    e.Type.Contains(searchTerm))
                 .ToListAsync();
 
             return mapper.Map<IEnumerable<EstateDTO>>(estates);
@@ -130,10 +129,9 @@ namespace EstatesMicroservice.Services
         {
             var estates = await repository.All<Estate>()
                 .Where(e =>
-                    e.Estate_Name.Contains(searchTerm) ||
-                    e.Estate_Description.Contains(searchTerm) ||
-                    e.Estate_Type.Type_Name.Contains(searchTerm) ||
-                    e.Listing.Name.Contains(searchTerm))
+                    e.Name.Contains(searchTerm) ||
+                    e.Summary.Contains(searchTerm) ||
+                    e.Type.Contains(searchTerm))
                 .ToListAsync();
 
             return estates.Select(e => mapper.Map<EstateDTO>(e));

@@ -62,7 +62,7 @@ namespace EstatesMicroservice.Controllers
 
             if (result == null)
             {
-                _logger.LogError($"Estate {estate.Estate_Name} not created.");
+                _logger.LogError($"Estate {estate.Name} not created.");
                 return NotFound();
             }
 

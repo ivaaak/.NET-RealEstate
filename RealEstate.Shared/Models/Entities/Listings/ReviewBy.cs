@@ -10,5 +10,9 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public string Id { get; set; }
         public string Fullname { get; set; }
         public string ImgUrl { get; set; }
+
+        // IDeletableEntity
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }

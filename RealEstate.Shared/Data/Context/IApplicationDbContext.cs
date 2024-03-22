@@ -32,8 +32,6 @@ namespace RealEstate.Shared.Data.Context
 
         DbSet<Estate_Status> Estate_Statuses { get; set; }
 
-        DbSet<Estate_Type> Estate_Types { get; set; }
-
         DbSet<In_Charge> In_Charge { get; set; }
 
         DbSet<Company> Companies { get; set; }

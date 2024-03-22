@@ -14,10 +14,11 @@ namespace RealEstate.Shared.Models.Entities.Estates
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+
         [ForeignKey("City_Id")]
-        public int City_Id { get; set; }
+        public string City_Id { get; set; }
         public City City { get; set; }
-        public string Id { get; set; }
+        public DateTime YearBuilt { get; set; }
         public string Type { get; set; }
         public List<string> ImgUrls { get; set; }
         public decimal Price { get; set; }
@@ -36,26 +37,21 @@ namespace RealEstate.Shared.Models.Entities.Estates
         [ForeignKey("LocId")]
         public Location Loc { get; set; }
 
-        public List<IReview> Reviews { get; set; }
+        public List<Review> Reviews { get; set; }
         public List<string> LikedByUsers { get; set; }
         public string RoomType { get; set; }
-        public IStatReviews StatReviews { get; set; }
+        public StatReviews StatReviews { get; set; }
         public int Bathrooms { get; set; }
         public int Bedrooms { get; set; }
+        public int Balconies { get; set; }
+        public int Garages { get; set; }
+        public int Floor_Space_Square_Meters { get; set; }
+
+        public bool Pets_Allowed { get; set; }
+
 
         // IDeletableEntity
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
-
-        /*
-        public virtual bool IsValid()
-        {
-            var validation = new EstateValidation();
-            validation.ValidateID();
-            validation.ValidateTitle();
-
-            ValidationResult = validation.Validate(this);
-            return ValidationResult.IsValid;
-        }*/
     }
 }

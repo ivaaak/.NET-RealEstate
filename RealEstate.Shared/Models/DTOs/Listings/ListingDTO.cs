@@ -22,9 +22,7 @@ namespace RealEstate.Shared.Models.DTOs.Listings
 
         public DateTime DateListed { get; set; }
 
-        public decimal SquareMeters { get; set; }
-
-        public Estate_Type Estate_Type { get; set; }
+        public int SquareMeters { get; set; }
 
         public int CategoryId { get; set; }
 

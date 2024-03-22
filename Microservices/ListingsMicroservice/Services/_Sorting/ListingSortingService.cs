@@ -163,7 +163,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Listing> SortByEstateType(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderBy(e => e.Estate_Type)
+                .OrderBy(e => e.Estate.Type)
                 .ToList();
 
             return sortedListings;
@@ -171,7 +171,7 @@ namespace ListingsMicroservice.Services._Sorting
         public List<Listing> SortByEstateTypeDescending(List<Listing> listings)
         {
             var sortedListings = listings
-                .OrderByDescending(e => e.Estate_Type)
+                .OrderByDescending(e => e.Estate.Type)
                 .ToList();
 
             return sortedListings;
@@ -188,10 +188,10 @@ namespace ListingsMicroservice.Services._Sorting
                            .ThenBy(e => e.DateBuilt)
                            .ThenBy(e => e.DateListed)
                            .ThenBy(e => e.Description)
-                           .ThenBy(e => e.Estate_Type)
+                           .ThenBy(e => e.Estate.Type)
                            .ThenBy(e => e.IsPublic)
                            .ThenBy(e => e.Price)
-                           .ThenBy(e => e.Estate.Estate_Year_Built)
+                           .ThenBy(e => e.Estate.YearBuilt)
                            .ToList();
 
             return sortedListings;
