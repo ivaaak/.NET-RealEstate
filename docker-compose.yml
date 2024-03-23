@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.3'
 name: realestate-microservices
 
 services:
@@ -74,16 +74,7 @@ services:
 
 
 # Databases + Keycloak
-  db.clients:
-    image: postgres
-
-  db.contracts:
-    image: postgres
-
-  db.estates:
-    image: postgres
-
-  db.listings:
+  db.realestate:
     image: postgres
 
   keycloak:
@@ -95,66 +86,8 @@ services:
 
 # Volumes - persist data from containers
 volumes:
-  clients_data:
-  contracts_data:
-  estates_data:
-  listings_data:
+  re_data:
   mongo_data:
   portainer_data:
   pgadmin_data:
   elasticsearch-data:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Micro-Databases 
-#  db.estates:
-#    image: postgres
-#  db.contracts:
-#    image: postgres
-#  db.clients:
-#    image: postgres
-#  db.listings:
-#    image: postgres
-#  db.identity:    
-#    image: postgres
-
-#  realestate.aggregator:
-#    image: ${DOCKER_REGISTRY-}realestateaggregator
-#    build:
-#      context: .
-#      dockerfile:  RealEstate.Aggregator/Dockerfile
-
-#  test.grpc:
-#    image: ${DOCKER_REGISTRY-}grpc
-#    build:
-#      context: .
-#      dockerfile: Grpc/Dockerfile
-
-# Web - todo fix
-#  appFrontendHere:
-#    image: ${DOCKER_REGISTRY-}appFrontendHere
-#    build:
-#      context: .
-#      dockerfile: RealEstate.WEB/appFrontendHere/Dockerfile
-
-#  webstatus:
-#    image: ${DOCKER_REGISTRY-}webstatus
-#    build:
-#      context: .
-#      dockerfile: RealEstate.WEB/WebStatus/Dockerfile
