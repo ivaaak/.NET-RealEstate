@@ -8,6 +8,9 @@ using RealEstate.Shared.Models.Entities.Estates;
 using RealEstate.Shared.Models.QueryObjects;
 using System.Net;
 
+using System.IO;
+using System.Text.Json;
+
 namespace EstatesMicroservice.Controllers
 {
     /// <summary>
@@ -264,6 +267,28 @@ namespace EstatesMicroservice.Controllers
         public async Task<ActionResult<PagedResult<EstateDTO>>> Search([FromBody] SearchCriteriaObject criteria)
         {
             var result = await _estateQueryService.FindByCriteriaAsync(criteria);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Returns a collection of estates
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /api/estate/mockResponse
+        ///
+        /// </remarks>
+        [HttpGet("mockResponse")]
+        [ProducesResponseType(typeof(List<EstateDTO>), (int)HttpStatusCode.OK)]
+        public List<EstateDTO> Mock()
+        {
+            string json = File.ReadAllText("estatesData.json");
+            Console.WriteLine(json);
+
+            List<EstateDTO> result = JsonConvert.DeserializeObject<List<EstateDTO>>(json);
+            Console.WriteLine(result);
 
             return Ok(result);
         }
