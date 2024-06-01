@@ -23,7 +23,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="7.0.0" />
