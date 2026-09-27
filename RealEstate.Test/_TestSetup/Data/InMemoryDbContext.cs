@@ -15,7 +15,7 @@ namespace RealEstate.Test._TestSetup.Data
             connection.Open();
 
             dbContextOptions = new DbContextOptionsBuilder<CombinedDBContext>()
-                .UseSqlServer(connection)
+                .UseSqlite(connection)
                 .Options;
 
             using var context = new CombinedDBContext(dbContextOptions);
@@ -31,7 +31,7 @@ namespace RealEstate.Test._TestSetup.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseSqlServer(connection);
+                    .UseSqlite(connection);
             }
         }
     }

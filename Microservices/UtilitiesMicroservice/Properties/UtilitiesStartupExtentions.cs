@@ -1,8 +1,7 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
 using RealEstate.Shared;
-using RealEstate.Shared.Data.Cache;
-using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.ServiceExtensions;
 using UtilitiesMicroservice.Services.CloudinaryService;
 using UtilitiesMicroservice.Services.FileUpload;
 
@@ -13,15 +12,12 @@ namespace UtilitiesMicroservice.Properties
         public static IServiceCollection AddRepositoriesAndContexts(this IServiceCollection services)
         {
             // Services
-            services.AddSingleton<ICacheService, CacheService>();
-            services.AddSingleton<string>("example");
-
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IFileUploadService, FileUploadService>();
             services.AddSingleton<CloudinaryDotNet.Cloudinary>();
 
-            // Repositories
-            services.AddScoped<IRepository, Repository>(); //base repo implementation
+            // Application schema (CombinedDBContext) + IRepository (used by FileUploadService)
+            services.AddCombinedDbContext();
 
             return services;
         }

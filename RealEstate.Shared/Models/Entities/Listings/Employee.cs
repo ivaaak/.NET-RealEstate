@@ -22,6 +22,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         public string Last_Name { get; init; }
 
+        public string Company_Id { get; set; }
         public Company Company { get; init; }
 
         public IEnumerable<Listing> Listings { get; set; }

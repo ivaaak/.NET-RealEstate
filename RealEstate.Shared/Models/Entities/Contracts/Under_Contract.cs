@@ -9,9 +9,9 @@ namespace RealEstate.Shared.Models.Entities.Contracts
         [Key]
         public string Id { get; set; }
 
-        public int Estate_Id { get; set; }
+        public string Estate_Id { get; set; }
 
-        public int Contract_Id { get; set; }
+        public string Contract_Id { get; set; }
 
 
         // IDeletableEntity

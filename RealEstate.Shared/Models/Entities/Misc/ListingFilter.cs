@@ -16,8 +16,8 @@ namespace RealEstate.Shared.Models.Entities.Misc
         public DateTime? DateListed { get; set; }
         public int? ExactSquareMeters { get; set; }
         public int? Estate_Type_Id { get; set; }
-        public int? CategoryId { get; set; }
-        public int? EmployeeId { get; set; }
+        public string CategoryId { get; set; }
+        public string EmployeeId { get; set; }
 
         // Ranges
 

@@ -11,7 +11,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/clients/{everything}",
-      "FileCacheOptions": { "TtlSeconds": 30 },
+      "FileCacheOptions": { "TtlSeconds": 0 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "ClientsMicroservice"
     },
     // ContractsMicroservice - 9002
@@ -26,6 +27,7 @@
       ],
       "UpstreamPathTemplate": "/api/contracts/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "ContractsMicroservice"
     },
     // EstatesMicroservice - 9003
@@ -40,6 +42,7 @@
       ],
       "UpstreamPathTemplate": "/api/estates/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "EstatesMicroservice"
     },
     // ExternalAPIsMicroservice - 9004
@@ -54,6 +57,7 @@
       ],
       "UpstreamPathTemplate": "/api/external/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "ExternalAPIsMicroservice"
     },
     // ListingsMicroservice - 9005
@@ -68,6 +72,7 @@
       ],
       "UpstreamPathTemplate": "/api/listings/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "ListingsMicroservice"
     },
     // MessagingMicroservice - 9006
@@ -82,6 +87,7 @@
       ],
       "UpstreamPathTemplate": "/api/messaging/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "MessagingMicroservice"
     },
     // UtilitiesMicroservice - 9007
@@ -96,6 +102,7 @@
       ],
       "UpstreamPathTemplate": "/api/utilities/{everything}",
       "FileCacheOptions": { "TtlSeconds": 30 },
+      "AuthenticationOptions": { "AuthenticationProviderKey": "Bearer", "AllowedScopes": [] },
       "SwaggerKey": "UtilitiesMicroservice"
     }
   ],
@@ -178,10 +185,6 @@
     "RequestIdKey": "OcRequestId",
 
     "AdministrationPath": "/administration",
-    "AuthenticationOptions": {
-      "AuthenticationProviderKey": "Bearer",
-      "AllowedScopes": [ "openid" ]
-    },
 
     "LoadBalancer": "RoundRobin",
     "RateLimitOptions": {

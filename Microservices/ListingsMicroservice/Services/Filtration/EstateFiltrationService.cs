@@ -76,7 +76,7 @@ namespace ListingsMicroservice.Services.Filtration
                 query = query.Where(x => x.Pets_Allowed == filter.Pets_Allowed);
             }
 
-            if (filter.City_Id.Length > 0)
+            if (!string.IsNullOrEmpty(filter.City_Id))
             {
                 query = query.Where(x => x.City_Id == filter.City_Id);
             }

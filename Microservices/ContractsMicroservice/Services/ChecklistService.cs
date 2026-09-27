@@ -41,7 +41,7 @@ namespace ContractsMicroservice.Services
             }
 
             // delete the document
-            await repo.DeleteAsync<Checklist>(document);
+            await repo.DeleteAsync<Checklist>(document.Id);
         }
 
 

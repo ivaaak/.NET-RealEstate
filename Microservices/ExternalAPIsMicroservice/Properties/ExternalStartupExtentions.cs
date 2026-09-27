@@ -1,6 +1,5 @@
 ﻿using ExternalAPIsMicroservice.Services;
 using ExternalAPIsMicroservice.Services.Interfaces;
-using RealEstate.Shared.Data.Repository;
 using Stripe;
 
 namespace ExternalAPIsMicroservice.Properties
@@ -18,9 +17,6 @@ namespace ExternalAPIsMicroservice.Properties
             services.AddTransient<IZillowApiService, ZillowApiService>();
             services.AddTransient<IZillowAgentService, ZillowAgentService>();
             services.AddTransient<IZillowSimilarListingsService, ZillowSimilarListingsService>();
-
-            // Repository
-            services.AddScoped<IRepository, Repository>(); //base repo implementation
 
             return services;
         }

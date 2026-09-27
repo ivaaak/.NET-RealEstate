@@ -1,4 +1,5 @@
 using ClientsMicroservice.Properties;
+using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
@@ -13,6 +14,7 @@ builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
+    .AddKeycloakAuthenticationConfigured(builder.Configuration)
     .AddRepositoriesAndContexts(builder.Configuration)
     .AddKeycloakClientConfigured(builder.Configuration)
     .AddSwaggerWithConfig("Clients")

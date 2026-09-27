@@ -37,7 +37,7 @@ namespace ClientsMicroservice.Data.Repository
 
         public async Task<UserEntity> FindByIdAsync(Guid id)
         {
-            return await _context.UserEntities.FirstAsync(x => x.Id == id.ToString());
+            return await _context.UserEntities.FirstOrDefaultAsync(x => x.Id == id.ToString());
         }
 
 
@@ -49,7 +49,7 @@ namespace ClientsMicroservice.Data.Repository
 
         public async Task<IEnumerable<UserAttribute>> GetAttributesAsync(Guid userId)
         {
-            var user = await _context.UserEntities.Include(x => x.UserAttributes).FirstAsync(x => x.Id == userId.ToString());
+            var user = await _context.UserEntities.Include(x => x.UserAttributes).FirstOrDefaultAsync(x => x.Id == userId.ToString());
             if (user == null)
             {
                 return null;

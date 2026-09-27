@@ -11,17 +11,16 @@ namespace RealEstate.Shared.Models.Entities.Contracts
         [Key]
         public string Id { get; set; }
 
-        [ForeignKey("Client_Id")]
         public string Client_Id { get; set; }
         public Client Client { get; set; }
 
         public string Employee_Id { get; set; }
 
-        public int Contract_Type_Id { get; set; }
+        public string Contract_Type_Id { get; set; }
 
         public string Contract_Details { get; set; }
 
-        public int Payment_Frequency_Id { get; set; }
+        public string Payment_Frequency_Id { get; set; }
 
         public int Number_Of_Invoices { get; set; }
 

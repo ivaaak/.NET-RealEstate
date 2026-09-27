@@ -77,6 +77,9 @@ services:
   db.realestate:
     image: postgres
 
+  db.keycloak:
+    image: postgres
+
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
 
@@ -87,6 +90,7 @@ services:
 # Volumes - persist data from containers
 volumes:
   re_data:
+  keycloak_data:
   mongo_data:
   portainer_data:
   pgadmin_data:

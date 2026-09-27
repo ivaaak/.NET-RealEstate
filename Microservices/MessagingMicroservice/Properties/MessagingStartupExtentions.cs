@@ -4,7 +4,6 @@ using MessagingMicroservice.Data.Repository;
 using MessagingMicroservice.MediatR.Notifications.Estates;
 using MessagingMicroservice.Services.Email;
 using MessagingMicroservice.Services.Notification;
-using RealEstate.Shared.Data.Repository;
 
 namespace MessagingMicroservice.Properties
 {
@@ -23,7 +22,6 @@ namespace MessagingMicroservice.Properties
 
             // Repositories
             services.AddScoped<INotificationRepository, NotificationRepository>();
-            services.AddScoped<IRepository, Repository>(); //base repo implementation
 
             return services;
         }

@@ -15,7 +15,6 @@ namespace RealEstate.Shared.Models.Entities.Estates
         [StringLength(100)]
         public string Name { get; set; }
 
-        [ForeignKey("City_Id")]
         public string City_Id { get; set; }
         public City City { get; set; }
         public DateTime YearBuilt { get; set; }
@@ -33,7 +32,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
         public Host Host { get; set; }
 
         // Foreign Key
-        public int LocId { get; set; }
+        public string LocId { get; set; }
         [ForeignKey("LocId")]
         public Location Loc { get; set; }
 

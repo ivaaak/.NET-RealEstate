@@ -10,14 +10,14 @@ namespace ListingsMicroservice.Services.Filtration
         {
             var query = listings;
 
-            if (filter.Estate_Id.Any())
+            if (!string.IsNullOrEmpty(filter.Estate_Id))
             {
                 query = query.Where(x => x.Estate.Id == filter.Estate_Id);
             }
 
-            if (filter.CategoryId.HasValue)
+            if (!string.IsNullOrEmpty(filter.CategoryId))
             {
-                query = query.Where(x => x.CategoryId == filter.CategoryId.Value);
+                query = query.Where(x => x.CategoryId == filter.CategoryId);
             }
 
             if (filter.Price.HasValue)

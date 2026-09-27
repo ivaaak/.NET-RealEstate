@@ -1,16 +1,17 @@
 
-Add-Migration InitialCreate -Context ClientsDBContext -OutputDir Data/Migrations/ClientsDB
-Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Data/Migrations/ContractsDB
-Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Data/Migrations/EstatesDB
-Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Data/Migrations/ListingsDB
+// Single shared schema (CombinedDBContext) - run from the repository root.
+// ClientsMicroservice is used as the startup project because RealEstate.Shared is a class library.
+dotnet ef migrations add InitialCreate --context CombinedDBContext --project RealEstate.Shared --startup-project Microservices/ClientsMicroservice --output-dir Data/Migrations/Combined
+dotnet ef database update --context CombinedDBContext --project RealEstate.Shared --startup-project Microservices/ClientsMicroservice
 
+// Package Manager Console equivalent (default project: RealEstate.Shared)
+// Add-Migration InitialCreate -Context CombinedDBContext -OutputDir Data/Migrations/Combined
+// Update-Database -Context CombinedDBContext
 
-Update-Database -Context ClientsDBContext
-Update-Database -Context ContractsDBContext
-Update-Database -Context EstatesDBContext
-Update-Database -Context ListingsDBContext
+// UsersDBContext maps Keycloak's own tables - never add migrations for it, Keycloak owns that schema.
 
-// unused after moving to MicroDBs
-// Add-Migration InitialCreate -Context IdentityUsersDBContext -OutputDir Migrations/IdentityUsersDB
-// Add-Migration InitialCreate -Context _CombinedContext -OutputDir Migrations.Combined
-// Update-Database -Context IdentityUsersDBContext
+// unused after moving to the combined DB (kept for reference, the per-service migrations are stale)
+// Add-Migration InitialCreate -Context ClientsDBContext -OutputDir Data/Migrations/ClientsDB
+// Add-Migration InitialCreate -Context ContractsDBContext -OutputDir Data/Migrations/ContractsDB
+// Add-Migration InitialCreate -Context EstatesDBContext -OutputDir Data/Migrations/EstatesDB
+// Add-Migration InitialCreate -Context ListingsDBContext -OutputDir Data/Migrations/ListingsDB

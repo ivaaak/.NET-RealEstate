@@ -60,9 +60,9 @@ namespace ListingsMicroservice.Services._Sorting
 
     public class SortHandler : IRequestHandler<SortQuery, SortResult>
     {
-        private readonly EstatesDBContext _context;
+        private readonly CombinedDBContext _context;
 
-        public SortHandler(EstatesDBContext context)
+        public SortHandler(CombinedDBContext context)
         {
             _context = context;
         }

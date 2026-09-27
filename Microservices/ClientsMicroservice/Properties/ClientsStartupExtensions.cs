@@ -1,4 +1,4 @@
-﻿using ClientsMicroservice.Data.Context;
+using ClientsMicroservice.Data.Context;
 using ClientsMicroservice.Data.Repository;
 using ClientsMicroservice.Services;
 using ClientsMicroservice.Services.Interfaces;
@@ -6,10 +6,8 @@ using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared;
-using RealEstate.Shared.Data.Cache;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
-using System.Configuration;
+using RealEstate.Shared.ServiceExtensions;
 
 namespace ClientsMicroservice.Properties
 {
@@ -19,38 +17,33 @@ namespace ClientsMicroservice.Properties
         {
             // Services
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IClientService, ClientService>();
 
             // DbContexts using pooling for better performance
-            services.AddDbContextPool<UsersDBContext>(options => 
-                options.UseNpgsql(GlobalConnectionStrings.Clients_MicroDB_Connection));
+            // Keycloak's own database (user_entity, user_attribute, ...) - read via UsersDBContext
+            services.AddDbContextPool<UsersDBContext>(options =>
+                options.UseNpgsql(GlobalConnectionStrings.Keycloak_DB_Connection));
 
-            services.AddDbContextPool<ClientsDBContext>(options =>
-                options.UseNpgsql(GlobalConnectionStrings.Clients_MicroDB_Connection));
-            
-            services.AddDbContextPool<CombinedDBContext>(options =>
-                 options.UseNpgsql(GlobalConnectionStrings.RealEstate_DB_Connection));
+            // Application schema (CombinedDBContext) + IRepository
+            services.AddCombinedDbContext();
 
             // Repositories
             services.AddScoped<IClientsDbRepository, ClientsDbRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IRepository, Repository>(); //base repo implementation
-
-
-            // Register CacheService with the provided connection string
-            services.AddSingleton<ICacheService>(new CacheService(GlobalConnectionStrings.Redis_Connection));
 
             return services;
         }
 
         public static IServiceCollection AddKeycloakClientConfigured(this IServiceCollection services, IConfiguration configuration)
         {
+            // "auth-server-url", "ssl-required", etc. bind to non-public properties in Keycloak.AuthServices 1.x
             var keycloakAdminOptions = configuration
                 .GetSection(KeycloakAdminClientOptions.Section)
-                .Get<KeycloakAdminClientOptions>();
+                .Get<KeycloakAdminClientOptions>(o => o.BindNonPublicProperties = true);
 
             var keycloakProtectionOptions = configuration
                 .GetSection(KeycloakProtectionClientOptions.Section)
-                .Get<KeycloakProtectionClientOptions>();
+                .Get<KeycloakProtectionClientOptions>(o => o.BindNonPublicProperties = true);
 
             // requires confidential client
             services.AddKeycloakAdminHttpClient(keycloakAdminOptions);

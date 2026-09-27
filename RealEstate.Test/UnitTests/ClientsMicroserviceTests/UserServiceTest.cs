@@ -1,5 +1,5 @@
 #nullable disable
-using ClientsMicroservice.Data.Context;
+using RealEstate.Shared.Data.Context;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using RealEstate.Shared.Data.Repository;
@@ -24,7 +24,7 @@ namespace RealEstate.Test.UnitTests.ClientsMicroserviceTests
             //.AddSingleton<IUserService, UserService>()
 
             var repo = serviceProvider.GetService<IApplicationDbRepository>();
-            var testDbContext = serviceProvider.GetService<ClientsDBContext>();
+            var testDbContext = serviceProvider.GetService<CombinedDBContext>();
 
             await SeedDbAsync(testDbContext);
         }
@@ -43,7 +43,7 @@ namespace RealEstate.Test.UnitTests.ClientsMicroserviceTests
         {
             dbContext.Dispose();
         }
-        private async Task SeedDbAsync(ClientsDBContext dbContext) //should be in memory/ repo?
+        private async Task SeedDbAsync(CombinedDBContext dbContext) //should be in memory/ repo?
         {
             var client = TestConstants.client;
             /*

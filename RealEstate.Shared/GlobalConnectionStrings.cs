@@ -6,7 +6,8 @@
         public const string RealEstate_DB_Connection = "Server=localhost;Port=5000;Database=RealEstate;User Id=admin;Password=admin;";
         //Host=127.0.0.1;Database=RealEstate;Username=postgres;Password=admin
         // Keycloak
-        public const string Keycloak_DB_Connection = "Server=postgres;Port=5432;Database=keycloak;User Id=keycloak;Password=password;Integrated Security=true;Pooling=true";
+        // Keycloak's own Postgres (db.keycloak in docker-compose), read by ClientsMicroservice UsersDBContext
+        public const string Keycloak_DB_Connection = "Server=localhost;Port=5433;Database=keycloak;User Id=keycloak;Password=password;Pooling=true";
         public const string Keycloak_Auth_Server = "http://localhost:8080/";
         public const string Keycloak_Secret = "Tgx4lvbyhho7oNFmiIupDRVA8ioQY7PW";
 

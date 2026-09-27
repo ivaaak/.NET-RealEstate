@@ -82,7 +82,7 @@ namespace ContractsMicroservice.Services
             }
 
             // delete the document
-            await repo.DeleteAsync<DocumentModel>(document);
+            await repo.DeleteAsync<DocumentModel>(document.Id);
         }
 
 

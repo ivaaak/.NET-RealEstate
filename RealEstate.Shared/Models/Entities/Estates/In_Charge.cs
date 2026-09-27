@@ -9,9 +9,9 @@ namespace RealEstate.Shared.Models.Entities.Estates
         [Key]
         public string Id { get; set; }
 
-        public int Estate_Id { get; init; }
+        public string Estate_Id { get; init; }
 
-        public int Employee_Id { get; init; }
+        public string Employee_Id { get; init; }
 
         public DateTime Date_From { get; init; }
 

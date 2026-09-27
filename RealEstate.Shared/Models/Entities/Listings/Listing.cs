@@ -35,7 +35,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
         public DateTime DateListed { get; set; }
 
 
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
 
         public Category Category { get; init; }
 
@@ -43,7 +43,7 @@ namespace RealEstate.Shared.Models.Entities.Listings
 
         public ListingStats ListingStats { get; set; }
 
-        public int EmployeeId { get; init; }
+        public string EmployeeId { get; init; }
         public Employee Employee { get; init; }
 
         public string Agent_Id { get; set; }

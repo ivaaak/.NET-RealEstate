@@ -12,8 +12,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
 
         public string City_Name { get; init; }
 
-        [ForeignKey("Country_Id")]
-        public int Country_Id { get; init; }
+        public string Country_Id { get; init; }
         public Country Country { get; init; }
 
         public IEnumerable<Estate> Estates { get; init; }

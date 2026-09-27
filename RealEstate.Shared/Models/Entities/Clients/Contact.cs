@@ -10,12 +10,9 @@ namespace RealEstate.Shared.Models.Entities.Clients
         [Key]
         public string Id { get; set; }
 
-        [ForeignKey("ApplicationUserId")]
-        public string ApplicationUserId { get; init; }
+        public string Employee_Id { get; init; }
 
-        public int Employee_Id { get; init; }
-
-        public int Estate_Id { get; init; }
+        public string Estate_Id { get; init; }
 
         public DateTime Contact_Time { get; init; }
 

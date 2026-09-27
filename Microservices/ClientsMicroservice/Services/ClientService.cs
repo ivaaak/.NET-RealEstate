@@ -1,4 +1,5 @@
 ﻿using ClientsMicroservice.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Shared.Data.Repository;
 using RealEstate.Shared.Models.Entities.Clients;
 
@@ -29,9 +30,8 @@ namespace ClientsMicroservice.Services
 
         public async Task<bool> ClientExists(string clientId)
         {
-            var client = await _clientsDbRepository.GetByIdAsync<Client>(clientId);
-
-            return client != null;
+            // Read-only check so the entity isn't tracked before a subsequent Update() of the same key
+            return await _clientsDbRepository.AllReadonly<Client>(c => c.Id == clientId).AnyAsync();
         }
 
 
@@ -56,6 +56,7 @@ namespace ClientsMicroservice.Services
             try
             {
                 _clientsDbRepository.Update(client);
+                _clientsDbRepository.SaveChanges();
 
                 return client;
             }
@@ -68,13 +69,7 @@ namespace ClientsMicroservice.Services
         }
         public async Task SoftDeleteClient(string clientId)
         {
-            var client = await _clientsDbRepository.GetByIdAsync<Client>(clientId);
-
-            if (client != null)
-            {
-                client.IsDeleted = true;
-                _clientsDbRepository.Update(client);
-            }
+            await _clientsDbRepository.DeleteAsync<Client>(clientId);
         }
 
         public async Task<bool> HardDeleteClient(string clientId)

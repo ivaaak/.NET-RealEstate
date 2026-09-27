@@ -19,7 +19,7 @@ namespace RealEstate.Shared.Models.Entities.Estates
         public IEnumerable<Estate> Estates { get; init; } = new List<Estate>();
 
         public Estate Estate { get; set; }
-        public int Estate_Id { get; set; }
+        public string Estate_Id { get; set; }
 
         // IDeletableEntity
         public bool IsDeleted { get; set; }

@@ -1,9 +1,7 @@
-﻿using EstatesMicroservice.Services;
+using EstatesMicroservice.Services;
 using EstatesMicroservice.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using RealEstate.Shared;
-using RealEstate.Shared.Data.Context;
 using RealEstate.Shared.Data.Repository;
+using RealEstate.Shared.ServiceExtensions;
 
 namespace EstatesMicroservice.Properties
 {
@@ -16,13 +14,12 @@ namespace EstatesMicroservice.Properties
 
             services.AddAutoMapper(typeof(Program));
 
-            // DbContexts using pooling for better performance
-            services.AddDbContextPool<EstatesDBContext>(options => 
-                options.UseNpgsql(GlobalConnectionStrings.Estates_MicroDB_Connection));
+            // Application schema (CombinedDBContext) + IRepository
+            services.AddCombinedDbContext();
 
             // Repositories
-            services.AddTransient<IEstatesDbRepository, EstatesDbRepository>();
-            services.AddScoped<IRepository, Repository>(); //base repo implementation
+            services.AddScoped<IEstatesDbRepository, EstatesDbRepository>();
+            services.AddScoped<IClientsDbRepository, ClientsDbRepository>(); // used by FavoritesService
 
             return services;
         }

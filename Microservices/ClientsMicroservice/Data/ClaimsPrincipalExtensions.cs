@@ -20,7 +20,8 @@ namespace ClientsMicroservice.Data
             if (principal == null)
                 throw new ArgumentNullException(nameof(principal));
 
-            return principal.FindFirst(ClaimTypes.Name).Value;
+            // Keycloak.AuthServices sets NameClaimType = "preferred_username", so there is no ClaimTypes.Name claim
+            return principal.Identity?.Name;
         }
 
         public static string GetLoggedInUserEmail(this ClaimsPrincipal principal)

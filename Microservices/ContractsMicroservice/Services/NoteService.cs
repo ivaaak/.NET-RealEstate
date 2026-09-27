@@ -41,7 +41,7 @@ namespace ContractsMicroservice.Services
             }
 
             // delete the document
-            await repo.DeleteAsync<Note>(document);
+            await repo.DeleteAsync<Note>(document.Id);
         }
 
 

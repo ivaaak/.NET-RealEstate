@@ -18,48 +18,28 @@ namespace RealEstate.Shared.Data.Repository
             return Context.Set<T>();
         }
 
-        private readonly TimeSpan _defaultCacheExpiration = TimeSpan.FromMinutes(30);
-
-
 // ================================== Add Methods ==================================
         public async Task AddAsync<T>(T entity) where T : class, IDeletableEntity
         {
             DbSet<T>().Add(entity);
             await SaveChangesAsync();
-
-            // Update the cache with the newly added entity 
-            var cacheKey = GetCacheKey<T>("GetById", entity.Id);
-            _cacheService.Set(cacheKey, All<T>(), _defaultCacheExpiration);
         }
 
         public async Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class, IDeletableEntity
         {
             DbSet<T>().AddRange(entities);
             await SaveChangesAsync();
-
-            // Update the cache with the newly added entities 
-            var cacheKey = GetCacheKey<T>("GetById");
-            _cacheService.Set(cacheKey, All<T>(), _defaultCacheExpiration);
         }
 
 
 // ================================== Get All Methods  ==================================
+        // Queries are intentionally not cached: an IQueryable can't be serialized/deserialized through Redis,
+        // and cached (untracked) entities would silently break change tracking for updates.
         public IQueryable<T> All<T>() where T : class, IDeletableEntity
         {
-            var cacheKey = GetCacheKey<T>("GetAll");
-
-            if (_cacheService.KeyExists(cacheKey))
-            {
-                return _cacheService.Get<IQueryable<T>>(cacheKey);
-            }
-            var data = DbSet<T>()
+            return DbSet<T>()
                 .Where(e => !e.IsDeleted)
                 .AsQueryable();
-
-            // Add data to the cache for subsequent requests 
-            _cacheService.Set(cacheKey, data, _defaultCacheExpiration);
-
-            return data;
         }
 
         public IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class, IDeletableEntity
@@ -89,45 +69,22 @@ namespace RealEstate.Shared.Data.Repository
 
 
         // ================================== Get Single Entity Methods  ==================================
+        // All primary keys are strings (IDeletableEntity.Id), so ids passed as int/Guid are normalized to string
         public async Task<T> GetByIdAsync<T>(object id) where T : class, IDeletableEntity
         {
-            // Create a unique cache key for this entity instance
-            var cacheKey = GetCacheKey<T>("GetById", id);
+            var key = id?.ToString();
 
-            // Attempt to get the entity from the cache
-            var cachedEntity = _cacheService.Get<T>(cacheKey);
-
-            if (cachedEntity != null)
-            {
-                // If the entity is found in the cache, return it
-                return cachedEntity;
-            }
-            else
-            {
-                // If not found in the cache, query the database
-                var entity = await DbSet<T>()
-                    .Where(e => !e.IsDeleted && id.Equals(e.Id))
-                    .FirstOrDefaultAsync();
-
-                if (entity != null)
-                {
-                    // If the entity is found in the database, store it in the cache
-                    _cacheService.Set(cacheKey, entity);
-
-                    return entity;
-                }
-                else
-                {
-                    // If the entity is not found in the database, return null
-                    return null;
-                }
-            }
+            return await DbSet<T>()
+                .Where(e => !e.IsDeleted && e.Id == key)
+                .FirstOrDefaultAsync();
         }
 
 
         public IQueryable<T> GetByIdsAsync<T>(object[] id) where T : class, IDeletableEntity
         {
-            return DbSet<T>().Where(e => !e.IsDeleted && id.Contains(e.Id)).AsQueryable();
+            var keys = id.Select(i => i?.ToString()).ToArray();
+
+            return DbSet<T>().Where(e => !e.IsDeleted && keys.Contains(e.Id)).AsQueryable();
         }
 
 
@@ -165,6 +122,7 @@ namespace RealEstate.Shared.Data.Repository
                 entity.IsDeleted = true;
                 entity.DeletedOn = DateTime.UtcNow;
                 Update(entity);
+                await SaveChangesAsync();
             }
         }
 
@@ -187,13 +145,16 @@ namespace RealEstate.Shared.Data.Repository
 
         public async Task UndeleteAsync<T>(object id) where T : class, IDeletableEntity
         {
-            T entity = await GetByIdAsync<T>(id);
+            // GetByIdAsync filters out soft-deleted rows, so look the entity up directly
+            var key = id?.ToString();
+            T entity = await DbSet<T>().FirstOrDefaultAsync(e => e.Id == key);
 
             if (entity != null)
             {
                 entity.IsDeleted = false;
                 entity.DeletedOn = null;
                 Update(entity);
+                await SaveChangesAsync();
             }
         }
 
@@ -217,15 +178,6 @@ namespace RealEstate.Shared.Data.Repository
         }
 
 
-// Helper method to get the cache key for GetById<T>
-// GetCacheKey("id_goes_here", "GetById")
-// Example output -  Listing_GetById_5f4e6f0c-3d3d-4d2a-9a7b-1e3bde8fcf98
-        private string GetCacheKey<T>(string methodSignature, object? id = null) where T : class, IDeletableEntity
-        {
-            return $"{typeof(T).Name}_{methodSignature}_{id}";
-        }
-
-
 // ================================== Implement the Dispose method / Pattern  ==================================
 // Sonar Rule 3881 (IDisposable should be implemented correctly)
         public void Dispose()
@@ -234,14 +186,9 @@ namespace RealEstate.Shared.Data.Repository
             GC.SuppressFinalize(this);
         }
 
+        // The DbContext is owned (and disposed/returned to the pool) by the DI container, not by the repository
         protected virtual void Dispose(bool disposing)
         {
-            Context.Dispose();
-        }
-
-        ~Repository()
-        {
-            Dispose(false);
         }
     }
 }

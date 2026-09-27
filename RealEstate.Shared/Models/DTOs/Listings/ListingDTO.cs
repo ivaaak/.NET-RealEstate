@@ -24,11 +24,11 @@ namespace RealEstate.Shared.Models.DTOs.Listings
 
         public int SquareMeters { get; set; }
 
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
 
         public Category Category { get; init; }
 
-        public int EmployeeId { get; init; }
+        public string EmployeeId { get; init; }
 
         public Employee Employee { get; init; }
     }

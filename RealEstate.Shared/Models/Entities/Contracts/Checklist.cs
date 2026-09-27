@@ -15,7 +15,7 @@ namespace RealEstate.Shared.Models.Entities.Contracts
 
         public string Description { get; set; }
 
-        [ForeignKey("Client_Id")]
+        [ForeignKey(nameof(Client))]
         public string Client_Id { get; set; }
 
         public Client Client { get; set; }

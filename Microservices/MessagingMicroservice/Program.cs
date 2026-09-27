@@ -1,4 +1,5 @@
 using MessagingMicroservice.Properties;
+using RealEstate.ApiGateway.Authentication;
 using RealEstate.ApiGateway.Properties;
 using RealEstate.Shared.Logging;
 using RealEstate.Shared.ServiceExtensions;
@@ -13,6 +14,7 @@ builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
+    .AddKeycloakAuthenticationConfigured(builder.Configuration)
     .AddRepositoriesAndContexts()
     .AddSwaggerWithConfig("Messaging")
     .AddRedisCacheWithConnectionString(builder)
@@ -24,7 +26,7 @@ builder.Services
 var app = builder.Build();
 
 app.UseSwaggerDevelopmentDocs("Messaging");
-app.UseHttpsRedirection().UseAuthorization();
+app.UseAuthentication().UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
 ConsoleMessageUtil.MicroserviceStartupMessage("Messaging");

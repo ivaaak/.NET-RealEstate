@@ -14,7 +14,7 @@ namespace UtilitiesMicroservice.Properties
                 .AddRabbitMQ(GlobalConnectionStrings.RabbitMQ_Connection, sslOption: null, tags: null, timeout: null)
                 .AddRedis(GlobalConnectionStrings.Redis_Connection)
                 .AddElasticsearch(GlobalConnectionStrings.Elasticsearch_Connection)
-                .AddNpgSql(GlobalConnectionStrings.Estates_MicroDB_Connection);
+                .AddNpgSql(GlobalConnectionStrings.RealEstate_DB_Connection);
             //.AddNpgSql(GlobalConnectionStrings.Clients_MicroDB_Connection)
             //.AddNpgSql(GlobalConnectionStrings.Contracts_MicroDB_Connection)
             //.AddNpgSql(GlobalConnectionStrings.Estates_MicroDB_Connection)

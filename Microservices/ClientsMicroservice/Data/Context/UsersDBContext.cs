@@ -1,5 +1,6 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
+using RealEstate.Shared;
 using RealEstate.Shared.Models.Entities.Users;
 
 namespace ClientsMicroservice.Data.Context
@@ -20,7 +21,7 @@ namespace ClientsMicroservice.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Server=localhost;Port=5433;Database=keycloak;User Id=keycloak;Password=password;Integrated Security=true;Pooling=true;");
+                optionsBuilder.UseNpgsql(GlobalConnectionStrings.Keycloak_DB_Connection);
             }
         }
 
@@ -31,6 +32,9 @@ namespace ClientsMicroservice.Data.Context
             modelBuilder.Entity<UserEntity>(entity =>
             {
                 entity.ToTable("user_entity");
+                // IDeletableEntity members have no columns in Keycloak's user_entity table
+                entity.Ignore(e => e.IsDeleted);
+                entity.Ignore(e => e.DeletedOn);
                 entity.HasIndex(e => e.Email, "idx_user_email");
                 entity.HasIndex(e => new { e.RealmId, e.EmailConstraint }, "uk_dykn684sl8up1crfei6eckhd7").IsUnique();
                 entity.HasIndex(e => new { e.RealmId, e.Username }, "uk_ru8tt6t700s9v50bu18ws5ha6").IsUnique();

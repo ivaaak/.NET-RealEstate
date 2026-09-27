@@ -9,7 +9,7 @@ namespace RealEstate.Shared.Models.DTOs.Estates
         public string Id { get; set; }
         public string Name { get; set; }
 
-        public int City_Id { get; set; }
+        public string City_Id { get; set; }
         public City City { get; set; }
         public string Type { get; set; }
         public List<string> ImgUrls { get; set; }
@@ -22,7 +22,7 @@ namespace RealEstate.Shared.Models.DTOs.Estates
         public string HostId { get; set; }
         public Host Host { get; set; }
 
-        public int LocId { get; set; }
+        public string LocId { get; set; }
         public Location Loc { get; set; }
 
         public List<Review> Reviews { get; set; }
